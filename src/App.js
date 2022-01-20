@@ -8,6 +8,7 @@ import {
   faStore,
   faUsers,
   faUser,
+  faCaretSquareDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/LeftSideBar";
@@ -29,5 +30,14 @@ function App() {
   );
 }
 
-library.add(faSearch, faHome, faUserFriends, faVideo, faStore, faUsers, faUser);
+library.add(
+  faSearch,
+  faHome,
+  faUserFriends,
+  faVideo,
+  faStore,
+  faUsers,
+  faUser,
+  faCaretSquareDown
+);
 export default App;

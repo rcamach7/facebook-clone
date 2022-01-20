@@ -1,3 +1,46 @@
 .LeftSideBar {
   color: white;
 }
+
+.leftSideBar-nav {
+  margin-top: 25px;
+  padding-left: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 25px;
+}
+
+.leftSideBar-nav-item {
+  font-size: 25px;
+  list-style: none;
+
+  display: flex;
+}
+
+.nav-item-iconHolder {
+  display: block;
+  width: 50px;
+  min-width: 50px;
+}
+
+.nav-item-iconHolder.fb-blue {
+  color: rgb(26, 115, 228);
+}
+
+.nav-item-iconHolder.fb-lightBlue {
+  color: rgb(53, 183, 219);
+}
+
+.nav-item-iconHolder.fb-purple {
+  color: rgb(195, 49, 175);
+}
+
+.nav-item-iconHolder.fb-orange {
+  color: rgb(230, 78, 41);
+}
+
+.nav-item-iconHolder.fb-red {
+  color: rgb(237, 59, 90);
+}
