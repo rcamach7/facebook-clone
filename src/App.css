@@ -5,7 +5,8 @@
 }
 
 .App {
-  background-color: rgb(239, 242, 245);
+  height: 100vh;
+  background-color: black;
 }
 
 /* Overall Navbar Targeting */
@@ -19,8 +20,6 @@
   align-items: center;
 
   background-color: rgb(255, 255, 255);
-  /* Test */
-  outline: auto;
 }
 
 .Navbar ul {
@@ -83,11 +82,21 @@ form {
 
 /* Right Menu Item Targeting */
 .navbar-rightMenu {
+  color: rgb(100, 103, 107);
   margin-right: 25px;
 }
 
 /* Mid Menu Targeting */
+.navbar-menu {
+  gap: 10%;
+}
 
 .menu-item {
   color: rgb(100, 103, 107);
+  padding: 10px 25px 10px 25px;
+}
+
+.menu-item:hover {
+  color: rgb(26, 115, 228);
+  border-bottom: rgb(26, 115, 228) solid 5px;
 }

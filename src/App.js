@@ -7,6 +7,7 @@ import {
   faVideo,
   faStore,
   faUsers,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./components/Navbar";
 
@@ -20,5 +21,5 @@ function App() {
   );
 }
 
-library.add(faSearch, faHome, faUserFriends, faVideo, faStore, faUsers);
+library.add(faSearch, faHome, faUserFriends, faVideo, faStore, faUsers, faUser);
 export default App;

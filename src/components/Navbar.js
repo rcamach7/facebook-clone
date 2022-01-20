@@ -39,7 +39,9 @@ function Navbar() {
       </ul>
 
       <ul className="navbar-rightMenu">
-        <li className="rightMenu-item">User</li>
+        <li className="rightMenu-item">
+          <FontAwesomeIcon icon="user" size="2x" />
+        </li>
       </ul>
     </nav>
   );
