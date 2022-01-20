@@ -1,13 +1,17 @@
 import "./App.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello World</h1>
+        <Navbar />
       </header>
     </div>
   );
 }
 
+library.add(faSearch);
 export default App;

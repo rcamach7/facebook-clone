@@ -3,3 +3,59 @@
   margin: 0;
   padding: 0;
 }
+
+.App {
+  background-color: rgb(239, 242, 245);
+}
+
+/* Overall Navbar Targeting */
+.Navbar {
+  height: 60px;
+  max-height: 60px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: rgb(255, 255, 255);
+  /* Test */
+  outline: auto;
+}
+
+.Navbar ul {
+  display: flex;
+  gap: 25px;
+}
+
+.Navbar ul li {
+  list-style: none;
+}
+
+/* Left Menu Item Targeting */
+.navbar-leftMenu {
+  margin-left: 25px;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+
+  border-radius: 75%;
+}
+
+.navbar-leftMenu li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftMenu-item.search {
+  color: rgb(100, 103, 107);
+}
+
+/* Right Menu Item Targeting */
+
+.navbar-rightMenu {
+  margin-right: 25px;
+}
