@@ -9,9 +9,13 @@
   align-items: center;
 
   background-color: rgb(255, 255, 255);
+  /* Test */
+  /* outline: auto; */
 }
 
 .Navbar ul {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   gap: 25px;

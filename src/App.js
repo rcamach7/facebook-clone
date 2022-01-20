@@ -23,8 +23,8 @@ function App() {
         <div className="main-container-leftBar">
           <LeftSideBar />
         </div>
-        <div className="main-container-content">b</div>
-        <div className="main-container-rightBar">c</div>
+        <div className="main-container-content"></div>
+        <div className="main-container-rightBar"></div>
       </main>
     </div>
   );
