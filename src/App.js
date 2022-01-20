@@ -1,6 +1,14 @@
 import "./App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faHome,
+  faUserFriends,
+  faVideo,
+  faStore,
+  faUsers,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -13,5 +21,5 @@ function App() {
   );
 }
 
-library.add(faSearch);
+library.add(faSearch, faHome, faUserFriends, faVideo, faStore, faUsers, faUser);
 export default App;
