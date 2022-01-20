@@ -10,6 +10,9 @@ function Navbar() {
         </li>
         <li className="leftMenu-item search">
           <FontAwesomeIcon icon="search" size="2x" />
+          <form>
+            <input className="search-input" type="text" />
+          </form>
         </li>
       </ul>
 
