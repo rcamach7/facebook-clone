@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
@@ -10,6 +10,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./components/Navbar";
+import LeftSideBar from "./components/LeftSideBar";
 
 function App() {
   return (
@@ -17,6 +18,13 @@ function App() {
       <header className="App-header">
         <Navbar />
       </header>
+      <main className="main-container">
+        <div className="main-container-leftBar">
+          <LeftSideBar />
+        </div>
+        <div className="main-container-content">b</div>
+        <div className="main-container-rightBar">c</div>
+      </main>
     </div>
   );
 }
