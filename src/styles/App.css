@@ -30,11 +30,13 @@ html {
 .main-container-content {
   flex: 3;
   /* Test */
-  /* outline: auto; */
+  outline: auto;
 }
 
 .main-container-rightBar {
   flex: 1.25;
   /* Test */
   /* outline: auto; */
+  display: flex;
+  justify-content: center;
 }
