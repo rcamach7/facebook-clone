@@ -5,7 +5,6 @@
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   background-color: rgb(255, 255, 255);
@@ -77,11 +76,17 @@ form {
 .navbar-rightMenu {
   color: rgb(100, 103, 107);
   margin-right: 25px;
+  justify-content: flex-end;
+
+  flex: 2;
 }
 
 /* Mid Menu Targeting */
 .navbar-menu {
   gap: 25px;
+  justify-content: center;
+
+  flex: 5;
 }
 
 .menu-item {
