@@ -1,0 +1,62 @@
+.RightSideBar {
+  color: rgb(100, 103, 107);
+  width: 80%;
+  margin-top: 25px;
+
+  font-size: 20px;
+  text-align: center;
+}
+
+.rightSideBar-tech {
+  margin-top: 25px;
+  border-bottom: solid black 2px;
+}
+
+/* Unordered list of technologies */
+.technologies {
+}
+
+.technologies-item {
+  list-style: none;
+}
+
+.technologies-item.title {
+  font-weight: bolder;
+  padding-bottom: 10px;
+}
+
+.technologies-item img {
+  width: 100%;
+  height: auto;
+}
+
+/* Last Section On Sidebar */
+
+.rightSideBar-section {
+  margin-top: 15px;
+
+  font-weight: bolder;
+  border-top: solid 2px grey;
+}
+
+.RightSideBar button {
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  border: none;
+  text-decoration: none;
+}
+
+.RightSideBar button:hover {
+  background-color: rgb(214, 215, 216);
+}
+
+.newGroup-icon {
+  margin-right: 5px;
+  padding: 5px;
+  border: solid grey 2px;
+  border-radius: 5px;
+}

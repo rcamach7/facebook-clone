@@ -9,9 +9,11 @@ import {
   faUsers,
   faUser,
   faCaretSquareDown,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/LeftSideBar";
+import RightSideBar from "./components/RightSideBar";
 
 function App() {
   return (
@@ -24,7 +26,9 @@ function App() {
           <LeftSideBar />
         </div>
         <div className="main-container-content"></div>
-        <div className="main-container-rightBar"></div>
+        <div className="main-container-rightBar">
+          <RightSideBar />
+        </div>
       </main>
     </div>
   );
@@ -38,6 +42,7 @@ library.add(
   faStore,
   faUsers,
   faUser,
-  faCaretSquareDown
+  faCaretSquareDown,
+  faPlus
 );
 export default App;
