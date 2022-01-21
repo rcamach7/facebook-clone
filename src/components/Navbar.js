@@ -1,4 +1,5 @@
 import logo from "../assets/logo.png";
+import "../styles/Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Navbar() {

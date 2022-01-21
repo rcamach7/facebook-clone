@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "San Francisco";
+}
+
+html {
+  background-color: rgb(239, 242, 245);
+}
+
+.App {
+  height: 100%;
+}
+
+.main-container {
+  height: 100%;
+
+  display: flex;
+  align-items: stretch;
+}
+
+/* Sub Containers For Main Content */
+.main-container-leftBar {
+  flex: 1.25;
+  /* Test */
+  /* outline: auto; */
+}
+
+.main-container-content {
+  flex: 3;
+  /* Test */
+  /* outline: auto; */
+}
+
+.main-container-rightBar {
+  flex: 1.25;
+  /* Test */
+  /* outline: auto; */
+}
