@@ -14,6 +14,7 @@ import {
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
+import PostContainer from "./components/PostContainer";
 
 function App() {
   return (
@@ -25,7 +26,9 @@ function App() {
         <div className="main-container-leftBar">
           <LeftSideBar />
         </div>
-        <div className="main-container-content"></div>
+        <div className="main-container-content">
+          <PostContainer />
+        </div>
         <div className="main-container-rightBar">
           <RightSideBar />
         </div>

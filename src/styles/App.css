@@ -33,6 +33,7 @@ html {
 
 .main-container-content {
   flex: 3;
+
   /* Test */
   outline: auto;
 }

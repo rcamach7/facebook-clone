@@ -1,0 +1,10 @@
+.PostContainer {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.Post {
+  width: 80%;
+  outline: auto;
+}
