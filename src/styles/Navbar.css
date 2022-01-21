@@ -5,12 +5,11 @@
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   background-color: rgb(255, 255, 255);
-  /* Test */
-  /* outline: auto; */
+  /* Implement A better way to collapse navbar */
+  overflow: hidden;
 }
 
 .Navbar ul {
@@ -18,7 +17,6 @@
 
   display: flex;
   align-items: center;
-  gap: 25px;
 }
 
 .Navbar ul li {
@@ -29,6 +27,7 @@
 .navbar-leftMenu {
   height: 100%;
   margin-left: 25px;
+  gap: 25px;
 }
 
 .logo img {
@@ -77,16 +76,22 @@ form {
 .navbar-rightMenu {
   color: rgb(100, 103, 107);
   margin-right: 25px;
+  justify-content: flex-end;
+
+  flex: 2;
 }
 
 /* Mid Menu Targeting */
 .navbar-menu {
-  gap: 10%;
+  gap: 25px;
+  justify-content: center;
+
+  flex: 5;
 }
 
 .menu-item {
   color: rgb(100, 103, 107);
-  padding: 10px 25px 10px 25px;
+  padding: 10px 20px 10px 20px;
 }
 
 .menu-item:hover {

@@ -1,5 +1,5 @@
 .LeftSideBar {
-  font-size: 25px;
+  font-size: calc(15px + 0.5vw);
 }
 
 .leftSideBar-nav {
