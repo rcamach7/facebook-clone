@@ -10,7 +10,7 @@ function PostInfo() {
         </div>
         <div className="postInfo-main-details">
           <p className="details-username">Ricardo Camacho</p>
-          <p>12 hrs ago</p>
+          <p className="details-postTime">12 hrs ago</p>
         </div>
         <div className="postInfo-main-editPost">
           <button className="editPost-btn">
