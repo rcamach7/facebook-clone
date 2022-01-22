@@ -1,0 +1,129 @@
+.Post {
+  width: 60%;
+  padding: 15px;
+
+  border-radius: 15px;
+  background-color: white;
+}
+
+/* First Major Component Of Post */
+.PostInfo {
+  height: 100%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postInfo-main {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.postInfo-description {
+  padding-top: 2px;
+}
+
+.postInfo-main-user {
+  padding-left: 25px;
+}
+.details-username {
+  font-weight: bolder;
+}
+
+.postInfo-main-details {
+  font-size: 15px;
+  margin-right: auto;
+  padding-left: 25px;
+}
+.details-main-username {
+  font-weight: bolder;
+}
+
+.postInfo-main-editPost {
+  padding-right: 15px;
+}
+
+.editPost-btn {
+  padding: 5px 10px 5px 10px;
+  border-radius: 30%;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+.editPost-btn:hover {
+  background-color: rgb(214, 215, 216);
+}
+
+/* SECOND MAJOR POST COMPONENT */
+
+.PostNavbar {
+  margin-top: 10px;
+  border-top: solid 2px rgb(205, 208, 212);
+  border-bottom: solid 2px rgb(205, 208, 212);
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.postNavbar-item {
+  flex: 1;
+  display: block;
+
+  padding: 5px 0px 5px 0px;
+
+  text-align: center;
+  cursor: pointer;
+
+  color: rgb(101, 109, 119);
+}
+.postNavbar-item:hover {
+  background-color: rgb(214, 215, 216);
+}
+
+/* THIRD MAJOR POST SUB COMPONENT */
+.PostComments {
+}
+
+.Comment {
+  display: flex;
+  padding: 15px;
+}
+
+.comment-icon {
+  display: block;
+  margin-right: 15px;
+}
+
+.comment-description-user {
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+/* FOURTH MAJOR POST SUB COMPONENT */
+
+.PostAddComment {
+  display: flex;
+  align-items: center;
+
+  padding: 15px;
+}
+
+.comment-description {
+  border-radius: 15px;
+  width: 90%;
+  padding: 5px;
+  background-color: rgb(239, 242, 245);
+}
+.postAddComment-user {
+  margin-right: 15px;
+}
+.postAddComment-input input {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgb(239, 242, 245);
+}
