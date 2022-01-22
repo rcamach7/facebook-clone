@@ -1,5 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import "../styles/Post.css";
+import PostInfo from "./PostInfo";
+import PostNavbar from "./PostNavbar";
 
 export default function Post() {
   return (
@@ -7,28 +8,15 @@ export default function Post() {
       <div className="postInfoContainer">
         <PostInfo />
       </div>
-      <div className="postNavbarContainer"></div>
+      <div className="postNavbarContainer">
+        <PostNavbar />
+      </div>
       <div className="postCommentsContainer"></div>
       <div className="postAddCommentContainer"></div>
     </div>
   );
 }
 
-function PostInfo() {
-  return (
-    <div className="PostInfo">
-      <div className="postInfo-user">
-        <FontAwesomeIcon icon="user" size="1x" />
-      </div>
-      <div className="postInfo-details">
-        <p className="details-username">Ricardo Camacho</p>
-        <p>12 hrs ago</p>
-      </div>
-      <div className="postInfo-editPost">
-        <button className="editPost-btn">
-          <FontAwesomeIcon icon={faEllipsisH} />
-        </button>
-      </div>
-    </div>
-  );
+function PostComments() {
+  return <div className="PostComments"></div>;
 }
