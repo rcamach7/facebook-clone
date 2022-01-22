@@ -98,3 +98,9 @@ form {
   color: rgb(26, 115, 228);
   border-bottom: rgb(26, 115, 228) solid 5px;
 }
+
+@media (max-width: 800px) {
+  #root > div > header > nav > ul.navbar-menu {
+    display: none;
+  }
+}

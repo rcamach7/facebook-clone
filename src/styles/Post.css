@@ -1,9 +1,10 @@
 .Post {
-  width: 60%;
+  width: 80%;
   padding: 15px;
 
   border-radius: 15px;
   background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 /* First Major Component Of Post */
@@ -23,7 +24,9 @@
   align-items: center;
 }
 .postInfo-description {
-  padding-top: 2px;
+  padding-top: 10px;
+  width: 100%;
+  text-align: left;
 }
 
 .postInfo-main-user {
@@ -31,6 +34,8 @@
 }
 .details-username {
   font-weight: bolder;
+}
+.details-postTime {
 }
 
 .postInfo-main-details {
@@ -89,6 +94,7 @@
 
 .Comment {
   display: flex;
+  align-items: center;
   padding: 15px;
 }
 
@@ -120,10 +126,14 @@
 .postAddComment-user {
   margin-right: 15px;
 }
+.postAddComment-input {
+  width: 90%;
+}
 .postAddComment-input input {
   border: none;
   outline: none;
   border-radius: 10px;
   padding: 5px;
+  width: 100%;
   background-color: rgb(239, 242, 245);
 }

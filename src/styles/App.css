@@ -35,7 +35,7 @@ html {
   flex: 3;
 
   /* Test */
-  outline: auto;
+  /* outline: auto; */
 }
 
 .main-container-rightBar {
@@ -44,4 +44,16 @@ html {
   /* outline: auto; */
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .main-container-leftBar {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .main-container-rightBar {
+    display: none;
+  }
 }
