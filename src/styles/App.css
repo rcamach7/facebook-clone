@@ -43,7 +43,6 @@ html {
   /* Test */
   /* outline: auto; */
   display: flex;
-  justify-content: center;
 }
 
 @media (max-width: 700px) {
