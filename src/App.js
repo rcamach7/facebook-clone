@@ -44,7 +44,7 @@ function App() {
           <LeftSideBar />
         </div>
         <div className="main-container-content">
-          <PostContainer posts={posts} />
+          <PostContainer posts={posts} userInfo={userInfo} />
         </div>
         <div className="main-container-rightBar">
           <RightSideBar />
