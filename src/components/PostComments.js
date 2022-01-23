@@ -1,25 +1,29 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function PostComments() {
+function PostComments(props) {
   return (
     <div className="PostComments">
-      <Comment />
-      <Comment />
+      {props.comments.map((curComment) => {
+        return (
+          <Comment
+            userName={curComment.userName}
+            comment={curComment.comment}
+          />
+        );
+      })}
     </div>
   );
 }
 
-function Comment() {
+function Comment(props) {
   return (
     <div className="Comment">
       <span className="comment-icon">
         <FontAwesomeIcon icon="user" />
       </span>
       <div className="comment-description">
-        <p className="comment-description-user">Ricardo Camacho</p>
-        <p className="comment-description-text">
-          Hey that is incredible much respect dude!
-        </p>
+        <p className="comment-description-user">{props.userName}</p>
+        <p className="comment-description-text">{props.comment}</p>
       </div>
     </div>
   );

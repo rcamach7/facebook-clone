@@ -1,10 +1,12 @@
 import "../styles/PostContainer.css";
 import Post from "./Post";
 
-function PostContainer() {
+function PostContainer(props) {
   return (
     <div className="PostContainer">
-      <Post />
+      {props.posts.map((curPost) => {
+        return <Post post={curPost} />;
+      })}
     </div>
   );
 }
