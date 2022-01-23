@@ -1,5 +1,6 @@
 const post = {
-  userName: "Ricardo Camacho",
+  userName: "theRealRicardo",
+  timePosted: "13 hrs ago ",
   postTitle: "Got A New Ninja 400",
   postDescription:
     "Just bought my new motorcycle, it's a ninja 400, Kawasaki with ABS. Only 5 miles, still not broken in",

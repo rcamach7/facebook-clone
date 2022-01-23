@@ -15,8 +15,30 @@ import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
 import PostContainer from "./components/PostContainer";
+import { useEffect, useState } from "react";
+import post from "./data/testPostData";
 
 function App() {
+  const [userInfo, setUserInfo] = useState({});
+  const [posts, setPosts] = useState([]);
+
+  // Initiate test data
+  useEffect(() => {
+    const testUser = {
+      firstName: "Ricardo",
+      lastName: "Camacho",
+      username: "theRealRicardo",
+    };
+    const testPosts = [
+      {
+        ...post,
+      },
+    ];
+
+    setUserInfo(testUser);
+    setPosts(testPosts);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -27,7 +49,7 @@ function App() {
           <LeftSideBar />
         </div>
         <div className="main-container-content">
-          <PostContainer />
+          <PostContainer posts={posts} />
         </div>
         <div className="main-container-rightBar">
           <RightSideBar />

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 
-function PostInfo() {
+function PostInfo(props) {
   return (
     <div className="PostInfo">
       <div className="postInfo-main">
@@ -9,8 +9,8 @@ function PostInfo() {
           <FontAwesomeIcon icon="user" size="1x" />
         </div>
         <div className="postInfo-main-details">
-          <p className="details-username">Ricardo Camacho</p>
-          <p className="details-postTime">12 hrs ago</p>
+          <p className="details-username">{props.userName}</p>
+          <p className="details-postTime">{props.timePosted}</p>
         </div>
         <div className="postInfo-main-editPost">
           <button className="editPost-btn">
@@ -20,7 +20,7 @@ function PostInfo() {
       </div>
 
       <div className="postInfo-description">
-        <p>Lorem ipsum dolor sit amet postj skjfjes sgsgjs</p>
+        <p>{props.postDescription}</p>
       </div>
     </div>
   );

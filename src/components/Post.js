@@ -4,17 +4,21 @@ import PostNavbar from "./PostNavbar";
 import PostComments from "./PostComments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Post() {
+export default function Post(props) {
   return (
     <div className="Post">
       <div className="postInfoContainer">
-        <PostInfo />
+        <PostInfo
+          userName={props.post.userName}
+          timePosted={props.post.timePosted}
+          postDescription={props.post.postDescription}
+        />
       </div>
       <div className="postNavbarContainer">
         <PostNavbar />
       </div>
       <div className="postCommentsContainer">
-        <PostComments />
+        <PostComments comments={props.post.comments} />
       </div>
       <div className="postAddCommentContainer">
         <PostAddComment />
