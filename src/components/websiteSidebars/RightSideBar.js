@@ -1,7 +1,7 @@
-import "../styles/RightSideBar.css";
-import reactLogo from "../assets/react.png";
-import firebaseLogo from "../assets/firebase.png";
-import stack from "../assets/stack.jpeg";
+import "../../styles/RightSideBar.css";
+import reactLogo from "../../assets/react.png";
+import firebaseLogo from "../../assets/firebase.png";
+import stack from "../../assets/stack.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function RightSideBar() {

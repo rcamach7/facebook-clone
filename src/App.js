@@ -12,9 +12,9 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./components/Navbar";
-import LeftSideBar from "./components/LeftSideBar";
-import RightSideBar from "./components/RightSideBar";
-import PostContainer from "./components/PostContainer";
+import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
+import RightSideBar from "./components/websiteSidebars/RightSideBar";
+import PostsContainer from "./components/PostContainer";
 import { useEffect, useState } from "react";
 import testPosts from "./data/testPostData";
 
@@ -44,7 +44,7 @@ function App() {
           <LeftSideBar />
         </div>
         <div className="main-container-content">
-          <PostContainer posts={posts} userInfo={userInfo} />
+          <PostsContainer posts={posts} userInfo={userInfo} />
         </div>
         <div className="main-container-rightBar">
           <RightSideBar />

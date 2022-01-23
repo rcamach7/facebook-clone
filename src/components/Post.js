@@ -1,7 +1,7 @@
 import "../styles/Post.css";
-import PostInfo from "./PostInfo";
-import PostNavbar from "./PostNavbar";
-import PostComments from "./PostComments";
+import PostInfo from "./postSubComponents/PostInfo";
+import PostNavbar from "./postSubComponents/PostNavbar";
+import PostComments from "./postSubComponents/PostComments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Post(props) {
