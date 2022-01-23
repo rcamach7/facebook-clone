@@ -16,7 +16,7 @@ import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
 import PostContainer from "./components/PostContainer";
 import { useEffect, useState } from "react";
-import post from "./data/testPostData";
+import testPosts from "./data/testPostData";
 
 function App() {
   const [userInfo, setUserInfo] = useState({});
@@ -29,11 +29,6 @@ function App() {
       lastName: "Camacho",
       username: "theRealRicardo",
     };
-    const testPosts = [
-      {
-        ...post,
-      },
-    ];
 
     setUserInfo(testUser);
     setPosts(testPosts);
