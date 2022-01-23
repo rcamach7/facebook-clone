@@ -1,4 +1,4 @@
-import "../styles/LeftSideBar.css";
+import "../../styles/LeftSideBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretSquareDown,
