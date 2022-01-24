@@ -6,11 +6,16 @@ import CreatePost from "./CreatePost";
 import PopupForm from "./PopupForm";
 
 function MainContent(props) {
-  const [showPopup, setShowPopup] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
   return (
     <div className="MainContent">
       <CreatePost userInfo={props.userInfo} setShowPopup={setShowPopup} />
-      {showPopup ? <PopupForm userName={props.userInfo.username} /> : null}
+      {showPopup ? (
+        <PopupForm
+          setShowPopup={setShowPopup}
+          userName={props.userInfo.username}
+        />
+      ) : null}
 
       {props.posts.map((curPost) => {
         return <Post post={curPost} key={uuidv4()} />;
