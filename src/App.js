@@ -34,6 +34,13 @@ function App() {
     setPosts(testPosts);
   }, []);
 
+  const handleNewPost = (newPost) => {
+    const updatedPosts = [...posts];
+    updatedPosts.push(newPost);
+
+    setPosts(updatedPosts);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -44,7 +51,11 @@ function App() {
           <LeftSideBar />
         </div>
         <div className="main-container-content">
-          <MainContent posts={posts} userInfo={userInfo} />
+          <MainContent
+            posts={posts}
+            userInfo={userInfo}
+            handleNewPost={handleNewPost}
+          />
         </div>
         <div className="main-container-rightBar">
           <RightSideBar />

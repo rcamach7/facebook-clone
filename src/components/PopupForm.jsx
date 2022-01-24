@@ -8,12 +8,23 @@ import {
   faEllipsisH,
   faWindowClose,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 function PopupForm(props) {
   const formPlaceholder = `What's on your mind, ${props.userName}?`;
+  const [postDescription, setPostDescription] = useState("");
 
   const handleSubmission = (e) => {
     e.preventDefault();
+    const newPost = {
+      userName: props.userName,
+      timePosted: "13 hrs ago ",
+      postDescription: postDescription,
+      likedBy: [],
+      comments: [],
+    };
+
+    props.handleNewPost(newPost);
     props.setShowPopup(false);
   };
   return (
@@ -58,6 +69,7 @@ function PopupForm(props) {
           id="testInput"
           className="popupForm-input"
           placeholder={formPlaceholder}
+          onChange={(e) => setPostDescription(e.target.value)}
         />
         <div className="popupForm-subNavbar">
           <span className="subNavbar-addMore">Add to your post</span>
@@ -95,6 +107,7 @@ function PopupForm(props) {
             />
           </span>
         </div>
+
         <input
           className="popupForm-submit"
           type="submit"
