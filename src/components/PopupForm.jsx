@@ -11,14 +11,14 @@ import {
 import { useState } from "react";
 
 function PopupForm(props) {
-  const formPlaceholder = `What's on your mind, ${props.userName}?`;
+  const formPlaceholder = `What's on your mind, ${props.userInfo.fullName}?`;
   const [postDescription, setPostDescription] = useState("");
 
   const handleSubmission = (e) => {
     e.preventDefault();
     const newPost = {
-      userName: props.userName,
-      timePosted: "13 hrs ago ",
+      userName: props.userInfo.username,
+      timePosted: new Date(),
       postDescription: postDescription,
       likedBy: [],
       comments: [],
@@ -52,7 +52,7 @@ function PopupForm(props) {
           </div>
           <div className="popupForm-userInfo-data">
             <p style={{ fontWeight: "bolder", fontSize: "15px" }}>
-              Ricardo Camacho
+              {props.userInfo.fullName}
             </p>
             <div className="popupForm-userInfo-data-nav">
               <FontAwesomeIcon icon="users" style={{ fontSize: "13px" }} />

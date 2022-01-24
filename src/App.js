@@ -25,8 +25,7 @@ function App() {
   // Initiate test data
   useEffect(() => {
     const testUser = {
-      firstName: "Ricardo",
-      lastName: "Camacho",
+      fullName: "Ricardo Camacho",
       username: "theRealRicardo",
     };
 

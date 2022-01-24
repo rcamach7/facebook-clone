@@ -13,7 +13,7 @@ function CreatePost(props) {
           className="createPost-submission-input"
           onClick={() => props.setShowPopup(true)}
         >
-          What's on your mind, {props.userInfo.firstName}?
+          What's on your mind, {props.userInfo.fullName}?
         </button>
       </div>
 

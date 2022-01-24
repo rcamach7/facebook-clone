@@ -1,7 +1,7 @@
 const testPosts = [
   {
     userName: "theRealRicardo",
-    timePosted: "13 hrs ago ",
+    timePosted: new Date(),
     postDescription:
       "Just bought my new motorcycle, it's a ninja 400, Kawasaki with ABS. Only 5 miles, still not broken in",
     likedBy: ["My Mother", "Robert", "Joan Artiga"],
@@ -23,7 +23,7 @@ const testPosts = [
   },
   {
     userName: "compa chuy",
-    timePosted: "13 hrs ago ",
+    timePosted: new Date(),
     postDescription:
       "did anyone catch the ufc tonight! that was a crazy knockout",
     comments: [
