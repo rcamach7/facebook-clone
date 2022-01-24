@@ -13,7 +13,8 @@ function MainContent(props) {
       {showPopup ? (
         <PopupForm
           setShowPopup={setShowPopup}
-          userName={props.userInfo.username}
+          userInfo={props.userInfo}
+          handleNewPost={props.handleNewPost}
         />
       ) : null}
 

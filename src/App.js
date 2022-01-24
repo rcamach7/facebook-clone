@@ -25,14 +25,20 @@ function App() {
   // Initiate test data
   useEffect(() => {
     const testUser = {
-      firstName: "Ricardo",
-      lastName: "Camacho",
+      fullName: "Ricardo Camacho",
       username: "theRealRicardo",
     };
 
     setUserInfo(testUser);
     setPosts(testPosts);
   }, []);
+
+  const handleNewPost = (newPost) => {
+    const updatedPosts = [...posts];
+    updatedPosts.push(newPost);
+
+    setPosts(updatedPosts);
+  };
 
   return (
     <div className="App">
@@ -44,7 +50,11 @@ function App() {
           <LeftSideBar />
         </div>
         <div className="main-container-content">
-          <MainContent posts={posts} userInfo={userInfo} />
+          <MainContent
+            posts={posts}
+            userInfo={userInfo}
+            handleNewPost={handleNewPost}
+          />
         </div>
         <div className="main-container-rightBar">
           <RightSideBar />
