@@ -14,7 +14,7 @@ import {
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
 import RightSideBar from "./components/websiteSidebars/RightSideBar";
-import PostsContainer from "./components/PostContainer";
+import MainContent from "./components/MainContent";
 import { useEffect, useState } from "react";
 import testPosts from "./data/testPostData";
 
@@ -44,7 +44,7 @@ function App() {
           <LeftSideBar />
         </div>
         <div className="main-container-content">
-          <PostsContainer posts={posts} userInfo={userInfo} />
+          <MainContent posts={posts} userInfo={userInfo} />
         </div>
         <div className="main-container-rightBar">
           <RightSideBar />
