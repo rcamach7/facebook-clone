@@ -3,17 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhotoVideo, faLaughBeam } from "@fortawesome/free-solid-svg-icons";
 
 function CreatePost(props) {
-  const placeholderText = `What's on your mind, ${props.userInfo.firstName}?`;
   return (
     <div className="CreatePost">
       <div className="createPost-submission">
         <div className="createPost-submission-user">
           <FontAwesomeIcon icon="user" style={{ fontSize: "25px" }} />
         </div>
-        <input
+        <button
           className="createPost-submission-input"
-          placeholder={placeholderText}
-        />
+          onClick={() => props.setShowPopup(true)}
+        >
+          What's on your mind, {props.userInfo.firstName}?
+        </button>
       </div>
 
       <div className="createPost-nav">

@@ -7,14 +7,31 @@
   gap: 25px;
 }
 
+/* Form Container */
+.form-container {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Popup Form Component */
 .PopupForm {
-  width: 80%;
   padding: 15px;
 
   border-radius: 15px;
   background-color: white;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* Test */
+  /* width: 300px; */
+  width: calc(300px + 15vw);
+  height: fit-content;
 }
 
 /* Basic Upper section with title and close button */
