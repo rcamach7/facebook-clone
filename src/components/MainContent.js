@@ -10,7 +10,7 @@ function MainContent(props) {
   return (
     <div className="MainContent">
       <CreatePost userInfo={props.userInfo} setShowPopup={setShowPopup} />
-      {showPopup ? <PopupForm /> : null}
+      {showPopup ? <PopupForm userName={props.userInfo.username} /> : null}
 
       {props.posts.map((curPost) => {
         return <Post post={curPost} key={uuidv4()} />;
