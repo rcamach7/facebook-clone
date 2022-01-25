@@ -2,30 +2,28 @@ const testPosts = [
   {
     userName: "theRealRicardo",
     timePosted: new Date(),
-    postDescription:
-      "Just bought my new motorcycle, it's a ninja 400, Kawasaki with ABS. Only 5 miles, still not broken in",
+    postDescription: "Just bought a new bike, it's a ninja 400!!!",
     likedBy: ["My Mother", "Robert", "Joan Artiga"],
     comments: [
       {
         userName: "Robert",
-        comment: "dude that's wicked",
+        comment: "dude that's awesome",
       },
       {
-        userName: "My Mother",
-        comment: "are you crazy!! why aren't you answering my calls",
+        userName: "Brian",
+        comment: "sweet!!! 🙌",
       },
       {
-        userName: "Joan Artiga",
-        comment:
-          "ricardo why aren't you answering my text messages I thought we had something special",
+        userName: "Joan",
+        comment: "lets race 🏎!!!",
       },
     ],
   },
   {
-    userName: "compa chuy",
+    userName: "John",
     timePosted: new Date(),
     postDescription:
-      "did anyone catch the ufc tonight! that was a crazy knockout",
+      "did anyone catch the ufc  fights tonight?! that was a crazy knockout",
     comments: [
       {
         userName: "Dana White",
@@ -33,11 +31,11 @@ const testPosts = [
       },
       {
         userName: "conor mcgreggor",
-        comment: "fook yeah mate",
+        comment: "yeah mate!!!",
       },
       {
-        userName: "Joan Artiga",
-        comment: "pls answer me!",
+        userName: "jackson_234",
+        comment: "wait, there was a fight?!",
       },
     ],
   },
