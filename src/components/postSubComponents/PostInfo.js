@@ -10,9 +10,7 @@ function PostInfo(props) {
         </div>
         <div className="postInfo-main-details">
           <p className="details-username">{props.userName}</p>
-          <p className="details-postTime">
-            {props.timePosted.toString().substring(4, 24)}
-          </p>
+          <p className="details-postTime">{props.timePosted.toString()}</p>
         </div>
         <div className="postInfo-main-editPost">
           <button className="editPost-btn">

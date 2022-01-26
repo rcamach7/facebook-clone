@@ -1,7 +1,17 @@
+import moment from "moment";
+
+const timeAgo = (dateInfo) => {
+  const birth = new Date(dateInfo);
+  const timeAgo = moment(birth).fromNow();
+
+  console.log(timeAgo);
+  return timeAgo;
+};
+
 const testPosts = [
   {
     userName: "theRealRicardo",
-    timePosted: new Date(),
+    timePosted: timeAgo("January 23, 2022 13:15:30"),
     postDescription: "Just bought a new bike, it's a ninja 400!!!",
     likedBy: ["My Mother", "Robert", "Joan Artiga"],
     comments: [
@@ -21,7 +31,7 @@ const testPosts = [
   },
   {
     userName: "John",
-    timePosted: new Date(),
+    timePosted: timeAgo("January 22, 2022 17:14:21"),
     postDescription:
       "did anyone catch the ufc  fights tonight?! that was a crazy knockout",
     comments: [
