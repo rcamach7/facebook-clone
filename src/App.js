@@ -11,6 +11,7 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import stockPic from "./assets/elon.jpeg";
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
@@ -27,6 +28,7 @@ function App() {
     const testUser = {
       fullName: "Ricardo Camacho",
       username: "theRealRicardo",
+      icon: stockPic,
     };
 
     setUserInfo(testUser);
@@ -43,11 +45,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Navbar />
+        <Navbar icon={userInfo.icon} />
       </header>
       <main className="main-container">
         <div className="main-container-leftBar">
-          <LeftSideBar fullName={userInfo.fullName} />
+          <LeftSideBar userInfo={userInfo} />
         </div>
         <div className="main-container-content">
           <MainContent

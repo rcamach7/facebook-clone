@@ -2,7 +2,6 @@ import "../styles/Post.css";
 import PostInfo from "./postSubComponents/PostInfo";
 import PostNavbar from "./postSubComponents/PostNavbar";
 import PostComments from "./postSubComponents/PostComments";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Post(props) {
   return (
@@ -10,6 +9,7 @@ export default function Post(props) {
       <div className="postInfoContainer">
         <PostInfo
           userName={props.post.userName}
+          icon={props.post.icon}
           timePosted={props.post.timePosted}
           postDescription={props.post.postDescription}
         />
@@ -21,17 +21,17 @@ export default function Post(props) {
         <PostComments comments={props.post.comments} />
       </div>
       <div className="postAddCommentContainer">
-        <PostAddComment />
+        <PostAddComment icon={props.icon} />
       </div>
     </div>
   );
 }
 
-function PostAddComment() {
+function PostAddComment(props) {
   return (
     <div className="PostAddComment">
       <div className="postAddComment-user">
-        <FontAwesomeIcon icon="user" />
+        <img src={props.icon} alt="" />
       </div>
       <form className="postAddComment-input">
         <input type="text" placeholder="Write a comment..." />

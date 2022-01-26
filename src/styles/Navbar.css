@@ -81,6 +81,13 @@ form {
   flex: 2;
 }
 
+.rightMenu-item img {
+  width: 45px;
+  height: auto;
+  border-radius: 50%;
+  border: solid 1px rgba(99, 99, 99, 0.2);
+}
+
 /* Mid Menu Targeting */
 .navbar-menu {
   gap: 25px;

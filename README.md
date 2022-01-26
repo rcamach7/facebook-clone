@@ -5,7 +5,7 @@ This is a basic clone of the social media website Facebook.
 ### Current Live Version:
 
 [Facebook Clone](https://rcamach7.github.io/facebook-clone/).
-![Web App](demo.png)
+![Web App](appDemo.png)
 
 #### Built Using:
 

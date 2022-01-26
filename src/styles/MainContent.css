@@ -70,6 +70,12 @@
 .popupForm-userInfo-icon {
   margin-right: 15px;
 }
+.popupForm-userInfo-icon img {
+  width: 40px;
+  height: auto;
+
+  border-radius: 50%;
+}
 
 /* Input information */
 .popupForm-input {

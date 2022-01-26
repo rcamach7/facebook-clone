@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 import "../styles/Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Navbar() {
+function Navbar(props) {
   return (
     <nav className="Navbar">
       <ul className="navbar-leftMenu">
@@ -41,7 +41,7 @@ function Navbar() {
 
       <ul className="navbar-rightMenu">
         <li className="rightMenu-item">
-          <FontAwesomeIcon icon="user" size="2x" />
+          <img src={props.icon} alt="" />
         </li>
       </ul>
     </nav>
