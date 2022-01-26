@@ -65,9 +65,9 @@ const testPosts = [
       "Kangaskhan protects its child by keeping it in its pouch. Lugia’s wings pack devastating power—a light fluttering of its wings can blow apart regular houses. As a result, this Pokémon chooses to live out of sight deep under the sea.!",
     comments: [
       {
-        userName: "ronaldo7",
-        icon: ronaldo,
-        comment: "dude that's awesome",
+        userName: "theRealRicardo",
+        icon: elon,
+        comment: "what?",
       },
       {
         userName: "lennon",
