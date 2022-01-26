@@ -11,11 +11,11 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
 import RightSideBar from "./components/websiteSidebars/RightSideBar";
 import MainContent from "./components/MainContent";
-import { useEffect, useState } from "react";
 import testPosts from "./data/testPostData";
 
 function App() {
@@ -47,7 +47,7 @@ function App() {
       </header>
       <main className="main-container">
         <div className="main-container-leftBar">
-          <LeftSideBar />
+          <LeftSideBar fullName={userInfo.fullName} />
         </div>
         <div className="main-container-content">
           <MainContent

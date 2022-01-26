@@ -27,7 +27,7 @@ function PopupForm(props) {
     e.preventDefault();
     const newPost = {
       userName: props.userInfo.username,
-      timePosted: timeAgo(new Date()),
+      timePosted: new Date(),
       postDescription: postDescription,
       likedBy: [],
       comments: [],

@@ -9,7 +9,7 @@ import {
   faCalendarTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
-function LeftSideBar() {
+function LeftSideBar(props) {
   return (
     <div className="LeftSideBar">
       <ul className="leftSideBar-nav">
@@ -17,7 +17,7 @@ function LeftSideBar() {
           <span className="nav-item-iconHolder">
             <FontAwesomeIcon icon="user" />
           </span>
-          User Name
+          {props.fullName}
         </li>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-lightBlue">
