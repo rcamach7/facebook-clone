@@ -25,7 +25,7 @@
 }
 
 .leftSideBar-nav-item:hover {
-  background-color: rgb(214, 215, 216);
+  background-color: var(--fb-grey-hover);
 }
 
 .nav-item-iconHolder {
@@ -35,7 +35,7 @@
   font-size: 22px;
 }
 .nav-item-iconHolder.fb-blue {
-  color: rgb(26, 115, 228);
+  color: var(--fb-blue);
 }
 .nav-item-iconHolder.fb-lightBlue {
   color: rgb(53, 183, 219);

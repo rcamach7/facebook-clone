@@ -1,5 +1,5 @@
 .RightSideBar {
-  color: rgb(100, 103, 107);
+  color: var(--fb-grey-text);
   /* width: 85%; */
   width: 70%;
   margin-top: 25px;
@@ -15,8 +15,6 @@
 }
 
 /* Unordered list of technologies */
-.technologies {
-}
 
 .technologies-item {
   list-style: none;
@@ -54,7 +52,7 @@
 }
 
 .RightSideBar button:hover {
-  background-color: rgb(214, 215, 216);
+  background-color: var(--fb-grey-hover);
 }
 
 .newGroup-icon {
