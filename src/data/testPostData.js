@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import cat from "../assets/cat.jpeg";
 import elon from "../assets/elon.jpeg";
 import ronaldo from "../assets/ronaldo.jpeg";
@@ -7,6 +8,7 @@ import bob from "../assets/bob.jpeg";
 
 const testPosts = [
   {
+    postId: uuidv4(),
     userName: "John",
     icon: cat,
     timePosted: new Date("January 22, 2022 17:14:21"),
@@ -31,6 +33,7 @@ const testPosts = [
     ],
   },
   {
+    postId: uuidv4(),
     userName: "theRealRicardo",
     icon: elon,
     timePosted: new Date("January 23, 2022 13:15:30"),
@@ -54,6 +57,7 @@ const testPosts = [
     ],
   },
   {
+    postId: uuidv4(),
     userName: "ronaldo7",
     icon: ronaldo,
     timePosted: new Date("January 25, 2022 13:15:30"),
@@ -61,9 +65,9 @@ const testPosts = [
       "Kangaskhan protects its child by keeping it in its pouch. Lugia’s wings pack devastating power—a light fluttering of its wings can blow apart regular houses. As a result, this Pokémon chooses to live out of sight deep under the sea.!",
     comments: [
       {
-        userName: "ronaldo7",
-        icon: ronaldo,
-        comment: "dude that's awesome",
+        userName: "theRealRicardo",
+        icon: elon,
+        comment: "what?",
       },
       {
         userName: "lennon",

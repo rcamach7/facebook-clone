@@ -2,6 +2,7 @@ import "../styles/Post.css";
 import PostInfo from "./postSubComponents/PostInfo";
 import PostNavbar from "./postSubComponents/PostNavbar";
 import PostComments from "./postSubComponents/PostComments";
+import PostAddComment from "./postSubComponents/PostAddComment";
 
 export default function Post(props) {
   return (
@@ -21,21 +22,12 @@ export default function Post(props) {
         <PostComments comments={props.post.comments} />
       </div>
       <div className="postAddCommentContainer">
-        <PostAddComment icon={props.icon} />
+        <PostAddComment
+          postId={props.post.postId}
+          handleAddCommentToPost={props.handleAddCommentToPost}
+          icon={props.icon}
+        />
       </div>
-    </div>
-  );
-}
-
-function PostAddComment(props) {
-  return (
-    <div className="PostAddComment">
-      <div className="postAddComment-user">
-        <img src={props.icon} alt="" />
-      </div>
-      <form className="postAddComment-input">
-        <input type="text" placeholder="Write a comment..." />
-      </form>
     </div>
   );
 }
