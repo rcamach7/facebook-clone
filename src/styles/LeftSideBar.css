@@ -22,10 +22,19 @@
   border-radius: 15px;
 
   display: flex;
+  align-items: center;
 }
 
 .leftSideBar-nav-item:hover {
   background-color: var(--fb-grey-hover);
+}
+
+.nav-item-iconHolder.icon img {
+  width: 30px;
+  height: auto;
+
+  border-radius: 50%;
+  border: solid 1px rgba(99, 99, 99, 0.2);
 }
 
 .nav-item-iconHolder {

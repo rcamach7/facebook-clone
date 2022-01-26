@@ -9,24 +9,16 @@ import {
   faWindowClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import moment from "moment";
 
 function PopupForm(props) {
   const formPlaceholder = `What's on your mind, ${props.userInfo.fullName}?`;
   const [postDescription, setPostDescription] = useState("");
 
-  const timeAgo = (timeInfo) => {
-    const birth = new Date(timeInfo);
-    const timeAgo = moment(birth).fromNow();
-
-    console.log(timeAgo);
-    return timeAgo;
-  };
-
   const handleSubmission = (e) => {
     e.preventDefault();
     const newPost = {
       userName: props.userInfo.username,
+      icon: props.userInfo.icon,
       timePosted: new Date(),
       postDescription: postDescription,
       likedBy: [],
@@ -57,7 +49,7 @@ function PopupForm(props) {
 
         <div className="popupForm-userInfo">
           <div className="popupForm-userInfo-icon">
-            <FontAwesomeIcon icon="user" style={{ fontSize: "25px" }} />
+            <img src={props.userInfo.icon} alt="" />
           </div>
           <div className="popupForm-userInfo-data">
             <p style={{ fontWeight: "bolder", fontSize: "15px" }}>

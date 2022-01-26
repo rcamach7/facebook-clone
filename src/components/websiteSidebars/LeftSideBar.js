@@ -14,10 +14,10 @@ function LeftSideBar(props) {
     <div className="LeftSideBar">
       <ul className="leftSideBar-nav">
         <li className="leftSideBar-nav-item">
-          <span className="nav-item-iconHolder">
-            <FontAwesomeIcon icon="user" />
+          <span className="nav-item-iconHolder icon">
+            <img src={props.userInfo.icon} alt="" />
           </span>
-          {props.fullName}
+          {props.userInfo.fullName}
         </li>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-lightBlue">

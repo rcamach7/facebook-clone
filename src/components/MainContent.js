@@ -18,9 +18,15 @@ function MainContent(props) {
         />
       ) : null}
 
-      {props.posts.map((curPost) => {
-        return <Post post={curPost} key={uuidv4()} />;
-      })}
+      {/* Traverses the array in reverse order to display test data by time posted */}
+      {props.posts
+        .slice(0)
+        .reverse()
+        .map((curPost) => {
+          return (
+            <Post post={curPost} key={uuidv4()} icon={props.userInfo.icon} />
+          );
+        })}
     </div>
   );
 }

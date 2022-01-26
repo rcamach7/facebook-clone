@@ -10,6 +10,7 @@ function PostComments(props) {
             key={uuidv4()}
             userName={curComment.userName}
             comment={curComment.comment}
+            icon={curComment.icon}
           />
         );
       })}
@@ -21,7 +22,7 @@ function Comment(props) {
   return (
     <div className="Comment">
       <span className="comment-icon">
-        <FontAwesomeIcon icon="user" />
+        <img src={props.icon} alt="" />
       </span>
       <div className="comment-description">
         <p className="comment-description-user">{props.userName}</p>

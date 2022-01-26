@@ -6,16 +6,16 @@ function PostInfo(props) {
   return (
     <div className="PostInfo">
       <div className="postInfo-main">
-        <div className="postInfo-main-user">
-          <FontAwesomeIcon icon="user" size="1x" />
+        <div className="postInfo-main-user postInfo-main-item">
+          <img src={props.icon} alt="" />
         </div>
-        <div className="postInfo-main-details">
+        <div className="postInfo-main-details postInfo-main-item">
           <p className="details-username">{props.userName}</p>
           <p className="details-postTime">
             {moment(props.timePosted).fromNow()}
           </p>
         </div>
-        <div className="postInfo-main-editPost">
+        <div className="postInfo-main-editPost postInfo-main-item">
           <button className="editPost-btn">
             <FontAwesomeIcon icon={faEllipsisH} />
           </button>
