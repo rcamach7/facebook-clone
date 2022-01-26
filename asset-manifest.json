@@ -1,17 +1,23 @@
 {
   "files": {
-    "main.css": "/facebook-clone/static/css/main.d05178ec.css",
-    "main.js": "/facebook-clone/static/js/main.a6f18282.js",
+    "main.css": "/facebook-clone/static/css/main.df8978ca.css",
+    "main.js": "/facebook-clone/static/js/main.244539ee.js",
+    "static/media/dogTwo.png": "/facebook-clone/static/media/dogTwo.b948e7df576a59d89bf1.png",
+    "static/media/cat.jpeg": "/facebook-clone/static/media/cat.4a747b5d7046b80b192b.jpeg",
+    "static/media/dog.jpeg": "/facebook-clone/static/media/dog.48d5141bc111dcf8477b.jpeg",
+    "static/media/bob.jpeg": "/facebook-clone/static/media/bob.053d6fa6c5a66640c2b1.jpeg",
     "static/media/stack.jpeg": "/facebook-clone/static/media/stack.96978ecedef805518589.jpeg",
+    "static/media/elon.jpeg": "/facebook-clone/static/media/elon.548b019f18d007d2b1d0.jpeg",
+    "static/media/ronaldo.jpeg": "/facebook-clone/static/media/ronaldo.811f4a83a4cff8b665b1.jpeg",
     "static/media/logo.png": "/facebook-clone/static/media/logo.975514dab84bd5b8587d.png",
     "static/media/firebase.png": "/facebook-clone/static/media/firebase.659a78e839f0915e5140.png",
     "static/media/react.png": "/facebook-clone/static/media/react.ef20e673b9282f8f30fd.png",
     "index.html": "/facebook-clone/index.html",
-    "main.d05178ec.css.map": "/facebook-clone/static/css/main.d05178ec.css.map",
-    "main.a6f18282.js.map": "/facebook-clone/static/js/main.a6f18282.js.map"
+    "main.df8978ca.css.map": "/facebook-clone/static/css/main.df8978ca.css.map",
+    "main.244539ee.js.map": "/facebook-clone/static/js/main.244539ee.js.map"
   },
   "entrypoints": [
-    "static/css/main.d05178ec.css",
-    "static/js/main.a6f18282.js"
+    "static/css/main.df8978ca.css",
+    "static/js/main.244539ee.js"
   ]
 }
