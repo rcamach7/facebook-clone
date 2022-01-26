@@ -35,7 +35,6 @@ const testPosts = [
     icon: elon,
     timePosted: new Date("January 23, 2022 13:15:30"),
     postDescription: "Just bought a new bike, it's a ninja 400!!!",
-    likedBy: ["My Mother", "Robert", "Joan Artiga"],
     comments: [
       {
         userName: "ronaldo7",
@@ -45,7 +44,31 @@ const testPosts = [
       {
         userName: "lennon",
         icon: dogTwo,
-        comment: "sweet!!! 🙌",
+        comment: "sweet!!! ",
+      },
+      {
+        userName: "Joan",
+        icon: bob,
+        comment: "lets race 🏎!!!",
+      },
+    ],
+  },
+  {
+    userName: "ronaldo7",
+    icon: ronaldo,
+    timePosted: new Date("January 25, 2022 13:15:30"),
+    postDescription:
+      "Kangaskhan protects its child by keeping it in its pouch. Lugia’s wings pack devastating power—a light fluttering of its wings can blow apart regular houses. As a result, this Pokémon chooses to live out of sight deep under the sea.!",
+    comments: [
+      {
+        userName: "ronaldo7",
+        icon: ronaldo,
+        comment: "dude that's awesome",
+      },
+      {
+        userName: "lennon",
+        icon: dogTwo,
+        comment: "sweet!!! ",
       },
       {
         userName: "Joan",
