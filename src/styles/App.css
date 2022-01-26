@@ -2,11 +2,20 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "San Francisco";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+:root {
+  --fb-blue: rgb(26, 115, 228);
+  --fb-darkGrey: rgb(100, 103, 107);
+  --fb-lightGrey: rgb(239, 242, 245);
+  --fb-grey-text: rgb(100, 103, 107);
+  --fb-grey-hover: rgb(214, 215, 216);
 }
 
 html {
-  background-color: rgb(239, 242, 245);
+  background-color: var(--fb-lightGrey);
 }
 
 #root {

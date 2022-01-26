@@ -28,8 +28,7 @@
   border-radius: 15px;
   background-color: white;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  /* Test */
-  /* width: 300px; */
+
   width: calc(300px + 15vw);
   height: fit-content;
 }
@@ -63,7 +62,7 @@
   align-items: center;
 
   padding: 2px 0 2px 0;
-  background-color: rgb(228, 230, 235);
+  background-color: var(--fb-lightGrey);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -100,7 +99,7 @@
   margin-right: 2px;
 }
 .subNavbar-item:hover {
-  background-color: rgb(228, 230, 235);
+  background-color: var(--fb-grey-hover);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -118,9 +117,9 @@
   border-radius: 5px;
 
   color: white;
-  background-color: rgb(27, 116, 228);
+  background-color: var(--fb-blue);
   cursor: pointer;
 }
 .popupForm-submit {
-  background-color: rgb(17, 104, 211);
+  background-color: var(--fb-blue);
 }
