@@ -29,6 +29,7 @@ function MainContent(props) {
               key={uuidv4()}
               handleAddCommentToPost={props.handleAddCommentToPost}
               icon={props.userInfo.icon}
+              handleAddLike={props.handleAddLike}
             />
           );
         })}

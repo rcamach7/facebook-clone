@@ -22,3 +22,8 @@ cd facebook-clone
 npm install
 npm run start
 ```
+
+#### Improvements
+
+- Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
+- When in mobile view - have the post take up 95%+ of the available width

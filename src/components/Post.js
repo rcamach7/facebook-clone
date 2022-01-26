@@ -19,7 +19,11 @@ export default function Post(props) {
         <PostNavbar />
       </div>
       <div className="postCommentsContainer">
-        <PostComments comments={props.post.comments} />
+        <PostComments
+          handleAddLike={props.handleAddLike}
+          comments={props.post.comments}
+          postId={props.post.postId}
+        />
       </div>
       <div className="postAddCommentContainer">
         <PostAddComment

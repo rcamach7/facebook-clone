@@ -35,6 +35,10 @@ function App() {
     setPosts(testPosts);
   }, []);
 
+  const handleAddLike = (postId) => {
+    console.log(postId);
+  };
+
   const handleAddCommentToPost = (postId, commentIn) => {
     // First Loop to find the correct post that we need to add a comment to
     let indexOfPost = -1;
@@ -79,6 +83,7 @@ function App() {
             userInfo={userInfo}
             handleNewPost={handleNewPost}
             handleAddCommentToPost={handleAddCommentToPost}
+            handleAddLike={handleAddLike}
           />
         </div>
         <div className="main-container-rightBar">
