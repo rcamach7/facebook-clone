@@ -12,6 +12,7 @@ function PostComments(props) {
             comment={curComment.comment}
             icon={curComment.icon}
             likes={curComment.likes}
+            commentId={curComment.commentId}
             handleAddLike={props.handleAddLike}
             postId={props.postId}
           />
@@ -23,7 +24,7 @@ function PostComments(props) {
 
 function Comment(props) {
   const handleAddLike = () => {
-    props.handleAddLike(props.postId);
+    props.handleAddLike(props.postId, props.commentId);
   };
 
   return (

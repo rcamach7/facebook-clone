@@ -16,18 +16,21 @@ const testPosts = [
       "did anyone catch the ufc  fights tonight?! that was a crazy knockout",
     comments: [
       {
+        commentId: uuidv4(),
         userName: "Dana-White",
         icon: dog,
         comment: "i was there!!",
         likes: 2,
       },
       {
+        commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
         comment: "yeah mate!!!",
         likes: 0,
       },
       {
+        commentId: uuidv4(),
         userName: "ronaldo7",
         icon: ronaldo,
         comment: "wait, there was a fight?!",
@@ -43,18 +46,21 @@ const testPosts = [
     postDescription: "Just bought a new bike, it's a ninja 400!!!",
     comments: [
       {
+        commentId: uuidv4(),
         userName: "ronaldo7",
         icon: ronaldo,
         comment: "dude that's awesome",
         likes: 0,
       },
       {
+        commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
         comment: "sweet!!! ",
         likes: 0,
       },
       {
+        commentId: uuidv4(),
         userName: "Joan",
         icon: bob,
         comment: "lets race 🏎!!!",
@@ -71,18 +77,21 @@ const testPosts = [
       "Kangaskhan protects its child by keeping it in its pouch. Lugia’s wings pack devastating power—a light fluttering of its wings can blow apart regular houses. As a result, this Pokémon chooses to live out of sight deep under the sea.!",
     comments: [
       {
+        commentId: uuidv4(),
         userName: "theRealRicardo",
         icon: elon,
         comment: "what?",
-        likes: 0,
+        likes: 3,
       },
       {
+        commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
         comment: "sweet!!! ",
         likes: 0,
       },
       {
+        commentId: uuidv4(),
         userName: "Joan",
         icon: bob,
         comment: "lets race 🏎!!!",

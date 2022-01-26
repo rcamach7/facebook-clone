@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import stockPic from "./assets/elon.jpeg";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
 import RightSideBar from "./components/websiteSidebars/RightSideBar";
@@ -35,8 +36,26 @@ function App() {
     setPosts(testPosts);
   }, []);
 
-  const handleAddLike = (postId) => {
-    console.log(postId);
+  const handleAddLike = (postId, commentId) => {
+    let indexOfPost = findPostIndexById(postId);
+    console.log(
+      `PostID: ${postId}\nCommentId: ${commentId}\nPostIndex: ${indexOfPost}`
+    );
+
+    // Search for comment given its ID, and update like count
+    const updatedSinglePost = { ...posts[indexOfPost] };
+    updatedSinglePost.comments.forEach((comment) => {
+      if (comment.commentId === commentId) {
+        comment.likes = comment.likes + 1;
+        console.log("Found");
+      }
+    });
+
+    // Replace old post with new post info into a shallow copy, then set the state to updated posts.
+    const updatedPosts = [...posts];
+    updatedPosts[indexOfPost] = updatedSinglePost;
+
+    setPosts(updatedPosts);
   };
 
   const handleAddCommentToPost = (postId, commentIn) => {
@@ -51,7 +70,13 @@ function App() {
     const updatedSinglePost = { ...posts[indexOfPost] };
     updatedSinglePost.comments = [
       ...updatedSinglePost.comments,
-      { userName: userInfo.username, icon: userInfo.icon, comment: commentIn },
+      {
+        commentId: uuidv4(),
+        userName: userInfo.username,
+        icon: userInfo.icon,
+        comment: commentIn,
+        likes: 0,
+      },
     ];
 
     // Shallow copy of entire posts, with insertion and replacement of old post, for a updated version of it.
@@ -66,6 +91,16 @@ function App() {
     updatedPosts.push(newPost);
 
     setPosts(updatedPosts);
+  };
+
+  const findPostIndexById = (postId) => {
+    let indexOfPost = -1;
+    posts.forEach((curPost, i) => {
+      if (postId === curPost.postId) {
+        indexOfPost = i;
+      }
+    });
+    return indexOfPost;
   };
 
   return (
