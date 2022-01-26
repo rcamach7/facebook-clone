@@ -19,6 +19,10 @@ html {
   background-color: var(--fb-lightGrey);
 }
 
+button {
+  color: black;
+}
+
 #root {
   height: 100vh;
 }
