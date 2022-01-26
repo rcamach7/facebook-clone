@@ -24,7 +24,12 @@ function MainContent(props) {
         .reverse()
         .map((curPost) => {
           return (
-            <Post post={curPost} key={uuidv4()} icon={props.userInfo.icon} />
+            <Post
+              post={curPost}
+              key={uuidv4()}
+              handleAddCommentToPost={props.handleAddCommentToPost}
+              icon={props.userInfo.icon}
+            />
           );
         })}
     </div>

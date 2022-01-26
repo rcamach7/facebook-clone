@@ -35,6 +35,28 @@ function App() {
     setPosts(testPosts);
   }, []);
 
+  const handleAddCommentToPost = (postId, commentIn) => {
+    // First Loop to find the correct post that we need to add a comment to
+    let indexOfPost = -1;
+    posts.forEach((curPost, i) => {
+      if (postId === curPost.postId) {
+        indexOfPost = i;
+      }
+    });
+    // Shallow copy of the specific post in question only, and addition of new comment
+    const updatedSinglePost = { ...posts[indexOfPost] };
+    updatedSinglePost.comments = [
+      ...updatedSinglePost.comments,
+      { userName: userInfo.username, icon: userInfo.icon, comment: commentIn },
+    ];
+
+    // Shallow copy of entire posts, with insertion and replacement of old post, for a updated version of it.
+    const updatedPosts = [...posts];
+    updatedPosts[indexOfPost] = updatedSinglePost;
+
+    setPosts(updatedPosts);
+  };
+
   const handleNewPost = (newPost) => {
     const updatedPosts = [...posts];
     updatedPosts.push(newPost);
@@ -56,6 +78,7 @@ function App() {
             posts={posts}
             userInfo={userInfo}
             handleNewPost={handleNewPost}
+            handleAddCommentToPost={handleAddCommentToPost}
           />
         </div>
         <div className="main-container-rightBar">
