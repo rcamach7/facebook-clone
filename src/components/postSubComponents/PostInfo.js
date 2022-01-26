@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 function PostInfo(props) {
   return (
@@ -11,7 +12,7 @@ function PostInfo(props) {
         <div className="postInfo-main-details">
           <p className="details-username">{props.userName}</p>
           <p className="details-postTime">
-            {props.timePosted.toString().substring(4, 24)}
+            {moment(props.timePosted).fromNow()}
           </p>
         </div>
         <div className="postInfo-main-editPost">

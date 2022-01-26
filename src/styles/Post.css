@@ -95,7 +95,7 @@
 .Comment {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
 }
 
 .comment-icon {
@@ -120,7 +120,7 @@
 .comment-description {
   border-radius: 15px;
   width: 90%;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   background-color: var(--fb-lightGrey);
 }
 .postAddComment-user {

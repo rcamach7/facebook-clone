@@ -9,10 +9,19 @@ import {
   faWindowClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import moment from "moment";
 
 function PopupForm(props) {
   const formPlaceholder = `What's on your mind, ${props.userInfo.fullName}?`;
   const [postDescription, setPostDescription] = useState("");
+
+  const timeAgo = (timeInfo) => {
+    const birth = new Date(timeInfo);
+    const timeAgo = moment(birth).fromNow();
+
+    console.log(timeAgo);
+    return timeAgo;
+  };
 
   const handleSubmission = (e) => {
     e.preventDefault();
