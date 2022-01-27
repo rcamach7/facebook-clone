@@ -114,6 +114,8 @@
 
 /* THIRD MAJOR POST SUB COMPONENT */
 .PostComments {
+  max-height: 325px;
+  overflow-y: scroll;
 }
 
 .Comment {
@@ -201,4 +203,10 @@
   padding: 5px;
   width: 100%;
   background-color: var(--fb-lightGrey);
+}
+
+@media only screen and (max-width: 600px) {
+  .Post {
+    width: 95%;
+  }
 }

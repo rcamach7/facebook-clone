@@ -25,7 +25,7 @@ export default function Post(props) {
       </div>
       <div className="postCommentsContainer">
         <PostComments
-          handleAddLike={props.handleAddLike}
+          handleAddCommentLike={props.handleAddCommentLike}
           comments={props.post.comments}
           postId={props.post.postId}
         />

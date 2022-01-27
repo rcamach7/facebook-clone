@@ -25,14 +25,12 @@ npm run start
 
 ## Next Steps:
 
-- Have a call to our DB to query all posts and display from there, instead of from test data file.
+-
 
 ### Bugs
 
-- Posting a comment sends two posts to DB with different postId's
+-
 
 #### Improvements
 
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
-- When in mobile view - have the post take up 95%+ of the available width
-- Rename App.js handle post / comment like name to be more specific to avoid confusion

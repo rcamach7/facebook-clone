@@ -32,6 +32,8 @@ import {
   doc,
   setDoc,
   updateDoc,
+  orderBy,
+  limit,
 } from "firebase/firestore";
 
 function App() {
@@ -46,8 +48,8 @@ function App() {
 
     // Test Data
     const testUser = {
-      fullName: "Ricardo Camacho",
-      username: "theRealRicardo",
+      fullName: "Elon Musk",
+      username: "theRealElon",
       icon: stockPic,
     };
 
@@ -60,8 +62,13 @@ function App() {
     const data = [];
     // Request Data from our database.
     const querySnapshot = await getDocs(
-      query(collection(getFirestore(), "posts"))
+      query(
+        collection(getFirestore(), "posts"),
+        orderBy("timePosted", "asc"),
+        limit(10)
+      )
     );
+
     querySnapshot.forEach((resource) => {
       const rawData = resource.data();
       data.push({
@@ -98,7 +105,7 @@ function App() {
     });
   };
 
-  const handleAddLike = async (postId, commentId) => {
+  const handleAddCommentLike = async (postId, commentId) => {
     let indexOfPost = findPostIndexById(postId);
 
     // Search for comment given its ID, and update like count
@@ -151,16 +158,7 @@ function App() {
     // Update Database with new comment using above references
     const documentReference = doc(getFirestore(), "posts", postId);
     await updateDoc(documentReference, {
-      comments: [
-        ...updatedSinglePost.comments,
-        {
-          commentId: uuidv4(),
-          userName: userInfo.username,
-          icon: userInfo.icon,
-          comment: commentIn,
-          likes: 0,
-        },
-      ],
+      comments: [...updatedSinglePost.comments],
     });
   };
 
@@ -197,6 +195,26 @@ function App() {
     return indexOfPost;
   };
 
+  const loadTestData = () => {
+    testPosts.forEach(async (newPost) => {
+      try {
+        await setDoc(doc(getFirestore(), "posts", newPost.postId), {
+          postId: newPost.postId,
+          userName: newPost.userName,
+          icon: newPost.icon,
+          timePosted: newPost.timePosted,
+          postDescription: newPost.postDescription,
+          likes: newPost.likes,
+          comments: newPost.comments,
+        });
+      } catch (error) {
+        console.error("Error writing to database", error);
+      }
+    });
+
+    setPosts(testPosts);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -212,12 +230,12 @@ function App() {
             userInfo={userInfo}
             handleNewPost={handleNewPost}
             handleAddCommentToPost={handleAddCommentToPost}
-            handleAddLike={handleAddLike}
+            handleAddCommentLike={handleAddCommentLike}
             handlePostLike={handlePostLike}
           />
         </div>
         <div className="main-container-rightBar">
-          <RightSideBar />
+          <RightSideBar loadTestData={loadTestData} />
         </div>
       </main>
     </div>
