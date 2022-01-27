@@ -177,7 +177,7 @@
 
 .comment-description {
   border-radius: 15px;
-  width: 90%;
+  width: 100%;
   padding: 5px 5px 5px 10px;
   background-color: var(--fb-lightGrey);
 }
@@ -192,7 +192,7 @@
 }
 
 .postAddComment-input {
-  width: 90%;
+  width: 100%;
 }
 .postAddComment-input input {
   border: none;

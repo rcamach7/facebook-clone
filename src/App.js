@@ -1,4 +1,5 @@
 import "./styles/App.css";
+// Icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
@@ -11,21 +12,31 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import stockPic from "./assets/elon.jpeg";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
 import RightSideBar from "./components/websiteSidebars/RightSideBar";
 import MainContent from "./components/MainContent";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+// Test Data
 import testPosts from "./data/testPostData";
+import stockPic from "./assets/elon.jpeg";
+// Firebase Configuration Files
+import { getFirebaseConfig } from "./data/config.js";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
 
 function App() {
   const [userInfo, setUserInfo] = useState({});
   const [posts, setPosts] = useState([]);
 
-  // Initiate test data
+  // Run on start up
   useEffect(() => {
+    // Connect To Firebase
+    const firebaseAppConfig = getFirebaseConfig();
+    initializeApp(firebaseAppConfig);
+
+    // Test Data
     const testUser = {
       fullName: "Ricardo Camacho",
       username: "theRealRicardo",
@@ -36,23 +47,31 @@ function App() {
     setPosts(testPosts);
   }, []);
 
-  const handlePostLike = (postId) => {
+  const handlePostLike = async (postId) => {
     let indexOfPost = findPostIndexById(postId);
+
     const updatedSinglePost = { ...posts[indexOfPost] };
-    updatedSinglePost.likes = updatedSinglePost.likes + 1;
+    let currentLikes = updatedSinglePost.likes;
+    updatedSinglePost.likes = currentLikes + 1;
 
     const updatedPosts = [...posts];
     updatedPosts[indexOfPost] = updatedSinglePost;
 
     setPosts(updatedPosts);
+
+    // Update Database
+    const documentReference = doc(getFirestore(), "posts", postId);
+    await updateDoc(documentReference, {
+      likes: currentLikes + 1,
+    });
   };
 
-  const handleAddLike = (postId, commentId) => {
+  const handleAddLike = async (postId, commentId) => {
     let indexOfPost = findPostIndexById(postId);
 
     // Search for comment given its ID, and update like count
     const updatedSinglePost = { ...posts[indexOfPost] };
-    updatedSinglePost.comments.forEach((comment) => {
+    updatedSinglePost.comments.forEach((comment, i) => {
       if (comment.commentId === commentId) {
         comment.likes = comment.likes + 1;
       }
@@ -63,9 +82,14 @@ function App() {
     updatedPosts[indexOfPost] = updatedSinglePost;
 
     setPosts(updatedPosts);
+
+    const documentReference = doc(getFirestore(), "posts", postId);
+    await updateDoc(documentReference, {
+      ...updatedSinglePost,
+    });
   };
 
-  const handleAddCommentToPost = (postId, commentIn) => {
+  const handleAddCommentToPost = async (postId, commentIn) => {
     // First Loop to find the correct post that we need to add a comment to
     let indexOfPost = -1;
     posts.forEach((curPost, i) => {
@@ -91,9 +115,40 @@ function App() {
     updatedPosts[indexOfPost] = updatedSinglePost;
 
     setPosts(updatedPosts);
+
+    // Update Database with new comment using above references
+    const documentReference = doc(getFirestore(), "posts", postId);
+    await updateDoc(documentReference, {
+      comments: [
+        ...updatedSinglePost.comments,
+        {
+          commentId: uuidv4(),
+          userName: userInfo.username,
+          icon: userInfo.icon,
+          comment: commentIn,
+          likes: 0,
+        },
+      ],
+    });
   };
 
-  const handleNewPost = (newPost) => {
+  const handleNewPost = async (newPost) => {
+    // Push New Post To Database
+    try {
+      await setDoc(doc(getFirestore(), "posts", newPost.postId), {
+        postId: newPost.postId,
+        userName: newPost.userName,
+        icon: newPost.icon,
+        timePosted: newPost.timePosted,
+        postDescription: newPost.postDescription,
+        likes: newPost.likes,
+        comments: newPost.comments,
+      });
+    } catch (error) {
+      console.error("Error writing to database", error);
+    }
+
+    // Update webpage with New Posts without calling DB
     const updatedPosts = [...posts];
     updatedPosts.push(newPost);
 

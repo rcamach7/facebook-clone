@@ -23,6 +23,10 @@ npm install
 npm run start
 ```
 
+### Bugs
+
+- Sometimes posting a comment sends two posts to DB with different postId's
+
 #### Improvements
 
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
