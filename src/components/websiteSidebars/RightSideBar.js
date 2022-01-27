@@ -4,7 +4,7 @@ import firebaseLogo from "../../assets/firebase.png";
 import stack from "../../assets/stack.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function RightSideBar() {
+function RightSideBar(props) {
   return (
     <div className="RightSideBar">
       <ul className="technologies">
@@ -20,7 +20,15 @@ function RightSideBar() {
         </li>
       </ul>
 
-      <p className="rightSideBar-section">Group Conversations</p>
+      <p className="rightSideBar-section">
+        Group Conversation
+        <span
+          style={{ cursor: "pointer" }}
+          onClick={() => props.loadTestData()}
+        >
+          s
+        </span>
+      </p>
       <button>
         <span className="newGroup-icon">
           <FontAwesomeIcon icon="plus" />

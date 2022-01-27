@@ -9,6 +9,7 @@ import {
   faWindowClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function PopupForm(props) {
   const formPlaceholder = `What's on your mind, ${props.userInfo.fullName}?`;
@@ -17,6 +18,7 @@ function PopupForm(props) {
   const handleSubmission = (e) => {
     e.preventDefault();
     const newPost = {
+      postId: uuidv4(),
       userName: props.userInfo.username,
       icon: props.userInfo.icon,
       timePosted: new Date(),

@@ -72,3 +72,9 @@
   color: rgb(243, 66, 95);
   margin-right: 5px;
 }
+
+@media only screen and (max-width: 600px) {
+  .CreatePost {
+    width: 95%;
+  }
+}

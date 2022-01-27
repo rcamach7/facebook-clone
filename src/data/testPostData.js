@@ -34,7 +34,7 @@ const testPosts = [
   },
   {
     postId: uuidv4(),
-    userName: "theRealRicardo",
+    userName: "theRealElon",
     icon: elon,
     timePosted: new Date("January 23, 2022 13:15:30"),
     postDescription: "Just bought a new bike, it's a ninja 400!!!",
@@ -74,7 +74,7 @@ const testPosts = [
     comments: [
       {
         commentId: uuidv4(),
-        userName: "theRealRicardo",
+        userName: "theRealElon",
         icon: elon,
         comment: "what?",
         likes: 3,

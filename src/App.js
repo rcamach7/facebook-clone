@@ -1,5 +1,6 @@
 import "./styles/App.css";
-import { library } from "@fortawesome/fontawesome-svg-core";
+// Icons
+import { icon, library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
   faHome,
@@ -11,48 +12,105 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import stockPic from "./assets/elon.jpeg";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
 import RightSideBar from "./components/websiteSidebars/RightSideBar";
 import MainContent from "./components/MainContent";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+// Test Data
 import testPosts from "./data/testPostData";
+import stockPic from "./assets/elon.jpeg";
+// Firebase Configuration Files
+import { getFirebaseConfig } from "./data/config.js";
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  query,
+  getDocs,
+  doc,
+  setDoc,
+  updateDoc,
+  orderBy,
+  limit,
+} from "firebase/firestore";
 
 function App() {
   const [userInfo, setUserInfo] = useState({});
   const [posts, setPosts] = useState([]);
 
-  // Initiate test data
+  // Run on start up
   useEffect(() => {
+    // Connect To Firebase
+    const firebaseAppConfig = getFirebaseConfig();
+    initializeApp(firebaseAppConfig);
+
+    // Test Data
     const testUser = {
-      fullName: "Ricardo Camacho",
-      username: "theRealRicardo",
+      fullName: "Elon Musk",
+      username: "theRealElon",
       icon: stockPic,
     };
 
     setUserInfo(testUser);
-    setPosts(testPosts);
+    loadPosts();
+    // setPosts(testPosts);
   }, []);
 
-  const handlePostLike = (postId) => {
+  const loadPosts = async () => {
+    const data = [];
+    // Request Data from our database.
+    const querySnapshot = await getDocs(
+      query(
+        collection(getFirestore(), "posts"),
+        orderBy("timePosted", "asc"),
+        limit(10)
+      )
+    );
+
+    querySnapshot.forEach((resource) => {
+      const rawData = resource.data();
+      data.push({
+        postId: rawData.postId,
+        userName: rawData.userName,
+        icon: rawData.icon,
+        timePosted: rawData.timePosted.toDate(),
+        postDescription: rawData.postDescription,
+        likes: rawData.likes,
+        comments: rawData.comments,
+      });
+    });
+
+    // Update our state
+    setPosts(data);
+  };
+
+  const handlePostLike = async (postId) => {
     let indexOfPost = findPostIndexById(postId);
+
     const updatedSinglePost = { ...posts[indexOfPost] };
-    updatedSinglePost.likes = updatedSinglePost.likes + 1;
+    let currentLikes = updatedSinglePost.likes;
+    updatedSinglePost.likes = currentLikes + 1;
 
     const updatedPosts = [...posts];
     updatedPosts[indexOfPost] = updatedSinglePost;
 
     setPosts(updatedPosts);
+
+    // Update Database
+    const documentReference = doc(getFirestore(), "posts", postId);
+    await updateDoc(documentReference, {
+      likes: currentLikes + 1,
+    });
   };
 
-  const handleAddLike = (postId, commentId) => {
+  const handleAddCommentLike = async (postId, commentId) => {
     let indexOfPost = findPostIndexById(postId);
 
     // Search for comment given its ID, and update like count
     const updatedSinglePost = { ...posts[indexOfPost] };
-    updatedSinglePost.comments.forEach((comment) => {
+    updatedSinglePost.comments.forEach((comment, i) => {
       if (comment.commentId === commentId) {
         comment.likes = comment.likes + 1;
       }
@@ -63,9 +121,14 @@ function App() {
     updatedPosts[indexOfPost] = updatedSinglePost;
 
     setPosts(updatedPosts);
+
+    const documentReference = doc(getFirestore(), "posts", postId);
+    await updateDoc(documentReference, {
+      ...updatedSinglePost,
+    });
   };
 
-  const handleAddCommentToPost = (postId, commentIn) => {
+  const handleAddCommentToPost = async (postId, commentIn) => {
     // First Loop to find the correct post that we need to add a comment to
     let indexOfPost = -1;
     posts.forEach((curPost, i) => {
@@ -91,9 +154,31 @@ function App() {
     updatedPosts[indexOfPost] = updatedSinglePost;
 
     setPosts(updatedPosts);
+
+    // Update Database with new comment using above references
+    const documentReference = doc(getFirestore(), "posts", postId);
+    await updateDoc(documentReference, {
+      comments: [...updatedSinglePost.comments],
+    });
   };
 
-  const handleNewPost = (newPost) => {
+  const handleNewPost = async (newPost) => {
+    // Push New Post To Database
+    try {
+      await setDoc(doc(getFirestore(), "posts", newPost.postId), {
+        postId: newPost.postId,
+        userName: newPost.userName,
+        icon: newPost.icon,
+        timePosted: newPost.timePosted,
+        postDescription: newPost.postDescription,
+        likes: newPost.likes,
+        comments: newPost.comments,
+      });
+    } catch (error) {
+      console.error("Error writing to database", error);
+    }
+
+    // Update webpage with New Posts without calling DB
     const updatedPosts = [...posts];
     updatedPosts.push(newPost);
 
@@ -108,6 +193,26 @@ function App() {
       }
     });
     return indexOfPost;
+  };
+
+  const loadTestData = () => {
+    testPosts.forEach(async (newPost) => {
+      try {
+        await setDoc(doc(getFirestore(), "posts", newPost.postId), {
+          postId: newPost.postId,
+          userName: newPost.userName,
+          icon: newPost.icon,
+          timePosted: newPost.timePosted,
+          postDescription: newPost.postDescription,
+          likes: newPost.likes,
+          comments: newPost.comments,
+        });
+      } catch (error) {
+        console.error("Error writing to database", error);
+      }
+    });
+
+    setPosts(testPosts);
   };
 
   return (
@@ -125,12 +230,12 @@ function App() {
             userInfo={userInfo}
             handleNewPost={handleNewPost}
             handleAddCommentToPost={handleAddCommentToPost}
-            handleAddLike={handleAddLike}
+            handleAddCommentLike={handleAddCommentLike}
             handlePostLike={handlePostLike}
           />
         </div>
         <div className="main-container-rightBar">
-          <RightSideBar />
+          <RightSideBar loadTestData={loadTestData} />
         </div>
       </main>
     </div>

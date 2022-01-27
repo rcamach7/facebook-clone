@@ -23,8 +23,14 @@ npm install
 npm run start
 ```
 
+## Next Steps:
+
+-
+
+### Bugs
+
+-
+
 #### Improvements
 
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
-- When in mobile view - have the post take up 95%+ of the available width
-- Rename App.js handle post / comment like name to be more specific to avoid confusion
