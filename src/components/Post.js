@@ -13,10 +13,15 @@ export default function Post(props) {
           icon={props.post.icon}
           timePosted={props.post.timePosted}
           postDescription={props.post.postDescription}
+          likes={props.post.likes}
+          numComments={props.post.comments.length}
         />
       </div>
       <div className="postNavbarContainer">
-        <PostNavbar />
+        <PostNavbar
+          handlePostLike={props.handlePostLike}
+          postId={props.post.postId}
+        />
       </div>
       <div className="postCommentsContainer">
         <PostComments

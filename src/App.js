@@ -36,11 +36,19 @@ function App() {
     setPosts(testPosts);
   }, []);
 
+  const handlePostLike = (postId) => {
+    let indexOfPost = findPostIndexById(postId);
+    const updatedSinglePost = { ...posts[indexOfPost] };
+    updatedSinglePost.likes = updatedSinglePost.likes + 1;
+
+    const updatedPosts = [...posts];
+    updatedPosts[indexOfPost] = updatedSinglePost;
+
+    setPosts(updatedPosts);
+  };
+
   const handleAddLike = (postId, commentId) => {
     let indexOfPost = findPostIndexById(postId);
-    console.log(
-      `PostID: ${postId}\nCommentId: ${commentId}\nPostIndex: ${indexOfPost}`
-    );
 
     // Search for comment given its ID, and update like count
     const updatedSinglePost = { ...posts[indexOfPost] };
@@ -119,6 +127,7 @@ function App() {
             handleNewPost={handleNewPost}
             handleAddCommentToPost={handleAddCommentToPost}
             handleAddLike={handleAddLike}
+            handlePostLike={handlePostLike}
           />
         </div>
         <div className="main-container-rightBar">
