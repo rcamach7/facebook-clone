@@ -55,7 +55,6 @@ function App() {
     updatedSinglePost.comments.forEach((comment) => {
       if (comment.commentId === commentId) {
         comment.likes = comment.likes + 1;
-        console.log("Found");
       }
     });
 
