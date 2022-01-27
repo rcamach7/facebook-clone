@@ -1,6 +1,6 @@
 import "./styles/App.css";
 // Icons
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { icon, library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
   faHome,
@@ -24,7 +24,15 @@ import stockPic from "./assets/elon.jpeg";
 // Firebase Configuration Files
 import { getFirebaseConfig } from "./data/config.js";
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  query,
+  getDocs,
+  doc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 function App() {
   const [userInfo, setUserInfo] = useState({});
@@ -44,8 +52,32 @@ function App() {
     };
 
     setUserInfo(testUser);
-    setPosts(testPosts);
+    loadPosts();
+    // setPosts(testPosts);
   }, []);
+
+  const loadPosts = async () => {
+    const data = [];
+    // Request Data from our database.
+    const querySnapshot = await getDocs(
+      query(collection(getFirestore(), "posts"))
+    );
+    querySnapshot.forEach((resource) => {
+      const rawData = resource.data();
+      data.push({
+        postId: rawData.postId,
+        userName: rawData.userName,
+        icon: rawData.icon,
+        timePosted: rawData.timePosted.toDate(),
+        postDescription: rawData.postDescription,
+        likes: rawData.likes,
+        comments: rawData.comments,
+      });
+    });
+
+    // Update our state
+    setPosts(data);
+  };
 
   const handlePostLike = async (postId) => {
     let indexOfPost = findPostIndexById(postId);

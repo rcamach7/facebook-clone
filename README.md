@@ -23,9 +23,13 @@ npm install
 npm run start
 ```
 
+## Next Steps:
+
+- Have a call to our DB to query all posts and display from there, instead of from test data file.
+
 ### Bugs
 
-- Sometimes posting a comment sends two posts to DB with different postId's
+- Posting a comment sends two posts to DB with different postId's
 
 #### Improvements
 
