@@ -1,5 +1,5 @@
 .Post {
-  width: 80%;
+  width: 85%;
   padding: 10px;
 
   border-radius: 15px;
@@ -159,7 +159,6 @@
   padding-right: 15px;
 
   display: flex;
-  align-items: center;
   gap: 5px;
 }
 
