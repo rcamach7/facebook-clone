@@ -1,5 +1,5 @@
 .Post {
-  width: 85%;
+  width: 80%;
   padding: 10px;
 
   border-radius: 15px;
@@ -35,6 +35,20 @@
   padding-top: 10px;
   width: 100%;
   text-align: left;
+}
+.postInfo-interactivity {
+  padding-top: 10px;
+  width: 100%;
+
+  font-size: 12.5px;
+  color: var(--fb-grey-text);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.interactivity-likes-icon {
+  color: var(--fb-blue);
 }
 
 .postInfo-main-user img {
@@ -75,7 +89,7 @@
 /* SECOND MAJOR POST COMPONENT */
 
 .PostNavbar {
-  margin: 10px 0 10px 0;
+  margin: 2.5px 0 10px 0;
   border-top: solid 2px rgb(205, 208, 212);
   border-bottom: solid 2px rgb(205, 208, 212);
 
@@ -103,11 +117,13 @@
 }
 
 .Comment {
-  display: flex;
-  align-items: center;
-  padding: 10px;
 }
 
+.comment-main {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 0 10px;
+}
 .comment-icon {
   display: block;
   margin-right: 10px;
@@ -123,6 +139,32 @@
 .comment-description-user {
   font-size: 15px;
   font-weight: bolder;
+}
+
+/*  */
+.comment-interaction {
+  font-size: 12.5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-interaction-like {
+  color: var(--fb-grey-text);
+
+  padding-bottom: 10px;
+  padding-left: 70px;
+  cursor: pointer;
+}
+.comment-interaction-result {
+  padding-right: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.result-icon {
+  color: var(--fb-blue);
 }
 
 /* FOURTH MAJOR POST SUB COMPONENT */

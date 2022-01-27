@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisH, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 
 function PostInfo(props) {
@@ -24,6 +24,20 @@ function PostInfo(props) {
 
       <div className="postInfo-description">
         <p>{props.postDescription}</p>
+      </div>
+      <div className="postInfo-interactivity">
+        <span>
+          {props.likes > 0 && (
+            <p>
+              <FontAwesomeIcon
+                icon={faThumbsUp}
+                className="interactivity-likes-icon"
+              />{" "}
+              {props.likes}
+            </p>
+          )}
+        </span>
+        <p>{props.numComments} Comments</p>
       </div>
     </div>
   );

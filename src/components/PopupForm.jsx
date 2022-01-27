@@ -21,7 +21,7 @@ function PopupForm(props) {
       icon: props.userInfo.icon,
       timePosted: new Date(),
       postDescription: postDescription,
-      likedBy: [],
+      likes: 0,
       comments: [],
     };
 

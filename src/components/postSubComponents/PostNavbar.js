@@ -5,10 +5,13 @@ import {
   faShare,
 } from "@fortawesome/free-solid-svg-icons";
 
-function PostNavbar() {
+function PostNavbar(props) {
   return (
     <div className="PostNavbar">
-      <span className="postNavbar-item">
+      <span
+        className="postNavbar-item"
+        onClick={() => props.handlePostLike(props.postId)}
+      >
         <FontAwesomeIcon icon={faThumbsUp} /> Like
       </span>
 
