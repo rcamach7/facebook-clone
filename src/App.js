@@ -1,6 +1,6 @@
 import "./styles/App.css";
 // Icons
-import { icon, library } from "@fortawesome/fontawesome-svg-core";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
   faHome,
@@ -108,23 +108,27 @@ function App() {
   const handleAddCommentLike = async (postId, commentId) => {
     let indexOfPost = findPostIndexById(postId);
 
-    // Search for comment given its ID, and update like count
-    const updatedSinglePost = { ...posts[indexOfPost] };
-    updatedSinglePost.comments.forEach((comment, i) => {
+    // Search for comment index in specific post so we can edit later
+    let commentIndex = -1;
+    const singlePostReference = { ...posts[indexOfPost] };
+    singlePostReference.comments.forEach((comment, i) => {
       if (comment.commentId === commentId) {
-        comment.likes = comment.likes + 1;
+        commentIndex = i;
       }
     });
 
-    // Replace old post with new post info into a shallow copy, then set the state to updated posts.
-    const updatedPosts = [...posts];
-    updatedPosts[indexOfPost] = updatedSinglePost;
+    // Get copy of posts, and update only the specific comments like value
+    const updatedPostsTwo = [...posts];
+    updatedPostsTwo[indexOfPost].comments[commentIndex].likes =
+      updatedPostsTwo[indexOfPost].comments[commentIndex].likes + 1;
 
-    setPosts(updatedPosts);
+    // Update our state with new like values
+    setPosts(updatedPostsTwo);
 
+    // Reflect this change in our database as well
     const documentReference = doc(getFirestore(), "posts", postId);
     await updateDoc(documentReference, {
-      ...updatedSinglePost,
+      ...updatedPostsTwo[indexOfPost],
     });
   };
 
