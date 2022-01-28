@@ -17,6 +17,7 @@ function PopupForm(props) {
 
   const handleSubmission = (e) => {
     e.preventDefault();
+
     const newPost = {
       postId: uuidv4(),
       userName: props.userInfo.username,
@@ -32,7 +33,7 @@ function PopupForm(props) {
   };
   return (
     <div className="form-container">
-      <form className="PopupForm">
+      <form className="PopupForm" onSubmit={handleSubmission}>
         <div className="popupForm-title">
           <p
             className="popupForm-title-item text"
@@ -68,11 +69,14 @@ function PopupForm(props) {
           </div>
         </div>
 
+        <label htmlFor="testInput"></label>
         <textarea
           id="testInput"
           className="popupForm-input"
           placeholder={formPlaceholder}
           onChange={(e) => setPostDescription(e.target.value)}
+          required
+          minLength="5"
         />
         <div className="popupForm-subNavbar">
           <span className="subNavbar-addMore">Add to your post</span>
@@ -111,12 +115,7 @@ function PopupForm(props) {
           </span>
         </div>
 
-        <input
-          className="popupForm-submit"
-          type="submit"
-          value="Post"
-          onClick={handleSubmission}
-        />
+        <input className="popupForm-submit" type="submit" value="Post" />
       </form>
     </div>
   );

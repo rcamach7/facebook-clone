@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function RightSideBar(props) {
   return (
-    <div className="RightSideBar">
+    <aside className="RightSideBar">
       <ul className="technologies">
         <li className="technologies-item title">Technologies Used</li>
         <li className="technologies-item">
@@ -35,7 +35,7 @@ function RightSideBar(props) {
         </span>
         Create new group
       </button>
-    </div>
+    </aside>
   );
 }
 

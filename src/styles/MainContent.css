@@ -33,6 +33,9 @@
   height: fit-content;
 }
 
+textarea:invalid {
+}
+
 /* Basic Upper section with title and close button */
 .popupForm-title {
   padding: 5px 0 10px 0;

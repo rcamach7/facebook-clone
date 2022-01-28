@@ -37,7 +37,13 @@ function PostInfo(props) {
             </p>
           )}
         </span>
-        <p>{props.numComments} Comments</p>
+        <span>
+          {props.numComments > 0 && (
+            <p>
+              {props.numComments} Comment{props.numComments > 1 && "s"}
+            </p>
+          )}
+        </span>
       </div>
     </div>
   );

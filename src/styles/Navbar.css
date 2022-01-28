@@ -1,6 +1,8 @@
 .Navbar {
   height: 60px;
   max-height: 60px;
+
+  border-radius: 7px;
   width: 100%;
 
   font-size: 15px;

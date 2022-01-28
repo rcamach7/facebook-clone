@@ -7,7 +7,7 @@ import {
 
 function PostNavbar(props) {
   return (
-    <div className="PostNavbar">
+    <nav className="PostNavbar">
       <span
         className="postNavbar-item"
         onClick={() => props.handlePostLike(props.postId)}
@@ -16,13 +16,9 @@ function PostNavbar(props) {
       </span>
 
       <span className="postNavbar-item">
-        <FontAwesomeIcon icon={faComment} /> Comment
-      </span>
-
-      <span className="postNavbar-item">
         <FontAwesomeIcon icon={faShare} /> Share
       </span>
-    </div>
+    </nav>
   );
 }
 
