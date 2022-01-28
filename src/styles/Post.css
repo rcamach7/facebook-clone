@@ -4,7 +4,7 @@
 
   border-radius: 15px;
   background-color: white;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 /* First Major Component Of Post */
@@ -65,7 +65,7 @@
 .postInfo-main-details {
   font-size: 15px;
   margin-right: auto;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 .details-main-username {
   font-weight: bolder;
@@ -187,7 +187,7 @@
   margin-right: 15px;
 }
 .postAddComment-user img {
-  width: 30px;
+  width: 35px;
 
   border-radius: 50%;
   border: solid 1px rgba(99, 99, 99, 0.2);
@@ -200,7 +200,8 @@
   border: none;
   outline: none;
   border-radius: 10px;
-  padding: 5px;
+  font-size: 16px;
+  padding: 10px;
   width: 100%;
   background-color: var(--fb-lightGrey);
 }
