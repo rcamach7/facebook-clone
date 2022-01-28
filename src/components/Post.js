@@ -13,6 +13,7 @@ export default function Post(props) {
           icon={props.post.icon}
           timePosted={props.post.timePosted}
           postDescription={props.post.postDescription}
+          postPicture={props.post.picture}
           likes={props.post.likes}
           numComments={props.post.comments.length}
         />

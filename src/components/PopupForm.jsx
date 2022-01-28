@@ -14,9 +14,11 @@ import { v4 as uuidv4 } from "uuid";
 function PopupForm(props) {
   const formPlaceholder = `What's on your mind, ${props.userInfo.fullName}?`;
   const [postDescription, setPostDescription] = useState("");
+  const [picture, setPicture] = useState(null);
 
   const handleSubmission = (e) => {
     e.preventDefault();
+
     const newPost = {
       postId: uuidv4(),
       userName: props.userInfo.username,
@@ -24,15 +26,17 @@ function PopupForm(props) {
       timePosted: new Date(),
       postDescription: postDescription,
       likes: 0,
+      picture: URL.createObjectURL(picture),
       comments: [],
     };
 
     props.handleNewPost(newPost);
     props.setShowPopup(false);
   };
+
   return (
     <div className="form-container">
-      <form className="PopupForm">
+      <form className="PopupForm" onSubmit={handleSubmission}>
         <div className="popupForm-title">
           <p
             className="popupForm-title-item text"
@@ -68,23 +72,32 @@ function PopupForm(props) {
           </div>
         </div>
 
+        <label htmlFor="testInput"></label>
         <textarea
           id="testInput"
           className="popupForm-input"
           placeholder={formPlaceholder}
           onChange={(e) => setPostDescription(e.target.value)}
+          required
+          minLength="5"
         />
         <div className="popupForm-subNavbar">
           <span className="subNavbar-addMore">Add to your post</span>
-          <span className="subNavbar-item">
+
+          <label className="subNavbar-item" htmlFor="image_uploads">
             <FontAwesomeIcon
               style={{ color: "rgb(69,189,98)" }}
               icon={faPhotoVideo}
             />
-          </span>
-          <span className="subNavbar-item">
-            <FontAwesomeIcon style={{ color: "rgb(25,119,242)" }} icon="user" />
-          </span>
+            <input
+              className="file-upload"
+              type="file"
+              id="image_uploads"
+              accept=".jpg, .jpeg, .png"
+              onChange={(e) => setPicture(e.target.files[0])}
+            />
+          </label>
+
           <span className="subNavbar-item">
             <FontAwesomeIcon
               style={{ color: "rgb(247,185,40)" }}
@@ -111,12 +124,7 @@ function PopupForm(props) {
           </span>
         </div>
 
-        <input
-          className="popupForm-submit"
-          type="submit"
-          value="Post"
-          onClick={handleSubmission}
-        />
+        <input className="popupForm-submit" type="submit" value="Post" />
       </form>
     </div>
   );

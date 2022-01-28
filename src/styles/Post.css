@@ -36,6 +36,12 @@
   width: 100%;
   text-align: left;
 }
+.postInfo-description-picture {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+}
+
 .postInfo-interactivity {
   padding-top: 10px;
   width: 100%;
@@ -119,12 +125,13 @@
 }
 
 .Comment {
+  font-size: 14px;
 }
 
 .comment-main {
   display: flex;
   align-items: center;
-  padding: 10px 10px 0 10px;
+  padding: 5px 10px 0 10px;
 }
 .comment-icon {
   display: block;
@@ -139,7 +146,6 @@
 }
 
 .comment-description-user {
-  font-size: 15px;
   font-weight: bolder;
 }
 
@@ -153,7 +159,7 @@
 .comment-interaction-like {
   color: var(--fb-grey-text);
 
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   padding-left: 70px;
   cursor: pointer;
 }
@@ -174,7 +180,7 @@
   display: flex;
   align-items: center;
 
-  padding: 15px;
+  padding: 10px;
 }
 
 .comment-description {
@@ -201,13 +207,13 @@
   outline: none;
   border-radius: 10px;
   font-size: 16px;
-  padding: 10px;
+  padding: 6px;
   width: 100%;
   background-color: var(--fb-lightGrey);
 }
 
 @media only screen and (max-width: 600px) {
   .Post {
-    width: 95%;
+    width: 97%;
   }
 }

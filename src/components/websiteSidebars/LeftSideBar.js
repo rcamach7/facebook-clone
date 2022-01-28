@@ -11,7 +11,7 @@ import {
 
 function LeftSideBar(props) {
   return (
-    <div className="LeftSideBar">
+    <aside className="LeftSideBar">
       <ul className="leftSideBar-nav">
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder icon">
@@ -80,7 +80,7 @@ function LeftSideBar(props) {
           See More
         </li>
       </ul>
-    </div>
+    </aside>
   );
 }
 

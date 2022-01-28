@@ -1,7 +1,6 @@
 .RightSideBar {
   color: var(--fb-grey-text);
-  /* width: 85%; */
-  width: 70%;
+  width: 75%;
   margin-top: 25px;
 
   font-size: 15px;
@@ -60,4 +59,28 @@
   padding: 5px;
   border: solid grey 2px;
   border-radius: 5px;
+}
+
+/* Technology Squares */
+.technologies-squaress {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 5px;
+}
+
+.squares-item {
+  list-style: none;
+  padding: 2px 5px 2px 5px;
+  border: solid black 2px;
+  border-radius: 5px;
+}
+.squares-item.library {
+  color: white;
+  background-color: blueviolet;
+}
+.squares-item.techItem {
+  color: white;
+  background-color: var(--fb-blue);
 }

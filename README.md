@@ -23,14 +23,8 @@ npm install
 npm run start
 ```
 
-## Next Steps:
+#### Improvements To Be Implemented
 
--
-
-### Bugs
-
--
-
-#### Improvements
-
+- Add ability to add a picture to a post
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
+- Add gif usage of website in github readme

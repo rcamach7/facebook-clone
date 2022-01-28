@@ -2,42 +2,19 @@ import { v4 as uuidv4 } from "uuid";
 import cat from "../assets/cat.jpeg";
 import elon from "../assets/elon.jpeg";
 import ronaldo from "../assets/ronaldo.jpeg";
-import dog from "../assets/dog.jpeg";
 import dogTwo from "../assets/dogTwo.png";
 import bob from "../assets/bob.jpeg";
+import text from "../assets/text.png";
 
 const testPosts = [
-  {
-    postId: uuidv4(),
-    userName: "John",
-    icon: cat,
-    timePosted: new Date("January 22, 2022 17:14:21"),
-    postDescription:
-      "did anyone catch the ufc  fights tonight?! that was a crazy knockout",
-    likes: 0,
-    comments: [
-      {
-        commentId: uuidv4(),
-        userName: "Dana-White",
-        icon: dog,
-        comment: "i was there!!",
-        likes: 2,
-      },
-      {
-        commentId: uuidv4(),
-        userName: "ronaldo7",
-        icon: ronaldo,
-        comment: "wait, there was a fight?!",
-        likes: 0,
-      },
-    ],
-  },
   {
     postId: uuidv4(),
     userName: "theRealElon",
     icon: elon,
     timePosted: new Date("January 23, 2022 13:15:30"),
-    postDescription: "Just bought a new bike, it's a ninja 400!!!",
+    postDescription:
+      "Cat walks in keyboard try to jump onto window and fall while scratching at wall for poop in a handbag look delicious and drink the soapy mopping up water then puke giant foamy fur-balls but stare at guinea pigs poop on couch.!",
+    picture: null,
     likes: 0,
     comments: [
       {
@@ -51,14 +28,15 @@ const testPosts = [
         commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
-        comment: "sweet!!! ",
+        comment: "so inspirational 🥺",
         likes: 0,
       },
       {
         commentId: uuidv4(),
         userName: "Joan",
         icon: bob,
-        comment: "lets race 🏎!!!",
+        comment:
+          "The door is opening! how exciting oh, it's you, meh meowzer yet roll over and sun my belly i shall purr myself to sleep. !",
         likes: 0,
       },
     ],
@@ -68,32 +46,44 @@ const testPosts = [
     userName: "ronaldo7",
     icon: ronaldo,
     timePosted: new Date("January 25, 2022 13:15:30"),
-    postDescription:
-      "Kangaskhan protects its child by keeping it in its pouch. Lugia’s wings pack devastating power—a light fluttering of its wings can blow apart regular houses. As a result, this Pokémon chooses to live out of sight deep under the sea.!",
+    postDescription: "/r/programmingHumor omg 😂😂😂",
+    picture: text,
     likes: 2,
     comments: [
       {
         commentId: uuidv4(),
         userName: "theRealElon",
         icon: elon,
-        comment: "what?",
+        comment:
+          "The War of the 5 kings. The Knight of Lemonwood. Words are like wind. It is rare to meet a Lannister who shares my enthusiasm for dead Lannisters. Never Resting.",
         likes: 3,
       },
       {
         commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
-        comment: "so inspirational 🥺 ",
+        comment: "lol",
         likes: 0,
       },
       {
         commentId: uuidv4(),
         userName: "Joan",
         icon: bob,
-        comment: "lets race!!!",
+        comment:
+          "Carrot cake jelly jelly-o brownie jelly-o danish croissant. Shortbread gingerbread ice cream muffin pastry.!!!",
         likes: 0,
       },
     ],
+  },
+  {
+    postId: uuidv4(),
+    userName: "Al Pawcino",
+    icon: cat,
+    timePosted: new Date("January 28, 2022 09:14:21"),
+    postDescription: "drop a comment if you come from the odin project 🙌",
+    picture: null,
+    likes: 0,
+    comments: [],
   },
 ];
 

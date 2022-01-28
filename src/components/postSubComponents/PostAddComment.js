@@ -21,6 +21,7 @@ function PostAddComment(props) {
           placeholder="Write a comment..."
           value={comment}
           onChange={(e) => setComment(e.target.value)}
+          required
         />
       </form>
     </div>
