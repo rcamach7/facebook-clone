@@ -37,7 +37,9 @@ npm run start
 
 <!-- - do not allow empty fields whenever posting a post or a comment - form validation -->
 
-- on the left sidebar, add small blue squares with all technology used to create this web application.
+<!-- - on the left sidebar, add small blue squares with all technology used to create this web application. -->
+
+- Add ability to add a picture to a post
 - when commenting or liking a comment, everything updates correctly, but it resets the post and you have to scroll back down to view your comment or updated likes - see if i can narrow down the field I change on the function call so the post view isn't "reset"
 <!-- - remove comment button on the post sub navbar - or implement a way for highlighting the comment portion whenever that button is pressed. -->
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI

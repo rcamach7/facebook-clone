@@ -20,6 +20,22 @@ function RightSideBar(props) {
         </li>
       </ul>
 
+      <ul className="technologies-squaress">
+        <li className="squares-item library">react</li>
+        <li className="squares-item library">moment</li>
+        <li className="squares-item library">fortAwesome</li>
+        <li className="squares-item library">uuid</li>
+        <li className="squares-item library">firebase</li>
+        <li className="squares-item techItem">npm</li>
+        <li className="squares-item techItem">git/github</li>
+        <li className="squares-item techItem">components</li>
+        <li className="squares-item techItem">state</li>
+        <li className="squares-item techItem">props</li>
+        <li className="squares-item techItem">form validation</li>
+        <li className="squares-item techItem">media queries</li>
+        <li className="squares-item techItem">css variables</li>
+      </ul>
+
       <p className="rightSideBar-section">
         Group Conversation
         <span
