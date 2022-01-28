@@ -24,6 +24,13 @@ function PostInfo(props) {
 
       <div className="postInfo-description">
         <p>{props.postDescription}</p>
+        {props.postPicture !== null && (
+          <img
+            className="postInfo-description-picture"
+            src={props.postPicture}
+            alt=""
+          />
+        )}
       </div>
       <div className="postInfo-interactivity">
         <span>

@@ -100,8 +100,9 @@ textarea:invalid {
 }
 
 .subNavbar-addMore {
+  font-size: 14px;
   width: 50%;
-  margin-left: 25px;
+  margin-left: 15px;
 }
 .subNavbar-item {
   padding: 5px;
@@ -131,4 +132,9 @@ textarea:invalid {
 }
 .popupForm-submit {
   background-color: var(--fb-blue);
+}
+
+/* Image Upload */
+.file-upload {
+  display: none;
 }

@@ -1,9 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faThumbsUp,
-  faComment,
-  faShare,
-} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faShare } from "@fortawesome/free-solid-svg-icons";
 
 function PostNavbar(props) {
   return (

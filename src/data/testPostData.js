@@ -2,9 +2,9 @@ import { v4 as uuidv4 } from "uuid";
 import cat from "../assets/cat.jpeg";
 import elon from "../assets/elon.jpeg";
 import ronaldo from "../assets/ronaldo.jpeg";
-import dog from "../assets/dog.jpeg";
 import dogTwo from "../assets/dogTwo.png";
 import bob from "../assets/bob.jpeg";
+import text from "../assets/text.png";
 
 const testPosts = [
   {
@@ -14,6 +14,7 @@ const testPosts = [
     timePosted: new Date("January 23, 2022 13:15:30"),
     postDescription:
       "Cat walks in keyboard try to jump onto window and fall while scratching at wall for poop in a handbag look delicious and drink the soapy mopping up water then puke giant foamy fur-balls but stare at guinea pigs poop on couch.!",
+    picture: null,
     likes: 0,
     comments: [
       {
@@ -27,7 +28,7 @@ const testPosts = [
         commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
-        comment: "sweet!!! ",
+        comment: "so inspirational 🥺",
         likes: 0,
       },
       {
@@ -45,8 +46,8 @@ const testPosts = [
     userName: "ronaldo7",
     icon: ronaldo,
     timePosted: new Date("January 25, 2022 13:15:30"),
-    postDescription:
-      "Kitty power catch eat throw up catch eat throw up bad birds snuggles up to shoulders or knees and purrs you to sleep for purr as loud as possible, be the most annoying cat that you can, and, knock everything off the table howl on top of tall thing purr when being pet.",
+    postDescription: "/r/programmingHumor omg 😂😂😂",
+    picture: text,
     likes: 2,
     comments: [
       {
@@ -61,7 +62,7 @@ const testPosts = [
         commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
-        comment: "so inspirational 🥺 ",
+        comment: "lol",
         likes: 0,
       },
       {
@@ -80,6 +81,7 @@ const testPosts = [
     icon: cat,
     timePosted: new Date("January 28, 2022 09:14:21"),
     postDescription: "drop a comment if you come from the odin project 🙌",
+    picture: null,
     likes: 0,
     comments: [],
   },

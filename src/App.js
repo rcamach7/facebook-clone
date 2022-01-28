@@ -175,6 +175,7 @@ function App() {
         icon: newPost.icon,
         timePosted: newPost.timePosted,
         postDescription: newPost.postDescription,
+        picture: newPost.picture,
         likes: newPost.likes,
         comments: newPost.comments,
       });
@@ -208,6 +209,7 @@ function App() {
           icon: newPost.icon,
           timePosted: newPost.timePosted,
           postDescription: newPost.postDescription,
+          picture: newPost.picture,
           likes: newPost.likes,
           comments: newPost.comments,
         });
