@@ -77,6 +77,7 @@ function App() {
         icon: rawData.icon,
         timePosted: rawData.timePosted.toDate(),
         postDescription: rawData.postDescription,
+        picture: rawData.picture,
         likes: rawData.likes,
         comments: rawData.comments,
       });

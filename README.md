@@ -1,18 +1,31 @@
-# Facebook-Clone (under progress)
+# Facebook-Clone
 
-This is a basic clone of the social media website Facebook.
+An interactive, full stack, facebook clone built primarily using React. Allows user to make a post with text and/or pictures, like posts or comments, and stores this information in a real time database.
 
-### Current Live Version:
+### Live Version:
 
 [Facebook Clone](https://rcamach7.github.io/facebook-clone/).
-![Web App](appDemo.png)
+![Website Demo](webDemo.gif)
 
-#### Built Using:
+### Built Using:
 
-- React Framework
+- [React Framework](https://reactjs.org/)
+  - Functional Components
+  - State and Props
+  - useEffect Hook
+- [Firebase BAAS](https://firebase.google.com/)
+  - Database
+- [Moment JS](https://momentjs.com/)
+  - Date Object Manipulation
+- [Font Awesome Icons](https://fontawesome.com/)
 - Javascript
+  - Data Manipulation
 - HTML
+  - From Validation
+  - Consistent Semantic Elements
 - CSS
+  - Variables
+  - Media Queries
 
 #### Local Installation & Running
 
@@ -25,6 +38,6 @@ npm run start
 
 #### Improvements To Be Implemented
 
-- Add ability to add a picture to a post
+- User Sign In & Sign Up functionality using firebase
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
-- Add gif usage of website in github readme
+- Add media storage when new post is added with pictures

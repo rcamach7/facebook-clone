@@ -26,7 +26,7 @@ function PopupForm(props) {
       timePosted: new Date(),
       postDescription: postDescription,
       likes: 0,
-      picture: URL.createObjectURL(picture),
+      picture: picture,
       comments: [],
     };
 
