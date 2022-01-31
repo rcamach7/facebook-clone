@@ -46,16 +46,16 @@ function App() {
     const firebaseAppConfig = getFirebaseConfig();
     initializeApp(firebaseAppConfig);
 
-    // Test Data
+    // Test Data with specific userID
     const testUser = {
       fullName: "Elon Musk",
       username: "theRealElon",
       icon: stockPic,
+      userId: "8c5e95ba-f122-4972-93a5-5569634a4c53",
     };
 
     setUserInfo(testUser);
     loadPosts();
-    // setPosts(testPosts);
   }, []);
 
   const loadPosts = async () => {
@@ -72,6 +72,7 @@ function App() {
     querySnapshot.forEach((resource) => {
       const rawData = resource.data();
       data.push({
+        userId: rawData.userId,
         postId: rawData.postId,
         userName: rawData.userName,
         icon: rawData.icon,
@@ -91,8 +92,16 @@ function App() {
     let indexOfPost = findPostIndexById(postId);
 
     const updatedSinglePost = { ...posts[indexOfPost] };
+    // This is an array of userId's that have like the post. If user has not likes before, we add his ID, if he has, we remove it and
+    // treat it as removing his like.
     let currentLikes = updatedSinglePost.likes;
-    updatedSinglePost.likes = currentLikes + 1;
+    if (currentLikes.indexOf(userInfo.userId) === -1) {
+      currentLikes.push(userInfo.userId);
+    } else {
+      currentLikes.splice(currentLikes.indexOf(userInfo.userId), 1);
+    }
+    // Update the single post copy
+    updatedSinglePost.likes = currentLikes;
 
     const updatedPosts = [...posts];
     updatedPosts[indexOfPost] = updatedSinglePost;
@@ -102,7 +111,7 @@ function App() {
     // Update Database
     const documentReference = doc(getFirestore(), "posts", postId);
     await updateDoc(documentReference, {
-      likes: currentLikes + 1,
+      likes: currentLikes,
     });
   };
 
@@ -120,8 +129,19 @@ function App() {
 
     // Get copy of posts, and update only the specific comments like value
     const updatedPostsTwo = [...posts];
-    updatedPostsTwo[indexOfPost].comments[commentIndex].likes =
-      updatedPostsTwo[indexOfPost].comments[commentIndex].likes + 1;
+    // If userId exists in comment likes array, we remove it, if not, we add it, simulating a comment like / remove like.
+    let usersCommented =
+      updatedPostsTwo[indexOfPost].comments[commentIndex].likes;
+    if (usersCommented.indexOf(userInfo.userId) === -1) {
+      updatedPostsTwo[indexOfPost].comments[commentIndex].likes.push(
+        userInfo.userId
+      );
+    } else {
+      updatedPostsTwo[indexOfPost].comments[commentIndex].likes.splice(
+        usersCommented.indexOf(userInfo.userId),
+        1
+      );
+    }
 
     // Update our state with new like values
     setPosts(updatedPostsTwo);
@@ -150,7 +170,7 @@ function App() {
         userName: userInfo.username,
         icon: userInfo.icon,
         comment: commentIn,
-        likes: 0,
+        likes: [],
       },
     ];
 

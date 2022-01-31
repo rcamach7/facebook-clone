@@ -34,13 +34,13 @@ function PostInfo(props) {
       </div>
       <div className="postInfo-interactivity">
         <span>
-          {props.likes > 0 && (
+          {props.likes.length > 0 && (
             <p>
               <FontAwesomeIcon
                 icon={faThumbsUp}
                 className="interactivity-likes-icon"
               />{" "}
-              {props.likes}
+              {props.likes.length}
             </p>
           )}
         </span>
