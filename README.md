@@ -40,8 +40,6 @@ npm run start
 
 - User Sign In & Sign Up functionality using firebase
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
+- User profile page using react router
+- User account page with all relevant user info and ability to modify them
 - Add media storage when new post is added with pictures
-- Turn right sidebar links into one component, and pass props as differences
-- Remove ability for user to like a post more than once. Adding a second like should be treated as removing the like previously given.
-- Make Technology boxes lighter in color
--
