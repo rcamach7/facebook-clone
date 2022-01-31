@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/facebook-clone/static/css/main.b58bff4d.css",
+    "main.css": "/facebook-clone/static/css/main.18a6102b.css",
     "main.js": "/facebook-clone/static/js/main.13532189.js",
     "static/media/text.png": "/facebook-clone/static/media/text.ac095b4e7245b2b2b9e4.png",
     "static/media/dogTwo.png": "/facebook-clone/static/media/dogTwo.b948e7df576a59d89bf1.png",
@@ -13,11 +13,11 @@
     "static/media/firebase.png": "/facebook-clone/static/media/firebase.659a78e839f0915e5140.png",
     "static/media/react.png": "/facebook-clone/static/media/react.ef20e673b9282f8f30fd.png",
     "index.html": "/facebook-clone/index.html",
-    "main.b58bff4d.css.map": "/facebook-clone/static/css/main.b58bff4d.css.map",
+    "main.18a6102b.css.map": "/facebook-clone/static/css/main.18a6102b.css.map",
     "main.13532189.js.map": "/facebook-clone/static/js/main.13532189.js.map"
   },
   "entrypoints": [
-    "static/css/main.b58bff4d.css",
+    "static/css/main.18a6102b.css",
     "static/js/main.13532189.js"
   ]
 }
