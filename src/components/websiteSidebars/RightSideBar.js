@@ -29,13 +29,14 @@ function RightSideBar(props) {
         <li className="squares-item techItem">npm</li>
         <li className="squares-item techItem">git/github</li>
         <li className="squares-item techItem">components</li>
+        <li className="squares-item techItem">router-dom</li>
         <li className="squares-item techItem">state</li>
         <li className="squares-item techItem">props</li>
         <li className="squares-item techItem">hooks</li>
         <li className="squares-item techItem">JSON</li>
         <li className="squares-item techItem">form validation</li>
+        <li className="squares-item techItem">sass</li>
         <li className="squares-item techItem">media queries</li>
-        <li className="squares-item techItem">css variables</li>
       </ul>
 
       <p className="rightSideBar-section">

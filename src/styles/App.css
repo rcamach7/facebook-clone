@@ -15,6 +15,14 @@
   --fb-grey-hover: rgb(214, 215, 216);
 }
 
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 html {
   background-color: var(--fb-lightGrey);
 }

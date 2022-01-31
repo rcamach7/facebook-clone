@@ -12,7 +12,6 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
 import RightSideBar from "./components/websiteSidebars/RightSideBar";
 import MainContent from "./components/MainContent";
@@ -244,9 +243,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Navbar icon={userInfo.icon} />
-      </header>
       <main className="main-container">
         <div className="main-container-leftBar">
           <LeftSideBar userInfo={userInfo} />

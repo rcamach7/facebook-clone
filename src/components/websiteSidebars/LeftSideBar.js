@@ -8,17 +8,18 @@ import {
   faNewspaper,
   faCalendarTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function LeftSideBar(props) {
   return (
     <aside className="LeftSideBar">
       <ul className="leftSideBar-nav">
-        <li className="leftSideBar-nav-item">
+        <Link to="/facebook-clone/profile" className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder icon">
             <img src={props.userInfo.icon} alt="" />
           </span>
           {props.userInfo.fullName}
-        </li>
+        </Link>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-lightBlue">
             <FontAwesomeIcon icon="user-friends" />

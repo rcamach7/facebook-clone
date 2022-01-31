@@ -13,6 +13,7 @@ An interactive, full stack, facebook clone built primarily using React. Allows u
   - Functional Components
   - State and Props
   - useEffect Hook
+  - router-dom
 - [Firebase BAAS](https://firebase.google.com/)
   - Database
 - [Moment JS](https://momentjs.com/)
