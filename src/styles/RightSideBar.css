@@ -27,6 +27,7 @@
 .technologies-item img {
   width: 100%;
   height: auto;
+  border-radius: 15px;
 }
 
 /* Last Section On Sidebar */
