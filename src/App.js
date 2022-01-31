@@ -46,16 +46,16 @@ function App() {
     const firebaseAppConfig = getFirebaseConfig();
     initializeApp(firebaseAppConfig);
 
-    // Test Data
+    // Test Data with specific userID
     const testUser = {
       fullName: "Elon Musk",
       username: "theRealElon",
       icon: stockPic,
+      userId: "8c5e95ba-f122-4972-93a5-5569634a4c53",
     };
 
     setUserInfo(testUser);
     loadPosts();
-    // setPosts(testPosts);
   }, []);
 
   const loadPosts = async () => {
@@ -91,8 +91,16 @@ function App() {
     let indexOfPost = findPostIndexById(postId);
 
     const updatedSinglePost = { ...posts[indexOfPost] };
+    // This is an array of userId's that have like the post. If user has not likes before, we add his ID, if he has, we remove it and
+    // treat it as removing his like.
     let currentLikes = updatedSinglePost.likes;
-    updatedSinglePost.likes = currentLikes + 1;
+    if (currentLikes.indexOf(userInfo.userId) === -1) {
+      currentLikes.push(userInfo.userId);
+    } else {
+      currentLikes.splice(currentLikes.indexOf(userInfo.userId), 1);
+    }
+    // Update the single post copy
+    updatedSinglePost.likes = currentLikes;
 
     const updatedPosts = [...posts];
     updatedPosts[indexOfPost] = updatedSinglePost;
@@ -102,7 +110,7 @@ function App() {
     // Update Database
     const documentReference = doc(getFirestore(), "posts", postId);
     await updateDoc(documentReference, {
-      likes: currentLikes + 1,
+      likes: currentLikes,
     });
   };
 
