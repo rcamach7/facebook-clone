@@ -20,7 +20,7 @@ function RightSideBar(props) {
         </li>
       </ul>
 
-      <ul className="technologies-squaress">
+      <ul className="technologies-squares">
         <li className="squares-item library">react</li>
         <li className="squares-item library">moment</li>
         <li className="squares-item library">fortAwesome</li>
@@ -31,6 +31,8 @@ function RightSideBar(props) {
         <li className="squares-item techItem">components</li>
         <li className="squares-item techItem">state</li>
         <li className="squares-item techItem">props</li>
+        <li className="squares-item techItem">hooks</li>
+        <li className="squares-item techItem">JSON</li>
         <li className="squares-item techItem">form validation</li>
         <li className="squares-item techItem">media queries</li>
         <li className="squares-item techItem">css variables</li>

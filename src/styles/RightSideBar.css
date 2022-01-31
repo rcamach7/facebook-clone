@@ -62,7 +62,10 @@
 }
 
 /* Technology Squares */
-.technologies-squaress {
+.technologies-squares {
+  font-size: 13px;
+  font-weight: bold;
+
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -72,15 +75,15 @@
 
 .squares-item {
   list-style: none;
-  padding: 2px 5px 2px 5px;
+  padding: 0px 2px 0px 2px;
   border: solid black 2px;
   border-radius: 5px;
 }
 .squares-item.library {
   color: white;
-  background-color: blueviolet;
+  background-color: rgb(184, 120, 245);
 }
 .squares-item.techItem {
   color: white;
-  background-color: var(--fb-blue);
+  background-color: rgb(54, 182, 219);
 }

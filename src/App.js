@@ -72,6 +72,7 @@ function App() {
     querySnapshot.forEach((resource) => {
       const rawData = resource.data();
       data.push({
+        userId: rawData.userId,
         postId: rawData.postId,
         userName: rawData.userName,
         icon: rawData.icon,
@@ -128,8 +129,19 @@ function App() {
 
     // Get copy of posts, and update only the specific comments like value
     const updatedPostsTwo = [...posts];
-    updatedPostsTwo[indexOfPost].comments[commentIndex].likes =
-      updatedPostsTwo[indexOfPost].comments[commentIndex].likes + 1;
+    // If userId exists in comment likes array, we remove it, if not, we add it, simulating a comment like / remove like.
+    let usersCommented =
+      updatedPostsTwo[indexOfPost].comments[commentIndex].likes;
+    if (usersCommented.indexOf(userInfo.userId) === -1) {
+      updatedPostsTwo[indexOfPost].comments[commentIndex].likes.push(
+        userInfo.userId
+      );
+    } else {
+      updatedPostsTwo[indexOfPost].comments[commentIndex].likes.splice(
+        usersCommented.indexOf(userInfo.userId),
+        1
+      );
+    }
 
     // Update our state with new like values
     setPosts(updatedPostsTwo);
@@ -158,7 +170,7 @@ function App() {
         userName: userInfo.username,
         icon: userInfo.icon,
         comment: commentIn,
-        likes: 0,
+        likes: [],
       },
     ];
 

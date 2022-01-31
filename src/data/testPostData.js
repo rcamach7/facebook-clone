@@ -23,14 +23,14 @@ const testPosts = [
         userName: "ronaldo7",
         icon: ronaldo,
         comment: "dude that's awesome",
-        likes: 0,
+        likes: [],
       },
       {
         commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
         comment: "so inspirational 🥺",
-        likes: 0,
+        likes: [],
       },
       {
         commentId: uuidv4(),
@@ -38,7 +38,7 @@ const testPosts = [
         icon: bob,
         comment:
           "The door is opening! how exciting oh, it's you, meh meowzer yet roll over and sun my belly i shall purr myself to sleep. !",
-        likes: 0,
+        likes: [],
       },
     ],
   },
@@ -58,14 +58,14 @@ const testPosts = [
         icon: elon,
         comment:
           "The War of the 5 kings. The Knight of Lemonwood. Words are like wind. It is rare to meet a Lannister who shares my enthusiasm for dead Lannisters. Never Resting.",
-        likes: 3,
+        likes: [],
       },
       {
         commentId: uuidv4(),
         userName: "lennon",
         icon: dogTwo,
         comment: "lol",
-        likes: 0,
+        likes: [],
       },
       {
         commentId: uuidv4(),
@@ -73,7 +73,7 @@ const testPosts = [
         icon: bob,
         comment:
           "Carrot cake jelly jelly-o brownie jelly-o danish croissant. Shortbread gingerbread ice cream muffin pastry.!!!",
-        likes: 0,
+        likes: [],
       },
     ],
   },
