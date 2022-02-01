@@ -4,9 +4,18 @@ import Profile from "./Profile";
 import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
 import stockPic from "./assets/elon.jpeg";
+// import { getFirebaseConfig } from "./data/config.js";
+// import { initializeApp } from "firebase/app";
+// import * as firebaseui from "firebaseui";
+// import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 const RouteSwitch = () => {
   const [userInfo, setUserInfo] = useState({});
+  // const firebaseAppConfig = getFirebaseConfig();
+  // initializeApp(firebaseAppConfig);
+  // var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
   useEffect(() => {
     // Test Data with specific userID
