@@ -3,6 +3,7 @@ import { getFirebaseConfig } from "./data/config";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useState } from "react";
+import Navbar from "./components/Navbar";
 import logo from "./assets/fbLoginLogo.svg";
 
 const firebaseApp = initializeApp(getFirebaseConfig());
@@ -28,18 +29,31 @@ const SignInForm = () => {
     } catch (error) {
       console.log(error);
     }
+
+    setEmail("");
+    setPassword("");
   };
 
   return (
-    <div className="SignIn">
+    <div className="SignIn" onSubmit={(e) => handleSignIn(e)}>
       <aside>
         <img src={logo} alt="" />
         <p>Connect with friends and the world around you on Facebook.</p>
       </aside>
 
       <form>
-        <input type="text" placeholder="Email or phone number" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="text"
+          placeholder="Email or phone number"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button className="login-btn" type="submit">
           Log In
         </button>
@@ -55,6 +69,9 @@ const SignInForm = () => {
 const Profile = (props) => {
   return (
     <div className="Profile">
+      <header>
+        <Navbar />
+      </header>
       <h1>Welcome Back</h1>
       <p>Email: {auth.currentUser.email}</p>
       <p>UID: {props.user.uid}</p>
