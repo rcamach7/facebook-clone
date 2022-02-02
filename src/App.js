@@ -15,6 +15,7 @@ import {
 import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
 import RightSideBar from "./components/websiteSidebars/RightSideBar";
 import MainContent from "./components/MainContent";
+import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 // Test Data
@@ -35,7 +36,7 @@ import {
   limit,
 } from "firebase/firestore";
 
-function App() {
+function App(props) {
   const [userInfo, setUserInfo] = useState({});
   const [posts, setPosts] = useState([]);
 
@@ -50,12 +51,16 @@ function App() {
       fullName: "Elon Musk",
       username: "theRealElon",
       icon: stockPic,
-      userId: "8c5e95ba-f122-4972-93a5-5569634a4c53",
+      userId: "mKa6FSAnfuSN68HIVbWWEIkOq193",
     };
-
     setUserInfo(testUser);
     loadPosts();
   }, []);
+
+  const loadUserData = async () => {
+    const ref = collection(getFirestore(), "users");
+    console.log(ref.data());
+  };
 
   const loadPosts = async () => {
     const data = [];
@@ -243,6 +248,9 @@ function App() {
 
   return (
     <div className="App">
+      <header className="App-header">
+        <Navbar icon={userInfo.icon} />
+      </header>
       <main className="main-container">
         <div className="main-container-leftBar">
           <LeftSideBar userInfo={userInfo} />

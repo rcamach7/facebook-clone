@@ -40,6 +40,7 @@ npm run start
 #### Improvements To Be Implemented
 
 - User Sign In & Sign Up functionality using firebase
+- Add react context for global user state variable
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
 - User profile page using react router
 - User account page with all relevant user info and ability to modify them

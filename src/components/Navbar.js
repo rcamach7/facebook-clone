@@ -7,12 +7,12 @@ function Navbar(props) {
   return (
     <nav className="Navbar">
       <ul className="navbar-leftMenu">
-        <Link to="/facebook-clone/" className="leftMenu-item logo">
+        <Link to="/facebook-clone/home" className="leftMenu-item logo">
           <img src={logo} alt="" />
         </Link>
         <li className="leftMenu-item search">
           <FontAwesomeIcon icon="search" size="2x" />
-          <form>
+          <form className="navbar-form">
             <input
               className="search-input"
               placeholder="Search Facebook"
@@ -23,7 +23,7 @@ function Navbar(props) {
       </ul>
 
       <ul className="navbar-menu">
-        <Link to="/facebook-clone/" className="menu-item">
+        <Link to="/facebook-clone/home" className="menu-item">
           <FontAwesomeIcon icon="home" size="2x" />
         </Link>
         <li className="menu-item">
@@ -41,7 +41,7 @@ function Navbar(props) {
       </ul>
 
       <ul className="navbar-rightMenu">
-        <Link to="/facebook-clone/profile" className="rightMenu-item">
+        <Link to="/facebook-clone/" className="rightMenu-item">
           <img src={props.icon} alt="" />
         </Link>
       </ul>
