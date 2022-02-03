@@ -1,49 +1,70 @@
 import "../styles/Profile.css";
 import Navbar from "./Navbar";
 import { getFirebaseConfig } from "../data/config";
-import { initializeApp } from "firebase/app";
-import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { initializeApp } from "firebase/app";
+import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getFirestore, getDoc } from "firebase/firestore";
 
 const Profile = () => {
+  const [status, setStatus] = useState({});
   const [user, setUser] = useState({});
   const firebaseApp = initializeApp(getFirebaseConfig());
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
 
-  let x = false;
-
-  onAuthStateChanged(auth, (user) => {
-    if (!x) {
-      setUser(user);
-    }
+  onAuthStateChanged(auth, (status) => {
+    setStatus(status);
   });
 
   useEffect(() => {
-    return () => {};
-  }, []);
+    if (!status) {
+      return;
+    }
+    if (status.uid) {
+      const docRef = doc(getFirestore(), "users", status.uid);
+      const loadData = async () => {
+        const docSnap = await getDoc(docRef);
+
+        // Not a new user
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          setUser({
+            fullName: userData.fullName,
+            userName: userData.userName,
+            email: userData.email,
+            icon: userData.icon,
+            userId: userData.userId,
+          });
+        }
+      };
+      loadData();
+    }
+  }, [status]);
 
   useEffect(() => {
-    if (!user) {
+    if (!status) {
       navigate("/facebook-clone/");
     }
 
     return () => {};
-  }, [navigate, user]);
+  }, [navigate, status]);
 
   const handleSignOut = () => {
-    x = true;
     signOut(auth);
   };
 
   return (
     <div className="Profile">
       <header>
-        <Navbar />
+        <Navbar icon={user.icon} />
       </header>
       <div className="profile-main">
-        <h1>Hello User!</h1>
+        <h1>Hello {user.fullName}</h1>
+        <p>UserName: {user.userName}</p>
+        <p>Email: {user.email}</p>
+        <p>UserID: {user.userId}</p>
         <button onClick={handleSignOut}>Sign Out</button>
       </div>
     </div>
