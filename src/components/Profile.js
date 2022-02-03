@@ -21,9 +21,7 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    return () => {
-      x = true;
-    };
+    return () => {};
   }, []);
 
   useEffect(() => {

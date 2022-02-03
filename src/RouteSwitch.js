@@ -1,5 +1,5 @@
-import App from "./App";
-import LandingPage from "./LandingPage";
+import Home from "./components/Home";
+import LandingPage from "./components/LandingPage";
 import Profile from "./components/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -20,7 +20,7 @@ const RouteSwitch = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/facebook-clone/" element={<LandingPage user={user} />} />
-        <Route path="/facebook-clone/home" element={<App user={user} />} />
+        <Route path="/facebook-clone/home" element={<Home user={user} />} />
         <Route
           path="/facebook-clone/profile"
           element={<Profile />}

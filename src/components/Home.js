@@ -1,5 +1,4 @@
-import "./styles/App.css";
-// Icons
+import "../styles/App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
@@ -12,17 +11,15 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import LeftSideBar from "./components/websiteSidebars/LeftSideBar";
-import RightSideBar from "./components/websiteSidebars/RightSideBar";
-import MainContent from "./components/MainContent";
-import Navbar from "./components/Navbar";
+import LeftSideBar from "./homePageSections/LeftSideBar";
+import RightSideBar from "./homePageSections/RightSideBar";
+import MainContent from "./homePageSections/MainContent";
+import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-// Test Data
-import testPosts from "./data/testPostData";
-import stockPic from "./assets/elon.jpeg";
-// Firebase Configuration Files
-import { getFirebaseConfig } from "./data/config.js";
+import testPosts from "../data/testPostData";
+import stockPic from "../assets/elon.jpeg";
+import { getFirebaseConfig } from "../data/config.js";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -36,7 +33,7 @@ import {
   limit,
 } from "firebase/firestore";
 
-function App(props) {
+function Home(props) {
   const [userInfo, setUserInfo] = useState({});
   const [posts, setPosts] = useState([]);
 
@@ -284,4 +281,4 @@ library.add(
   faCaretSquareDown,
   faPlus
 );
-export default App;
+export default Home;
