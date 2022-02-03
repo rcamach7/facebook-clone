@@ -1,9 +1,9 @@
-import "../styles/MainContent.css";
+import "../../styles/MainContent.css";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import Post from "./Post";
-import CreatePost from "./CreatePost";
-import PopupForm from "./PopupForm";
+import Post from "../Post";
+import CreatePost from "../CreatePost";
+import PopupForm from "../PopupForm";
 
 function MainContent(props) {
   const [showPopup, setShowPopup] = useState(false);
