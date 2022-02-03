@@ -1,18 +1,30 @@
 import "./styles/SignIn.css";
 import { getFirebaseConfig } from "./data/config";
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { useState } from "react";
-import Navbar from "./components/Navbar";
 import logo from "./assets/fbLoginLogo.svg";
+import { Navigate } from "react-router-dom";
 
 const firebaseApp = initializeApp(getFirebaseConfig());
 const auth = getAuth(firebaseApp);
 
-const LandingPage = (props) => {
+const LandingPage = () => {
+  const [user, setUser] = useState();
+  const firebaseApp = initializeApp(getFirebaseConfig());
+  const auth = getAuth(firebaseApp);
+
+  onAuthStateChanged(auth, (user) => {
+    setUser(user);
+  });
+
   return (
-    <div className="Profile">
-      {props.user ? <Profile user={props.user} /> : <SignInForm />}
+    <div className="LandingPage">
+      {user ? <Navigate to="/facebook-clone/home" /> : <SignInForm />}
     </div>
   );
 };
@@ -65,19 +77,4 @@ const SignInForm = () => {
     </div>
   );
 };
-
-const Profile = (props) => {
-  return (
-    <div className="Profile">
-      <header>
-        <Navbar />
-      </header>
-      <h1>Welcome Back</h1>
-      <p>Email: {auth.currentUser.email}</p>
-      <p>UID: {props.user.uid}</p>
-      <button onClick={() => signOut(auth)}>Sign Out</button>
-    </div>
-  );
-};
-
 export default LandingPage;

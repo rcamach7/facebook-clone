@@ -41,7 +41,7 @@ function Navbar(props) {
       </ul>
 
       <ul className="navbar-rightMenu">
-        <Link to="/facebook-clone/" className="rightMenu-item">
+        <Link to="/facebook-clone/profile" className="rightMenu-item">
           <img src={props.icon} alt="" />
         </Link>
       </ul>
