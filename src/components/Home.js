@@ -33,13 +33,16 @@ import {
   limit,
 } from "firebase/firestore";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { getStorage, getDownloadURL, ref } from "firebase/storage";
 
 function Home(props) {
   const [status, setStatus] = useState({});
   const [userInfo, setUserInfo] = useState({});
+  const [profilePicture, setProfilePicture] = useState();
   const [posts, setPosts] = useState([]);
 
   const firebaseApp = initializeApp(getFirebaseConfig());
+  const storage = getStorage(firebaseApp);
   const auth = getAuth(firebaseApp);
 
   useEffect(() => {
@@ -68,6 +71,12 @@ function Home(props) {
             icon: userData.icon,
             userId: userData.userId,
           });
+
+          getDownloadURL(ref(storage, `${userData.userId}.jpeg`)).then(
+            (url) => {
+              setProfilePicture(url);
+            }
+          );
         }
       };
       loadData();
@@ -262,16 +271,17 @@ function Home(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <Navbar icon={userInfo.icon} />
+        <Navbar icon={profilePicture} />
       </header>
       <main className="main-container">
         <div className="main-container-leftBar">
-          <LeftSideBar userInfo={userInfo} />
+          <LeftSideBar userInfo={userInfo} profilePicture={profilePicture} />
         </div>
         <div className="main-container-content">
           <MainContent
             posts={posts}
             userInfo={userInfo}
+            profilePicture={profilePicture}
             handleNewPost={handleNewPost}
             handleAddCommentToPost={handleAddCommentToPost}
             handleAddCommentLike={handleAddCommentLike}

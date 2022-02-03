@@ -16,7 +16,7 @@ function LeftSideBar(props) {
       <ul className="leftSideBar-nav">
         <Link to="/facebook-clone/profile" className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder icon">
-            <img src={props.userInfo.icon} alt="" />
+            <img src={props.profilePicture} alt="" />
           </span>
           {props.userInfo.fullName}
         </Link>

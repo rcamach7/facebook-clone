@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getFirestore, getDoc } from "firebase/firestore";
+import { getStorage, getDownloadURL, ref } from "firebase/storage";
 
 const Profile = () => {
   const [status, setStatus] = useState({});
   const [user, setUser] = useState({});
+  const [profilePicture, setProfilePicture] = useState();
   const firebaseApp = initializeApp(getFirebaseConfig());
+  const storage = getStorage(firebaseApp);
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
 
@@ -30,6 +33,7 @@ const Profile = () => {
         // Not a new user
         if (docSnap.exists()) {
           const userData = docSnap.data();
+
           setUser({
             fullName: userData.fullName,
             userName: userData.userName,
@@ -37,6 +41,12 @@ const Profile = () => {
             icon: userData.icon,
             userId: userData.userId,
           });
+
+          getDownloadURL(ref(storage, `${userData.userId}.jpeg`)).then(
+            (url) => {
+              setProfilePicture(url);
+            }
+          );
         }
       };
       loadData();
@@ -58,10 +68,10 @@ const Profile = () => {
   return (
     <div className="Profile">
       <header>
-        <Navbar icon={user.icon} />
+        <Navbar icon={profilePicture} />
       </header>
       <div className="profile-main">
-        <img src={user.icon} alt="" />
+        <img src={profilePicture} alt="" />
 
         <div className="profile-userInfo">
           <h1>{user.fullName}</h1>
