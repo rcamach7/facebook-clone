@@ -1,8 +1,8 @@
 import "../styles/Profile.css";
 import Navbar from "./Navbar";
-import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirebaseConfig } from "../data/config";
 import { initializeApp } from "firebase/app";
+import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,21 +12,30 @@ const Profile = () => {
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
 
+  let x = false;
+
   onAuthStateChanged(auth, (user) => {
-    try {
+    if (!x) {
       setUser(user);
-    } catch (error) {
-      console.log(error);
     }
   });
+
+  useEffect(() => {
+    return () => {
+      x = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (!user) {
       navigate("/facebook-clone/");
     }
+
+    return () => {};
   }, [navigate, user]);
 
-  const handleSignOut = async () => {
+  const handleSignOut = () => {
+    x = true;
     signOut(auth);
   };
 

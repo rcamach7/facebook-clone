@@ -1,4 +1,5 @@
 import "./styles/SignIn.css";
+import logo from "./assets/fbLoginLogo.svg";
 import { getFirebaseConfig } from "./data/config";
 import { initializeApp } from "firebase/app";
 import {
@@ -6,8 +7,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { useState } from "react";
-import logo from "./assets/fbLoginLogo.svg";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const firebaseApp = initializeApp(getFirebaseConfig());
@@ -15,12 +15,14 @@ const auth = getAuth(firebaseApp);
 
 const LandingPage = () => {
   const [user, setUser] = useState();
-  const firebaseApp = initializeApp(getFirebaseConfig());
-  const auth = getAuth(firebaseApp);
 
   onAuthStateChanged(auth, (user) => {
     setUser(user);
   });
+
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     <div className="LandingPage">
@@ -35,15 +37,11 @@ const SignInForm = () => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.log(error);
     }
-
-    setEmail("");
-    setPassword("");
   };
 
   return (
