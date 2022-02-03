@@ -21,7 +21,7 @@ function PopupForm(props) {
 
     const newPost = {
       postId: uuidv4(),
-      userName: props.userInfo.username,
+      userName: props.userInfo.userName,
       icon: props.userInfo.icon,
       timePosted: new Date(),
       postDescription: postDescription,
