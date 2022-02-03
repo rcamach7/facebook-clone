@@ -1,9 +1,45 @@
+$fb-blue: rgb(26, 115, 228);
+
+.Profile {
+  header {
+    margin-bottom: 25px;
+  }
+}
+
 .profile-main {
   width: 100%;
-  outline: auto;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  img {
+    width: 200px;
+    border-radius: 50%;
+  }
+
+  .profile-userInfo {
+    text-align: center;
+  }
+  .profile-userInfo p {
+    text-align: left;
+  }
+
+  button {
+    margin-top: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .profile-signOut {
+    color: white;
+    background-color: $fb-blue;
+  }
+  .profile-EditInfo {
+    color: white;
+    background-color: rgb(66, 183, 41);
+  }
 }

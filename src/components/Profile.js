@@ -61,11 +61,28 @@ const Profile = () => {
         <Navbar icon={user.icon} />
       </header>
       <div className="profile-main">
-        <h1>Hello {user.fullName}</h1>
-        <p>UserName: {user.userName}</p>
-        <p>Email: {user.email}</p>
-        <p>UserID: {user.userId}</p>
-        <button onClick={handleSignOut}>Sign Out</button>
+        <img src={user.icon} alt="" />
+
+        <div className="profile-userInfo">
+          <h1>{user.fullName}</h1>
+          <p>
+            <strong>UserName: </strong>
+            {user.userName}
+          </p>
+          <p>
+            <strong>Email: </strong>
+            {user.email}
+          </p>
+          <p>
+            <strong>My ID: </strong>
+            {user.userId}
+          </p>
+        </div>
+
+        <button className="profile-signOut" onClick={handleSignOut}>
+          Sign Out
+        </button>
+        <button className="profile-EditInfo">Edit Account Info</button>
       </div>
     </div>
   );

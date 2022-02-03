@@ -1,10 +1,39 @@
+.Profile header {
+  margin-bottom: 25px;
+}
+
 .profile-main {
   width: 100%;
-  outline: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.profile-main img {
+  width: 200px;
+  border-radius: 50%;
+}
+.profile-main .profile-userInfo {
+  text-align: center;
+}
+.profile-main .profile-userInfo p {
+  text-align: left;
+}
+.profile-main button {
+  margin-top: 10px;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+.profile-main .profile-signOut {
+  color: white;
+  background-color: #1a73e4;
+}
+.profile-main .profile-EditInfo {
+  color: white;
+  background-color: #42b729;
 }
 
 /*# sourceMappingURL=Profile.css.map */
