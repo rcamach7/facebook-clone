@@ -1,17 +1,18 @@
 import logo from "../assets/logo.png";
 import "../styles/Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 function Navbar(props) {
   return (
     <nav className="Navbar">
       <ul className="navbar-leftMenu">
-        <li className="leftMenu-item logo">
+        <Link to="/facebook-clone/home" className="leftMenu-item logo">
           <img src={logo} alt="" />
-        </li>
+        </Link>
         <li className="leftMenu-item search">
           <FontAwesomeIcon icon="search" size="2x" />
-          <form>
+          <form className="navbar-form">
             <input
               className="search-input"
               placeholder="Search Facebook"
@@ -22,9 +23,9 @@ function Navbar(props) {
       </ul>
 
       <ul className="navbar-menu">
-        <li className="menu-item">
+        <Link to="/facebook-clone/home" className="menu-item">
           <FontAwesomeIcon icon="home" size="2x" />
-        </li>
+        </Link>
         <li className="menu-item">
           <FontAwesomeIcon icon="user-friends" size="2x" />
         </li>
@@ -40,9 +41,9 @@ function Navbar(props) {
       </ul>
 
       <ul className="navbar-rightMenu">
-        <li className="rightMenu-item">
+        <Link to="/facebook-clone/profile" className="rightMenu-item">
           <img src={props.icon} alt="" />
-        </li>
+        </Link>
       </ul>
     </nav>
   );

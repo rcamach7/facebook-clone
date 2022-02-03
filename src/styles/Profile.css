@@ -1,0 +1,10 @@
+.profile-main {
+  width: 100%;
+  outline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=Profile.css.map */

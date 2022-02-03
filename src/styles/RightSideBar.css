@@ -64,6 +64,7 @@
 
 /* Technology Squares */
 .technologies-squares {
+  margin-top: 10px;
   font-size: 13px;
   font-weight: bold;
 
@@ -76,8 +77,8 @@
 
 .squares-item {
   list-style: none;
-  padding: 0px 2px 0px 2px;
-  border: solid black 2px;
+  padding: 2px 3px 2px 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-radius: 5px;
 }
 .squares-item.library {
