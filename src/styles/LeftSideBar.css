@@ -17,6 +17,7 @@
 .leftSideBar-nav-item {
   list-style: none;
   cursor: pointer;
+  text-decoration: none;
 
   padding: 10px;
   border-radius: 15px;

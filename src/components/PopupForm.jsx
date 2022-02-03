@@ -55,7 +55,7 @@ function PopupForm(props) {
 
         <div className="popupForm-userInfo">
           <div className="popupForm-userInfo-icon">
-            <img src={props.userInfo.icon} alt="" />
+            <img src={props.profilePicture} alt="" />
           </div>
           <div className="popupForm-userInfo-data">
             <p style={{ fontWeight: "bolder", fontSize: "15px" }}>

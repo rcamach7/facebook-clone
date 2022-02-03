@@ -7,7 +7,7 @@ function CreatePost(props) {
     <div className="CreatePost">
       <div className="createPost-submission">
         <div className="createPost-submission-user">
-          <img src={props.userInfo.icon} alt="" />
+          <img src={props.profilePicture} alt="" />
         </div>
         <button
           className="createPost-submission-input"

@@ -9,11 +9,16 @@ function MainContent(props) {
   const [showPopup, setShowPopup] = useState(false);
   return (
     <div className="MainContent">
-      <CreatePost userInfo={props.userInfo} setShowPopup={setShowPopup} />
+      <CreatePost
+        userInfo={props.userInfo}
+        profilePicture={props.profilePicture}
+        setShowPopup={setShowPopup}
+      />
       {showPopup ? (
         <PopupForm
           setShowPopup={setShowPopup}
           userInfo={props.userInfo}
+          profilePicture={props.profilePicture}
           handleNewPost={props.handleNewPost}
         />
       ) : null}
