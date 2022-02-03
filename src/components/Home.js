@@ -18,11 +18,11 @@ import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import testPosts from "../data/testPostData";
-import stockPic from "../assets/elon.jpeg";
 import { getFirebaseConfig } from "../data/config.js";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
+  getDoc,
   collection,
   query,
   getDocs,
@@ -32,32 +32,47 @@ import {
   orderBy,
   limit,
 } from "firebase/firestore";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 function Home(props) {
+  const [status, setStatus] = useState({});
   const [userInfo, setUserInfo] = useState({});
   const [posts, setPosts] = useState([]);
 
-  // Run on start up
-  useEffect(() => {
-    // Connect To Firebase
-    const firebaseAppConfig = getFirebaseConfig();
-    initializeApp(firebaseAppConfig);
+  const firebaseApp = initializeApp(getFirebaseConfig());
+  const auth = getAuth(firebaseApp);
 
-    // Test Data with specific userID
-    const testUser = {
-      fullName: "Elon Musk",
-      username: "theRealElon",
-      icon: stockPic,
-      userId: "mKa6FSAnfuSN68HIVbWWEIkOq193",
-    };
-    setUserInfo(testUser);
+  useEffect(() => {
     loadPosts();
   }, []);
 
-  const loadUserData = async () => {
-    const ref = collection(getFirestore(), "users");
-    console.log(ref.data());
-  };
+  onAuthStateChanged(auth, (user) => {
+    setStatus(user);
+  });
+
+  useEffect(() => {
+    if (!status) {
+      return;
+    }
+    if (status.uid) {
+      const docRef = doc(getFirestore(), "users", status.uid);
+      const loadData = async () => {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          setUserInfo({
+            fullName: userData.fullName,
+            userName: userData.userName,
+            email: userData.email,
+            icon: userData.icon,
+            userId: userData.userId,
+          });
+        }
+      };
+      loadData();
+    }
+  }, [status]);
 
   const loadPosts = async () => {
     const data = [];
@@ -168,7 +183,7 @@ function Home(props) {
       ...updatedSinglePost.comments,
       {
         commentId: uuidv4(),
-        userName: userInfo.username,
+        userName: userInfo.userName,
         icon: userInfo.icon,
         comment: commentIn,
         likes: [],
@@ -226,6 +241,7 @@ function Home(props) {
     testPosts.forEach(async (newPost) => {
       try {
         await setDoc(doc(getFirestore(), "posts", newPost.postId), {
+          userId: newPost.userId,
           postId: newPost.postId,
           userName: newPost.userName,
           icon: newPost.icon,

@@ -8,7 +8,7 @@ import text from "../assets/text.png";
 
 const testPosts = [
   {
-    userId: "mKa6FSAnfuSN68HIVbWWEIkOq193",
+    userId: "jIqGkHYQWSXsE2lPNIj6tbgB1jF3",
     postId: uuidv4(),
     userName: "theRealElon",
     icon: elon,
