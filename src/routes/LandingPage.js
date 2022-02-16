@@ -12,7 +12,6 @@ import { Navigate } from "react-router-dom";
 
 const firebaseApp = initializeApp(getFirebaseConfig());
 const auth = getAuth(firebaseApp);
-
 const LandingPage = () => {
   const [user, setUser] = useState();
 
@@ -44,6 +43,14 @@ const SignInForm = () => {
     }
   };
 
+  const handleTestAccount = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, "test@facebook.com", "test123");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="SignIn" onSubmit={(e) => handleSignIn(e)}>
       <aside>
@@ -66,6 +73,9 @@ const SignInForm = () => {
         />
         <button className="login-btn" type="submit">
           Log In
+        </button>
+        <button className="login-btn" type="button" onClick={handleTestAccount}>
+          Use test account
         </button>
         <button type="button"> Forgot password?</button>
         <button className="newAccount-btn" type="button">

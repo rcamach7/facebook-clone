@@ -35,7 +35,7 @@ import {
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { getStorage, getDownloadURL, ref } from "firebase/storage";
 
-function Home(props) {
+function Home() {
   const [status, setStatus] = useState({});
   const [userInfo, setUserInfo] = useState({});
   const [profilePicture, setProfilePicture] = useState();
