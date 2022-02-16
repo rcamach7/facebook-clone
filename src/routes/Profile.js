@@ -1,5 +1,5 @@
 import "../styles/Profile.css";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import { getFirebaseConfig } from "../data/config";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

@@ -11,10 +11,10 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import LeftSideBar from "./homePageSections/LeftSideBar";
-import RightSideBar from "./homePageSections/RightSideBar";
-import MainContent from "./homePageSections/MainContent";
-import Navbar from "./Navbar";
+import LeftSideBar from "../components/homePageSections/LeftSideBar";
+import RightSideBar from "../components/homePageSections/RightSideBar";
+import MainContent from "../components/homePageSections/MainContent";
+import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import testPosts from "../data/testPostData";
