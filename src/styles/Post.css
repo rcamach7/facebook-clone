@@ -59,7 +59,7 @@
 
 .postInfo-main-user img {
   width: 50px;
-  height: auto;
+  height: 50px;
 
   border-radius: 50%;
   border: solid 1px rgba(99, 99, 99, 0.2);
@@ -139,7 +139,7 @@
 }
 .comment-icon img {
   width: 40px;
-  height: auto;
+  height: 40px;
 
   border-radius: 50%;
   border: solid 1px rgba(99, 99, 99, 0.2);
@@ -194,6 +194,7 @@
 }
 .postAddComment-user img {
   width: 35px;
+  height: 35px;
 
   border-radius: 50%;
   border: solid 1px rgba(99, 99, 99, 0.2);

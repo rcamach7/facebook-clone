@@ -35,7 +35,7 @@ export default function Post(props) {
         <PostAddComment
           postId={props.post.postId}
           handleAddCommentToPost={props.handleAddCommentToPost}
-          icon={props.icon}
+          icon={props.profilePicture}
         />
       </div>
     </div>

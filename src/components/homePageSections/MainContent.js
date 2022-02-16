@@ -33,9 +33,10 @@ function MainContent(props) {
               post={curPost}
               key={uuidv4()}
               handleAddCommentToPost={props.handleAddCommentToPost}
-              icon={props.userInfo.icon}
+              icon={props.profilePicture}
               handleAddCommentLike={props.handleAddCommentLike}
               handlePostLike={props.handlePostLike}
+              profilePicture={props.profilePicture}
             />
           );
         })}

@@ -193,7 +193,7 @@ function Home() {
       {
         commentId: uuidv4(),
         userName: userInfo.userName,
-        icon: userInfo.icon,
+        icon: profilePicture,
         comment: commentIn,
         likes: [],
       },
