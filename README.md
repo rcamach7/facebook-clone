@@ -5,7 +5,7 @@ An interactive, full stack, facebook clone built primarily using React. Allows u
 ### Live Version:
 
 [Facebook Clone](https://rcamach7.github.io/facebook-clone/).
-![Website Demo](webDemo.gif)
+![Website Demo](facebookDemo.gif)
 
 ### Built Using:
 
@@ -39,11 +39,7 @@ npm run start
 
 #### Improvements To Be Implemented
 
-- User Sign In & Sign Up functionality using firebase
-- Implement Firebase Storage for profile picture storage and access
 - Add ability to create new account
-- Add react context for global user state variable
 - Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
-- User profile page using react router
 - User account page with all relevant user info and ability to modify them
 - Add media storage when new post is added with pictures

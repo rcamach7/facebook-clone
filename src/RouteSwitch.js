@@ -1,6 +1,6 @@
-import Home from "./components/Home";
-import LandingPage from "./components/LandingPage";
-import Profile from "./components/Profile";
+import Home from "./routes/Home";
+import LandingPage from "./routes/LandingPage";
+import Profile from "./routes/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const RouteSwitch = () => {

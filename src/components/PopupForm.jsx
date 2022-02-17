@@ -22,7 +22,7 @@ function PopupForm(props) {
     const newPost = {
       postId: uuidv4(),
       userName: props.userInfo.userName,
-      icon: props.userInfo.icon,
+      icon: props.profilePicture,
       timePosted: new Date(),
       postDescription: postDescription,
       likes: [],
