@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/facebook-clone/static/css/main.9840f156.css",
-    "main.js": "/facebook-clone/static/js/main.550c1393.js",
+    "main.css": "/facebook-clone/static/css/main.0dc29ca8.css",
+    "main.js": "/facebook-clone/static/js/main.523727a8.js",
     "static/media/text.png": "/facebook-clone/static/media/text.ac095b4e7245b2b2b9e4.png",
     "static/media/dogTwo.png": "/facebook-clone/static/media/dogTwo.b948e7df576a59d89bf1.png",
     "static/media/cat.jpeg": "/facebook-clone/static/media/cat.4a747b5d7046b80b192b.jpeg",
@@ -14,11 +14,11 @@
     "static/media/react.png": "/facebook-clone/static/media/react.ef20e673b9282f8f30fd.png",
     "static/media/fbLoginLogo.svg": "/facebook-clone/static/media/fbLoginLogo.798ff419268bc0baf33577488789967c.svg",
     "index.html": "/facebook-clone/index.html",
-    "main.9840f156.css.map": "/facebook-clone/static/css/main.9840f156.css.map",
-    "main.550c1393.js.map": "/facebook-clone/static/js/main.550c1393.js.map"
+    "main.0dc29ca8.css.map": "/facebook-clone/static/css/main.0dc29ca8.css.map",
+    "main.523727a8.js.map": "/facebook-clone/static/js/main.523727a8.js.map"
   },
   "entrypoints": [
-    "static/css/main.9840f156.css",
-    "static/js/main.550c1393.js"
+    "static/css/main.0dc29ca8.css",
+    "static/js/main.523727a8.js"
   ]
 }
