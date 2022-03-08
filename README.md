@@ -11,20 +11,20 @@ An interactive, full stack, facebook clone built primarily using React. Allows u
 ### Built Using:
 
 - [React Framework](https://reactjs.org/)
-  - Functional Components
-  - State and Props
-  - useEffect Hook
-  - router-dom
+  - component routing
+  - useEffect, useRef, useState hooks
+  - efficient state management
 - [Firebase BAAS](https://firebase.google.com/)
-  - Database
+  - Document Queries
+  - Document creation and modification based on user interactivity
 - [Moment JS](https://momentjs.com/)
   - Date Object Manipulation
 - [Font Awesome Icons](https://fontawesome.com/)
 - Javascript
-  - Data Manipulation
 - HTML
   - From Validation
   - Consistent Semantic Elements
+- SASS Styling
 - CSS
   - Variables
   - Media Queries
@@ -41,6 +41,6 @@ npm run start
 #### Improvements To Be Implemented
 
 - Add ability to create new account
-- Add Emoji and Comment Enhancement icons at the end of add a comment bar for nicer UI
-- User account page with all relevant user info and ability to modify them
+- Implement FB Profile Page UI
+- Add ability to modify user details in profile page.
 - Add media storage when new post is added with pictures
