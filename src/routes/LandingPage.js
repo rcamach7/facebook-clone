@@ -1,4 +1,4 @@
-import "../styles/SignIn.css";
+import "../scss/SignIn.scss";
 import logo from "../assets/fbLoginLogo.svg";
 import { getFirebaseConfig } from "../data/config";
 import { initializeApp } from "firebase/app";

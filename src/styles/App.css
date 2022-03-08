@@ -48,21 +48,14 @@ button {
 /* Sub Containers For Main Content */
 .main-container-leftBar {
   flex: 1.25;
-  /* Test */
-  /* outline: auto; */
 }
 
 .main-container-content {
   flex: 3;
-
-  /* Test */
-  /* outline: auto; */
 }
 
 .main-container-rightBar {
   flex: 1.25;
-  /* Test */
-  /* outline: auto; */
   display: flex;
 }
 
