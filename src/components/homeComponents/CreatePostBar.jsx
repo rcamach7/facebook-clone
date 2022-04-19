@@ -1,4 +1,3 @@
-import "../../styles/CreatePost.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhotoVideo, faLaughBeam } from "@fortawesome/free-solid-svg-icons";
 

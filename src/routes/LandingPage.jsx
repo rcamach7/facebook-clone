@@ -1,4 +1,3 @@
-import "../styles/scss/LandingPage.scss";
 import logo from "../assets/fbLoginLogo.svg";
 import { getFirebaseConfig } from "../data/config";
 import { initializeApp } from "firebase/app";

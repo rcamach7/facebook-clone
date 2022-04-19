@@ -1,4 +1,3 @@
-import "../styles/scss/Profile.scss";
 import Navbar from "../components/Navbar";
 import { getFirebaseConfig } from "../data/config";
 import { useEffect, useState } from "react";

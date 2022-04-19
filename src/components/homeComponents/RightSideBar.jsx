@@ -1,4 +1,3 @@
-import "../../styles/RightSideBar.css";
 import reactLogo from "../../assets/react.png";
 import firebaseLogo from "../../assets/firebase.png";
 import stack from "../../assets/stack.jpeg";

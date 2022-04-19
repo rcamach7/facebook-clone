@@ -1,3 +1,10 @@
+@import url("CreatePost.css");
+@import url("LeftSideBar.css");
+@import url("MainContent.css");
+@import url("Navbar.css");
+@import url("Post.css");
+@import url("RightSideBar.css");
+
 * {
   box-sizing: border-box;
   margin: 0;

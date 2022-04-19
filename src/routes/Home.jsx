@@ -1,4 +1,3 @@
-import "../styles/App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,

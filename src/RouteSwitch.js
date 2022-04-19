@@ -1,3 +1,5 @@
+import "./styles/index.css";
+import "./styles/scss/index.scss";
 import Home from "./routes/Home";
 import LandingPage from "./routes/LandingPage";
 import Profile from "./routes/Profile";

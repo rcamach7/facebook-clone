@@ -1,4 +1,3 @@
-import "../../../styles/Post.css";
 import PostInfo from "./PostInfo";
 import PostNavbar from "./PostNavbar";
 import PostComments from "./PostComments";
