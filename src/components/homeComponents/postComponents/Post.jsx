@@ -1,8 +1,8 @@
-import "../styles/Post.css";
-import PostInfo from "./postSubComponents/PostInfo";
-import PostNavbar from "./postSubComponents/PostNavbar";
-import PostComments from "./postSubComponents/PostComments";
-import PostAddComment from "./postSubComponents/PostAddComment";
+import "../../../styles/Post.css";
+import PostInfo from "./PostInfo";
+import PostNavbar from "./PostNavbar";
+import PostComments from "./PostComments";
+import PostAddComment from "./PostAddComment";
 
 export default function Post(props) {
   return (

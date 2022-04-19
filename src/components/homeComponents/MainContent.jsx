@@ -1,15 +1,15 @@
 import "../../styles/MainContent.css";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import Post from "../Post";
-import CreatePost from "../CreatePost";
-import PopupForm from "../PopupForm";
+import Post from "./postComponents/Post";
+import CreatePostBar from "./CreatePostBar";
+import PopupForm from "../forms/PopupForm";
 
 function MainContent(props) {
   const [showPopup, setShowPopup] = useState(false);
   return (
     <div className="MainContent">
-      <CreatePost
+      <CreatePostBar
         userInfo={props.userInfo}
         profilePicture={props.profilePicture}
         setShowPopup={setShowPopup}

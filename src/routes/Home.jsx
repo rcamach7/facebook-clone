@@ -11,9 +11,9 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import LeftSideBar from "../components/homePageSections/LeftSideBar";
-import RightSideBar from "../components/homePageSections/RightSideBar";
-import MainContent from "../components/homePageSections/MainContent";
+import LeftSideBar from "../components/homeComponents/LeftSideBar";
+import RightSideBar from "../components/homeComponents/RightSideBar";
+import MainContent from "../components/homeComponents/MainContent";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";

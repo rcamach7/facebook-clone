@@ -1,8 +1,8 @@
-import "../styles/CreatePost.css";
+import "../../styles/CreatePost.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhotoVideo, faLaughBeam } from "@fortawesome/free-solid-svg-icons";
 
-function CreatePost(props) {
+function CreatePostBar(props) {
   return (
     <div className="CreatePost">
       <div className="createPost-submission">
@@ -34,4 +34,4 @@ function CreatePost(props) {
   );
 }
 
-export default CreatePost;
+export default CreatePostBar;
