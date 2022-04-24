@@ -1,9 +1,9 @@
-@import url("CreatePost.css");
-@import url("LeftSideBar.css");
-@import url("MainContent.css");
+@import url("./homeComponents/CreatePost.css");
+@import url("./homeComponents/LeftSideBar.css");
+@import url("./homeComponents/MainContent.css");
+@import url("./homeComponents/Post.css");
+@import url("./homeComponents/RightSideBar.css");
 @import url("Navbar.css");
-@import url("Post.css");
-@import url("RightSideBar.css");
 
 * {
   box-sizing: border-box;
