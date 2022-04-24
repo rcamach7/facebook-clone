@@ -1,6 +1,7 @@
 const { check, validationResult } = require("express-validator");
-import config from "../config.json";
+const config = require("../config.json");
 const axios = require("axios");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
@@ -52,30 +53,65 @@ exports.createUser = [
       // Save new user and move on to next middleware.
       await user.save();
       // Save user in order to provide login details to our endpoint to retrieve authentication token.
-      res.locals.user = { username: user.username, password: user.password };
+      res.locals.user = {
+        username: user.username,
+        password: req.body.password,
+      };
       next();
-    } catch (error) {
-      req.status(400).json({ error: "Error creating new account" });
+    } catch (errors) {
+      return req
+        .status(400)
+        .json({ message: "Error creating new account", errors });
     }
   },
   // Make request to our login endpoint to retrieve and send back authentication token.
   async (req, res, next) => {
     try {
       // Use our login endpoint to send user back a authentication token.
-      const { token } = await axios.post(
-        `${config.apiUrl}/login`,
-        res.locals.user
-      );
-      res.json({ token });
-    } catch (error) {
-      req.status(502).json({ error: "Error retrieving authentication token" });
+      const {
+        data: { token },
+      } = await axios.post(`${config.apiUrl}/login`, res.locals.user);
+
+      return res.json({ token });
+    } catch (errors) {
+      return res
+        .status(400)
+        .json({ message: "Error retrieving authentication token", errors });
     }
   },
 ];
 
-exports.getUser = (req, res, next) => {
-  res.json({ msg: "Get User Endpoint" });
-};
+exports.getUser = [
+  // Verify token exists - if so, pull and save for next middleware.
+  (req, res, next) => {
+    const bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== "undefined") {
+      const bearer = bearerHeader.split(" ");
+      const bearerToken = bearer[1];
+
+      // Save token and move on.
+      req.token = bearerToken;
+      next();
+    } else {
+      return res.status(403).json({
+        message: "Protected route - not authorized",
+      });
+    }
+  },
+  // Verify token is valid, and retrieve user.
+  async (req, res, next) => {
+    try {
+      const { _id } = jwt.verify(req.token, process.env.SECRET_STRING);
+      const user = await User.findById(_id).select(
+        "username fullName profilePicture"
+      );
+
+      return res.json({ user });
+    } catch (errors) {
+      return res.status(401).json({ message: "Token is not valid", errors });
+    }
+  },
+];
 
 // To be implemented in the future
 exports.updateUser = (req, res, next) => {

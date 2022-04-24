@@ -8,6 +8,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 
+// Import model for passport
+const User = require("./models/User");
+
 // Import Routes
 const userRoutes = require("./routes/userRoutes");
 const loginRoute = require("./routes/loginRoute");

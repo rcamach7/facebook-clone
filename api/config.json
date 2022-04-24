@@ -1,4 +1,4 @@
 {
-  "apiUrl": "http:localhost:2000",
+  "apiUrl": "http://localhost:2000",
   "placeholder": ""
 }
