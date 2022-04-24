@@ -8,6 +8,10 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 
+// Import Routes
+const userRoutes = require("./routes/userRoutes");
+const loginRoute = require("./routes/loginRoute");
+
 // Initiate our application
 const app = express();
 
@@ -50,6 +54,11 @@ passport.use(
     });
   })
 );
+
+// Use our user routes to hit endpoints related to users.
+app.use("/user", userRoutes);
+
+app.use("/login", loginRoute);
 
 app.get("/", (req, res, next) => {
   res.json({ msg: "hello world" });
