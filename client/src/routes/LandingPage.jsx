@@ -1,22 +1,9 @@
 import logo from "../assets/fbLoginLogo.svg";
-import { getFirebaseConfig } from "../data/config";
-import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
-const firebaseApp = initializeApp(getFirebaseConfig());
-const auth = getAuth(firebaseApp);
 const LandingPage = () => {
   const [user, setUser] = useState();
-
-  onAuthStateChanged(auth, (user) => {
-    setUser(user);
-  });
 
   useEffect(() => {
     return () => {};
@@ -32,23 +19,6 @@ const LandingPage = () => {
 const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleTestAccount = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, "test@facebook.com", "test123");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="SignIn" onSubmit={(e) => handleSignIn(e)}>
