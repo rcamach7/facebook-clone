@@ -5,8 +5,12 @@ router.get("/", postsController.getPosts);
 
 router.post("/", postsController.createPost);
 
-// If requests provides a like field thats truthly, we assume the update is a like update(remove or add)  and process it.
-// If the user provides a comment field - we assume they are adding a comment to the post and process that.
+/**
+ * User can only make one update at a time. First body field to be detected, gets processed and request ends.
+ * add/remove like to a post => postLike must be truthly
+ * add/remove like to a comment => commentLike must be truthly and commentId provided (will end request if one field is missing)
+ * add comment to post => comment must be provided
+ */
 router.put("/:id", postsController.editPost);
 
 router.delete("/", postsController.deletePost);

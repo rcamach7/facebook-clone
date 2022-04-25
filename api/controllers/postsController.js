@@ -80,6 +80,9 @@ exports.createPost = [
   },
 ];
 
+/**
+ * User can only make one update at a time. First body field to be detected, gets processed and request ends.
+ */
 exports.editPost = [
   // Verify token exists - if so, pull and save for next middleware.
   (req, res, next) => {
@@ -102,17 +105,18 @@ exports.editPost = [
       });
     }
   },
-  // Check if user is liking a post = if so process that. If not, move on.
+  /**
+   * Process "add like to a post". For this request to be valid, these body fields must exists:
+   * postLike must be truthly.
+   */
   async (req, res, next) => {
-    if (!req.body.like) {
+    if (!req.body.postLike) {
       next();
     } else {
       // User intends to add a like to the post ID passed in the params.
       try {
         const post = await Post.findById(req.params.id);
         for (let i = 0; i < post.likes.length; i++) {
-          console.log(post.likes);
-          console.log(res.locals.userId);
           // Indicates user has already liked this posts - so we assume user wants to remove their like.
           if (post.likes[i]._id.equals(res.locals.userId)) {
             await Post.updateOne(
@@ -135,6 +139,76 @@ exports.editPost = [
       }
     }
   },
+  /**
+   * Process "add like to a comment". For this request to be valid, these body fields must exists:
+   * commentLike must be truthly.
+   * commentId must be provided.
+   */
+  async (req, res, next) => {
+    if (!req.body.commentLike) {
+      // User does not indicate he would like to add a like to a comment, so we move on to our last option.
+      next();
+    } else {
+      // Process user like to a specific comment
+      if (!req.body.commentId) {
+        return res.status(400).json({
+          message: "Please provide comment ID to add like to a comment",
+        });
+      } else {
+        try {
+          // We have needed fields to add/remove like to a comment.
+          const post = await Post.findById(req.params.id);
+          for (let i = 0; i < post.comments.length; i++) {
+            // If user has already liked this comment - remove their like and end request.
+            if (post.comments[i]._id.equals(req.body.commentId)) {
+              // Once we find the comment we are looking for - we will loop through the likes it has currently and find out if the current user has already liked this comment.
+              for (let j = 0; j < post.comments[i].likes.length; j++) {
+                // If the below gets hit - user already liked this comment - so we remove their like and end the request.
+                if (post.comments[i].likes[j]._id.equals(res.locals.userId)) {
+                  const removedCommentLikePost = await Post.findOneAndUpdate(
+                    // The second field targets the specific in the comments array, that contains an ID that matches the one passed in.
+                    { _id: req.params.id, "comments._id": req.body.commentId },
+                    // This command pulls all objects in likes array, that contain the _id field we provided.
+                    {
+                      $pull: {
+                        "comments.$.likes": { _id: res.locals.userId },
+                      },
+                    },
+                    {
+                      new: true,
+                    }
+                  );
+                  return res.json({
+                    message: "Removed comment like",
+                    post: removedCommentLikePost,
+                  });
+                }
+              }
+            }
+          }
+          // If we reach this point - then user intends to add like to commentId provided.
+          const addedCommentLikePost = await Post.findOneAndUpdate(
+            { _id: req.params.id, "comments._id": req.body.commentId },
+            { $push: { "comments.$.likes": { _id: res.locals.userId } } },
+            { new: true }
+          );
+          // End response and provide updated post.
+          return res.json({
+            message: "Like added to comment",
+            post: addedCommentLikePost,
+          });
+        } catch (errors) {
+          return res
+            .status(500)
+            .json({ message: "Error adding like to comment", errors });
+        }
+      }
+    }
+  },
+  /**
+   * Process "add comment to post". For this request to be valid, these body fields must exists:
+   * comment must be provided
+   */
   async (req, res) => {
     if (!req.body.comment) {
       // End request since user didn't send a valid field to update.
@@ -150,7 +224,7 @@ exports.editPost = [
               comments: [
                 // Add new comment with required fields to post
                 {
-                  _id: res.locals.userId,
+                  user: res.locals.userId,
                   comment: req.body.comment,
                   timeStamp: new Date(),
                 },

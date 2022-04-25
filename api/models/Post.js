@@ -13,9 +13,14 @@ const Post = new Schema({
   ],
   comments: [
     {
-      _id: { type: Schema.Types.ObjectId, ref: "User", required: true },
+      user: { type: Schema.Types.ObjectId, ref: "User", required: true },
       comment: { type: String, required: true, minlength: 4 },
       timeStamp: { type: Date, required: true },
+      likes: [
+        {
+          _id: { type: Schema.Types.ObjectId, ref: "User", required: true },
+        },
+      ],
     },
   ],
 });
