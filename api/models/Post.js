@@ -15,6 +15,7 @@ const Post = new Schema({
     {
       _id: { type: Schema.Types.ObjectId, ref: "User", required: true },
       comment: { type: String, required: true, minlength: 4 },
+      timeStamp: { type: Date, required: true },
     },
   ],
 });
