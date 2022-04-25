@@ -116,22 +116,33 @@ exports.editPost = [
       // User intends to add a like to the post ID passed in the params.
       try {
         const post = await Post.findById(req.params.id);
+        let updatedPost = null;
+
         for (let i = 0; i < post.likes.length; i++) {
           // Indicates user has already liked this posts - so we assume user wants to remove their like.
           if (post.likes[i]._id.equals(res.locals.userId)) {
-            await Post.updateOne(
+            updatedPost = await Post.updateOne(
               { _id: req.params.id },
-              { $pullAll: { likes: [{ _id: res.locals.userId }] } }
+              { $pullAll: { likes: [{ _id: res.locals.userId }] } },
+              {
+                new: true,
+              }
             );
-            return res.json({ message: "Like removed from post" });
+            return res.json({
+              message: "Like removed from post",
+              post: updatedPost,
+            });
           }
         }
         // If the previous loop didn't end request - we assume user is intending to like this post now.
-        const updatedPost = await Post.updateOne(
+        updatedPost = await Post.findOneAndUpdate(
           { _id: req.params.id },
-          { $push: { likes: [{ _id: res.locals.userId }] } }
+          { $push: { likes: [{ _id: res.locals.userId }] } },
+          {
+            new: true,
+          }
         );
-        return res.json({ message: "Like added to post", updatedPost });
+        return res.json({ message: "Like added to post", post: updatedPost });
       } catch (errors) {
         return res
           .status(400)
@@ -158,6 +169,7 @@ exports.editPost = [
         try {
           // We have needed fields to add/remove like to a comment.
           const post = await Post.findById(req.params.id);
+          let updatedPost = null;
           for (let i = 0; i < post.comments.length; i++) {
             // If user has already liked this comment - remove their like and end request.
             if (post.comments[i]._id.equals(req.body.commentId)) {
@@ -165,7 +177,7 @@ exports.editPost = [
               for (let j = 0; j < post.comments[i].likes.length; j++) {
                 // If the below gets hit - user already liked this comment - so we remove their like and end the request.
                 if (post.comments[i].likes[j]._id.equals(res.locals.userId)) {
-                  const removedCommentLikePost = await Post.findOneAndUpdate(
+                  updatedPost = await Post.findOneAndUpdate(
                     // The second field targets the specific in the comments array, that contains an ID that matches the one passed in.
                     { _id: req.params.id, "comments._id": req.body.commentId },
                     // This command pulls all objects in likes array, that contain the _id field we provided.
@@ -180,14 +192,14 @@ exports.editPost = [
                   );
                   return res.json({
                     message: "Removed comment like",
-                    post: removedCommentLikePost,
+                    post: updatedPost,
                   });
                 }
               }
             }
           }
           // If we reach this point - then user intends to add like to commentId provided.
-          const addedCommentLikePost = await Post.findOneAndUpdate(
+          updatedPost = await Post.findOneAndUpdate(
             { _id: req.params.id, "comments._id": req.body.commentId },
             { $push: { "comments.$.likes": { _id: res.locals.userId } } },
             { new: true }
@@ -195,7 +207,7 @@ exports.editPost = [
           // End response and provide updated post.
           return res.json({
             message: "Like added to comment",
-            post: addedCommentLikePost,
+            post: updatedPost,
           });
         } catch (errors) {
           return res
@@ -217,7 +229,7 @@ exports.editPost = [
         .json({ message: "Please provide a field to update" });
     } else {
       try {
-        const post = await Post.updateOne(
+        const post = await Post.findOneAndUpdate(
           { _id: req.params.id },
           {
             $push: {
@@ -230,6 +242,9 @@ exports.editPost = [
                 },
               ],
             },
+          },
+          {
+            new: true,
           }
         );
         return res.json({ message: "Comment added to post", post });
