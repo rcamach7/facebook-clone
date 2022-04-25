@@ -14,6 +14,7 @@ const User = require("./models/User");
 // Import Routes
 const userRoutes = require("./routes/userRoutes");
 const loginRoute = require("./routes/loginRoute");
+const postsRoutes = require("./routes/postsRoutes");
 
 // Initiate our application
 const app = express();
@@ -60,6 +61,8 @@ passport.use(
 
 // Use our user routes to hit endpoints related to users.
 app.use("/user", userRoutes);
+
+app.use("/posts", postsRoutes);
 
 app.use("/login", loginRoute);
 
