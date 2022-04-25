@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const Post = new Schema({
   postedBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  postID: { type: String, required: true },
   timeStamp: { type: Date, required: true },
   description: { type: String, required: true },
   picture: { type: String },
