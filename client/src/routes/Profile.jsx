@@ -40,9 +40,7 @@ const Profile = () => {
           </p>
         </div>
 
-        <button className="profile-signOut" onClick={handleSignOut}>
-          Sign Out
-        </button>
+        <button className="profile-signOut">Sign Out</button>
         <button className="profile-EditInfo">Edit Account Info</button>
       </div>
     </div>

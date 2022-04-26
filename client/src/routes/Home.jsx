@@ -22,32 +22,33 @@ function Home() {
   const [profilePicture, setProfilePicture] = useState();
   const [posts, setPosts] = useState([]);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Navbar icon={profilePicture} />
-      </header>
-      <main className="main-container">
-        <div className="main-container-leftBar">
-          <LeftSideBar userInfo={userInfo} profilePicture={profilePicture} />
-        </div>
-        <div className="main-container-content">
-          <MainContent
-            posts={posts}
-            userInfo={userInfo}
-            profilePicture={profilePicture}
-            handleNewPost={handleNewPost}
-            handleAddCommentToPost={handleAddCommentToPost}
-            handleAddCommentLike={handleAddCommentLike}
-            handlePostLike={handlePostLike}
-          />
-        </div>
-        <div className="main-container-rightBar">
-          <RightSideBar loadTestData={loadTestData} />
-        </div>
-      </main>
-    </div>
-  );
+  // return (
+  //   <div className="App">
+  //     <header className="App-header">
+  //       <Navbar icon={profilePicture} />
+  //     </header>
+  //     <main className="main-container">
+  //       <div className="main-container-leftBar">
+  //         <LeftSideBar userInfo={userInfo} profilePicture={profilePicture} />
+  //       </div>
+  //       <div className="main-container-content">
+  //         <MainContent
+  //           posts={posts}
+  //           userInfo={userInfo}
+  //           profilePicture={profilePicture}
+  //           handleNewPost={handleNewPost}
+  //           handleAddCommentToPost={handleAddCommentToPost}
+  //           handleAddCommentLike={handleAddCommentLike}
+  //           handlePostLike={handlePostLike}
+  //         />
+  //       </div>
+  //       <div className="main-container-rightBar">
+  //         <RightSideBar loadTestData={loadTestData} />
+  //       </div>
+  //     </main>
+  //   </div>
+  // );
+  return <div>Hello World</div>;
 }
 
 library.add(

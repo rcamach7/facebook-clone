@@ -1,27 +1,12 @@
 import logo from "../assets/fbLoginLogo.svg";
-import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useState } from "react";
 
 const LandingPage = () => {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    return () => {};
-  }, []);
-
-  return (
-    <div className="LandingPage">
-      {user ? <Navigate to="/facebook-clone/home" /> : <SignInForm />}
-    </div>
-  );
-};
-
-const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <div className="SignIn" onSubmit={(e) => handleSignIn(e)}>
+    <div className="SignIn">
       <aside>
         <img src={logo} alt="" />
         <p>Connect with friends and the world around you on Facebook.</p>
@@ -43,7 +28,7 @@ const SignInForm = () => {
         <button className="login-btn" type="submit">
           Log In
         </button>
-        <button className="login-btn" type="button" onClick={handleTestAccount}>
+        <button className="login-btn" type="button">
           Use test account
         </button>
         <button type="button"> Forgot password?</button>
