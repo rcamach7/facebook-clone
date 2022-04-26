@@ -25,11 +25,20 @@ exports.getPosts = [
   },
   async (req, res) => {
     try {
-      const posts = await Post.find().populate({
-        path: "postedBy",
-        model: "User",
-        select: ["username", "fullName", "profilePicture"],
-      });
+      const posts = await Post.find()
+        .populate({
+          path: "postedBy",
+          model: "User",
+          select: ["username", "fullName", "profilePicture"],
+        })
+        .populate({
+          path: "comments",
+          populate: {
+            path: "user",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        });
       return res.json({ posts });
     } catch (errors) {
       return res
@@ -40,12 +49,6 @@ exports.getPosts = [
 ];
 
 exports.createPost = [
-  // Data Validation and sanitation.
-  check("postedBy")
-    .exists()
-    .trim()
-    .isLength({ min: 4 })
-    .withMessage("Must provide author (postedBy) of post."),
   check("description")
     .exists()
     .trim()
@@ -59,10 +62,31 @@ exports.createPost = [
     // If no errors, move on to step.
     next();
   },
+  // Verify token exists - if so, pull and save for next middleware.
+  (req, res, next) => {
+    const bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== "undefined") {
+      const bearer = bearerHeader.split(" ");
+      const bearerToken = bearer[1];
+
+      // If token exists, but is not valid - we will not process request.
+      try {
+        const { _id } = jwt.verify(bearerToken, process.env.SECRET_STRING);
+        res.locals.userId = _id;
+      } catch (errors) {
+        return res.status(401).json({ message: "Token is not valid.", errors });
+      }
+      next();
+    } else {
+      return res.status(403).json({
+        message: "Protected route - not authorized",
+      });
+    }
+  },
   async (req, res, next) => {
     try {
-      const post = new Post({
-        postedBy: req.body.postedBy,
+      const newPost = new Post({
+        postedBy: res.locals.userId,
         timeStamp: new Date(),
         description: req.body.description,
         picture: req.body.picture ? req.body.picture : null,
@@ -70,8 +94,14 @@ exports.createPost = [
         comments: [],
       });
 
-      await post.save();
-      res.json({ post });
+      await newPost.save();
+      // Retrieve new post with populated fields.
+      const post = await Post.findById(newPost._id).populate({
+        path: "postedBy",
+        model: "User",
+        select: ["username", "fullName", "profilePicture"],
+      });
+      return res.json({ post });
     } catch (errors) {
       return res
         .status(500)
@@ -127,11 +157,20 @@ exports.editPost = [
               {
                 new: true,
               }
-            ).populate({
-              path: "postedBy",
-              model: "User",
-              select: ["username", "fullName", "profilePicture"],
-            });
+            )
+              .populate({
+                path: "postedBy",
+                model: "User",
+                select: ["username", "fullName", "profilePicture"],
+              })
+              .populate({
+                path: "comments",
+                populate: {
+                  path: "user",
+                  model: "User",
+                  select: ["username", "fullName", "profilePicture"],
+                },
+              });
             return res.json({
               message: "Like removed from post",
               post: updatedPost,
@@ -145,11 +184,20 @@ exports.editPost = [
           {
             new: true,
           }
-        ).populate({
-          path: "postedBy",
-          model: "User",
-          select: ["username", "fullName", "profilePicture"],
-        });
+        )
+          .populate({
+            path: "postedBy",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          })
+          .populate({
+            path: "comments",
+            populate: {
+              path: "user",
+              model: "User",
+              select: ["username", "fullName", "profilePicture"],
+            },
+          });
         return res.json({ message: "Like added to post", post: updatedPost });
       } catch (errors) {
         return res
@@ -197,11 +245,20 @@ exports.editPost = [
                     {
                       new: true,
                     }
-                  ).populate({
-                    path: "postedBy",
-                    model: "User",
-                    select: ["username", "fullName", "profilePicture"],
-                  });
+                  )
+                    .populate({
+                      path: "postedBy",
+                      model: "User",
+                      select: ["username", "fullName", "profilePicture"],
+                    })
+                    .populate({
+                      path: "comments",
+                      populate: {
+                        path: "user",
+                        model: "User",
+                        select: ["username", "fullName", "profilePicture"],
+                      },
+                    });
                   return res.json({
                     message: "Removed comment like",
                     post: updatedPost,
@@ -215,11 +272,20 @@ exports.editPost = [
             { _id: req.params.id, "comments._id": req.body.commentId },
             { $push: { "comments.$.likes": { _id: res.locals.userId } } },
             { new: true }
-          ).populate({
-            path: "postedBy",
-            model: "User",
-            select: ["username", "fullName", "profilePicture"],
-          });
+          )
+            .populate({
+              path: "postedBy",
+              model: "User",
+              select: ["username", "fullName", "profilePicture"],
+            })
+            .populate({
+              path: "comments",
+              populate: {
+                path: "user",
+                model: "User",
+                select: ["username", "fullName", "profilePicture"],
+              },
+            });
           // End response and provide updated post.
           return res.json({
             message: "Like added to comment",
@@ -262,11 +328,20 @@ exports.editPost = [
           {
             new: true,
           }
-        ).populate({
-          path: "postedBy",
-          model: "User",
-          select: ["username", "fullName", "profilePicture"],
-        });
+        )
+          .populate({
+            path: "postedBy",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          })
+          .populate({
+            path: "comments",
+            populate: {
+              path: "user",
+              model: "User",
+              select: ["username", "fullName", "profilePicture"],
+            },
+          });
         return res.json({ message: "Comment added to post", post });
       } catch (error) {
         return res

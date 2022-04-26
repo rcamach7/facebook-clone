@@ -40,7 +40,11 @@ npm run start
 
 #### Improvements To Be Implemented
 
-- Add ability to create new account
-- Implement FB Profile Page UI
-- Add ability to modify user details in profile page.
-- Add media storage when new post is added with pictures
+- Add ability for server to accept images with new posts, and use cloudinary to store and query these images.
+- Add dropdown on post that allows users to delete post (if they are the author)
+
+UI Improvements
+
+- Fix status bar overflowing whenever visiting on a iPhone SE viewport size.
+- Implement Profile Page UI
+- Upon user creation, assign random profile icon pictures, so there's difference between all new users.

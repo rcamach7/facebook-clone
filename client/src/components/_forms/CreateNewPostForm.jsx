@@ -7,11 +7,13 @@ import {
   faMicrophone,
   faEllipsisH,
   faWindowClose,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext } from "react";
 import { UserContext } from "../../RouteSwitch";
+import { createPost } from "../../assets/api";
 
-function CreateNewPostForm({ setShowPopup }) {
+function CreateNewPostForm({ setShowPopup, setPosts }) {
   const { user } = useContext(UserContext);
   const formPlaceholder = `What's on your mind, ${
     user ? user.fullName : "loading"
@@ -20,8 +22,19 @@ function CreateNewPostForm({ setShowPopup }) {
   const [postDescription, setPostDescription] = useState("");
   const [picture, setPicture] = useState(null);
 
-  const handleSubmission = (e) => {
-    setShowPopup(false);
+  const handleSubmission = async (e) => {
+    e.preventDefault();
+    try {
+      const post = await createPost(postDescription, picture);
+      setPosts((prevState) => {
+        const newState = [...prevState, post];
+        return newState;
+      });
+      setShowPopup(false);
+    } catch (error) {
+      console.log(error);
+      alert("Error creating new post");
+    }
   };
 
   return (
@@ -52,7 +65,7 @@ function CreateNewPostForm({ setShowPopup }) {
               {user ? user.fullName : null}
             </p>
             <div className="createNewPostForm-userInfo-data-nav">
-              <FontAwesomeIcon icon="users" style={{ fontSize: "13px" }} />
+              <FontAwesomeIcon icon={faUsers} style={{ fontSize: "13px" }} />
               <span style={{ margin: "0px 5px 0 5px" }}>Friends</span>
               <FontAwesomeIcon
                 icon={faCaretSquareDown}

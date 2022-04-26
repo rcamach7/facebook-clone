@@ -9,7 +9,7 @@ function PostComments({ comments, postId, setPosts }) {
             key={uuidv4()}
             username={curComment.user.username}
             comment={curComment.comment}
-            commenterPicture={curComment.user.profileImage}
+            commenterPicture={curComment.user.profilePicture}
             likes={curComment.likes}
             commentId={curComment._id}
             postId={postId}

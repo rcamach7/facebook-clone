@@ -41,6 +41,20 @@ export async function createUser(account) {
   }
 }
 
+export async function createPost(description, picture) {
+  try {
+    const {
+      data: { post },
+    } = await axios.post(`${config.apiUrl}/posts/`, {
+      description,
+      picture,
+    });
+    return Promise.resolve(post);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 export async function getToken(account) {
   try {
     const {

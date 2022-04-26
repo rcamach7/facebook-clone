@@ -11,7 +11,9 @@ function PostsContainer() {
   return (
     <div className="PostsContainer">
       <StatusBar setShowPopup={setShowPopup} />
-      {showPopup ? <CreateNewPostForm setShowPopup={setShowPopup} /> : null}
+      {showPopup ? (
+        <CreateNewPostForm setShowPopup={setShowPopup} setPosts={setPosts} />
+      ) : null}
 
       {/* Traverses the array in reverse order to display test data by time posted */}
       {posts
