@@ -1,32 +1,17 @@
 import "./styles/index.css";
-import "./styles/scss/index.scss";
-import Home from "./routes/Home";
-import LandingPage from "./routes/LandingPage";
+import "./styles/index.scss";
 import React from "react";
 import { useState } from "react";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
-import axios from "axios";
 import useFetchUser from "./hooks/useFetchUser";
 import useFetchPosts from "./hooks/useFetchPosts";
-
-// Send all requests with our authentication token - if it exists.
-const myToken = localStorage.getItem("token");
-axios.interceptors.request.use(
-  (config) => {
-    if (myToken) {
-      config.headers.authorization = `Bearer ${myToken}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+import Home from "./routes/Home";
+import LandingPage from "./routes/LandingPage";
 
 // Export user context to provide to any children components who need it.
 export const UserContext = React.createContext();
 
-const RouteSwitch = () => {
+export default function RouteSwitch({ myToken }) {
   const [storedJwt, setStoredJwt] = useState(myToken);
   const [user, setUser] = useFetchUser(storedJwt, setStoredJwt);
   const [posts, setPosts] = useFetchPosts(storedJwt);
@@ -57,7 +42,7 @@ const RouteSwitch = () => {
       </UserContext.Provider>
     </HashRouter>
   );
-};
+}
 
 // Protects routes that require authentication
 function RequireAuth({ children, storedJwt }) {
@@ -76,5 +61,3 @@ function NotAuthenticated({ children, storedJwt }) {
     <Navigate to="/facebook-clone/home" replace />
   );
 }
-
-export default RouteSwitch;

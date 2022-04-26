@@ -3,8 +3,6 @@
 @import url("./homeComponents/MainContent.css");
 @import url("./homeComponents/Post.css");
 @import url("./homeComponents/RightSideBar.css");
-@import url("Navbar.css");
-
 * {
   box-sizing: border-box;
   margin: 0;

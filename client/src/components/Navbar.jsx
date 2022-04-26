@@ -13,14 +13,10 @@ function Navbar() {
         <Link to="/facebook-clone/home" className="leftMenu-item logo">
           <img src={logo} alt="" />
         </Link>
-        <li className="leftMenu-item search">
+        <li className="searchItem">
           <FontAwesomeIcon icon="search" size="2x" />
           <form className="navbar-form">
-            <input
-              className="search-input"
-              placeholder="Search Facebook"
-              type="text"
-            />
+            <input placeholder="Search Facebook" type="text" />
           </form>
         </li>
       </ul>
