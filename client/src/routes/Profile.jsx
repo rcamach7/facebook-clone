@@ -1,42 +1,23 @@
 import Navbar from "../components/Navbar";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../RouteSwitch";
 
 const Profile = () => {
-  const [status, setStatus] = useState({});
-  const [user, setUser] = useState({});
-  const [profilePicture, setProfilePicture] = useState();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!status) {
-      navigate("/facebook-clone/");
-    }
-
-    return () => {};
-  }, [navigate, status]);
+  const { user } = useContext(UserContext);
 
   return (
     <div className="Profile">
       <header>
-        <Navbar icon={profilePicture} />
+        <Navbar icon={user ? user.profilePicture : null} />
       </header>
       <div className="profile-main">
-        <img src={profilePicture} alt="" />
+        <img src={user ? user.profilePicture : null} alt="" />
 
         <div className="profile-userInfo">
-          <h1>{user.fullName}</h1>
+          <h1>{user ? user.fullName : null}</h1>
           <p>
             <strong>UserName: </strong>
-            {user.userName}
-          </p>
-          <p>
-            <strong>Email: </strong>
-            {user.email}
-          </p>
-          <p>
-            <strong>My ID: </strong>
-            {user.userId}
+            {user ? user.username : null}
           </p>
         </div>
 

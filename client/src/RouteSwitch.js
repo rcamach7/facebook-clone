@@ -6,6 +6,7 @@ import useFetchUser from "./hooks/useFetchUser";
 import useFetchPosts from "./hooks/useFetchPosts";
 import Home from "./routes/Home";
 import LandingPage from "./routes/LandingPage";
+import Profile from "./routes/Profile";
 
 // Export user context to provide to any children components who need it.
 export const UserContext = React.createContext();
@@ -35,7 +36,14 @@ export default function RouteSwitch({ myToken }) {
               </RequireAuth>
             }
           />
-          {/* <Route path="/facebook-clone/profile" element={<Profile />} /> */}
+          <Route
+            path="/facebook-clone/profile"
+            element={
+              <RequireAuth>
+                <Profile storedJwt={storedJwt} />
+              </RequireAuth>
+            }
+          />
           <Route path="*" element={<Navigate to="/facebook-clone/" />} />
         </Routes>
       </UserContext.Provider>
