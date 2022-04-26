@@ -1,3 +1,4 @@
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function RightSideBar(props) {
@@ -55,7 +56,7 @@ function RightSideBar(props) {
       </p>
       <button>
         <span className="newGroup-icon">
-          <FontAwesomeIcon icon="plus" />
+          <FontAwesomeIcon icon={faPlus} />
         </span>
         Create new group
       </button>

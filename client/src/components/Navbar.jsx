@@ -2,7 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { UserContext } from "../RouteSwitch";
 import { useContext } from "react";
-import { faHouseUser, faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHouseUser,
+  faSearch,
+  faStore,
+  faUserGroup,
+  faUsers,
+  faVideo,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   const { user } = useContext(UserContext);
@@ -17,7 +24,7 @@ function Navbar() {
           />
         </Link>
         <li className="searchItem">
-          <FontAwesomeIcon icon="search" size="2x" />
+          <FontAwesomeIcon icon={faSearch} size="2x" />
           <form className="navbar-form">
             <input placeholder="Search Facebook" type="text" />
           </form>
@@ -32,13 +39,13 @@ function Navbar() {
           <FontAwesomeIcon icon={faUserGroup} size="2x" />
         </li>
         <li className="menu-item">
-          <FontAwesomeIcon icon="video" size="2x" />
+          <FontAwesomeIcon icon={faVideo} size="2x" />
         </li>
         <li className="menu-item">
-          <FontAwesomeIcon icon="store" size="2x" />
+          <FontAwesomeIcon icon={faStore} size="2x" />
         </li>
         <li className="menu-item">
-          <FontAwesomeIcon icon="users" size="2x" />
+          <FontAwesomeIcon icon={faUsers} size="2x" />
         </li>
       </ul>
 

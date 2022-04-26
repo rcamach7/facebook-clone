@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhotoVideo, faLaughBeam } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPhotoVideo,
+  faLaughBeam,
+  faVideo,
+} from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../../RouteSwitch";
 import { useContext } from "react";
 
@@ -22,7 +26,8 @@ function StatusBar({ setShowPopup }) {
 
       <div className="statusBar-nav">
         <span className="statusBar-nav-item">
-          <FontAwesomeIcon icon="video" className="nav-liveVideo" /> Live Video
+          <FontAwesomeIcon icon={faVideo} className="nav-liveVideo" /> Live
+          Video
         </span>
         <span className="statusBar-nav-item">
           <FontAwesomeIcon icon={faPhotoVideo} className="nav-photo" />

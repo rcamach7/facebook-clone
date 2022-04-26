@@ -8,6 +8,9 @@ import {
   faCalendarTimes,
   faUserGroup,
   faCircleXmark,
+  faVideo,
+  faStore,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../RouteSwitch";
@@ -38,19 +41,19 @@ function LeftSideBar() {
         </li>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-blue">
-            <FontAwesomeIcon icon="users" />
+            <FontAwesomeIcon icon={faUsers} />
           </span>
           Groups
         </li>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-blue">
-            <FontAwesomeIcon icon="store" />
+            <FontAwesomeIcon icon={faStore} />
           </span>
           Market Place
         </li>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-blue">
-            <FontAwesomeIcon icon="video" />
+            <FontAwesomeIcon icon={faVideo} />
           </span>
           Watch
         </li>

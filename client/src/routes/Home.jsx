@@ -1,13 +1,3 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faSearch,
-  faVideo,
-  faStore,
-  faUsers,
-  faUser,
-  faCaretSquareDown,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
 import LeftSideBar from "../components/_Home/LeftSideBar";
 import RightSideBar from "../components/_Home/RightSideBar";
 import PostsContainer from "../components/_Home/PostsContainer";
@@ -34,13 +24,4 @@ function Home() {
   );
 }
 
-library.add(
-  faSearch,
-  faVideo,
-  faStore,
-  faUsers,
-  faUser,
-  faCaretSquareDown,
-  faPlus
-);
 export default Home;
