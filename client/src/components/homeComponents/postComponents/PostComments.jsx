@@ -1,19 +1,18 @@
 import { v4 as uuidv4 } from "uuid";
 import Comment from "./Comment";
-function PostComments(props) {
+function PostComments({ comments, postId }) {
   return (
     <div className="PostComments">
-      {props.comments.map((curComment) => {
+      {comments.map((curComment) => {
         return (
           <Comment
             key={uuidv4()}
-            userName={curComment.userName}
+            username={curComment.user.username}
             comment={curComment.comment}
-            icon={curComment.icon}
+            commenterPicture={curComment.user.profileImage}
             likes={curComment.likes}
-            commentId={curComment.commentId}
-            handleAddCommentLike={props.handleAddCommentLike}
-            postId={props.postId}
+            commentId={curComment._id}
+            postId={postId}
           />
         );
       })}

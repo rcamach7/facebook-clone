@@ -3,38 +3,30 @@ import PostNavbar from "./PostNavbar";
 import PostComments from "./PostComments";
 import PostAddComment from "./PostAddComment";
 
-export default function Post(props) {
+export default function Post({ post, user }) {
   return (
     <div className="Post">
       <div className="postInfoContainer">
         <PostInfo
-          userName={props.post.userName}
-          icon={props.post.icon}
-          timePosted={props.post.timePosted}
-          postDescription={props.post.postDescription}
-          postPicture={props.post.picture}
-          likes={props.post.likes}
-          numComments={props.post.comments.length}
+          username={post.postedBy.username}
+          authorProfilePicture={post.postedBy.profilePicture}
+          timeStamp={post.timeStamp}
+          description={post.description}
+          picture={post.picture}
+          likes={post.likes}
+          numComments={post.comments.length}
         />
       </div>
       <div className="postNavbarContainer">
-        <PostNavbar
-          handlePostLike={props.handlePostLike}
-          postId={props.post.postId}
-        />
+        <PostNavbar />
       </div>
       <div className="postCommentsContainer">
-        <PostComments
-          handleAddCommentLike={props.handleAddCommentLike}
-          comments={props.post.comments}
-          postId={props.post.postId}
-        />
+        <PostComments comments={post.comments} postId={post._id} />
       </div>
       <div className="postAddCommentContainer">
         <PostAddComment
-          postId={props.post.postId}
-          handleAddCommentToPost={props.handleAddCommentToPost}
-          icon={props.profilePicture}
+          postId={post._id}
+          profilePicture={user.profilePicture}
         />
       </div>
     </div>

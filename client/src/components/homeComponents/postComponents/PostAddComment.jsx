@@ -1,19 +1,16 @@
 import { useState } from "react";
 
-function PostAddComment(props) {
+function PostAddComment({ profilePicture }) {
   const [comment, setComment] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleAddCommentToPost(props.postId, comment);
-
-    setComment("");
   };
 
   return (
     <div className="PostAddComment">
       <div className="postAddComment-user">
-        <img src={props.icon} alt="" />
+        <img src={profilePicture} alt="" />
       </div>
       <form className="postAddComment-input" onSubmit={(e) => handleSubmit(e)}>
         <input
