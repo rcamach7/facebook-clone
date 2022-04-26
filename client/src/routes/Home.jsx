@@ -1,8 +1,6 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,
-  faHome,
-  faUserFriends,
   faVideo,
   faStore,
   faUsers,
@@ -38,8 +36,6 @@ function Home() {
 
 library.add(
   faSearch,
-  faHome,
-  faUserFriends,
   faVideo,
   faStore,
   faUsers,

@@ -6,6 +6,8 @@ import {
   faFlag,
   faNewspaper,
   faCalendarTimes,
+  faUserGroup,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../RouteSwitch";
@@ -13,6 +15,11 @@ import { useContext } from "react";
 
 function LeftSideBar() {
   const { user } = useContext(UserContext);
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <aside className="LeftSideBar">
@@ -25,7 +32,7 @@ function LeftSideBar() {
         </Link>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-lightBlue">
-            <FontAwesomeIcon icon="user-friends" />
+            <FontAwesomeIcon icon={faUserGroup} />
           </span>
           Find Friends
         </li>
@@ -82,6 +89,12 @@ function LeftSideBar() {
             <FontAwesomeIcon icon={faCaretSquareDown} />
           </span>
           See More
+        </li>
+        <li className="leftSideBar-nav-item" onClick={() => handleLogOut()}>
+          <span className="nav-item-iconHolder">
+            <FontAwesomeIcon icon={faCircleXmark} />
+          </span>
+          Log Out
         </li>
       </ul>
     </aside>

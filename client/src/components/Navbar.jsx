@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { UserContext } from "../RouteSwitch";
 import { useContext } from "react";
+import { faHouseUser, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   const { user } = useContext(UserContext);
@@ -25,10 +26,10 @@ function Navbar() {
 
       <ul className="navbar-menu">
         <Link to="/facebook-clone/home" className="menu-item">
-          <FontAwesomeIcon icon="home" size="2x" />
+          <FontAwesomeIcon icon={faHouseUser} size="2x" />
         </Link>
         <li className="menu-item">
-          <FontAwesomeIcon icon="user-friends" size="2x" />
+          <FontAwesomeIcon icon={faUserGroup} size="2x" />
         </li>
         <li className="menu-item">
           <FontAwesomeIcon icon="video" size="2x" />
