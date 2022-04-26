@@ -1,8 +1,6 @@
 @import url("./homeComponents/CreatePost.css");
-@import url("./homeComponents/LeftSideBar.css");
 @import url("./homeComponents/MainContent.css");
 @import url("./homeComponents/Post.css");
-@import url("./homeComponents/RightSideBar.css");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -37,41 +35,4 @@ button {
 
 #root {
   height: 100vh;
-}
-
-.App {
-  height: 100%;
-}
-
-.main-container {
-  height: 90%;
-
-  display: flex;
-  align-items: stretch;
-}
-
-/* Sub Containers For Main Content */
-.main-container-leftBar {
-  flex: 1.25;
-}
-
-.main-container-content {
-  flex: 3;
-}
-
-.main-container-rightBar {
-  flex: 1.25;
-  display: flex;
-}
-
-@media (max-width: 700px) {
-  .main-container-leftBar {
-    display: none;
-  }
-}
-
-@media (max-width: 1000px) {
-  .main-container-rightBar {
-    display: none;
-  }
 }

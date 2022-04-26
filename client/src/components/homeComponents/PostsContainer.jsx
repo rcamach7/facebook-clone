@@ -4,12 +4,12 @@ import Post from "./postComponents/Post";
 import CreatePostBar from "./CreatePostBar";
 import PopupForm from "../forms/PopupForm";
 
-function MainContent() {
+function PostsContainer() {
   const [showPopup, setShowPopup] = useState(false);
   const { posts, user } = useContext(UserContext);
 
   return (
-    <div className="MainContent">
+    <div className="PostsContainer">
       <CreatePostBar setShowPopup={setShowPopup} />
       {showPopup ? <PopupForm setShowPopup={setShowPopup} /> : null}
 
@@ -23,4 +23,4 @@ function MainContent() {
   );
 }
 
-export default MainContent;
+export default PostsContainer;

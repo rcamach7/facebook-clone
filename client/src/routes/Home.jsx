@@ -12,23 +12,23 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import LeftSideBar from "../components/homeComponents/LeftSideBar";
 import RightSideBar from "../components/homeComponents/RightSideBar";
-import MainContent from "../components/homeComponents/MainContent";
+import PostsContainer from "../components/homeComponents/PostsContainer";
 import Navbar from "../components/Navbar";
 
 function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="Home">
+      <header>
         <Navbar />
       </header>
-      <main className="main-container">
-        <div className="main-container-leftBar">
+      <main>
+        <div className="leftBar">
           <LeftSideBar />
         </div>
-        <div className="main-container-content">
-          <MainContent />
+        <div className="mainContent">
+          <PostsContainer />
         </div>
-        <div className="main-container-rightBar">
+        <div className="rightBar">
           <RightSideBar />
         </div>
       </main>

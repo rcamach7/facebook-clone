@@ -1,0 +1,35 @@
+.Home {
+  height: 100%;
+  main {
+    height: 90%;
+
+    display: flex;
+    align-items: stretch;
+    .leftBar {
+      flex: 1.25;
+    }
+    .mainContent {
+      flex: 3;
+    }
+    .rightBar {
+      flex: 1.25;
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .leftBar {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .Home {
+    main {
+      .rightBar {
+        display: none;
+      }
+    }
+  }
+}

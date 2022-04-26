@@ -1,11 +1,3 @@
-.MainContent {
-  padding: 20px 0 20px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
 
 /* Form Container */
 .form-container {
@@ -31,9 +23,6 @@
 
   width: calc(300px + 15vw);
   height: fit-content;
-}
-
-textarea:invalid {
 }
 
 /* Basic Upper section with title and close button */

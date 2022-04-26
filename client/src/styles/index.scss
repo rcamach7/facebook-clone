@@ -1,6 +1,11 @@
 @import "./variables";
 // Routes
-@import "./scss/landingPage";
-@import "./scss/profile";
-// Components
+@import "./_LandingPage/LandingPage";
+@import "./_Profile/Profile";
+// General Components
 @import "./navbar";
+// Home Components
+@import "./_Home/Home";
+@import "./_Home/rightSideBar";
+@import "./_Home/leftSideBar";
+@import "./_Home/postsContainer";
