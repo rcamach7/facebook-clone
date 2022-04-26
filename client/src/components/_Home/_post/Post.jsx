@@ -24,10 +24,14 @@ export default function Post({ post, user, setPosts }) {
         <PostNavbar setPosts={setPosts} postId={_id} />
       </div>
       <div className="postCommentsContainer">
-        <PostComments comments={comments} postId={_id} />
+        <PostComments comments={comments} postId={_id} setPosts={setPosts} />
       </div>
       <div className="postAddCommentContainer">
-        <PostAddComment postId={_id} profilePicture={user.profilePicture} />
+        <PostAddComment
+          postId={_id}
+          setPosts={setPosts}
+          profilePicture={user.profilePicture}
+        />
       </div>
     </div>
   );

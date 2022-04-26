@@ -1,5 +1,7 @@
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { processCommentLike } from "../../../assets/api";
+import { findIndexOfPost } from "../../../assets/helpers";
 
 function Comment({
   username,
@@ -8,7 +10,20 @@ function Comment({
   likes,
   postId,
   commentId,
+  setPosts,
 }) {
+  const handleCommentLike = async () => {
+    try {
+      const post = await processCommentLike(postId, commentId);
+      setPosts((prevState) => {
+        const newState = [...prevState];
+        newState[findIndexOfPost(prevState, postId)] = post;
+        return newState;
+      });
+    } catch (error) {
+      alert("Error adding like to comment");
+    }
+  };
   return (
     <div className="Comment">
       <div className="comment-main">
@@ -24,7 +39,7 @@ function Comment({
       <div className="comment-interaction">
         <p
           className="comment-interaction-like"
-          onClick={() => console.log("add comment")}
+          onClick={() => handleCommentLike()}
         >
           Like
         </p>

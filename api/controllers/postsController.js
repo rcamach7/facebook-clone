@@ -262,7 +262,11 @@ exports.editPost = [
           {
             new: true,
           }
-        );
+        ).populate({
+          path: "postedBy",
+          model: "User",
+          select: ["username", "fullName", "profilePicture"],
+        });
         return res.json({ message: "Comment added to post", post });
       } catch (error) {
         return res

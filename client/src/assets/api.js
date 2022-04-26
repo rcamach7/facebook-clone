@@ -64,3 +64,30 @@ export async function processPostLike(postId) {
     return Promise.reject(error);
   }
 }
+
+export async function processCommentLike(postId, commentId) {
+  try {
+    const {
+      data: { post },
+    } = await axios.put(`${config.apiUrl}/posts/${postId}`, {
+      commentLike: true,
+      commentId,
+    });
+    return Promise.resolve(post);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export async function processPostComment(postId, comment) {
+  try {
+    const {
+      data: { post },
+    } = await axios.put(`${config.apiUrl}/posts/${postId}`, {
+      comment,
+    });
+    return Promise.resolve(post);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}

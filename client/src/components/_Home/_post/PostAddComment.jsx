@@ -1,10 +1,23 @@
 import { useState } from "react";
+import { processPostComment } from "../../../assets/api";
+import { findIndexOfPost } from "../../../assets/helpers";
 
-function PostAddComment({ profilePicture }) {
+function PostAddComment({ profilePicture, setPosts, postId }) {
   const [comment, setComment] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const post = await processPostComment(postId, comment);
+      setPosts((prevState) => {
+        const newState = [...prevState];
+        newState[findIndexOfPost(prevState, postId)] = post;
+        return newState;
+      });
+      setComment("");
+    } catch (error) {
+      alert("Error adding comment");
+    }
   };
 
   return (
@@ -18,6 +31,7 @@ function PostAddComment({ profilePicture }) {
           placeholder="Write a comment..."
           value={comment}
           onChange={(e) => setComment(e.target.value)}
+          minLength="4"
           required
         />
       </form>
