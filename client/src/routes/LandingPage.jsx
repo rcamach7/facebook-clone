@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { getToken } from "../assets/api";
+import CreateAccountForm from "../components/_forms/CreateAccountForm";
 
 const LandingPage = () => {
   const [account, setAccount] = useState({
     username: "",
     password: "",
   });
+  const [showCreateAccountForm, setShowCreateAccountForm] = useState(false);
   const [errors, setErrors] = useState(false);
 
   const handleLogin = async (e) => {
@@ -69,10 +71,21 @@ const LandingPage = () => {
           Use test account
         </button>
         <button type="button"> Forgot password?</button>
-        <button className="newAccount-btn" type="button">
+        <button
+          className="newAccount-btn"
+          type="button"
+          onClick={() => setShowCreateAccountForm(true)}
+        >
           Create new account
         </button>
       </form>
+
+      {/* Popup Form */}
+      {showCreateAccountForm ? (
+        <CreateAccountForm
+          setShowCreateAccountForm={setShowCreateAccountForm}
+        />
+      ) : null}
     </div>
   );
 };
