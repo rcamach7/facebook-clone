@@ -6,7 +6,7 @@ import CreateNewPostForm from "../_forms/CreateNewPostForm";
 
 function PostsContainer() {
   const [showPopup, setShowPopup] = useState(false);
-  const { posts, user } = useContext(UserContext);
+  const { posts, user, setPosts } = useContext(UserContext);
 
   return (
     <div className="PostsContainer">
@@ -16,7 +16,14 @@ function PostsContainer() {
       {/* Traverses the array in reverse order to display test data by time posted */}
       {posts
         ? posts.map((curPost) => {
-            return <Post user={user} post={curPost} key={curPost._id} />;
+            return (
+              <Post
+                key={curPost._id}
+                user={user}
+                post={curPost}
+                setPosts={setPosts}
+              />
+            );
           })
         : null}
     </div>

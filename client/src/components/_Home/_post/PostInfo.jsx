@@ -3,7 +3,7 @@ import { faEllipsisH, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 
 function PostInfo({
-  username,
+  fullName,
   authorProfilePicture,
   timeStamp,
   description,
@@ -18,7 +18,7 @@ function PostInfo({
           <img src={authorProfilePicture} alt="" />
         </div>
         <div className="postInfo-main-details postInfo-main-item">
-          <p className="details-username">{username}</p>
+          <p className="details-username">{fullName}</p>
           <p className="details-postTime">{moment(timeStamp).fromNow()}</p>
         </div>
         <div className="postInfo-main-editPost postInfo-main-item">

@@ -121,13 +121,17 @@ exports.editPost = [
         for (let i = 0; i < post.likes.length; i++) {
           // Indicates user has already liked this posts - so we assume user wants to remove their like.
           if (post.likes[i]._id.equals(res.locals.userId)) {
-            updatedPost = await Post.updateOne(
+            updatedPost = await Post.findOneAndUpdate(
               { _id: req.params.id },
               { $pullAll: { likes: [{ _id: res.locals.userId }] } },
               {
                 new: true,
               }
-            );
+            ).populate({
+              path: "postedBy",
+              model: "User",
+              select: ["username", "fullName", "profilePicture"],
+            });
             return res.json({
               message: "Like removed from post",
               post: updatedPost,
@@ -141,7 +145,11 @@ exports.editPost = [
           {
             new: true,
           }
-        );
+        ).populate({
+          path: "postedBy",
+          model: "User",
+          select: ["username", "fullName", "profilePicture"],
+        });
         return res.json({ message: "Like added to post", post: updatedPost });
       } catch (errors) {
         return res
@@ -189,7 +197,11 @@ exports.editPost = [
                     {
                       new: true,
                     }
-                  );
+                  ).populate({
+                    path: "postedBy",
+                    model: "User",
+                    select: ["username", "fullName", "profilePicture"],
+                  });
                   return res.json({
                     message: "Removed comment like",
                     post: updatedPost,
@@ -203,7 +215,11 @@ exports.editPost = [
             { _id: req.params.id, "comments._id": req.body.commentId },
             { $push: { "comments.$.likes": { _id: res.locals.userId } } },
             { new: true }
-          );
+          ).populate({
+            path: "postedBy",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          });
           // End response and provide updated post.
           return res.json({
             message: "Like added to comment",

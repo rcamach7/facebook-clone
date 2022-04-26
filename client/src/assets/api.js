@@ -51,3 +51,16 @@ export async function getToken(account) {
     return Promise.reject(error);
   }
 }
+
+export async function processPostLike(postId) {
+  try {
+    const {
+      data: { post },
+    } = await axios.put(`${config.apiUrl}/posts/${postId}`, {
+      postLike: true,
+    });
+    return Promise.resolve(post);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
