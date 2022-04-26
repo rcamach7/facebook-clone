@@ -17,11 +17,6 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 
 function Home() {
-  const [status, setStatus] = useState({});
-  const [userInfo, setUserInfo] = useState({});
-  const [profilePicture, setProfilePicture] = useState();
-  const [posts, setPosts] = useState([]);
-
   // return (
   //   <div className="App">
   //     <header className="App-header">

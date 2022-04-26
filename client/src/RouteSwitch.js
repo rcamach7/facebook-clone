@@ -61,7 +61,11 @@ const RouteSwitch = () => {
 
 // Protects routes that require authentication
 function RequireAuth({ children, storedJwt }) {
-  return storedJwt === null ? <Navigate to="/messenger" replace /> : children;
+  return storedJwt === null ? (
+    <Navigate to="/facebook-clone" replace />
+  ) : (
+    children
+  );
 }
 
 // Once authenticated, we don't want our users to continue in the landing page / sign in page.
@@ -69,7 +73,7 @@ function NotAuthenticated({ children, storedJwt }) {
   return storedJwt === null ? (
     children
   ) : (
-    <Navigate to="/messenger/home" replace />
+    <Navigate to="/facebook-clone/home" replace />
   );
 }
 

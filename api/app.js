@@ -60,7 +60,7 @@ passport.use(
 );
 
 // Use our user routes to hit endpoints related to users.
-app.use("/user", userRoutes);
+app.use("/users", userRoutes);
 
 app.use("/posts", postsRoutes);
 
