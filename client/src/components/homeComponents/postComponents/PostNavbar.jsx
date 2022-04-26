@@ -1,13 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faShare } from "@fortawesome/free-solid-svg-icons";
 
-function PostNavbar(props) {
+function PostNavbar() {
   return (
     <nav className="PostNavbar">
-      <span
-        className="postNavbar-item"
-        onClick={() => props.handlePostLike(props.postId)}
-      >
+      <span className="postNavbar-item">
         <FontAwesomeIcon icon={faThumbsUp} /> Like
       </span>
 
