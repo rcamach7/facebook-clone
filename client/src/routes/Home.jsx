@@ -25,17 +25,9 @@ function Home() {
         <div className="main-container-leftBar">
           <LeftSideBar />
         </div>
-        {/* <div className="main-container-content">
-          <MainContent
-            posts={posts}
-            userInfo={userInfo}
-            profilePicture={profilePicture}
-            handleNewPost={handleNewPost}
-            handleAddCommentToPost={handleAddCommentToPost}
-            handleAddCommentLike={handleAddCommentLike}
-            handlePostLike={handlePostLike}
-          />
-        </div> */}
+        <div className="main-container-content">
+          <MainContent />
+        </div>
         <div className="main-container-rightBar">
           <RightSideBar />
         </div>

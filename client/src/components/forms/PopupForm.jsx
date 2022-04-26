@@ -8,30 +8,20 @@ import {
   faEllipsisH,
   faWindowClose,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useState, useContext } from "react";
+import { UserContext } from "../../RouteSwitch";
 
-function PopupForm(props) {
-  const formPlaceholder = `What's on your mind, ${props.userInfo.fullName}?`;
+function PopupForm({ setShowPopup }) {
+  const { user } = useContext(UserContext);
+  const formPlaceholder = `What's on your mind, ${
+    user ? user.fullName : "loading"
+  }?`;
+  // Form input fields
   const [postDescription, setPostDescription] = useState("");
   const [picture, setPicture] = useState(null);
 
   const handleSubmission = (e) => {
-    e.preventDefault();
-
-    const newPost = {
-      postId: uuidv4(),
-      userName: props.userInfo.userName,
-      icon: props.profilePicture,
-      timePosted: new Date(),
-      postDescription: postDescription,
-      likes: [],
-      picture: picture,
-      comments: [],
-    };
-
-    props.handleNewPost(newPost);
-    props.setShowPopup(false);
+    setShowPopup(false);
   };
 
   return (
@@ -48,18 +38,18 @@ function PopupForm(props) {
             <FontAwesomeIcon
               icon={faWindowClose}
               style={{ fontSize: "20px" }}
-              onClick={() => props.setShowPopup(false)}
+              onClick={() => setShowPopup(false)}
             />
           </p>
         </div>
 
         <div className="popupForm-userInfo">
           <div className="popupForm-userInfo-icon">
-            <img src={props.profilePicture} alt="" />
+            <img src={user ? user.profilePicture : null} alt="" />
           </div>
           <div className="popupForm-userInfo-data">
             <p style={{ fontWeight: "bolder", fontSize: "15px" }}>
-              {props.userInfo.fullName}
+              {user ? user.fullName : null}
             </p>
             <div className="popupForm-userInfo-data-nav">
               <FontAwesomeIcon icon="users" style={{ fontSize: "13px" }} />

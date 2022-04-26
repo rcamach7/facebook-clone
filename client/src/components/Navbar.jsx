@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../RouteSwitch";
 import { useContext } from "react";
 
-function Navbar(props) {
+function Navbar() {
   const { user } = useContext(UserContext);
 
   return (

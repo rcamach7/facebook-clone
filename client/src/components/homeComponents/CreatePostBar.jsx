@@ -1,18 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhotoVideo, faLaughBeam } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../../RouteSwitch";
+import { useContext } from "react";
 
-function CreatePostBar(props) {
+function CreatePostBar({ setShowPopup }) {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="CreatePost">
       <div className="createPost-submission">
         <div className="createPost-submission-user">
-          <img src={props.profilePicture} alt="" />
+          <img src={user ? user.profilePicture : null} alt="" />
         </div>
         <button
           className="createPost-submission-input"
-          onClick={() => props.setShowPopup(true)}
+          onClick={() => setShowPopup(true)}
         >
-          What's on your mind, {props.userInfo.fullName}?
+          What's on your mind, {user ? user.fullName : null}?
         </button>
       </div>
 
