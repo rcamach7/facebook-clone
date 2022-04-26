@@ -3,9 +3,49 @@
 @import "./_LandingPage/LandingPage";
 @import "./_Profile/Profile";
 // General Components
-@import "./navbar";
+@import "./_components/navbar";
 // Home Components
 @import "./_Home/Home";
 @import "./_Home/rightSideBar";
 @import "./_Home/leftSideBar";
 @import "./_Home/postsContainer";
+@import "./_Home/_post/post";
+@import "./_Home/statusBar";
+// Form Components
+@import "./_forms/createNewPostForm";
+
+:root {
+  --fb-blue: rgb(26, 115, 228);
+  --fb-darkGrey: rgb(100, 103, 107);
+  --fb-lightGrey: rgb(239, 242, 245);
+  --fb-grey-text: rgb(100, 103, 107);
+  --fb-grey-hover: rgb(214, 215, 216);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  background-color: var(--fb-lightGrey);
+}
+
+button {
+  color: black;
+}
+
+#root {
+  height: 100vh;
+}

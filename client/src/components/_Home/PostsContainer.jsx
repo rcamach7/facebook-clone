@@ -1,8 +1,8 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../../RouteSwitch";
-import Post from "./postComponents/Post";
-import CreatePostBar from "./CreatePostBar";
-import PopupForm from "../forms/PopupForm";
+import Post from "./_post/Post";
+import StatusBar from "./StatusBar";
+import CreateNewPostForm from "../_forms/CreateNewPostForm";
 
 function PostsContainer() {
   const [showPopup, setShowPopup] = useState(false);
@@ -10,8 +10,8 @@ function PostsContainer() {
 
   return (
     <div className="PostsContainer">
-      <CreatePostBar setShowPopup={setShowPopup} />
-      {showPopup ? <PopupForm setShowPopup={setShowPopup} /> : null}
+      <StatusBar setShowPopup={setShowPopup} />
+      {showPopup ? <CreateNewPostForm setShowPopup={setShowPopup} /> : null}
 
       {/* Traverses the array in reverse order to display test data by time posted */}
       {posts

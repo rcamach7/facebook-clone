@@ -1,4 +1,3 @@
-import logo from "../assets/fbLoginLogo.svg";
 import { useState } from "react";
 import { getToken } from "../assets/api";
 
@@ -26,7 +25,10 @@ const LandingPage = () => {
   return (
     <div className="SignIn">
       <aside>
-        <img src={logo} alt="" />
+        <img
+          src="https://res.cloudinary.com/de2ymful4/image/upload/v1650948572/facebook/assets/fbLoginLogo_yxu1bn.svg"
+          alt=""
+        />
         <p>Connect with friends and the world around you on Facebook.</p>
       </aside>
 

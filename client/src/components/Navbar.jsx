@@ -1,4 +1,3 @@
-import logo from "../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { UserContext } from "../RouteSwitch";
@@ -11,7 +10,10 @@ function Navbar() {
     <nav className="Navbar">
       <ul className="navbar-leftMenu">
         <Link to="/facebook-clone/home" className="leftMenu-item logo">
-          <img src={logo} alt="" />
+          <img
+            src="https://res.cloudinary.com/de2ymful4/image/upload/v1650948572/facebook/assets/logo_haceh1.png"
+            alt=""
+          />
         </Link>
         <li className="searchItem">
           <FontAwesomeIcon icon="search" size="2x" />

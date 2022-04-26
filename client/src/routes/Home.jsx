@@ -10,9 +10,9 @@ import {
   faCaretSquareDown,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import LeftSideBar from "../components/homeComponents/LeftSideBar";
-import RightSideBar from "../components/homeComponents/RightSideBar";
-import PostsContainer from "../components/homeComponents/PostsContainer";
+import LeftSideBar from "../components/_Home/LeftSideBar";
+import RightSideBar from "../components/_Home/RightSideBar";
+import PostsContainer from "../components/_Home/PostsContainer";
 import Navbar from "../components/Navbar";
 
 function Home() {

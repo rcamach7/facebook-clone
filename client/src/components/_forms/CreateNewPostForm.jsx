@@ -11,7 +11,7 @@ import {
 import { useState, useContext } from "react";
 import { UserContext } from "../../RouteSwitch";
 
-function PopupForm({ setShowPopup }) {
+function CreateNewPostForm({ setShowPopup }) {
   const { user } = useContext(UserContext);
   const formPlaceholder = `What's on your mind, ${
     user ? user.fullName : "loading"
@@ -26,15 +26,15 @@ function PopupForm({ setShowPopup }) {
 
   return (
     <div className="form-container">
-      <form className="PopupForm" onSubmit={handleSubmission}>
-        <div className="popupForm-title">
+      <form className="CreateNewPostForm" onSubmit={handleSubmission}>
+        <div className="createNewPostForm-title">
           <p
-            className="popupForm-title-item text"
+            className="createNewPostForm-title-item text"
             style={{ fontWeight: "bolder" }}
           >
             Create post
           </p>
-          <p className="popupForm-title-item close">
+          <p className="createNewPostForm-title-item close">
             <FontAwesomeIcon
               icon={faWindowClose}
               style={{ fontSize: "20px" }}
@@ -43,15 +43,15 @@ function PopupForm({ setShowPopup }) {
           </p>
         </div>
 
-        <div className="popupForm-userInfo">
-          <div className="popupForm-userInfo-icon">
+        <div className="createNewPostForm-userInfo">
+          <div className="createNewPostForm-userInfo-icon">
             <img src={user ? user.profilePicture : null} alt="" />
           </div>
-          <div className="popupForm-userInfo-data">
+          <div className="createNewPostForm-userInfo-data">
             <p style={{ fontWeight: "bolder", fontSize: "15px" }}>
               {user ? user.fullName : null}
             </p>
-            <div className="popupForm-userInfo-data-nav">
+            <div className="createNewPostForm-userInfo-data-nav">
               <FontAwesomeIcon icon="users" style={{ fontSize: "13px" }} />
               <span style={{ margin: "0px 5px 0 5px" }}>Friends</span>
               <FontAwesomeIcon
@@ -65,13 +65,13 @@ function PopupForm({ setShowPopup }) {
         <label htmlFor="testInput"></label>
         <textarea
           id="testInput"
-          className="popupForm-input"
+          className="createNewPostForm-input"
           placeholder={formPlaceholder}
           onChange={(e) => setPostDescription(e.target.value)}
           required
           minLength="5"
         />
-        <div className="popupForm-subNavbar">
+        <div className="createNewPostForm-subNavbar">
           <span className="subNavbar-addMore">Add to your post</span>
 
           <label className="subNavbar-item" htmlFor="image_uploads">
@@ -114,10 +114,14 @@ function PopupForm({ setShowPopup }) {
           </span>
         </div>
 
-        <input className="popupForm-submit" type="submit" value="Post" />
+        <input
+          className="createNewPostForm-submit"
+          type="submit"
+          value="Post"
+        />
       </form>
     </div>
   );
 }
 
-export default PopupForm;
+export default CreateNewPostForm;
