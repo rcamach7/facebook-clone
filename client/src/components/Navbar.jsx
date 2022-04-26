@@ -1,8 +1,12 @@
 import logo from "../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { UserContext } from "../RouteSwitch";
+import { useContext } from "react";
 
 function Navbar(props) {
+  const { user } = useContext(UserContext);
+
   return (
     <nav className="Navbar">
       <ul className="navbar-leftMenu">
@@ -41,7 +45,7 @@ function Navbar(props) {
 
       <ul className="navbar-rightMenu">
         <Link to="/facebook-clone/profile" className="rightMenu-item">
-          <img src={props.icon} alt="" />
+          {user ? <img src={user.profilePicture} alt="" /> : null}
         </Link>
       </ul>
     </nav>

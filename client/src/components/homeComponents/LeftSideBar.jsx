@@ -8,16 +8,20 @@ import {
   faCalendarTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../RouteSwitch";
+import { useContext } from "react";
 
-function LeftSideBar(props) {
+function LeftSideBar() {
+  const { user } = useContext(UserContext);
+
   return (
     <aside className="LeftSideBar">
       <ul className="leftSideBar-nav">
         <Link to="/facebook-clone/profile" className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder icon">
-            <img src={props.profilePicture} alt="" />
+            {user ? <img src={user.profilePicture} alt="" /> : null}
           </span>
-          {props.userInfo.fullName}
+          {user ? <span>{user.fullName}</span> : null}
         </Link>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-lightBlue">
