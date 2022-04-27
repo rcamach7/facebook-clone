@@ -108,7 +108,7 @@ exports.createPost = [
         postedBy: res.locals.userId,
         timeStamp: new Date(),
         description: req.body.description,
-        picture: req.file.path === undefined ? null : req.file.path,
+        picture: req.file === undefined ? null : req.file.path,
         likes: [],
         comments: [],
       });

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faComment } from "@fortawesome/free-solid-svg-icons";
 import { processPostLike } from "../../../assets/api";
 import { findIndexOfPost } from "../../../assets/helpers";
 
@@ -23,8 +23,11 @@ function PostNavbar({ postId, setPosts }) {
         <FontAwesomeIcon icon={faThumbsUp} /> Like
       </span>
 
-      <span className="postNavbar-item">
-        <FontAwesomeIcon icon={faShare} /> Share
+      <span
+        className="postNavbar-item"
+        onClick={() => document.getElementById(`${postId}`).focus()}
+      >
+        <FontAwesomeIcon icon={faComment} /> Comment
       </span>
     </nav>
   );

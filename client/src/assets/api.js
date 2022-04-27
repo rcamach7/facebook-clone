@@ -72,6 +72,17 @@ export async function createPost(description, picture) {
   }
 }
 
+export async function deletePost(postId) {
+  try {
+    const {
+      data: { posts },
+    } = await axios.delete(`${config.apiUrl}/posts/`, { postId });
+    return Promise.resolve(posts);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 export async function getToken(account) {
   try {
     const {

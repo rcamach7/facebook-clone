@@ -31,23 +31,7 @@ function Navbar() {
         </li>
       </ul>
 
-      <ul className="navbar-menu">
-        <Link to="/facebook-clone/home" className="menu-item">
-          <FontAwesomeIcon icon={faHouseUser} size="2x" />
-        </Link>
-        <li className="menu-item">
-          <FontAwesomeIcon icon={faUserGroup} size="2x" />
-        </li>
-        <li className="menu-item">
-          <FontAwesomeIcon icon={faVideo} size="2x" />
-        </li>
-        <li className="menu-item">
-          <FontAwesomeIcon icon={faStore} size="2x" />
-        </li>
-        <li className="menu-item">
-          <FontAwesomeIcon icon={faUsers} size="2x" />
-        </li>
-      </ul>
+      <ul className="navbar-menu"></ul>
 
       <ul className="navbar-rightMenu">
         <Link to="/facebook-clone/profile" className="rightMenu-item">

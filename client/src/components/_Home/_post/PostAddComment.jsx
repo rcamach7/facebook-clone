@@ -27,6 +27,7 @@ function PostAddComment({ profilePicture, setPosts, postId }) {
       </div>
       <form className="postAddComment-input" onSubmit={(e) => handleSubmit(e)}>
         <input
+          id={postId}
           type="text"
           placeholder="Write a comment..."
           value={comment}

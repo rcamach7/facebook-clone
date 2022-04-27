@@ -2,7 +2,7 @@
   width: 85%;
   padding: 10px;
 
-  border-radius: 15px;
+  border-radius: 0.5rem;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
@@ -55,6 +55,7 @@
 }
 .interactivity-likes-icon {
   color: var(--fb-blue);
+  font-size: 16px;
 }
 
 .postInfo-main-user img {
@@ -78,6 +79,7 @@
 }
 
 .postInfo-main-editPost {
+  position: relative;
   padding-right: 15px;
 }
 
@@ -204,7 +206,7 @@
 }
 .postAddComment-input input {
   border: none;
-  outline: none;
+  // outline: none;
   border-radius: 10px;
   font-size: 16px;
   padding: 6px;

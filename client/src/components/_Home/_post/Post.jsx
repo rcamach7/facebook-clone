@@ -18,6 +18,8 @@ export default function Post({ post, user, setPosts }) {
           picture={picture}
           likes={likes}
           numComments={comments.length}
+          postId={_id}
+          setPosts={setPosts}
         />
       </div>
       <div className="postNavbarContainer">

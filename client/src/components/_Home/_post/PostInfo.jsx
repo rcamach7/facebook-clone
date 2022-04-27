@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
+import DeletePostForm from "../../_forms/DeletePostForm";
+import { useState } from "react";
 
 function PostInfo({
   fullName,
@@ -10,7 +12,11 @@ function PostInfo({
   picture,
   likes,
   numComments,
+  postId,
+  setPosts,
 }) {
+  const [showDeletePostForm, setShowDeletePostForm] = useState(false);
+
   return (
     <div className="PostInfo">
       <div className="postInfo-main">
@@ -22,9 +28,19 @@ function PostInfo({
           <p className="details-postTime">{moment(timeStamp).fromNow()}</p>
         </div>
         <div className="postInfo-main-editPost postInfo-main-item">
-          <button className="editPost-btn">
+          <button
+            className="editPost-btn"
+            onClick={() => setShowDeletePostForm(!showDeletePostForm)}
+          >
             <FontAwesomeIcon icon={faEllipsisH} />
           </button>
+          {showDeletePostForm ? (
+            <DeletePostForm
+              postId={postId}
+              setPosts={setPosts}
+              setShowDeletePostForm={setShowDeletePostForm}
+            />
+          ) : null}
         </div>
       </div>
 
