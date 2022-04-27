@@ -2,3 +2,4 @@
 /crud.http
 .env
 .vscode
+/data/users.json
