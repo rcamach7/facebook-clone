@@ -25,17 +25,17 @@ function StatusBar({ setShowPopup }) {
       </div>
 
       <div className="statusBar-nav">
-        <span className="statusBar-nav-item">
-          <FontAwesomeIcon icon={faVideo} className="nav-liveVideo" /> Live
-          Video
+        <span className="statusBar-nav-item" onClick={() => setShowPopup(true)}>
+          <FontAwesomeIcon icon={faVideo} className="nav-liveVideo" />
+          Live Video
         </span>
-        <span className="statusBar-nav-item">
+        <span className="statusBar-nav-item" onClick={() => setShowPopup(true)}>
           <FontAwesomeIcon icon={faPhotoVideo} className="nav-photo" />
           Photo/video
         </span>
-        <span className="statusBar-nav-item">
+        <span className="statusBar-nav-item" onClick={() => setShowPopup(true)}>
           <FontAwesomeIcon icon={faLaughBeam} className="nav-feeling" />
-          Feeling/activity
+          Activity
         </span>
       </div>
     </div>

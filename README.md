@@ -45,6 +45,5 @@ npm run start
 
 UI Improvements
 
-- Fix status bar overflowing whenever visiting on a iPhone SE viewport size.
 - Implement Profile Page UI
 - Upon user creation, assign random profile icon pictures, so there's difference between all new users.
