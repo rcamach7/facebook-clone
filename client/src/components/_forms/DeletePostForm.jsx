@@ -1,6 +1,5 @@
 import React from "react";
 import { deletePost } from "../../assets/api";
-
 export default function DeletePostForm({
   setShowDeletePostForm,
   setPosts,

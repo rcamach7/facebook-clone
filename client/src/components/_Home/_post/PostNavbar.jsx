@@ -2,25 +2,37 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComment } from "@fortawesome/free-solid-svg-icons";
 import { processPostLike } from "../../../assets/api";
 import { findIndexOfPost } from "../../../assets/helpers";
+import { useState } from "react";
+import LoadingUx from "../../LoadingUx";
 
 function PostNavbar({ postId, setPosts }) {
+  const [loading, setLoading] = useState(false);
+
   const handleLike = async () => {
     try {
+      setLoading(true);
       const post = await processPostLike(postId);
+      setLoading(false);
       setPosts((prevState) => {
         const newState = [...prevState];
         newState[findIndexOfPost(prevState, postId)] = post;
         return newState;
       });
     } catch (error) {
-      console.log(error);
+      setLoading(false);
       alert("Error liking post!");
     }
   };
   return (
     <nav className="PostNavbar">
-      <span className="postNavbar-item" onClick={() => handleLike()}>
-        <FontAwesomeIcon icon={faThumbsUp} /> Like
+      <span className="postNavbar-item">
+        {loading ? (
+          <LoadingUx />
+        ) : (
+          <span onClick={() => handleLike()}>
+            <FontAwesomeIcon icon={faThumbsUp} /> Like
+          </span>
+        )}
       </span>
 
       <span

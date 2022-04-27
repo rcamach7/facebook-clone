@@ -2,6 +2,8 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { processCommentLike } from "../../../assets/api";
 import { findIndexOfPost } from "../../../assets/helpers";
+import { useState } from "react";
+import LoadingUx from "../../LoadingUx";
 
 function Comment({
   username,
@@ -12,15 +14,21 @@ function Comment({
   commentId,
   setPosts,
 }) {
+  const [loading, setLoading] = useState(false);
+
   const handleCommentLike = async () => {
     try {
+      setLoading(true);
       const post = await processCommentLike(postId, commentId);
+      setLoading(false);
+
       setPosts((prevState) => {
         const newState = [...prevState];
         newState[findIndexOfPost(prevState, postId)] = post;
         return newState;
       });
     } catch (error) {
+      setLoading(false);
       alert("Error adding like to comment");
     }
   };
@@ -37,12 +45,13 @@ function Comment({
       </div>
 
       <div className="comment-interaction">
-        <p
-          className="comment-interaction-like"
-          onClick={() => handleCommentLike()}
-        >
-          Like
-        </p>
+        <section className="comment-interaction-like">
+          {loading ? (
+            <LoadingUx />
+          ) : (
+            <span onClick={() => handleCommentLike()}>Like</span>
+          )}
+        </section>
         <span className="comment-interaction-result">
           {likes.length > 0 && (
             <FontAwesomeIcon icon={faThumbsUp} className="result-icon" />

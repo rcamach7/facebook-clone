@@ -4,6 +4,8 @@
 @import "./_Profile/Profile";
 // General Components
 @import "./_components/navbar";
+@import "./_components/loadingUx";
+
 // Home Components
 @import "./_Home/Home";
 @import "./_Home/rightSideBar";
@@ -50,4 +52,13 @@ button {
 
 #root {
   height: 100vh;
+}
+// Used for loading icon to spin while component data is loading
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
