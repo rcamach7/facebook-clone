@@ -57,6 +57,9 @@
   flex: 1;
   min-width: 100px;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .statusBar-nav-item:hover {
   background-color: var(--fb-grey-hover);
