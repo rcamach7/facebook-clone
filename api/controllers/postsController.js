@@ -55,7 +55,8 @@ exports.getPosts = [
             model: "User",
             select: ["username", "fullName", "profilePicture"],
           },
-        });
+        })
+        .sort({ timeStamp: -1 });
       return res.json({ posts });
     } catch (errors) {
       return res
@@ -372,7 +373,49 @@ exports.editPost = [
   },
 ];
 
-// To be implemented in the future
-exports.deletePost = (req, res, next) => {
-  res.json({ message: "Hit Endpoint" });
-};
+// Provides PostId in body, and deletes posts if current user is the author
+exports.deletePost = [
+  // Verify token exists - if so, pull and save for next middleware.
+  (req, res, next) => {
+    const bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== "undefined") {
+      const bearer = bearerHeader.split(" ");
+      const bearerToken = bearer[1];
+
+      // If token exists, but is not valid - we will not process request.
+      try {
+        const { _id } = jwt.verify(bearerToken, process.env.SECRET_STRING);
+        res.locals.userId = _id;
+      } catch (errors) {
+        return res.status(401).json({ message: "Token is not valid.", errors });
+      }
+      next();
+    } else {
+      return res.status(403).json({
+        message: "Protected route - not authorized",
+      });
+    }
+  },
+  async (req, res) => {
+    if (!req.params.id) {
+      return res.status(400).json({
+        message: "Please provide a postId in order to delete a post.",
+      });
+    } else {
+      try {
+        const post = await Post.findById(req.params.id);
+        if (!post.postedBy.equals(res.locals.userId)) {
+          return res
+            .status(400)
+            .json({ message: "Can't delete another users post" });
+        } else {
+          await Post.findByIdAndDelete(req.params.id);
+          // Call our own endpoint to get all current posts and return to user
+          res.json({ message: "Post deleted" });
+        }
+      } catch (error) {
+        return res.status(400).json({ message: "Error deleting post" });
+      }
+    }
+  },
+];

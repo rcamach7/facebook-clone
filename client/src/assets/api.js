@@ -74,9 +74,9 @@ export async function createPost(description, picture) {
 
 export async function deletePost(postId) {
   try {
-    const {
-      data: { posts },
-    } = await axios.delete(`${config.apiUrl}/posts/`, { postId });
+    await axios.delete(`${config.apiUrl}/posts/${postId}`);
+    // Retrieve collection of new posts
+    const posts = await getPosts();
     return Promise.resolve(posts);
   } catch (error) {
     return Promise.reject(error);

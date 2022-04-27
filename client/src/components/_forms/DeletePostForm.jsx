@@ -7,10 +7,11 @@ export default function DeletePostForm({
   postId,
 }) {
   const handleDeletePost = async (e) => {
+    e.preventDefault();
     try {
       const posts = await deletePost(postId);
-      setPosts(posts);
       setShowDeletePostForm(false);
+      setPosts(posts);
     } catch (error) {
       console.log(error.response);
       alert("Error deleting post - must be author of post");

@@ -27,7 +27,9 @@ function CreateNewPostForm({ setShowPopup, setPosts }) {
     try {
       const post = await createPost(description, picture);
       setPosts((prevState) => {
-        const newState = [...prevState, post];
+        const newState = [...prevState];
+        // Pushes new post to the beginning of the collection - since posts is sorted by date.
+        newState.unshift(post);
         return newState;
       });
       setShowPopup(false);
