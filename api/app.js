@@ -24,7 +24,7 @@ app.use(cors());
 
 // Global middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Database Set up
 const mongoDB = process.env.MONGO_DB;

@@ -1,6 +1,23 @@
 const Post = require("../models/Post");
 const jwt = require("jsonwebtoken");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const { check, validationResult } = require("express-validator");
+
+// Configure Cloudinary and set some settings.
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD,
+  api_key: process.env.CLOUDINARY_API,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "facebook",
+  },
+});
+const upload = multer({ storage: storage });
 
 exports.getPosts = [
   // Verify token exists - if so, pull and save for next middleware.
@@ -49,6 +66,8 @@ exports.getPosts = [
 ];
 
 exports.createPost = [
+  // Will upload an image if present - and make the body provided accessible.
+  upload.single("picture"),
   check("description")
     .exists()
     .trim()
@@ -83,13 +102,13 @@ exports.createPost = [
       });
     }
   },
-  async (req, res, next) => {
+  async (req, res) => {
     try {
       const newPost = new Post({
         postedBy: res.locals.userId,
         timeStamp: new Date(),
         description: req.body.description,
-        picture: req.body.picture ? req.body.picture : null,
+        picture: req.file.path === undefined ? null : req.file.path,
         likes: [],
         comments: [],
       });
@@ -103,6 +122,7 @@ exports.createPost = [
       });
       return res.json({ post });
     } catch (errors) {
+      console.log(errors);
       return res
         .status(500)
         .json({ message: "Error creating new post", errors });

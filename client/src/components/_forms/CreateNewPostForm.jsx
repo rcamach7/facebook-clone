@@ -19,20 +19,20 @@ function CreateNewPostForm({ setShowPopup, setPosts }) {
     user ? user.fullName : "loading"
   }?`;
   // Form input fields
-  const [postDescription, setPostDescription] = useState("");
+  const [description, setDescription] = useState("");
   const [picture, setPicture] = useState(null);
 
   const handleSubmission = async (e) => {
     e.preventDefault();
     try {
-      const post = await createPost(postDescription, picture);
+      const post = await createPost(description, picture);
       setPosts((prevState) => {
         const newState = [...prevState, post];
         return newState;
       });
       setShowPopup(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
       alert("Error creating new post");
     }
   };
@@ -80,7 +80,7 @@ function CreateNewPostForm({ setShowPopup, setPosts }) {
           id="testInput"
           className="createNewPostForm-input"
           placeholder={formPlaceholder}
-          onChange={(e) => setPostDescription(e.target.value)}
+          onChange={(e) => setDescription(e.target.value)}
           required
           minLength="5"
         />

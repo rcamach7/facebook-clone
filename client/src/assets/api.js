@@ -43,13 +43,30 @@ export async function createUser(account) {
 
 export async function createPost(description, picture) {
   try {
-    const {
-      data: { post },
-    } = await axios.post(`${config.apiUrl}/posts/`, {
-      description,
-      picture,
-    });
-    return Promise.resolve(post);
+    if (picture !== null) {
+      // Create a formData instance so we can send multipart/form-data outside of form control
+      const formData = new FormData();
+      formData.append("picture", picture);
+      formData.append("description", description);
+
+      const {
+        data: { post },
+      } = await axios({
+        method: "post",
+        url: `${config.apiUrl}/posts/`,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      return Promise.resolve(post);
+    } else {
+      const {
+        data: { post },
+      } = await axios.post(`${config.apiUrl}/posts/`, {
+        description,
+        picture,
+      });
+      return Promise.resolve(post);
+    }
   } catch (error) {
     return Promise.reject(error);
   }
