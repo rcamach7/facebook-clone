@@ -5,6 +5,7 @@ import {
   faCamera,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
+import AboutCreator from "./AboutCreator";
 
 export default function ProfileOverview({ user }) {
   return (
@@ -26,14 +27,15 @@ export default function ProfileOverview({ user }) {
         </div>
 
         <ul className="profileSections">
+          <li>Creator</li>
           <li>Friends</li>
           <li>Messages</li>
-          <li>Notifications</li>
           <li className="ellipse">
             <FontAwesomeIcon icon={faEllipsisH} />
           </li>
         </ul>
       </section>
+      <AboutCreator />
     </div>
   );
 }

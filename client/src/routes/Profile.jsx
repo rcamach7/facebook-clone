@@ -1,12 +1,6 @@
 import Navbar from "../components/Navbar";
 import { useContext } from "react";
 import { UserContext } from "../RouteSwitch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlus,
-  faCamera,
-  faEllipsisH,
-} from "@fortawesome/free-solid-svg-icons";
 import ProfileOverview from "../components/Profile/ProfileOverview";
 
 const Profile = () => {
