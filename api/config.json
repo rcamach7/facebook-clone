@@ -1,4 +1,4 @@
 {
-  "apiUrl": "https://ancient-badlands-61504.herokuapp.com",
-  "placeholder": ""
+  "apiUrl": "http://localhost:2000",
+  "placeholder": "https://ancient-badlands-61504.herokuapp.com"
 }

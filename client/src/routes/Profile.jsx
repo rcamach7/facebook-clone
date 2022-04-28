@@ -1,6 +1,13 @@
 import Navbar from "../components/Navbar";
 import { useContext } from "react";
 import { UserContext } from "../RouteSwitch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCirclePlus,
+  faCamera,
+  faEllipsisH,
+} from "@fortawesome/free-solid-svg-icons";
+import ProfileOverview from "../components/Profile/ProfileOverview";
 
 const Profile = () => {
   const { user } = useContext(UserContext);
@@ -10,20 +17,8 @@ const Profile = () => {
       <header>
         <Navbar icon={user ? user.profilePicture : null} />
       </header>
-      <div className="profile-main">
-        <img src={user ? user.profilePicture : null} alt="" />
-
-        <div className="profile-userInfo">
-          <h1>{user ? user.fullName : null}</h1>
-          <p>
-            <strong>UserName: </strong>
-            {user ? user.username : null}
-          </p>
-        </div>
-
-        <button className="profile-signOut">Sign Out</button>
-        <button className="profile-EditInfo">Edit Account Info</button>
-      </div>
+      {/* First major section of page - showcasing user image, name, and a sub navbar */}
+      <ProfileOverview user={user} />
     </div>
   );
 };

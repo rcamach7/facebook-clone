@@ -5,7 +5,6 @@
 // General Components
 @import "./_components/navbar";
 @import "./_components/loadingUx";
-
 // Home Components
 @import "./_Home/Home";
 @import "./_Home/rightSideBar";
@@ -13,6 +12,8 @@
 @import "./_Home/postsContainer";
 @import "./_Home/_post/post";
 @import "./_Home/statusBar";
+// Profile Components
+@import "./_Profile/profileOverview";
 // Form Components
 @import "./_forms/createNewPostForm";
 @import "./_forms/createAccountForm";

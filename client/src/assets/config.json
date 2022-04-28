@@ -1,4 +1,4 @@
 {
-  "apiUrl": "https://ancient-badlands-61504.herokuapp.com",
-  "tempUrl": "http://localhost:2000"
+  "apiUrl": "http://localhost:2000",
+  "tempUrl": "https://ancient-badlands-61504.herokuapp.com"
 }
