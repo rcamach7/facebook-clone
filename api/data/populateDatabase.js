@@ -38,6 +38,7 @@ const generateUsersAndPosts = async () => {
     } catch (error) {
       console.log(error);
     }
+    console.log(`finished adding ${usersData[i].fullName}`);
     // Spread creation times
     await sleep();
   }
