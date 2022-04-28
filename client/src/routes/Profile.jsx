@@ -3,6 +3,8 @@ import { useContext, useState } from "react";
 import { UserContext } from "../RouteSwitch";
 import ProfileOverview from "../components/Profile/ProfileOverview";
 import AboutCreator from "../components/Profile/AboutCreator";
+import MessagesTab from "../components/Profile/MessagesTab";
+import FriendsTab from "../components/Profile/FriendsTab";
 
 const Profile = () => {
   const { user } = useContext(UserContext);
@@ -13,9 +15,9 @@ const Profile = () => {
       case "About Creator":
         return <AboutCreator />;
       case "Friends":
-        return "Friends Tab Not Implemented";
+        return <FriendsTab />;
       case "Messages":
-        return "Messages Tab Not Implemented";
+        return <MessagesTab />;
       default:
         return "Error Populating Tabs";
     }
