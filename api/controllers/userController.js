@@ -126,9 +126,18 @@ exports.getUser = [
   async (req, res, next) => {
     try {
       const { _id } = jwt.verify(req.token, process.env.SECRET_STRING);
-      const user = await User.findById(_id).select(
-        "username fullName profilePicture"
-      );
+      const user = await User.findById(_id)
+        .select(
+          "username fullName profilePicture friends receivedFriendRequests sentFriendRequests"
+        )
+        .populate({
+          path: "friends",
+          populate: {
+            path: "friend",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        });
 
       return res.json({ user });
     } catch (errors) {
