@@ -5,9 +5,8 @@ import {
   faCamera,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
-import AboutCreator from "./AboutCreator";
 
-export default function ProfileOverview({ user }) {
+export default function ProfileOverview({ user, setCurrentTab, currentTab }) {
   return (
     <div className="ProfileOverview">
       <section className="image-backdrop">
@@ -27,15 +26,29 @@ export default function ProfileOverview({ user }) {
         </div>
 
         <ul className="profileSections">
-          <li>Creator</li>
-          <li>Friends</li>
-          <li>Messages</li>
+          <li
+            className={`${currentTab === "About Creator" ? "active" : null}`}
+            onClick={() => setCurrentTab("About Creator")}
+          >
+            About Creator
+          </li>
+          <li
+            className={`${currentTab === "Friends" ? "active" : null}`}
+            onClick={() => setCurrentTab("Friends")}
+          >
+            Friends
+          </li>
+          <li
+            className={`${currentTab === "Messages" ? "active" : null}`}
+            onClick={() => setCurrentTab("Messages")}
+          >
+            Messages
+          </li>
           <li className="ellipse">
             <FontAwesomeIcon icon={faEllipsisH} />
           </li>
         </ul>
       </section>
-      <AboutCreator />
     </div>
   );
 }

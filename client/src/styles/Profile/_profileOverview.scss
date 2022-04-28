@@ -2,7 +2,7 @@
   width: 100vw;
   .image-backdrop {
     position: relative;
-    height: clamp(100px, 30vw, 200px);
+    height: clamp(100px, 30vw, 175px);
 
     background: rgb(255, 255, 255);
     background: linear-gradient(
@@ -15,7 +15,7 @@
       position: relative;
       display: flex;
       justify-content: center;
-      top: clamp(25px, 9vw, 100px);
+      top: clamp(25px, 9vw, 75px);
       img {
         position: relative;
         width: clamp(150px, 40vw, 175px);
@@ -75,6 +75,11 @@
         border-bottom: solid var(--fb-blue) 2px;
         color: var(--fb-blue);
         cursor: pointer;
+      }
+      // Active tabs get permanent coloring
+      .active {
+        border-bottom: solid var(--fb-blue) 2px;
+        color: var(--fb-blue);
       }
       .ellipse {
         margin-left: 20px;
