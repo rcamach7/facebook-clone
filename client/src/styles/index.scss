@@ -1,23 +1,23 @@
 @import "./variables";
 // Routes
-@import "./_LandingPage/LandingPage";
-@import "./_Profile/Profile";
+@import "./LandingPage/LandingPage";
+@import "./Profile/Profile";
 // General Components
-@import "./_components/navbar";
-@import "./_components/loadingUx";
+@import "./components/navbar";
+@import "./components/loadingUx";
 // Home Components
-@import "./_Home/Home";
-@import "./_Home/rightSideBar";
-@import "./_Home/leftSideBar";
-@import "./_Home/postsContainer";
-@import "./_Home/_post/post";
-@import "./_Home/statusBar";
+@import "./Home/Home";
+@import "./Home/rightSideBar";
+@import "./Home/leftSideBar";
+@import "./Home/postsContainer";
+@import "./Home/_post/post";
+@import "./Home/statusBar";
 // Profile Components
-@import "./_Profile/profileOverview";
+@import "./Profile/profileOverview";
 // Form Components
-@import "./_forms/createNewPostForm";
-@import "./_forms/createAccountForm";
-@import "./_forms/deletePostForm";
+@import "./forms/createNewPostForm";
+@import "./forms/createAccountForm";
+@import "./forms/deletePostForm";
 
 :root {
   --fb-blue: rgb(26, 115, 228);

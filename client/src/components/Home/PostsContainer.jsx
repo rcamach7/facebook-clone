@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../RouteSwitch";
-import Post from "./_post/Post";
+import Post from "./Post/Post";
 import StatusBar from "./StatusBar";
-import CreateNewPostForm from "../_forms/CreateNewPostForm";
+import CreateNewPostForm from "../forms/CreateNewPostForm";
 
 function PostsContainer() {
   const [showPopup, setShowPopup] = useState(false);

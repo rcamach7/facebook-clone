@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getToken } from "../assets/api";
-import CreateAccountForm from "../components/_forms/CreateAccountForm";
+import CreateAccountForm from "../components/forms/CreateAccountForm";
 
 const LandingPage = () => {
   const [account, setAccount] = useState({

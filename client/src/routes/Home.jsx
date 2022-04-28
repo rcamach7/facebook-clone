@@ -1,6 +1,6 @@
-import LeftSideBar from "../components/_Home/LeftSideBar";
-import RightSideBar from "../components/_Home/RightSideBar";
-import PostsContainer from "../components/_Home/PostsContainer";
+import LeftSideBar from "../components/Home/LeftSideBar";
+import RightSideBar from "../components/Home/RightSideBar";
+import PostsContainer from "../components/Home/PostsContainer";
 import Navbar from "../components/Navbar";
 
 function Home() {
