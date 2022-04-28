@@ -1,4 +1,6 @@
 const { check, validationResult } = require("express-validator");
+const mongoose = require("mongoose");
+const v4 = require("uuid").v4;
 const config = require("../config.json");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
@@ -43,15 +45,36 @@ exports.createUser = [
     try {
       // Hash password provided by user
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const friendshipId = v4();
+
       const user = new User({
         username: req.body.username,
         password: hashedPassword,
         fullName: req.body.fullName,
         profilePicture:
           "https://res.cloudinary.com/de2ymful4/image/upload/v1649203693/messenger/default_vrsymg.jpg",
+        friends: [
+          // Add myself (admin) as a friend by default
+          {
+            friend: new mongoose.Types.ObjectId("626b194b55c6380a833a11d1"),
+            messages: [],
+            _id: friendshipId,
+          },
+        ],
+        receivedFriendRequests: [],
+        sentFriendRequests: [],
       });
-      // Save new user and move on to next middleware.
+      // Save new user, and update my admin account to reflect new friend as well.
       await user.save();
+      await User.updateOne(
+        { _id: new mongoose.Types.ObjectId("626b194b55c6380a833a11d1") },
+        {
+          $push: {
+            friends: { friend: user._id, messages: [], _id: friendshipId },
+          },
+        }
+      );
+
       // Save user in order to provide login details to our endpoint to retrieve authentication token.
       res.locals.user = {
         username: user.username,
@@ -59,13 +82,14 @@ exports.createUser = [
       };
       next();
     } catch (errors) {
-      return req
+      console.log(errors);
+      return res
         .status(400)
         .json({ message: "Error creating new account", errors });
     }
   },
   // Make request to our login endpoint to retrieve and send back authentication token.
-  async (req, res, next) => {
+  async (req, res) => {
     try {
       // Use our login endpoint to send user back a authentication token.
       const {

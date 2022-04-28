@@ -6,6 +6,26 @@ const User = new Schema({
   password: { type: String, required: true, minlength: 4 },
   fullName: { type: String, required: true, minlength: 4 },
   profilePicture: { type: String, required: true },
+  friends: [
+    {
+      friend: { type: Schema.Types.ObjectId, ref: "User", required: true },
+      messages: [
+        {
+          from: { type: Schema.Types.ObjectId, ref: "User", required: true },
+          to: { type: Schema.Types.ObjectId, ref: "User", required: true },
+          message: { type: String, required: true },
+          timestamp: { type: Date },
+        },
+      ],
+      _id: { type: String, required: true },
+    },
+  ],
+  receivedFriendRequests: [
+    { user: { type: Schema.Types.ObjectId, ref: "User", required: true } },
+  ],
+  sentFriendRequests: [
+    { user: { type: Schema.Types.ObjectId, ref: "User", required: true } },
+  ],
 });
 
 module.exports = mongoose.model("User", User);
