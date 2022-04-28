@@ -1,6 +1,7 @@
 const config = require("../config.json");
 const axios = require("axios");
 const users = require("./users.json");
+
 const usersData = [...users];
 
 // Delay used to separate post creation times.
@@ -22,7 +23,7 @@ const generateUsersAndPosts = async () => {
       // Save Token
       usersData[i]["token"] = token;
 
-      // Create a post
+      // Create Post
       try {
         await axios.post(
           `${config.apiUrl}/posts/`,
@@ -32,28 +33,43 @@ const generateUsersAndPosts = async () => {
           { headers: { authorization: `Bearer ${usersData[i].token}` } }
         );
       } catch (error) {
-        console.log(error.response);
+        console.log(error);
       }
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
     // Spread creation times
     await sleep();
   }
 };
 
-const interactWithPosts = async () => {
-  // Interact with created posts.
-  try {
-    for (let i = 0; i < usersData.length; i++) {
-      // to be implemented
-    }
-  } catch (error) {}
-};
-
 const run = async () => {
   await generateUsersAndPosts();
-  await interactWithPosts();
 };
+
+/**
+ * Attempt to make request with image - not working.
+const FormData = require("form-data");
+const fs = require("fs").promises;
+
+try {
+  const image = await fs.readFile("space.jpeg", { encoding: "base64" });
+  const formData = new FormData();
+  formData.append("picture", image);
+  formData.append("description", usersData[i].post.description);
+
+  await axios({
+    method: "post",
+    url: `${config.apiUrl}/posts/`,
+    data: formData,
+    headers: {
+      "Content-Type": `multipart/form-data; boundary=${formData.getBoundary()}`,
+      authorization: `Bearer ${usersData[i].token}`,
+    },
+  });
+} catch (error) {
+  console.log(error);
+}
+ */
 
 run();
