@@ -69,7 +69,7 @@ exports.createUser = [
         password: hashedPassword,
         fullName: req.body.fullName,
         profilePicture:
-          "https://res.cloudinary.com/de2ymful4/image/upload/v1649203693/messenger/default_vrsymg.jpg",
+          "https://res.cloudinary.com/de2ymful4/image/upload/v1651269639/facebook/profilePictures/stock_msrwzq.png",
         friends: [
           // Add myself (admin) as a friend by default
           {
