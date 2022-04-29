@@ -4,7 +4,7 @@ import { UserContext } from "../RouteSwitch";
 import ProfileOverview from "../components/Profile/ProfileOverview";
 import AboutCreator from "../components/Profile/AboutCreator";
 import MessagesTab from "../components/Profile/MessagesTab";
-import FriendsTab from "../components/Profile/FriendsTab";
+import FriendsTab from "../components/Profile/FriendsTab/FriendsTab";
 
 const Profile = () => {
   const { user } = useContext(UserContext);
@@ -15,7 +15,13 @@ const Profile = () => {
       case "About Creator":
         return <AboutCreator />;
       case "Friends":
-        return <FriendsTab />;
+        return (
+          <FriendsTab
+            friends={user ? user.friends : []}
+            sentFriendRequests={user ? user.sentFriendRequests : []}
+            receivedFriendRequests={user ? user.receivedFriendRequests : []}
+          />
+        );
       case "Messages":
         return <MessagesTab />;
       default:

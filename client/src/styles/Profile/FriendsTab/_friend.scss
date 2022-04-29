@@ -1,0 +1,33 @@
+.Friend {
+  width: clamp(300px, 95vw, 300px);
+  height: 75px;
+  padding: 5px;
+
+  border: solid 1px darkgray;
+  border-radius: 5px;
+
+  display: flex;
+  img {
+    width: 50px;
+    height: auto;
+    border-radius: 20px;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+  .buttonContainer {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    button {
+      border: none;
+      padding: 3px;
+      border-radius: 5px;
+      background-color: rgb(66, 183, 41);
+      color: white;
+    }
+  }
+}

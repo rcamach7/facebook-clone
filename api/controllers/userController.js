@@ -122,6 +122,22 @@ exports.getUser = [
             model: "User",
             select: ["username", "fullName", "profilePicture"],
           },
+        })
+        .populate({
+          path: "receivedFriendRequests",
+          populate: {
+            path: "_id",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        })
+        .populate({
+          path: "sentFriendRequests",
+          populate: {
+            path: "_id",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
         });
 
       return res.json({ user });
