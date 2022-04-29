@@ -19,7 +19,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "facebook/users",
+    folder: "facebook/profilePictures",
   },
 });
 const upload = multer({ storage: storage });
