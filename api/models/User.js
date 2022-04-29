@@ -21,10 +21,10 @@ const User = new Schema({
     },
   ],
   receivedFriendRequests: [
-    { user: { type: Schema.Types.ObjectId, ref: "User", required: true } },
+    { _id: { type: Schema.Types.ObjectId, ref: "User", required: true } },
   ],
   sentFriendRequests: [
-    { user: { type: Schema.Types.ObjectId, ref: "User", required: true } },
+    { _id: { type: Schema.Types.ObjectId, ref: "User", required: true } },
   ],
 });
 

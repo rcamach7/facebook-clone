@@ -1,7 +1,6 @@
 const User = require("../models/User");
-const jwt = require("jsonwebtoken");
-const middleware = require("../assets/middleware");
 const v4 = require("uuid").v4;
+const middleware = require("../assets/middleware");
 const { isAlreadyFriend, pendingRequestExists } = require("../assets/helper");
 
 exports.acceptFriendRequest = [

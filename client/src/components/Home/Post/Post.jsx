@@ -32,7 +32,7 @@ export default function Post({ post, user, setPosts }) {
         <PostAddComment
           postId={_id}
           setPosts={setPosts}
-          profilePicture={user.profilePicture}
+          profilePicture={user ? user.profilePicture : null}
         />
       </div>
     </div>

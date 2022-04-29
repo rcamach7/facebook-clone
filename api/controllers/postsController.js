@@ -1,5 +1,5 @@
 const Post = require("../models/Post");
-const jwt = require("jsonwebtoken");
+const middleware = require("../assets/middleware");
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
@@ -20,26 +20,8 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 exports.getPosts = [
-  // Verify token exists - if so, pull and save for next middleware.
-  (req, res, next) => {
-    const bearerHeader = req.headers["authorization"];
-    if (typeof bearerHeader !== "undefined") {
-      const bearer = bearerHeader.split(" ");
-      const bearerToken = bearer[1];
-
-      // If token exists, but is not valid - we will not process request.
-      try {
-        jwt.verify(bearerToken, process.env.SECRET_STRING);
-      } catch (errors) {
-        return res.status(401).json({ message: "Token is not valid", errors });
-      }
-      next();
-    } else {
-      return res.status(403).json({
-        message: "Protected route - not authorized",
-      });
-    }
-  },
+  // Verify token exists - if so, pull and save user id in res.locals.userId for next middleware.
+  middleware.verifyTokenAndStoreCredentials,
   async (req, res) => {
     try {
       const posts = await Post.find()
@@ -82,27 +64,8 @@ exports.createPost = [
     // If no errors, move on to step.
     next();
   },
-  // Verify token exists - if so, pull and save for next middleware.
-  (req, res, next) => {
-    const bearerHeader = req.headers["authorization"];
-    if (typeof bearerHeader !== "undefined") {
-      const bearer = bearerHeader.split(" ");
-      const bearerToken = bearer[1];
-
-      // If token exists, but is not valid - we will not process request.
-      try {
-        const { _id } = jwt.verify(bearerToken, process.env.SECRET_STRING);
-        res.locals.userId = _id;
-      } catch (errors) {
-        return res.status(401).json({ message: "Token is not valid.", errors });
-      }
-      next();
-    } else {
-      return res.status(403).json({
-        message: "Protected route - not authorized",
-      });
-    }
-  },
+  // Verify token exists - if so, pull and save user id in res.locals.userId for next middleware.
+  middleware.verifyTokenAndStoreCredentials,
   async (req, res) => {
     try {
       const newPost = new Post({
@@ -135,27 +98,8 @@ exports.createPost = [
  * User can only make one update at a time. First body field to be detected, gets processed and request ends.
  */
 exports.editPost = [
-  // Verify token exists - if so, pull and save for next middleware.
-  (req, res, next) => {
-    const bearerHeader = req.headers["authorization"];
-    if (typeof bearerHeader !== "undefined") {
-      const bearer = bearerHeader.split(" ");
-      const bearerToken = bearer[1];
-
-      // If token exists, but is not valid - we will not process request.
-      try {
-        const { _id } = jwt.verify(bearerToken, process.env.SECRET_STRING);
-        res.locals.userId = _id;
-      } catch (errors) {
-        return res.status(401).json({ message: "Token is not valid.", errors });
-      }
-      next();
-    } else {
-      return res.status(403).json({
-        message: "Protected route - not authorized",
-      });
-    }
-  },
+  // Verify token exists - if so, pull and save user id in res.locals.userId for next middleware.
+  middleware.verifyTokenAndStoreCredentials,
   /**
    * Process "add like to a post". For this request to be valid, these body fields must exists:
    * postLike must be truthly.
@@ -375,27 +319,8 @@ exports.editPost = [
 
 // Provides PostId in body, and deletes posts if current user is the author
 exports.deletePost = [
-  // Verify token exists - if so, pull and save for next middleware.
-  (req, res, next) => {
-    const bearerHeader = req.headers["authorization"];
-    if (typeof bearerHeader !== "undefined") {
-      const bearer = bearerHeader.split(" ");
-      const bearerToken = bearer[1];
-
-      // If token exists, but is not valid - we will not process request.
-      try {
-        const { _id } = jwt.verify(bearerToken, process.env.SECRET_STRING);
-        res.locals.userId = _id;
-      } catch (errors) {
-        return res.status(401).json({ message: "Token is not valid.", errors });
-      }
-      next();
-    } else {
-      return res.status(403).json({
-        message: "Protected route - not authorized",
-      });
-    }
-  },
+  // Verify token exists - if so, pull and save user id in res.locals.userId for next middleware.
+  middleware.verifyTokenAndStoreCredentials,
   async (req, res) => {
     if (!req.params.id) {
       return res.status(400).json({

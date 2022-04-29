@@ -1,9 +1,9 @@
 const { check, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
+const middleware = require("../assets/middleware");
 const v4 = require("uuid").v4;
 const config = require("../config.json");
 const axios = require("axios");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
@@ -106,27 +106,12 @@ exports.createUser = [
 ];
 
 exports.getUser = [
-  // Verify token exists - if so, pull and save for next middleware.
-  (req, res, next) => {
-    const bearerHeader = req.headers["authorization"];
-    if (typeof bearerHeader !== "undefined") {
-      const bearer = bearerHeader.split(" ");
-      const bearerToken = bearer[1];
-
-      // Save token and move on.
-      req.token = bearerToken;
-      next();
-    } else {
-      return res.status(403).json({
-        message: "Protected route - not authorized",
-      });
-    }
-  },
+  // Verify token exists - if so, pull and save user id in res.locals.userId for next middleware.
+  middleware.verifyTokenAndStoreCredentials,
   // Verify token is valid, and retrieve user.
-  async (req, res, next) => {
+  async (req, res) => {
     try {
-      const { _id } = jwt.verify(req.token, process.env.SECRET_STRING);
-      const user = await User.findById(_id)
+      const user = await User.findById(res.locals.userId)
         .select(
           "username fullName profilePicture friends receivedFriendRequests sentFriendRequests"
         )
@@ -141,7 +126,9 @@ exports.getUser = [
 
       return res.json({ user });
     } catch (errors) {
-      return res.status(401).json({ message: "Token is not valid", errors });
+      return res
+        .status(401)
+        .json({ message: "Error getting user information", errors });
     }
   },
 ];
