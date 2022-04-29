@@ -1,6 +1,10 @@
 const router = require("express").Router();
-const friendsController = require("../controllers/loginController");
+const friendsController = require("../controllers/friendsController");
 
-router.post("/", friendsController.addFriend);
+// Accept a friend request
+router.post("/:id", friendsController.acceptFriendRequest);
+
+// Send a friend request
+router.put("/:id", friendsController.requestFriend);
 
 module.exports = router;
