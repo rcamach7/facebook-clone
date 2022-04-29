@@ -6,6 +6,23 @@ const config = require("../config.json");
 const axios = require("axios");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+// Configure Cloudinary and set some settings.
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD,
+  api_key: process.env.CLOUDINARY_API,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "facebook/users",
+  },
+});
+const upload = multer({ storage: storage });
 
 exports.createUser = [
   // Data Validation and sanitation.
@@ -149,10 +166,66 @@ exports.getUser = [
   },
 ];
 
-// To be implemented in the future
-exports.updateUser = (req, res, next) => {
-  res.json({ msg: "Get User Endpoint" });
-};
+// Allows user to update their fullName, or profilePicture
+exports.updateUser = [
+  // Verify token exists - if so, pull and save user id in res.locals.userId for next middleware.
+  middleware.verifyTokenAndStoreCredentials,
+  // Process multi part form data and upload image is it exists
+  upload.single("profilePicture"),
+  async (req, res) => {
+    try {
+      // Create new temporary user and pass in all old fields and provided new fields.
+      const currentUser = await User.findById(res.locals.userId);
+      const updatedUser = new User({
+        username: currentUser.username,
+        password: currentUser.password,
+        fullName: req.body.fullName ? req.body.fullName : currentUser.fullName,
+        profilePicture: req.file ? req.file.path : currentUser.profilePicture,
+        friends: currentUser.friends,
+        receivedFriendRequests: currentUser.receivedFriendRequests,
+        sentFriendRequests: currentUser.sentFriendRequests,
+        _id: res.locals.uerId,
+      });
+
+      const user = await User.findByIdAndUpdate(res.locals.id, updatedUser, {
+        new: true,
+      })
+        .select(
+          "username fullName profilePicture friends receivedFriendRequests sentFriendRequests"
+        )
+        .populate({
+          path: "friends",
+          populate: {
+            path: "friend",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        })
+        .populate({
+          path: "receivedFriendRequests",
+          populate: {
+            path: "_id",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        })
+        .populate({
+          path: "sentFriendRequests",
+          populate: {
+            path: "_id",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        });
+
+      return res.json({ message: "User has been updated", user });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ message: "Error editing user." });
+    }
+  },
+];
+
 exports.deleteUser = (req, res, next) => {
   res.json({ msg: "Get User Endpoint" });
 };
