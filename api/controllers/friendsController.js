@@ -31,7 +31,7 @@ exports.acceptFriendRequest = [
       );
 
       // Update user by adding new friend, and remove the request received.
-      const user = await User.updateOne(
+      const user = await User.findOneAndUpdate(
         { _id: res.locals.userId },
         {
           // Add new friend to main user and initiate a shared message history.
@@ -56,6 +56,22 @@ exports.acceptFriendRequest = [
           path: "friends",
           populate: {
             path: "friend",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        })
+        .populate({
+          path: "receivedFriendRequests",
+          populate: {
+            path: "_id",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        })
+        .populate({
+          path: "sentFriendRequests",
+          populate: {
+            path: "_id",
             model: "User",
             select: ["username", "fullName", "profilePicture"],
           },
@@ -108,6 +124,22 @@ exports.requestFriend = [
           path: "friends",
           populate: {
             path: "friend",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        })
+        .populate({
+          path: "receivedFriendRequests",
+          populate: {
+            path: "_id",
+            model: "User",
+            select: ["username", "fullName", "profilePicture"],
+          },
+        })
+        .populate({
+          path: "sentFriendRequests",
+          populate: {
+            path: "_id",
             model: "User",
             select: ["username", "fullName", "profilePicture"],
           },

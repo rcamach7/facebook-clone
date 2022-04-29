@@ -7,7 +7,7 @@ import MessagesTab from "../components/Profile/MessagesTab";
 import FriendsTab from "../components/Profile/FriendsTab/FriendsTab";
 
 const Profile = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [currentTab, setCurrentTab] = useState("About Creator");
 
   const handleTabSwitch = (tab) => {
@@ -20,6 +20,7 @@ const Profile = () => {
             friends={user ? user.friends : []}
             sentFriendRequests={user ? user.sentFriendRequests : []}
             receivedFriendRequests={user ? user.receivedFriendRequests : []}
+            setUser={setUser}
           />
         );
       case "Messages":

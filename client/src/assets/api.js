@@ -133,3 +133,15 @@ export async function processPostComment(postId, comment) {
     return Promise.reject(error);
   }
 }
+
+export async function acceptFriendRequest(friendId) {
+  try {
+    const {
+      data: { user },
+    } = await axios.post(`${config.apiUrl}/friends/${friendId}`);
+    return Promise.resolve(user);
+  } catch (error) {
+    console.log(error.response);
+    return Promise.reject(error);
+  }
+}
