@@ -18,11 +18,11 @@
 @import "./Profile/friendsTab/friendsTab";
 @import "./Profile/friendsTab/friend";
 @import "./Profile/messagesTab";
-
 // Form Components
 @import "./forms/createNewPostForm";
 @import "./forms/createAccountForm";
 @import "./forms/deletePostForm";
+@import "./forms/updateImageForm";
 
 :root {
   --fb-blue: rgb(26, 115, 228);

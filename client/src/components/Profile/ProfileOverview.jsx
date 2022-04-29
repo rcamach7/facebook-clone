@@ -5,6 +5,7 @@ import {
   faCamera,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
+import UpdateImageForm from "../forms/UpdateImageForm";
 
 export default function ProfileOverview({ user, setCurrentTab, currentTab }) {
   return (
@@ -21,7 +22,7 @@ export default function ProfileOverview({ user, setCurrentTab, currentTab }) {
             <FontAwesomeIcon icon={faCirclePlus} /> Add New Post
           </button>
           <button className="editProfile">
-            <FontAwesomeIcon icon={faCamera} /> Edit Image
+            <UpdateImageForm />
           </button>
         </div>
 
