@@ -145,3 +145,24 @@ export async function acceptFriendRequest(friendId) {
     return Promise.reject(error);
   }
 }
+
+export async function updateProfilePicture(profilePicture) {
+  try {
+    // Create a formData instance so we can send multipart/form-data outside of form control
+    const formData = new FormData();
+    formData.append("profilePicture", profilePicture);
+
+    const {
+      data: { user },
+    } = await axios({
+      method: "put",
+      url: `${config.apiUrl}/users/`,
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return Promise.resolve(user);
+  } catch (error) {
+    console.log(error);
+    return Promise.reject(error);
+  }
+}

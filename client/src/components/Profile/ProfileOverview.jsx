@@ -1,12 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlus,
-  faCamera,
-  faEllipsisH,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlus, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import UpdateImageForm from "../forms/UpdateImageForm";
 
-export default function ProfileOverview({ user, setCurrentTab, currentTab }) {
+export default function ProfileOverview({
+  user,
+  setCurrentTab,
+  currentTab,
+  setUser,
+}) {
   return (
     <div className="ProfileOverview">
       <section className="image-backdrop">
@@ -21,7 +23,7 @@ export default function ProfileOverview({ user, setCurrentTab, currentTab }) {
             <FontAwesomeIcon icon={faCirclePlus} /> Add New Post
           </button>
           <button className="editProfile">
-            <FontAwesomeIcon icon={faCamera} /> Edit Image
+            <UpdateImageForm setUser={setUser} />
           </button>
         </div>
 
