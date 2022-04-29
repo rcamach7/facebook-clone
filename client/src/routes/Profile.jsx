@@ -40,6 +40,7 @@ const Profile = () => {
         user={user}
         setCurrentTab={setCurrentTab}
         currentTab={currentTab}
+        setUser={setUser}
       />
       {handleTabSwitch(currentTab)}
     </div>

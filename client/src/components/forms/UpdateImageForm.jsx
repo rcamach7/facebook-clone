@@ -24,7 +24,7 @@ export default function UpdateImageForm({ setUser }) {
 
   return (
     <form className="UpdateImageForm">
-      <label htmlFor="">
+      <label htmlFor="fileUpload">
         <FontAwesomeIcon icon={faCamera} /> Edit Image
       </label>
       <input

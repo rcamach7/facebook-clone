@@ -184,12 +184,16 @@ exports.updateUser = [
         friends: currentUser.friends,
         receivedFriendRequests: currentUser.receivedFriendRequests,
         sentFriendRequests: currentUser.sentFriendRequests,
-        _id: res.locals.uerId,
+        _id: res.locals.userId,
       });
 
-      const user = await User.findByIdAndUpdate(res.locals.id, updatedUser, {
-        new: true,
-      })
+      const user = await User.findOneAndUpdate(
+        { _id: res.locals.userId },
+        updatedUser,
+        {
+          new: true,
+        }
+      )
         .select(
           "username fullName profilePicture friends receivedFriendRequests sentFriendRequests"
         )

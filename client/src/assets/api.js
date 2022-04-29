@@ -162,6 +162,7 @@ export async function updateProfilePicture(profilePicture) {
     });
     return Promise.resolve(user);
   } catch (error) {
+    console.log(error);
     return Promise.reject(error);
   }
 }
