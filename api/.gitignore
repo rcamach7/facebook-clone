@@ -1,5 +1,4 @@
 /node_modules
 /crud.http
-.env
 .vscode
 /data/users.json
