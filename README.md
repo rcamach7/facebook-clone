@@ -6,7 +6,7 @@ An interactive, full stack, facebook clone built primarily using React. Allows u
 
 [Live Website](https://rcamach7.github.io/facebook-clone/)
 
-![Website Demo](facebookDemo.gif)
+![Website Demo](https://res.cloudinary.com/de2ymful4/image/upload/v1651355683/facebook/assets/facebookDemo_blvyh7.gif)
 
 ### Built Using:
 
