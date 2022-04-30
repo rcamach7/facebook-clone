@@ -1,0 +1,43 @@
+.FriendsTab {
+  width: 100vw;
+  margin-top: 5px;
+
+  display: flex;
+  justify-content: center;
+  .content {
+    width: clamp(310px, 95vw, 700px);
+    height: 300px;
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 5px;
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    .tabTitle {
+      height: 40px;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: solid 1px lightgray;
+    }
+
+    .friendsContainer,
+    .requestedFriends .container,
+    .receivedFriendRequests .container {
+      padding: 5px;
+
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      flex-flow: wrap;
+    }
+    span {
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

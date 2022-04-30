@@ -1,0 +1,71 @@
+@import "./variables";
+// Routes
+@import "./LandingPage/LandingPage";
+@import "./Profile/Profile";
+// General Components
+@import "./components/navbar";
+@import "./components/loadingUx";
+// Home Components
+@import "./Home/Home";
+@import "./Home/rightSideBar";
+@import "./Home/leftSideBar";
+@import "./Home/postsContainer";
+@import "./Home/_post/post";
+@import "./Home/statusBar";
+// Profile Components
+@import "./Profile/profileOverview";
+@import "./Profile/aboutCreator";
+@import "./Profile/friendsTab/friendsTab";
+@import "./Profile/friendsTab/friend";
+@import "./Profile/messagesTab";
+// Form Components
+@import "./forms/createNewPostForm";
+@import "./forms/createAccountForm";
+@import "./forms/deletePostForm";
+@import "./forms/updateImageForm";
+@import "./forms/editNameForm";
+
+:root {
+  --fb-blue: rgb(26, 115, 228);
+  --fb-darkGrey: rgb(100, 103, 107);
+  --fb-lightGrey: rgb(239, 242, 245);
+  --fb-grey-text: rgb(100, 103, 107);
+  --fb-grey-hover: rgb(214, 215, 216);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  background-color: var(--fb-lightGrey);
+}
+
+button {
+  color: black;
+}
+
+#root {
+  height: 100vh;
+}
+// Used for loading icon to spin while component data is loading
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

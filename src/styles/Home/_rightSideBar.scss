@@ -1,0 +1,71 @@
+.RightSideBar {
+  color: var(--fb-grey-text);
+  width: 75%;
+  margin-top: 25px;
+  font-size: 15px;
+  font-size: 1.2vw;
+  text-align: center;
+  button {
+    margin-top: 10px;
+    font-size: 15px;
+    font-size: 1.15vw;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    &:hover {
+      background-color: var(--fb-grey-hover);
+    }
+  }
+}
+.rightSideBar-tech {
+  margin-top: 25px;
+  border-bottom: solid black 2px;
+}
+.technologies-item {
+  list-style: none;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+}
+.technologies-item.title {
+  font-weight: bolder;
+  padding-bottom: 10px;
+}
+.rightSideBar-section {
+  margin-top: 15px;
+  font-weight: bolder;
+  border-top: solid 2px grey;
+}
+.newGroup-icon {
+  margin-right: 5px;
+  padding: 5px;
+  border: solid grey 2px;
+  border-radius: 5px;
+}
+.technologies-squares {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.squares-item {
+  list-style: none;
+  padding: 2px 3px 2px 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  border-radius: 5px;
+}
+.squares-item.library {
+  color: white;
+  background-color: rgb(184, 120, 245);
+}
+.squares-item.techItem {
+  color: white;
+  background-color: rgb(54, 182, 219);
+}

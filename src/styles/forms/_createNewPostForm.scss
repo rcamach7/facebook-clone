@@ -1,0 +1,131 @@
+/* Form Container */
+.form-container {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  right: 0;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup Form Component */
+.CreateNewPostForm {
+  position: absolute;
+  padding: 15px;
+
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  width: calc(300px + 15vw);
+  height: fit-content;
+}
+
+/* Basic Upper section with title and close button */
+.createNewPostForm-title {
+  padding: 5px 0 10px 0;
+  border-bottom: solid grey 1px;
+
+  display: flex;
+  justify-content: center;
+}
+.createNewPostForm-title-item.close {
+  margin-left: auto;
+  cursor: pointer;
+}
+.createNewPostForm-title-item.close:hover {
+  color: red;
+}
+
+/* User info and icon */
+.createNewPostForm-userInfo {
+  padding: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.createNewPostForm-userInfo-data-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2px 0 2px 0;
+  background-color: var(--fb-lightGrey);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createNewPostForm-userInfo-icon {
+  margin-right: 15px;
+}
+.createNewPostForm-userInfo-icon img {
+  width: 40px;
+  height: auto;
+
+  border-radius: 50%;
+}
+
+/* Input information */
+.createNewPostForm-input {
+  font-size: 20px;
+  width: 90%;
+  min-height: 100px;
+  outline: none;
+  border: none;
+  resize: none;
+}
+
+/* Sub navbar */
+.createNewPostForm-subNavbar {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border: solid rgb(206, 208, 212) 1px;
+  border-radius: 5px;
+}
+
+.subNavbar-addMore {
+  font-size: 14px;
+  width: 50%;
+  margin-left: 15px;
+}
+.subNavbar-item {
+  padding: 5px;
+  margin-right: 2px;
+}
+.subNavbar-item:hover {
+  background-color: var(--fb-grey-hover);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Form Submit */
+.createNewPostForm-submit {
+  width: 100%;
+
+  font-size: 15px;
+  font-weight: bolder;
+
+  padding: 10px;
+  margin: 10px 0 10px 0;
+  border: none;
+  border-radius: 5px;
+
+  color: white;
+  background-color: var(--fb-blue);
+  cursor: pointer;
+}
+.createNewPostForm-submit {
+  background-color: var(--fb-blue);
+}
+
+/* Image Upload */
+.file-upload {
+  display: none;
+}

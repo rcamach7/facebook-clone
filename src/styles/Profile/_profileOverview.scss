@@ -1,0 +1,96 @@
+.ProfileOverview {
+  width: 100vw;
+  .image-backdrop {
+    position: relative;
+    height: clamp(100px, 30vw, 175px);
+
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 79%,
+      rgba(94, 94, 94, 0.5116421568627452) 100%
+    );
+
+    .imageContainer {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      top: clamp(25px, 9vw, 75px);
+      img {
+        position: relative;
+        width: clamp(150px, 40vw, 175px);
+        height: auto;
+        border-radius: 50%;
+        border: white solid 2.5px;
+      }
+    }
+  }
+  .user-backdrop {
+    height: 175px;
+
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    .user-fullName {
+      font-size: 22px;
+      font-weight: bold;
+      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+
+      .editNameIcon {
+        cursor: pointer;
+        font-size: 19px;
+      }
+    }
+    .editProfileButtons {
+      padding-bottom: 5px;
+
+      display: flex;
+      gap: clamp(10px, 3vw, 30px);
+      button {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      .addToStory {
+        background-color: var(--fb-blue);
+        color: white;
+      }
+      .editProfile {
+        background-color: rgb(228, 230, 235);
+      }
+    }
+
+    .profileSections {
+      list-style: none;
+      border-top: solid lightgrey 1px;
+
+      display: flex;
+      gap: clamp(10px, 3vw, 30px);
+      li {
+        color: var(--fb-grey-text);
+        padding: 5px;
+        border-bottom: solid white 2px;
+      }
+      li:hover {
+        border-bottom: solid var(--fb-blue) 2px;
+        color: var(--fb-blue);
+        cursor: pointer;
+      }
+      // Active tabs get permanent coloring
+      .active {
+        border-bottom: solid var(--fb-blue) 2px;
+        color: var(--fb-blue);
+      }
+      .ellipse {
+        margin-left: 20px;
+      }
+    }
+  }
+}

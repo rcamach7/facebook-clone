@@ -1,0 +1,28 @@
+.DeletePostForm {
+  position: absolute;
+  top: 40px;
+
+  .inputContainer {
+    background-color: white;
+    padding: 2.5px;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+    display: flex;
+    flex-direction: column;
+    button {
+      border-radius: 0.5rem;
+      padding: 3px 0 3px 0;
+      font-weight: bold;
+      border: none;
+      background-color: white;
+    }
+    button:hover {
+      background-color: var(--fb-lightGrey);
+      cursor: pointer;
+    }
+    #submitBtn {
+      color: red;
+    }
+  }
+}
