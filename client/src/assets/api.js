@@ -166,3 +166,17 @@ export async function updateProfilePicture(profilePicture) {
     return Promise.reject(error);
   }
 }
+
+export async function updateName(updatedFullName) {
+  try {
+    const {
+      data: { user },
+    } = await axios.put(`${config.apiUrl}/users/`, {
+      fullName: updatedFullName,
+    });
+    return Promise.resolve(user);
+  } catch (error) {
+    console.log(error);
+    return Promise.reject(error);
+  }
+}

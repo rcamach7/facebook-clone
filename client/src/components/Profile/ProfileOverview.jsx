@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import UpdateImageForm from "../forms/UpdateImageForm";
+import EditNameForm from "../forms/EditNameForm";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProfileOverview({
   user,
@@ -9,6 +11,8 @@ export default function ProfileOverview({
   currentTab,
   setUser,
 }) {
+  const [showEditNameForm, setShowEditNameForm] = useState(false);
+
   return (
     <div className="ProfileOverview">
       <section className="image-backdrop">
@@ -17,7 +21,24 @@ export default function ProfileOverview({
         </div>
       </section>
       <section className="user-backdrop">
-        <p className="user-fullName">{user ? user.fullName : null}</p>
+        <div className="user-fullName">
+          {showEditNameForm ? (
+            <EditNameForm
+              fullName={user ? user.fullName : null}
+              setUser={setUser}
+              setShowEditNameForm={setShowEditNameForm}
+            />
+          ) : (
+            <p>
+              {user ? user.fullName : null}{" "}
+              <FontAwesomeIcon
+                icon={faPenToSquare}
+                className="editNameIcon"
+                onClick={() => setShowEditNameForm(!showEditNameForm)}
+              />
+            </p>
+          )}
+        </div>
         <div className="editProfileButtons">
           <button className="addToStory">
             <FontAwesomeIcon icon={faCirclePlus} /> Add New Post
