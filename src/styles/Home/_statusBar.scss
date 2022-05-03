@@ -1,6 +1,6 @@
 .StatusBar {
-  width: 85%;
-  padding: 15px 10px 10px 10px;
+  width: 93%;
+  padding: 25px 10px 10px 10px;
 
   border-radius: 0.5rem;
   background-color: white;
@@ -77,10 +77,4 @@
 .nav-liveVideo {
   color: rgb(243, 66, 95);
   margin-right: 5px;
-}
-
-@media only screen and (max-width: 600px) {
-  .statusBar {
-    width: 97%;
-  }
 }

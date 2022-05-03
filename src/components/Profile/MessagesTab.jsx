@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareCheck } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 export default function MessagesTab() {
   return (
@@ -32,6 +33,13 @@ export default function MessagesTab() {
               </a>
             </li>
           </ul>
+          <span
+            onClick={() =>
+              window.open("https://github.com/rcamach7/messenger", "_blank")
+            }
+          >
+            <FontAwesomeIcon icon={faGithub} className="githubIcon" />
+          </span>
         </div>
       </div>
     </div>

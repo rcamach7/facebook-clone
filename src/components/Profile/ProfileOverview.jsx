@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlus, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faEllipsisH,
+} from "@fortawesome/free-solid-svg-icons";
 import UpdateImageForm from "../forms/UpdateImageForm";
 import EditNameForm from "../forms/EditNameForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +15,11 @@ export default function ProfileOverview({
   setUser,
 }) {
   const [showEditNameForm, setShowEditNameForm] = useState(false);
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <div className="ProfileOverview">
@@ -40,11 +48,11 @@ export default function ProfileOverview({
           )}
         </div>
         <div className="editProfileButtons">
-          <button className="addToStory">
-            <FontAwesomeIcon icon={faCirclePlus} /> Add New Post
-          </button>
-          <button className="editProfile">
+          <button className="editProfileImageBtn">
             <UpdateImageForm setUser={setUser} />
+          </button>
+          <button className="signOut" onClick={handleLogOut}>
+            <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out
           </button>
         </div>
 

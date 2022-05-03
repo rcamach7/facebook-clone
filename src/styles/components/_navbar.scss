@@ -26,8 +26,8 @@
   // Left Menu Item Targeting
   .navbar-leftMenu {
     height: 100%;
-    margin-left: 25px;
-    gap: 25px;
+    margin-left: clamp(5px, 2vw, 25px);
+    gap: 20px;
     li {
       height: 100%;
 
@@ -91,7 +91,7 @@
   }
   .navbar-rightMenu {
     color: v.$fb-darkGrey;
-    margin-right: 25px;
+    margin-right: clamp(5px, 2vw, 25px);
     justify-content: flex-end;
 
     flex: 2;

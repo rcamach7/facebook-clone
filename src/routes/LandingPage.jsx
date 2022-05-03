@@ -10,11 +10,13 @@ const LandingPage = () => {
   const [showCreateAccountForm, setShowCreateAccountForm] = useState(false);
   const [errors, setErrors] = useState(false);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e, useTestAccount) => {
     e.preventDefault();
     try {
       // Checks if we are using a test account or not.
-      let token = await getToken(account);
+      let token = await getToken(
+        useTestAccount ? { username: "bryant24", password: "admin" } : account
+      );
       // Saves new token from log-in, refreshes webpage, and allows app to detect and log in user provided the saved token.
       localStorage.setItem("token", token);
       window.location.reload();
@@ -67,7 +69,11 @@ const LandingPage = () => {
         {errors ? (
           <p style={{ color: "red" }}>Invalid username or password</p>
         ) : null}
-        <button className="login-btn" type="button">
+        <button
+          className="login-btn"
+          type="button"
+          onClick={(e) => handleLogin(e, true)}
+        >
           Use test account
         </button>
         <button type="button"> Forgot password?</button>
