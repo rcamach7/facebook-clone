@@ -39,8 +39,8 @@ export default function RouteSwitch({ myToken }) {
           <Route
             path="/facebook-clone/profile"
             element={
-              <RequireAuth>
-                <Profile storedJwt={storedJwt} />
+              <RequireAuth storedJwt={storedJwt}>
+                <Profile />
               </RequireAuth>
             }
           />

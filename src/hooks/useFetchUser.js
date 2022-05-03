@@ -18,8 +18,10 @@ export default function useFetchUser(storedJwt, setStoredJwt) {
         setStoredJwt(null);
       }
     };
-    // If we have a token stored and user in null, retrieve user from API.
-    if (storedJwt && user === null) {
+
+    if (storedJwt !== null) {
+      fetchUser();
+    } else if (user === null && storedJwt !== null) {
       fetchUser();
     }
   }, [user, storedJwt, setStoredJwt]);
