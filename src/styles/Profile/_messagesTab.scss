@@ -1,18 +1,43 @@
 .MessagesTab {
   width: 100vw;
   margin-top: 5px;
+  padding: 10px 0;
 
   display: flex;
   justify-content: center;
   .content {
-    width: clamp(310px, 95vw, 700px);
-    height: 300px;
+    width: clamp(310px, 95vw, 750px);
+    height: fit-content;
+    padding: 10px;
 
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 5px;
 
     background-color: white;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    img {
+      width: clamp(300px, 95vw, 350px);
+      height: auto;
+    }
+    .messengerInfo {
+      width: clamp(300px, 95vw, 350px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .title {
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 25px;
+      }
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
   }
 }

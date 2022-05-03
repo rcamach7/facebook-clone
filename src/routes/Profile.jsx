@@ -8,7 +8,7 @@ import FriendsTab from "../components/Profile/FriendsTab/FriendsTab";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
-  const [currentTab, setCurrentTab] = useState("About Creator");
+  const [currentTab, setCurrentTab] = useState("Messages");
 
   const handleTabSwitch = (tab) => {
     switch (tab) {

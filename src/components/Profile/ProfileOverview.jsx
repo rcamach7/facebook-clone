@@ -50,10 +50,10 @@ export default function ProfileOverview({
 
         <ul className="profileSections">
           <li
-            className={`${currentTab === "About Creator" ? "active" : null}`}
-            onClick={() => setCurrentTab("About Creator")}
+            className={`${currentTab === "Messages" ? "active" : null}`}
+            onClick={() => setCurrentTab("Messages")}
           >
-            About Creator
+            Messenger
           </li>
           <li
             className={`${currentTab === "Friends" ? "active" : null}`}
@@ -62,10 +62,10 @@ export default function ProfileOverview({
             Friends
           </li>
           <li
-            className={`${currentTab === "Messages" ? "active" : null}`}
-            onClick={() => setCurrentTab("Messages")}
+            className={`${currentTab === "About Creator" ? "active" : null}`}
+            onClick={() => setCurrentTab("About Creator")}
           >
-            Messages
+            About Creator
           </li>
           <li className="ellipse">
             <FontAwesomeIcon icon={faEllipsisH} />
