@@ -1,17 +1,23 @@
 .Home {
-  height: 100%;
+  height: fit-content;
   main {
     height: 90%;
 
     display: flex;
     align-items: stretch;
     .leftBar {
+      height: 100%;
+      position: sticky;
+      top: 0;
       flex: 1.25;
     }
     .mainContent {
       flex: 3;
     }
     .rightBar {
+      height: 100%;
+      position: sticky;
+      top: 0;
       flex: 1.25;
       display: flex;
     }
