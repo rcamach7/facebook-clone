@@ -37,10 +37,7 @@ npm run start
 
 #### Pending Improvements
 
-- Upon user creation, assign random profile icon pictures, so there's difference between all new users.
-- "Messages" tab, that will link users to my messenger application.
 - replace right tab in homepage with a component displaying friends and other users using the application.
 - whenever user uploads an image when creating a post, show the image in the create a post form. Right now it's just being stored in the background.
 - Raise the backdrop for profile image in our profile page.
-- Change default profile image for users
-- add loading icon on sign in page - since heroku dino can sometimes take a minute to boot up and user might think app is frozen.
+- Remove all individual post styling into their own styles file since the actual components are separated into their own files as well.
