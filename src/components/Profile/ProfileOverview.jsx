@@ -7,6 +7,7 @@ import {
 import UpdateImageForm from "../forms/UpdateImageForm";
 import EditNameForm from "../forms/EditNameForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import LoadingUx from "../LoadingUx";
 
 export default function ProfileOverview({
   user,
@@ -38,7 +39,7 @@ export default function ProfileOverview({
             />
           ) : (
             <p>
-              {user ? user.fullName : null}{" "}
+              {user ? user.fullName : <LoadingUx />}{" "}
               <FontAwesomeIcon
                 icon={faPenToSquare}
                 className="editNameIcon"

@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 import { UserContext } from "../../RouteSwitch";
 import { useContext } from "react";
+import LoadingUx from "../LoadingUx";
 
 function LeftSideBar() {
   const { user } = useContext(UserContext);
@@ -29,9 +30,9 @@ function LeftSideBar() {
       <ul className="leftSideBar-nav">
         <Link to="/facebook-clone/profile" className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder icon">
-            {user ? <img src={user.profilePicture} alt="" /> : null}
+            {user ? <img src={user.profilePicture} alt="" /> : <LoadingUx />}
           </span>
-          {user ? <span>{user.fullName}</span> : null}
+          {user ? <span>{user.fullName}</span> : <LoadingUx />}
         </Link>
         <li className="leftSideBar-nav-item">
           <span className="nav-item-iconHolder fb-lightBlue">

@@ -1,5 +1,7 @@
 .LoadingUx {
-  color: black;
-  font-size: 15px;
-  animation: rotate 1s linear infinite;
+  .loadingUx-icon {
+    color: black;
+    font-size: 20px;
+    animation: rotate 1s linear infinite;
+  }
 }

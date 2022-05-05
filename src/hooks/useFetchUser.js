@@ -19,9 +19,7 @@ export default function useFetchUser(storedJwt, setStoredJwt) {
       }
     };
 
-    if (storedJwt !== null) {
-      fetchUser();
-    } else if (user === null && storedJwt !== null) {
+    if (user === null && storedJwt !== null) {
       fetchUser();
     }
   }, [user, storedJwt, setStoredJwt]);

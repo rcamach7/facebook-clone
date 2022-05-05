@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { getToken } from "../assets/api";
 import CreateAccountForm from "../components/forms/CreateAccountForm";
@@ -7,11 +9,13 @@ const LandingPage = () => {
     username: "",
     password: "",
   });
+  const [loadingUx, setLoadingUx] = useState(false);
   const [showCreateAccountForm, setShowCreateAccountForm] = useState(false);
   const [errors, setErrors] = useState(false);
 
   const handleLogin = async (e, useTestAccount) => {
     e.preventDefault();
+    setLoadingUx(true);
     try {
       // Checks if we are using a test account or not.
       let token = await getToken(
@@ -22,6 +26,7 @@ const LandingPage = () => {
       window.location.reload();
     } catch (error) {
       // Catch and display any login errors from API
+      setLoadingUx(false);
       setErrors(true);
     }
   };
@@ -84,6 +89,13 @@ const LandingPage = () => {
         >
           Create new account
         </button>
+
+        {/* UX Loading spinner */}
+        {loadingUx ? (
+          <div className="loadingUx">
+            <FontAwesomeIcon icon={faSpinner} className="loadingIcon" />
+          </div>
+        ) : null}
       </form>
 
       {/* Popup Form */}

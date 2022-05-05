@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../RouteSwitch";
 import { useContext } from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import LoadingUx from "./LoadingUx";
 
 function Navbar() {
   const { user } = useContext(UserContext);
@@ -28,7 +29,7 @@ function Navbar() {
 
       <ul className="navbar-rightMenu">
         <Link to="/facebook-clone/profile" className="rightMenu-item">
-          {user ? <img src={user.profilePicture} alt="" /> : null}
+          {user ? <img src={user.profilePicture} alt="" /> : <LoadingUx />}
         </Link>
       </ul>
     </nav>
