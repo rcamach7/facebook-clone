@@ -98,7 +98,7 @@ function CreateNewPostForm({ setShowPopup, setPosts }) {
               className="file-upload"
               type="file"
               id="image_uploads"
-              accept=".jpg, .jpeg, .png"
+              accept=".jpg, .jpeg, .png, .gif"
               onChange={(e) => setPicture(e.target.files[0])}
             />
           </label>
