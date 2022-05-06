@@ -8,14 +8,15 @@
 
   display: flex;
   img {
-    width: 50px;
+    width: 60px;
     height: auto;
     border-radius: 20px;
   }
   p {
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 15px;
+    font-weight: bold;
   }
   .buttonContainer {
     margin-left: auto;

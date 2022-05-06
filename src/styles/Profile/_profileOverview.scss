@@ -2,7 +2,7 @@
   width: 100vw;
   .image-backdrop {
     position: relative;
-    height: clamp(100px, 30vw, 175px);
+    height: clamp(100px, 20vw, 125px);
 
     background: rgb(255, 255, 255);
     background: linear-gradient(
@@ -15,10 +15,10 @@
       position: relative;
       display: flex;
       justify-content: center;
-      top: clamp(25px, 9vw, 75px);
+      top: clamp(0px, 9vh, 10px);
       img {
         position: relative;
-        width: clamp(150px, 40vw, 175px);
+        width: clamp(185px, 25vw, 210px);
         height: auto;
         border-radius: 50%;
         border: white solid 2.5px;
@@ -26,7 +26,8 @@
     }
   }
   .user-backdrop {
-    height: 175px;
+    height: 200px;
+    min-width: 320px;
 
     background-color: white;
 

@@ -12,6 +12,7 @@ import {
 import { useState, useContext } from "react";
 import { UserContext } from "../../RouteSwitch";
 import { createPost } from "../../assets/api";
+import { useEffect } from "react/cjs/react.development";
 
 function CreateNewPostForm({ setShowPopup, setPosts }) {
   const { user } = useContext(UserContext);
@@ -21,6 +22,10 @@ function CreateNewPostForm({ setShowPopup, setPosts }) {
   // Form input fields
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState(null);
+
+  useEffect(() => {
+    console.log(picture);
+  }, [picture]);
 
   const handleSubmission = async (e) => {
     e.preventDefault();
@@ -86,6 +91,11 @@ function CreateNewPostForm({ setShowPopup, setPosts }) {
           required
           minLength="5"
         />
+        {picture ? (
+          <div className="picturePreview">
+            <img src={URL.createObjectURL(picture)} alt="post" />
+          </div>
+        ) : null}
         <div className="createNewPostForm-subNavbar">
           <span className="subNavbar-addMore">Add to your post</span>
 

@@ -38,6 +38,4 @@ npm run start
 #### Pending Improvements
 
 - replace right tab in homepage with a component displaying friends and other users using the application.
-- whenever user uploads an image when creating a post, show the image in the create a post form. Right now it's just being stored in the background.
-- Raise the backdrop for profile image in our profile page.
 - Remove all individual post styling into their own styles file since the actual components are separated into their own files as well.

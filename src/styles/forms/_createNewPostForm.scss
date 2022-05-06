@@ -12,6 +12,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  .picturePreview {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 200px;
+      height: auto;
+    }
+  }
 }
 
 /* Popup Form Component */
@@ -75,7 +83,7 @@
 .createNewPostForm-input {
   font-size: 20px;
   width: 90%;
-  min-height: 100px;
+  min-height: 75px;
   outline: none;
   border: none;
   resize: none;

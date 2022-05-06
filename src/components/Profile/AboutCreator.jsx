@@ -14,15 +14,15 @@ export default function AboutCreator() {
         <div className="description">
           <div className="imageContainer">
             <img
-              src="https://res.cloudinary.com/de2ymful4/image/upload/v1649123991/main-portfolio/Screen_Shot_2022-04-04_at_6.59.23_PM_yjonwc.png"
+              src="https://res.cloudinary.com/de2ymful4/image/upload/v1651799612/facebook/assets/adminImage_fawpif.png"
               alt=""
             />
           </div>
           <p>
             Hi! I have a profound love for problem solving, which is at the root
-            of why I enjoy programming so much! I thrive in environments that
-            challenge me, and allow me to grow and develop my skills. Connect
-            with me and check out my work!
+            of why I enjoy programming so much! If you have any thoughts or
+            feedback, or just want to say hi, feel free to reach out! My socials
+            are down below.
           </p>
           <ul className="socials">
             <li>
