@@ -19,7 +19,7 @@ const LandingPage = () => {
     try {
       // Checks if we are using a test account or not.
       let token = await getToken(
-        useTestAccount ? { username: "bryant24", password: "admin" } : account
+        useTestAccount ? { username: "foobar", password: "test" } : account
       );
       // Saves new token from log-in, refreshes webpage, and allows app to detect and log in user provided the saved token.
       localStorage.setItem("token", token);
