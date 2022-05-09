@@ -2,7 +2,7 @@
 
 Facebook clone built primarily using React. Allows user to make a post with text and/or pictures, like posts or comments, and stores this information in a real time database.
 
-![Website Demo](https://res.cloudinary.com/de2ymful4/image/upload/v1651355683/facebook/assets/facebookDemo_blvyh7.gif)
+![Website Demo](demo.gif)
 
 <div align="center">
 
@@ -12,19 +12,22 @@ Facebook clone built primarily using React. Allows user to make a post with text
 
 ## Key Features
 
-- Allows users to make a post with text and/or pictures, and ability to like posts or comments.
-- User interface built with React. Made fully responsive with media breakpoints and CSS sizing functions.
-- Firebase used for user creation and authentication, along with storing user data in a NoSQL database.
+- Allows users to create posts with text and pictures, add comments to existing posts, and interact with them by liking posts or comments.
+- UI built with React. Made fully responsive with media breakpoints and CSS sizing functions.
+- Utilizes react lifecycle methods, react hooks for state management, and custom hooks to serve specific application needs.
+- Client side routing implemented with protected routes against un-authenticated users. Data validation and sanitation also performed client side before interacting with backend API.
 
-#### Technologies Used
+<details>
+  <summary>...more app features</summary>
+  <li>axios interceptors to configure headers upon any API interaction</li>
+  <li>user authentication managed by JWT tokens</li>
+  <li>multi form data for managing api requests that involve images</li>
+  <li>functional components</li>
+</details>
 
-- React:
-  - functional components
-  - custom hooks used for fetching and managing state data
-  - utilized useEffect, useState, useContext, and useRef
-  - user authentications managed by JWT tokens and routes protected against un-authenticated users
-- libraries used:
-  - axios, uuid, react-router-dom, sass, font awesome icon's, moment
+#### Built Using
+
+- functional components, custom hooks, useEffect, useState, useContext, axios, uuid, react-router-dom, sass, font awesome icon's, moment, HashRouter, localStorage, destructured props, ES6 features, AJAX.
 
 #### Local Installation & Running
 
@@ -38,4 +41,5 @@ npm run start
 #### Pending Improvements
 
 - replace right tab in homepage with a component displaying friends and other users using the application.
-- Remove all individual post styling into their own styles file since the actual components are separated into their own files as well.
+- update demo gif since there's been a lot of changes to app
+- add ability to request friends in app.
