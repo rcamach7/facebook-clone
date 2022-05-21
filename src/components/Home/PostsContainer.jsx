@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
-import { UserContext } from "../../RouteSwitch";
+import { useState } from "react";
+import { useUserContext } from "../../hooks/useUserContext";
 import Post from "./Post/Post";
 import StatusBar from "./StatusBar";
 import CreateNewPostForm from "../forms/CreateNewPostForm";
 
 function PostsContainer() {
   const [showPopup, setShowPopup] = useState(false);
-  const { posts, user, setPosts } = useContext(UserContext);
+  const { posts, user, setPosts } = useUserContext();
 
   return (
     <div className="PostsContainer">
