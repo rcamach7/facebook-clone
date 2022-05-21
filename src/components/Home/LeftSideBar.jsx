@@ -13,12 +13,11 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../RouteSwitch";
-import { useContext } from "react";
+import { useUserContext } from "../../hooks/useUserContext";
 import LoadingUx from "../LoadingUx";
 
 function LeftSideBar() {
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
 
   const handleLogOut = () => {
     localStorage.clear();

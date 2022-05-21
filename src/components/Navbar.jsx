@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { UserContext } from "../RouteSwitch";
-import { useContext } from "react";
+import { useUserContext } from "../hooks/useUserContext";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import LoadingUx from "./LoadingUx";
 
 function Navbar() {
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
 
   return (
     <nav className="Navbar">

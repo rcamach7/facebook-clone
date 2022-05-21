@@ -1,15 +1,12 @@
 import "./styles/index.scss";
-import React from "react";
 import { useState } from "react";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { UserContext } from "./hooks/useUserContext";
 import useFetchUser from "./hooks/useFetchUser";
 import useFetchPosts from "./hooks/useFetchPosts";
 import Home from "./routes/Home";
 import LandingPage from "./routes/LandingPage";
 import Profile from "./routes/Profile";
-
-// Export user context to provide to any children components who need it.
-export const UserContext = React.createContext();
 
 export default function RouteSwitch({ myToken }) {
   const [storedJwt, setStoredJwt] = useState(myToken);

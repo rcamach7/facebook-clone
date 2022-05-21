@@ -1,13 +1,13 @@
 import Navbar from "../components/Navbar";
-import { useContext, useState } from "react";
-import { UserContext } from "../RouteSwitch";
+import { useState } from "react";
 import ProfileOverview from "../components/Profile/ProfileOverview";
 import AboutCreator from "../components/Profile/AboutCreator";
 import MessagesTab from "../components/Profile/MessagesTab";
 import FriendsTab from "../components/Profile/FriendsTab/FriendsTab";
+import { useUserContext } from "../hooks/useUserContext";
 
 const Profile = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useUserContext();
   const [currentTab, setCurrentTab] = useState("Messages");
 
   const handleTabSwitch = (tab) => {

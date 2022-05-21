@@ -9,12 +9,12 @@ import {
   faWindowClose,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState, useContext } from "react";
-import { UserContext } from "../../RouteSwitch";
+import { useState } from "react";
+import { useUserContext } from "../../hooks/useUserContext";
 import { createPost } from "../../assets/api";
 
 function CreateNewPostForm({ setShowPopup, setPosts }) {
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
   const formPlaceholder = `What's on your mind, ${
     user ? user.fullName : "loading"
   }?`;

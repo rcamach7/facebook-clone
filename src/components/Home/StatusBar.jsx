@@ -4,11 +4,10 @@ import {
   faLaughBeam,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../../RouteSwitch";
-import { useContext } from "react";
+import { useUserContext } from "../../hooks/useUserContext";
 
 function StatusBar({ setShowPopup }) {
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
 
   return (
     <div className="StatusBar">
