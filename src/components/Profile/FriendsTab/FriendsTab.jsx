@@ -12,7 +12,7 @@ export default function FriendsTab({
   });
 
   const requestedFriends = sentFriendRequests.map((requestedFriend) => {
-    return <Friend key={requestedFriend._id} friend={requestedFriend} />;
+    return <Friend key={requestedFriend._id} friend={requestedFriend._id} />;
   });
 
   const receivedRequestsFriend = receivedFriendRequests.map(
