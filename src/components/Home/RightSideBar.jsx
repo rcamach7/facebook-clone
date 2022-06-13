@@ -1,6 +1,30 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const libraryTechnologies = [
+  "react",
+  "jwt tokens",
+  "user authentication",
+  "protected routes",
+  "custom hooks",
+  "context api",
+  "page routing",
+  "font awesome icons",
+  "uuid",
+];
+
+const techItems = [
+  "npm",
+  "git/github",
+  "router-dom",
+  "state",
+  "props",
+  "JSON",
+  "form validation",
+  "scss",
+  "media queries",
+];
+
 function RightSideBar(props) {
   return (
     <aside className="RightSideBar">
@@ -14,12 +38,6 @@ function RightSideBar(props) {
         </li>
         <li className="technologies-item">
           <img
-            src="https://res.cloudinary.com/de2ymful4/image/upload/v1650948572/facebook/assets/firebase_jjs5zh.png"
-            alt=""
-          />
-        </li>
-        <li className="technologies-item">
-          <img
             src="https://res.cloudinary.com/de2ymful4/image/upload/v1650948572/facebook/assets/stack_vlfik3.jpg"
             alt=""
           />
@@ -27,22 +45,20 @@ function RightSideBar(props) {
       </ul>
 
       <ul className="technologies-squares">
-        <li className="squares-item library">react</li>
-        <li className="squares-item library">moment</li>
-        <li className="squares-item library">fortAwesome</li>
-        <li className="squares-item library">uuid</li>
-        <li className="squares-item library">firebase</li>
-        <li className="squares-item techItem">npm</li>
-        <li className="squares-item techItem">git/github</li>
-        <li className="squares-item techItem">components</li>
-        <li className="squares-item techItem">router-dom</li>
-        <li className="squares-item techItem">state</li>
-        <li className="squares-item techItem">props</li>
-        <li className="squares-item techItem">hooks</li>
-        <li className="squares-item techItem">JSON</li>
-        <li className="squares-item techItem">form validation</li>
-        <li className="squares-item techItem">sass</li>
-        <li className="squares-item techItem">media queries</li>
+        {libraryTechnologies.map((libraryItem) => {
+          return (
+            <li key={libraryItem} className="squares-item library">
+              {libraryItem}
+            </li>
+          );
+        })}
+        {techItems.map((item) => {
+          return (
+            <li key={item} className="squares-item techItem">
+              {item}
+            </li>
+          );
+        })}
       </ul>
 
       <p className="rightSideBar-section">

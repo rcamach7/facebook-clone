@@ -2,7 +2,7 @@
 
 Facebook clone that allows user to make a post with text or pictures, and like posts or comments. Uses my custom [**social media api**](https://github.com/rcamach7/social-media-api) for the backend.
 
-![Website Demo](demo.gif)
+![Website Demo](facebook_demo.gif)
 
 <div align="center">
 
@@ -18,6 +18,13 @@ Facebook clone that allows user to make a post with text or pictures, and like p
 - Uses my [**social media api**](https://github.com/rcamach7/social-media-api) for the backend to allow users to use my [**instant messaging app**](https://github.com/rcamach7/social-media-api) with the exact same credentials, carrying over all user data, like friends, messages, and posts.
 
 #### Built Using
+
+<p align="center">
+  <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1648514838/main-portfolio/animated-logos/react-anim_jqtsxo.gif" width="40" height="40" alt="React" />
+  <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1648514837/main-portfolio/animated-logos/js-anim_pxxk0j.gif" width="40" height="40" alt="Javascript" />
+  <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1648515099/main-portfolio/animated-logos/sass-animated_lhind3.gif" width="30" height="35" alt="SASS" />
+  <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1646099328/main-portfolio/tech-skills/html_qpxonu.png" width="40" height="40" alt="Javascript" />
+</p>
 
 - functional components, custom hooks, useEffect, useState, useContext, axios, uuid, react-router-dom, sass, font awesome icon's, moment, HashRouter, localStorage, destructured props, ES6 features, AJAX.
 
