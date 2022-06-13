@@ -1,29 +1,21 @@
 ## Facebook Clone
 
-Facebook clone built primarily using React. Allows user to make a post with text and/or pictures, like posts or comments, and stores this information in a real time database.
+Facebook clone that allows user to make a post with text or pictures, and like posts or comments. Uses my custom [**social media api**](https://github.com/rcamach7/social-media-api) for the backend.
 
 ![Website Demo](demo.gif)
 
 <div align="center">
 
-[**visit facebook clone**](https://rcamach7.github.io/facebook-clone/)
+[**Visit Facebook Clone**](https://rcamach7.github.io/facebook-clone/)
 
 </div>
 
 ## Key Features
 
-- Allows users to create posts with text and pictures, add comments to existing posts, and interact with them by liking posts or comments.
-- UI built with React. Made fully responsive with media breakpoints and CSS sizing functions.
+- UI built entirely with React. Made fully responsive with media breakpoints and CSS sizing functions.
 - Utilizes react lifecycle methods, react hooks for state management, and custom hooks to serve specific application needs.
-- Client side routing implemented with protected routes against un-authenticated users. Data validation and sanitation also performed client side before interacting with backend API.
-
-<details>
-  <summary>...more app features</summary>
-  <li>axios interceptors to configure headers upon any API interaction</li>
-  <li>user authentication managed by JWT tokens</li>
-  <li>multi form data for managing api requests that involve images</li>
-  <li>functional components</li>
-</details>
+- Routing implemented with protected routes against un-authenticated users. Data validation and sanitation also performed client side before interacting with backend API.
+- Uses my [**social media api**](https://github.com/rcamach7/social-media-api) for the backend to allow users to use my [**instant messaging app**](https://github.com/rcamach7/social-media-api) with the exact same credentials, carrying over all user data, like friends, messages, and posts.
 
 #### Built Using
 
