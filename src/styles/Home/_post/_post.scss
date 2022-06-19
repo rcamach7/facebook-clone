@@ -5,6 +5,64 @@
   border-radius: 0.5rem;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  .PostComments {
+    max-height: 325px;
+    overflow-y: scroll;
+
+    .Comment {
+      font-size: 14px;
+      .comment-interaction {
+        .like-interaction {
+          display: flex;
+          gap: 5px;
+          span {
+            color: var(--fb-blue);
+          }
+        }
+      }
+    }
+  }
+  .comment-main {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 0 10px;
+  }
+  .comment-icon {
+    display: block;
+    margin-right: 10px;
+  }
+  .comment-icon img {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+    border: solid 1px rgba(99, 99, 99, 0.2);
+  }
+
+  .comment-description-user {
+    font-weight: bolder;
+  }
+
+  .comment-interaction {
+    font-size: 12.5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .comment-interaction-like {
+    color: var(--fb-grey-text);
+
+    padding-bottom: 5px;
+    padding-left: 70px;
+    cursor: pointer;
+  }
+  .comment-interaction-result {
+    padding-right: 15px;
+
+    display: flex;
+    gap: 5px;
+  }
 }
 
 /* First Major Component Of Post */
@@ -122,55 +180,6 @@
 }
 
 /* THIRD MAJOR POST SUB COMPONENT */
-.PostComments {
-  max-height: 325px;
-  overflow-y: scroll;
-}
-
-.Comment {
-  font-size: 14px;
-}
-
-.comment-main {
-  display: flex;
-  align-items: center;
-  padding: 5px 10px 0 10px;
-}
-.comment-icon {
-  display: block;
-  margin-right: 10px;
-}
-.comment-icon img {
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-  border: solid 1px rgba(99, 99, 99, 0.2);
-}
-
-.comment-description-user {
-  font-weight: bolder;
-}
-
-.comment-interaction {
-  font-size: 12.5px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.comment-interaction-like {
-  color: var(--fb-grey-text);
-
-  padding-bottom: 5px;
-  padding-left: 70px;
-  cursor: pointer;
-}
-.comment-interaction-result {
-  padding-right: 15px;
-
-  display: flex;
-  gap: 5px;
-}
 
 .result-icon {
   color: var(--fb-blue);

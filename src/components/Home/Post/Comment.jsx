@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { processCommentLike } from "../../../assets/api";
 import { findIndexOfPost } from "../../../assets/helpers";
 import { useState } from "react";
+import moment from "moment";
 import LoadingUx from "../../LoadingUx";
 
 function Comment({
@@ -13,6 +14,7 @@ function Comment({
   postId,
   commentId,
   setPosts,
+  timeStamp,
 }) {
   const [loading, setLoading] = useState(false);
 
@@ -49,7 +51,10 @@ function Comment({
           {loading ? (
             <LoadingUx />
           ) : (
-            <span onClick={() => handleCommentLike()}>Like</span>
+            <div className="like-interaction">
+              <span onClick={() => handleCommentLike()}>Like </span>
+              <p>- {moment(timeStamp).fromNow()}</p>
+            </div>
           )}
         </section>
         <span className="comment-interaction-result">

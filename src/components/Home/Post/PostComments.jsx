@@ -8,6 +8,7 @@ function PostComments({ comments, postId, setPosts }) {
           <Comment
             key={uuidv4()}
             username={curComment.user.username}
+            timeStamp={curComment.timeStamp}
             comment={curComment.comment}
             commenterPicture={curComment.user.profilePicture}
             likes={curComment.likes}

@@ -25,7 +25,9 @@ function PostInfo({
         </div>
         <div className="postInfo-main-details postInfo-main-item">
           <p className="details-username">{fullName}</p>
-          <p className="details-postTime">{moment(timeStamp).fromNow()}</p>
+          <p className="details-postTime">
+            {moment(timeStamp).format("MMMM Do, h:mm a")}
+          </p>
         </div>
         <div className="postInfo-main-editPost postInfo-main-item">
           <button
