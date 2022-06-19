@@ -4,7 +4,6 @@ import {
   faArrowRightFromBracket,
   faEllipsisH,
   faCheck,
-  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import UpdateImageForm from "../forms/UpdateImageForm";
 import EditNameForm from "../forms/EditNameForm";
@@ -16,6 +15,8 @@ import {
   isPendingAcceptance,
 } from "../../assets/helpers";
 import { useParams } from "react-router-dom";
+import { AcceptFriendRequestButton } from "../forms/AcceptFriendRequestButton";
+import { RequestFriendButton } from "../forms/RequestFriendButton";
 
 export default function ProfileOverview({
   user,
@@ -61,19 +62,9 @@ export default function ProfileOverview({
     } else if (
       isPendingAcceptance(user.receivedFriendRequests, params.username)
     ) {
-      return (
-        <button className="actionButtons activeButton">
-          Accept Friend Request
-          <FontAwesomeIcon icon={faUserPlus} />
-        </button>
-      );
+      return <AcceptFriendRequestButton friendId={visitingProfile._id} />;
     } else {
-      return (
-        <button className="actionButtons activeButton">
-          Request Friend
-          <FontAwesomeIcon icon={faUserPlus} />
-        </button>
-      );
+      return <RequestFriendButton username={visitingProfile.username} />;
     }
   };
 

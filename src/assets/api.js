@@ -159,6 +159,18 @@ export async function acceptFriendRequest(friendId) {
   }
 }
 
+export async function sendFriendRequest(friendId) {
+  try {
+    const {
+      data: { user },
+    } = await axios.put(`${config.apiUrl}/friends/${friendId}`);
+    return Promise.resolve(user);
+  } catch (error) {
+    console.log(error.response);
+    return Promise.reject(error);
+  }
+}
+
 export async function updateProfilePicture(profilePicture) {
   try {
     // Create a formData instance so we can send multipart/form-data outside of form control
