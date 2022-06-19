@@ -40,5 +40,4 @@ npm run start
 #### Pending Improvements
 
 - replace right tab in homepage with a component displaying friends and other users using the application.
-- update demo gif since there's been a lot of changes to app
 - add ability to request friends in app.

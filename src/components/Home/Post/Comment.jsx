@@ -5,6 +5,7 @@ import { findIndexOfPost } from "../../../assets/helpers";
 import { useState } from "react";
 import moment from "moment";
 import LoadingUx from "../../LoadingUx";
+import { Link } from "react-router-dom";
 
 function Comment({
   username,
@@ -38,10 +39,17 @@ function Comment({
     <div className="Comment">
       <div className="comment-main">
         <span className="comment-icon">
-          <img src={commenterPicture} alt="" />
+          <Link to={`/facebook-clone/profile/${username}`}>
+            <img src={commenterPicture} alt="" />
+          </Link>
         </span>
         <div className="comment-description">
-          <p className="comment-description-user">{username}</p>
+          <Link
+            to={`/facebook-clone/profile/${username}`}
+            style={{ textDecoration: "none" }}
+          >
+            <p className="comment-description-user">{username}</p>
+          </Link>
           <p className="comment-description-text">{comment}</p>
         </div>
       </div>

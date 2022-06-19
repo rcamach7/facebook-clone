@@ -13,6 +13,19 @@ export async function getUser() {
   }
 }
 
+//
+// Retrieve current user info
+export async function getVisitingUser(username) {
+  try {
+    const {
+      data: { user },
+    } = await axios.get(`${config.apiUrl}/users/visit/${username}`);
+    return Promise.resolve(user[0]);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 // Retrieve posts
 export async function getPosts() {
   try {
@@ -139,6 +152,18 @@ export async function acceptFriendRequest(friendId) {
     const {
       data: { user },
     } = await axios.post(`${config.apiUrl}/friends/${friendId}`);
+    return Promise.resolve(user);
+  } catch (error) {
+    console.log(error.response);
+    return Promise.reject(error);
+  }
+}
+
+export async function sendFriendRequest(friendId) {
+  try {
+    const {
+      data: { user },
+    } = await axios.put(`${config.apiUrl}/friends/${friendId}`);
     return Promise.resolve(user);
   } catch (error) {
     console.log(error.response);

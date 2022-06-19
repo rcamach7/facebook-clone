@@ -3,30 +3,76 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRightFromBracket,
   faEllipsisH,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import UpdateImageForm from "../forms/UpdateImageForm";
 import EditNameForm from "../forms/EditNameForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import LoadingUx from "../LoadingUx";
+import {
+  isFriend,
+  isRequested,
+  isPendingAcceptance,
+} from "../../assets/helpers";
+import { useParams } from "react-router-dom";
+import { AcceptFriendRequestButton } from "../forms/AcceptFriendRequestButton";
+import { RequestFriendButton } from "../forms/RequestFriendButton";
 
 export default function ProfileOverview({
   user,
   setCurrentTab,
   currentTab,
   setUser,
+  visitingProfile,
 }) {
   const [showEditNameForm, setShowEditNameForm] = useState(false);
+  const params = useParams();
 
   const handleLogOut = () => {
     localStorage.clear();
     window.location.reload();
   };
 
+  const determineProfilePicture = () => {
+    if (visitingProfile) {
+      return visitingProfile.profilePicture;
+    } else {
+      if (user) {
+        return user.profilePicture;
+      }
+    }
+    return null;
+  };
+
+  const determineActionButton = () => {
+    if (isFriend(user.friends, params.username)) {
+      return (
+        <button className="actionButtons dulledButton">
+          Already Friends
+          <FontAwesomeIcon icon={faCheck} />
+        </button>
+      );
+    } else if (isRequested(user.sentFriendRequests, params.username)) {
+      return (
+        <button className="actionButtons dulledButton">
+          Request Pending
+          <FontAwesomeIcon icon={faCheck} />
+        </button>
+      );
+    } else if (
+      isPendingAcceptance(user.receivedFriendRequests, params.username)
+    ) {
+      return <AcceptFriendRequestButton friendId={visitingProfile._id} />;
+    } else {
+      return <RequestFriendButton username={visitingProfile.username} />;
+    }
+  };
+
   return (
     <div className="ProfileOverview">
       <section className="image-backdrop">
         <div className="imageContainer">
-          <img src={user ? user.profilePicture : null} alt="user" />
+          <img src={determineProfilePicture()} alt="user" />
         </div>
       </section>
       <section className="user-backdrop">
@@ -38,23 +84,35 @@ export default function ProfileOverview({
               setShowEditNameForm={setShowEditNameForm}
             />
           ) : (
-            <p>
-              {user ? user.fullName : <LoadingUx />}{" "}
-              <FontAwesomeIcon
-                icon={faPenToSquare}
-                className="editNameIcon"
-                onClick={() => setShowEditNameForm(!showEditNameForm)}
-              />
-            </p>
+            <div>
+              {visitingProfile ? (
+                visitingProfile.fullName
+              ) : user ? (
+                user.fullName
+              ) : (
+                <LoadingUx />
+              )}{" "}
+              {visitingProfile ? null : (
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  className="editNameIcon"
+                  onClick={() => setShowEditNameForm(!showEditNameForm)}
+                />
+              )}
+            </div>
           )}
         </div>
         <div className="editProfileButtons">
-          <button className="editProfileImageBtn">
+          {visitingProfile ? (
+            determineActionButton()
+          ) : (
             <UpdateImageForm setUser={setUser} />
-          </button>
-          <button className="signOut" onClick={handleLogOut}>
-            <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out
-          </button>
+          )}
+          {!visitingProfile && (
+            <button className="signOut" onClick={handleLogOut}>
+              <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out
+            </button>
+          )}
         </div>
 
         <ul className="profileSections">
@@ -64,12 +122,14 @@ export default function ProfileOverview({
           >
             Messenger
           </li>
-          <li
-            className={`${currentTab === "Friends" ? "active" : null}`}
-            onClick={() => setCurrentTab("Friends")}
-          >
-            Friends
-          </li>
+          {!visitingProfile && (
+            <li
+              className={`${currentTab === "Friends" ? "active" : null}`}
+              onClick={() => setCurrentTab("Friends")}
+            >
+              Friends
+            </li>
+          )}
           <li
             className={`${currentTab === "About Creator" ? "active" : null}`}
             onClick={() => setCurrentTab("About Creator")}

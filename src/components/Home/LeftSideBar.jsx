@@ -27,7 +27,10 @@ function LeftSideBar() {
   return (
     <aside className="LeftSideBar">
       <ul className="leftSideBar-nav">
-        <Link to="/facebook-clone/profile" className="leftSideBar-nav-item">
+        <Link
+          to={`/facebook-clone/profile/${user && user.username}`}
+          className="leftSideBar-nav-item"
+        >
           <span className="nav-item-iconHolder icon">
             {user ? <img src={user.profilePicture} alt="" /> : <LoadingUx />}
           </span>

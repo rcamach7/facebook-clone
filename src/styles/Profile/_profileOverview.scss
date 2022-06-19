@@ -47,7 +47,8 @@
         font-size: 19px;
       }
     }
-    .editProfileButtons {
+    .editProfileButtons,
+    .actionButtons {
       padding-bottom: 5px;
 
       display: flex;
@@ -59,13 +60,21 @@
         border-radius: 5px;
         padding: 10px;
       }
-      .editProfileImageBtn {
+      .editProfileImageBtn,
+      .activeButton {
         background-color: var(--fb-blue);
         color: white;
+      }
+      .dulledButton {
+        cursor: default;
       }
       .signOUt {
         background-color: rgb(228, 230, 235);
       }
+    }
+    .actionButtons {
+      // Override above settings
+      gap: 7px !important;
     }
 
     .profileSections {
