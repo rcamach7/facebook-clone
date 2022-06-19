@@ -14,6 +14,7 @@ export default function ProfileOverview({
   setCurrentTab,
   currentTab,
   setUser,
+  visitingProfile,
 }) {
   const [showEditNameForm, setShowEditNameForm] = useState(false);
 
@@ -26,7 +27,16 @@ export default function ProfileOverview({
     <div className="ProfileOverview">
       <section className="image-backdrop">
         <div className="imageContainer">
-          <img src={user ? user.profilePicture : null} alt="user" />
+          <img
+            src={
+              visitingProfile
+                ? visitingProfile.profilePicture
+                : user
+                ? user.profilePicture
+                : null
+            }
+            alt="user"
+          />
         </div>
       </section>
       <section className="user-backdrop">
@@ -38,23 +48,31 @@ export default function ProfileOverview({
               setShowEditNameForm={setShowEditNameForm}
             />
           ) : (
-            <p>
+            <div>
               {user ? user.fullName : <LoadingUx />}{" "}
-              <FontAwesomeIcon
-                icon={faPenToSquare}
-                className="editNameIcon"
-                onClick={() => setShowEditNameForm(!showEditNameForm)}
-              />
-            </p>
+              {visitingProfile ? null : (
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  className="editNameIcon"
+                  onClick={() => setShowEditNameForm(!showEditNameForm)}
+                />
+              )}
+            </div>
           )}
         </div>
         <div className="editProfileButtons">
           <button className="editProfileImageBtn">
-            <UpdateImageForm setUser={setUser} />
+            {visitingProfile ? (
+              "Send Friend Request"
+            ) : (
+              <UpdateImageForm setUser={setUser} />
+            )}
           </button>
-          <button className="signOut" onClick={handleLogOut}>
-            <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out
-          </button>
+          {!visitingProfile && (
+            <button className="signOut" onClick={handleLogOut}>
+              <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out
+            </button>
+          )}
         </div>
 
         <ul className="profileSections">
@@ -64,12 +82,14 @@ export default function ProfileOverview({
           >
             Messenger
           </li>
-          <li
-            className={`${currentTab === "Friends" ? "active" : null}`}
-            onClick={() => setCurrentTab("Friends")}
-          >
-            Friends
-          </li>
+          {!visitingProfile && (
+            <li
+              className={`${currentTab === "Friends" ? "active" : null}`}
+              onClick={() => setCurrentTab("Friends")}
+            >
+              Friends
+            </li>
+          )}
           <li
             className={`${currentTab === "About Creator" ? "active" : null}`}
             onClick={() => setCurrentTab("About Creator")}

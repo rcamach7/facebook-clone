@@ -18,7 +18,6 @@ const Profile = () => {
     const fetchVisitingUser = async () => {
       const visitingUser = await getVisitingUser(params.username);
       setVisitingProfile(visitingUser);
-      console.log(visitingUser);
     };
     if (user) {
       if (user.username !== params.username) {
