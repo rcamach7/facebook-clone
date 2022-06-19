@@ -3,11 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRightFromBracket,
   faEllipsisH,
+  faCheck,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import UpdateImageForm from "../forms/UpdateImageForm";
 import EditNameForm from "../forms/EditNameForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import LoadingUx from "../LoadingUx";
+import {
+  isFriend,
+  isRequested,
+  isPendingAcceptance,
+} from "../../assets/helpers";
+import { useParams } from "react-router-dom";
 
 export default function ProfileOverview({
   user,
@@ -17,26 +25,63 @@ export default function ProfileOverview({
   visitingProfile,
 }) {
   const [showEditNameForm, setShowEditNameForm] = useState(false);
+  const params = useParams();
 
   const handleLogOut = () => {
     localStorage.clear();
     window.location.reload();
   };
 
+  const determineProfilePicture = () => {
+    if (visitingProfile) {
+      return visitingProfile.profilePicture;
+    } else {
+      if (user) {
+        return user.profilePicture;
+      }
+    }
+    return null;
+  };
+
+  const determineActionButton = () => {
+    if (isFriend(user.friends, params.username)) {
+      return (
+        <button className="actionButtons dulledButton">
+          Already Friends
+          <FontAwesomeIcon icon={faCheck} />
+        </button>
+      );
+    } else if (isRequested(user.sentFriendRequests, params.username)) {
+      return (
+        <button className="actionButtons dulledButton">
+          Request Pending
+          <FontAwesomeIcon icon={faCheck} />
+        </button>
+      );
+    } else if (
+      isPendingAcceptance(user.receivedFriendRequests, params.username)
+    ) {
+      return (
+        <button className="actionButtons activeButton">
+          Accept Friend Request
+          <FontAwesomeIcon icon={faUserPlus} />
+        </button>
+      );
+    } else {
+      return (
+        <button className="actionButtons activeButton">
+          Request Friend
+          <FontAwesomeIcon icon={faUserPlus} />
+        </button>
+      );
+    }
+  };
+
   return (
     <div className="ProfileOverview">
       <section className="image-backdrop">
         <div className="imageContainer">
-          <img
-            src={
-              visitingProfile
-                ? visitingProfile.profilePicture
-                : user
-                ? user.profilePicture
-                : null
-            }
-            alt="user"
-          />
+          <img src={determineProfilePicture()} alt="user" />
         </div>
       </section>
       <section className="user-backdrop">
@@ -67,13 +112,11 @@ export default function ProfileOverview({
           )}
         </div>
         <div className="editProfileButtons">
-          <button className="editProfileImageBtn">
-            {visitingProfile ? (
-              "Send Friend Request"
-            ) : (
-              <UpdateImageForm setUser={setUser} />
-            )}
-          </button>
+          {visitingProfile ? (
+            determineActionButton()
+          ) : (
+            <UpdateImageForm setUser={setUser} />
+          )}
           {!visitingProfile && (
             <button className="signOut" onClick={handleLogOut}>
               <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out

@@ -28,14 +28,17 @@ export default function MessagesTab() {
             </li>
             <li>
               <FontAwesomeIcon icon={faSquareCheck} />{" "}
-              <a href="https://rcamach7.github.io/messenger/#/messenger">
+              <a href="https://rcamach7.github.io/instant-messenger/#/instant-messenger">
                 Visit Instant Messenger Web App!
               </a>
             </li>
           </ul>
           <span
             onClick={() =>
-              window.open("https://github.com/rcamach7/messenger", "_blank")
+              window.open(
+                "https://github.com/rcamach7/instant-messenger",
+                "_blank"
+              )
             }
           >
             <FontAwesomeIcon icon={faGithub} className="githubIcon" />
