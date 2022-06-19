@@ -22,6 +22,8 @@ const Profile = () => {
     if (user) {
       if (user.username !== params.username) {
         fetchVisitingUser();
+      } else {
+        setVisitingProfile(null);
       }
     }
   }, [user, params.username]);

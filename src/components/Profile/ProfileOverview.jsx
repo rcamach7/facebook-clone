@@ -106,7 +106,9 @@ export default function ProfileOverview({
           {visitingProfile ? (
             determineActionButton()
           ) : (
-            <UpdateImageForm setUser={setUser} />
+            <button className="editProfileImageBtn">
+              <UpdateImageForm setUser={setUser} />
+            </button>
           )}
           {!visitingProfile && (
             <button className="signOut" onClick={handleLogOut}>

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { acceptFriendRequest } from "../../../assets/api";
+import { Link } from "react-router-dom";
 
 export default function Friend({ friend, receivedRequestsFriend, setUser }) {
   const name = friend
@@ -27,7 +28,16 @@ export default function Friend({ friend, receivedRequestsFriend, setUser }) {
   return (
     <div className="Friend">
       <img src={image} alt="" />
-      <p className="name">{name}</p>
+      <Link
+        to={`/facebook-clone/profile/${friend && friend.username}`}
+        style={{
+          textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <p className="name">{name}</p>
+      </Link>
       <div className="buttonContainer">
         {receivedRequestsFriend ? (
           <button onClick={(e) => handleAcceptRequest(e)}>
