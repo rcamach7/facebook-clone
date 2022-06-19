@@ -49,7 +49,13 @@ export default function ProfileOverview({
             />
           ) : (
             <div>
-              {user ? user.fullName : <LoadingUx />}{" "}
+              {visitingProfile ? (
+                visitingProfile.fullName
+              ) : user ? (
+                user.fullName
+              ) : (
+                <LoadingUx />
+              )}{" "}
               {visitingProfile ? null : (
                 <FontAwesomeIcon
                   icon={faPenToSquare}

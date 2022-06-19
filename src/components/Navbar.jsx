@@ -27,7 +27,10 @@ function Navbar() {
       <ul className="navbar-menu"></ul>
 
       <ul className="navbar-rightMenu">
-        <Link to="/facebook-clone/profile" className="rightMenu-item">
+        <Link
+          to={`/facebook-clone/profile/${user && user.username}`}
+          className="rightMenu-item"
+        >
           {user ? <img src={user.profilePicture} alt="" /> : <LoadingUx />}
         </Link>
       </ul>

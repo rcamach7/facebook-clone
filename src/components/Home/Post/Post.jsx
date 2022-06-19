@@ -12,6 +12,7 @@ export default function Post({ post, user, setPosts }) {
       <div className="postInfoContainer">
         <PostInfo
           fullName={postedBy.fullName}
+          username={postedBy.username}
           authorProfilePicture={postedBy.profilePicture}
           timeStamp={timeStamp}
           description={description}

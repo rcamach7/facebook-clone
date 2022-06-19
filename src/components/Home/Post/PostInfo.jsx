@@ -3,6 +3,7 @@ import { faEllipsisH, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 import DeletePostForm from "../../forms/DeletePostForm";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function PostInfo({
   fullName,
@@ -14,6 +15,7 @@ function PostInfo({
   numComments,
   postId,
   setPosts,
+  username,
 }) {
   const [showDeletePostForm, setShowDeletePostForm] = useState(false);
 
@@ -21,10 +23,17 @@ function PostInfo({
     <div className="PostInfo">
       <div className="postInfo-main">
         <div className="postInfo-main-user postInfo-main-item">
-          <img src={authorProfilePicture} alt="" />
+          <Link to={`/facebook-clone/profile/${username}`}>
+            <img src={authorProfilePicture} alt="" />
+          </Link>
         </div>
         <div className="postInfo-main-details postInfo-main-item">
-          <p className="details-username">{fullName}</p>
+          <Link
+            to={`/facebook-clone/profile/${username}`}
+            style={{ textDecoration: "none" }}
+          >
+            <p className="details-username">{fullName}</p>
+          </Link>
           <p className="details-postTime">
             {moment(timeStamp).format("MMMM Do, h:mm a")}
           </p>
