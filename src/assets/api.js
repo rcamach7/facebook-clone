@@ -13,6 +13,19 @@ export async function getUser() {
   }
 }
 
+//
+// Retrieve current user info
+export async function getVisitingUser(username) {
+  try {
+    const {
+      data: { user },
+    } = await axios.get(`${config.apiUrl}/users/visit/${username}`);
+    return Promise.resolve(user[0]);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 // Retrieve posts
 export async function getPosts() {
   try {

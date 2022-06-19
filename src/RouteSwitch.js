@@ -7,6 +7,7 @@ import useFetchPosts from "./hooks/useFetchPosts";
 import Home from "./routes/Home";
 import LandingPage from "./routes/LandingPage";
 import Profile from "./routes/Profile";
+import { UserProfile } from "./routes/UserProfile";
 
 export default function RouteSwitch({ myToken }) {
   const [storedJwt, setStoredJwt] = useState(myToken);
@@ -34,12 +35,16 @@ export default function RouteSwitch({ myToken }) {
             }
           />
           <Route
-            path="/facebook-clone/profile"
+            path="/facebook-clone/profile/:username"
             element={
               <RequireAuth storedJwt={storedJwt}>
                 <Profile />
               </RequireAuth>
             }
+          />
+          <Route
+            path="/facebook-clone/userProfile/:username"
+            element={<UserProfile />}
           />
           <Route path="*" element={<Navigate to="/facebook-clone/" />} />
         </Routes>
