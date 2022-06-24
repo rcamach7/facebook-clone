@@ -1,16 +1,17 @@
 import React from "react";
 import { deletePost } from "../../assets/api";
-export default function DeletePostForm({
-  setShowDeletePostForm,
-  setPosts,
-  postId,
-}) {
+import { useDispatch } from "react-redux";
+import { setPosts } from "../../features/posts/postsSlice";
+
+export default function DeletePostForm({ setShowDeletePostForm, postId }) {
+  const dispatch = useDispatch();
+
   const handleDeletePost = async (e) => {
     e.preventDefault();
     try {
       const posts = await deletePost(postId);
       setShowDeletePostForm(false);
-      setPosts(posts);
+      dispatch(setPosts(posts));
     } catch (error) {
       console.log(error.response);
       alert("Error deleting post - must be author of post");

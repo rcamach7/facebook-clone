@@ -10,11 +10,15 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { useUserContext } from "../../hooks/useUserContext";
 import { createPost } from "../../assets/api";
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts } from "../../features/posts/postsSlice";
 
-function CreateNewPostForm({ setShowPopup, setPosts }) {
-  const { user } = useUserContext();
+function CreateNewPostForm({ setShowPopup }) {
+  const user = useSelector((state) => state.user.value);
+  const posts = useSelector((state) => state.posts.value);
+  const dispatch = useDispatch();
+
   const formPlaceholder = `What's on your mind, ${
     user ? user.fullName : "loading"
   }?`;
@@ -26,12 +30,10 @@ function CreateNewPostForm({ setShowPopup, setPosts }) {
     e.preventDefault();
     try {
       const post = await createPost(description, picture);
-      setPosts((prevState) => {
-        const newState = [...prevState];
-        // Pushes new post to the beginning of the collection - since posts is sorted by date.
-        newState.unshift(post);
-        return newState;
-      });
+      const updatedPosts = [...posts];
+      updatedPosts.unshift(post);
+
+      dispatch(setPosts(updatedPosts));
       setShowPopup(false);
     } catch (error) {
       console.log(error.response);

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import Comment from "./Comment";
-function PostComments({ comments, postId, setPosts }) {
+function PostComments({ comments, postId }) {
   return (
     <div className="PostComments">
       {comments.map((curComment) => {
@@ -14,7 +14,6 @@ function PostComments({ comments, postId, setPosts }) {
             likes={curComment.likes}
             commentId={curComment._id}
             postId={postId}
-            setPosts={setPosts}
           />
         );
       })}

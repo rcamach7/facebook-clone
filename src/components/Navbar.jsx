@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { useUserContext } from "../hooks/useUserContext";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import LoadingUx from "./LoadingUx";
+import { useSelector } from "react-redux";
 
 function Navbar() {
-  const { user } = useUserContext();
+  const user = useSelector((state) => state.user.value);
 
   return (
     <nav className="Navbar">

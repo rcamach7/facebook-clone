@@ -1,31 +1,23 @@
 import { useState } from "react";
-import { useUserContext } from "../../hooks/useUserContext";
 import Post from "./Post/Post";
 import StatusBar from "./StatusBar";
 import CreateNewPostForm from "../forms/CreateNewPostForm";
+import { useSelector } from "react-redux";
 
 function PostsContainer() {
   const [showPopup, setShowPopup] = useState(false);
-  const { posts, user, setPosts } = useUserContext();
+  const user = useSelector((state) => state.user.value);
+  const posts = useSelector((state) => state.posts.value);
 
   return (
     <div className="PostsContainer">
       <StatusBar setShowPopup={setShowPopup} />
-      {showPopup ? (
-        <CreateNewPostForm setShowPopup={setShowPopup} setPosts={setPosts} />
-      ) : null}
+      {showPopup ? <CreateNewPostForm setShowPopup={setShowPopup} /> : null}
 
       {/* Traverses the array in reverse order to display test data by time posted */}
       {posts
         ? posts.map((curPost) => {
-            return (
-              <Post
-                key={curPost._id}
-                user={user}
-                post={curPost}
-                setPosts={setPosts}
-              />
-            );
+            return <Post key={curPost._id} user={user} post={curPost} />;
           })
         : null}
     </div>

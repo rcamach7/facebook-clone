@@ -6,6 +6,8 @@ import { useState } from "react";
 import moment from "moment";
 import LoadingUx from "../../LoadingUx";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts } from "../../../features/posts/postsSlice";
 
 function Comment({
   username,
@@ -14,22 +16,22 @@ function Comment({
   likes,
   postId,
   commentId,
-  setPosts,
   timeStamp,
 }) {
   const [loading, setLoading] = useState(false);
+  const posts = useSelector((state) => state.posts.value);
+  const dispatch = useDispatch();
 
   const handleCommentLike = async () => {
     try {
       setLoading(true);
       const post = await processCommentLike(postId, commentId);
-      setLoading(false);
 
-      setPosts((prevState) => {
-        const newState = [...prevState];
-        newState[findIndexOfPost(prevState, postId)] = post;
-        return newState;
-      });
+      const updatedPosts = [...posts];
+      updatedPosts[findIndexOfPost(updatedPosts, postId)] = post;
+      dispatch(setPosts(updatedPosts));
+
+      setLoading(false);
     } catch (error) {
       setLoading(false);
       alert("Error adding like to comment");

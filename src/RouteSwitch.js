@@ -10,7 +10,7 @@ import { useJwtToken } from "./hooks/useJwtToken";
 import { NotAuthenticated, RequireAuth } from "./components/routeProtections";
 
 export default function RouteSwitch() {
-  const storedJwt = useJwtToken();
+  useJwtToken();
   const [user, setUser] = useFetchUser();
   const [posts, setPosts] = useFetchPosts();
 
@@ -21,7 +21,7 @@ export default function RouteSwitch() {
           <Route
             path="/facebook-clone/"
             element={
-              <NotAuthenticated storedJwt={storedJwt}>
+              <NotAuthenticated>
                 <LandingPage />
               </NotAuthenticated>
             }
@@ -29,7 +29,7 @@ export default function RouteSwitch() {
           <Route
             path="/facebook-clone/home"
             element={
-              <RequireAuth storedJwt={storedJwt}>
+              <RequireAuth>
                 <Home />
               </RequireAuth>
             }
@@ -37,7 +37,7 @@ export default function RouteSwitch() {
           <Route
             path="/facebook-clone/profile/:username"
             element={
-              <RequireAuth storedJwt={storedJwt}>
+              <RequireAuth>
                 <Profile />
               </RequireAuth>
             }
