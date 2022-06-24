@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { getUser } from "../assets/api";
+import { useDispatch } from "react-redux";
+import { updateToken } from "../features/jwt/jwtSlice";
 
-export default function useFetchUser(storedJwt, setStoredJwt) {
+export default function useFetchUser(storedJwt) {
   const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
 
   // Get user data if JWT token exists but we haven't requested user data.
   useEffect(() => {
@@ -15,14 +18,16 @@ export default function useFetchUser(storedJwt, setStoredJwt) {
         // Token might be expired, or API is down.
         localStorage.removeItem("token");
         setUser(null);
-        setStoredJwt(null);
+        dispatch(updateToken(""));
       }
     };
 
     if (user === null && storedJwt !== null) {
       fetchUser();
     }
-  }, [user, storedJwt, setStoredJwt]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, storedJwt]);
 
   return [user, setUser];
 }

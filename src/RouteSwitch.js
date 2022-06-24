@@ -7,10 +7,11 @@ import useFetchPosts from "./hooks/useFetchPosts";
 import Home from "./routes/Home";
 import LandingPage from "./routes/LandingPage";
 import Profile from "./routes/Profile";
+import { useJwtToken } from "./hooks/useJwtToken";
 
-export default function RouteSwitch({ myToken }) {
-  const [storedJwt, setStoredJwt] = useState(myToken);
-  const [user, setUser] = useFetchUser(storedJwt, setStoredJwt);
+export default function RouteSwitch() {
+  const storedJwt = useJwtToken();
+  const [user, setUser] = useFetchUser(storedJwt);
   const [posts, setPosts] = useFetchPosts(storedJwt);
 
   return (
