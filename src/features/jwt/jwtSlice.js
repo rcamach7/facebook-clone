@@ -7,9 +7,12 @@ export const jwtSlice = createSlice({
     updateToken: (state, action) => {
       state.value = action.payload;
     },
+    removeToken: (state) => {
+      state.value = null;
+    },
   },
 });
 
-export const { updateToken } = jwtSlice.actions;
+export const { updateToken, removeToken } = jwtSlice.actions;
 
 export const jwtReducer = jwtSlice.reducer;

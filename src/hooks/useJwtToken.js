@@ -6,18 +6,17 @@ export const useJwtToken = () => {
   const jwtToken = useSelector((state) => state.jwtToken.value);
 
   useEffect(() => {
-    // axios.interceptors.request.use(
-    //   (config) => {
-    //     if (myToken) {
-    //       config.headers.authorization = `Bearer ${myToken}`;
-    //     }
-    //     return config;
-    //   },
-    //   (error) => {
-    //     return Promise.reject(error);
-    //   }
-    // );
-    console.log(jwtToken);
+    axios.interceptors.request.use(
+      (config) => {
+        if (jwtToken) {
+          config.headers.authorization = `Bearer ${jwtToken}`;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
   }, [jwtToken]);
 
   return jwtToken;

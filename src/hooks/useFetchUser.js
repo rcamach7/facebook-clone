@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getUser } from "../assets/api";
 import { useDispatch } from "react-redux";
-import { updateToken } from "../features/jwt/jwtSlice";
+import { removeToken } from "../features/jwt/jwtSlice";
 
 export default function useFetchUser(storedJwt) {
   const [user, setUser] = useState(null);
@@ -16,9 +16,9 @@ export default function useFetchUser(storedJwt) {
         setUser(user);
       } catch (error) {
         // Token might be expired, or API is down.
-        localStorage.removeItem("token");
         setUser(null);
-        dispatch(updateToken(""));
+        localStorage.removeItem("token");
+        dispatch(removeToken());
       }
     };
 
