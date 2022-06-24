@@ -8,6 +8,7 @@ export const jwtSlice = createSlice({
       state.value = action.payload;
     },
     removeToken: (state) => {
+      localStorage.removeItem("token");
       state.value = null;
     },
   },

@@ -11,8 +11,8 @@ import { useJwtToken } from "./hooks/useJwtToken";
 
 export default function RouteSwitch() {
   const storedJwt = useJwtToken();
-  const [user, setUser] = useFetchUser(storedJwt);
-  const [posts, setPosts] = useFetchPosts(storedJwt);
+  const [user, setUser] = useFetchUser();
+  const [posts, setPosts] = useFetchPosts();
 
   return (
     <HashRouter>

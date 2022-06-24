@@ -2,10 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({
   name: "user",
-  initialState: { value: localStorage.getItem("token") },
-  reducers: {},
+  initialState: { value: null },
+  reducers: {
+    addUser: (state, action) => {
+      state.value = action.payload;
+    },
+    removeUser: (state) => {
+      state.value = null;
+    },
+  },
 });
 
-export const {} = userSlice.actions;
+export const { addUser, removeUser } = userSlice.actions;
 
-export const jwtReducer = userSlice.reducer;
+export const userReducer = userSlice.reducer;
