@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import RouteSwitch from "./RouteSwitch";
 import axios from "axios";
+import { Provider } from "react-redux";
+import { store } from "./features/store";
 
 const myToken = localStorage.getItem("token");
 axios.interceptors.request.use(
@@ -17,8 +19,8 @@ axios.interceptors.request.use(
 );
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <RouteSwitch myToken={myToken} />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
