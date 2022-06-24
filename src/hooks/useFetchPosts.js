@@ -22,5 +22,5 @@ export default function useFetchPosts() {
     }
   }, [posts, jwtToken, dispatch]);
 
-  return [posts, setPosts];
+  return [posts, null];
 }

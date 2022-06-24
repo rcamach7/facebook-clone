@@ -1,5 +1,4 @@
 import "./styles/index.scss";
-import { useState } from "react";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { UserContext } from "./hooks/useUserContext";
 import useFetchUser from "./hooks/useFetchUser";
@@ -8,6 +7,7 @@ import Home from "./routes/Home";
 import LandingPage from "./routes/LandingPage";
 import Profile from "./routes/Profile";
 import { useJwtToken } from "./hooks/useJwtToken";
+import { NotAuthenticated, RequireAuth } from "./components/routeProtections";
 
 export default function RouteSwitch() {
   const storedJwt = useJwtToken();
@@ -46,23 +46,5 @@ export default function RouteSwitch() {
         </Routes>
       </UserContext.Provider>
     </HashRouter>
-  );
-}
-
-// Protects routes that require authentication
-function RequireAuth({ children, storedJwt }) {
-  return storedJwt === null ? (
-    <Navigate to="/facebook-clone" replace />
-  ) : (
-    children
-  );
-}
-
-// Once authenticated, we don't want our users to continue in the landing page / sign in page.
-function NotAuthenticated({ children, storedJwt }) {
-  return storedJwt === null ? (
-    children
-  ) : (
-    <Navigate to="/facebook-clone/home" replace />
   );
 }
