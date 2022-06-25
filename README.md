@@ -12,21 +12,22 @@ Facebook clone that allows user to make a post with text or pictures, and like p
 
 ## Key Features
 
+- Utilizes Redux for state management, react lifecycle methods, and custom hooks to manage application features.
 - UI built entirely with React. Made fully responsive with media breakpoints and CSS sizing functions.
-- Utilizes react lifecycle methods, react hooks for state management, and custom hooks to serve specific application needs.
-- Routing implemented with protected routes against un-authenticated users. Data validation and sanitation also performed client side before interacting with backend API.
+- Implemented protected routes against un-authenticated users. Data validation and sanitation also performed client side before interacting with backend API.
 - Uses my [**social media api**](https://github.com/rcamach7/social-media-api) for the backend to allow users to use my [**instant messaging app**](https://github.com/rcamach7/social-media-api) with the exact same credentials, carrying over all user data, like friends, messages, and posts.
 
 #### Built Using
 
 <p align="center">
   <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1648514838/main-portfolio/animated-logos/react-anim_jqtsxo.gif" width="40" height="40" alt="React" />
+  <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1656116643/main-portfolio/tech-skills/redux_rbbutz.png" width="40" height="40" alt="Redux" />
   <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1648514837/main-portfolio/animated-logos/js-anim_pxxk0j.gif" width="40" height="40" alt="Javascript" />
   <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1648515099/main-portfolio/animated-logos/sass-animated_lhind3.gif" width="30" height="35" alt="SASS" />
   <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1646099328/main-portfolio/tech-skills/html_qpxonu.png" width="40" height="40" alt="Javascript" />
 </p>
 
-- functional components, custom hooks, useEffect, useState, useContext, axios, uuid, react-router-dom, sass, font awesome icon's, moment, HashRouter, localStorage, destructured props, ES6 features, AJAX.
+- dispatchers, reducers, redux store, functional components, custom hooks, useEffect, useState, useContext, axios, uuid, react-router-dom, sass, font awesome icon's, moment, HashRouter, localStorage, destructured props, ES6 features, AJAX.
 
 #### Local Installation & Running
 
