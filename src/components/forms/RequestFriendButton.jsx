@@ -5,7 +5,7 @@ import { sendFriendRequest } from "../../data/api";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
 
-export const RequestFriendButton = ({ username }) => {
+const RequestFriendButton = ({ username }) => {
   const dispatch = useDispatch();
 
   const handleRequest = async () => {
@@ -25,3 +25,5 @@ export const RequestFriendButton = ({ username }) => {
     </button>
   );
 };
+
+export default RequestFriendButton;

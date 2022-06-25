@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { getToken } from "../data/api";
-import CreateAccountForm from "../components/forms/CreateAccountForm";
+import { CreateAccountForm } from "../components/forms/";
 
 const LandingPage = () => {
   const [account, setAccount] = useState({

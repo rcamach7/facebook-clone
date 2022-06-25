@@ -19,7 +19,7 @@ function StatusBar({ setShowPopup }) {
           className="statusBar-submission-input"
           onClick={() => setShowPopup(true)}
         >
-          What's on your mind, {user ? user.fullName : "..."}?
+          What's on your mind, {user ? user.fullName : "loading..."}?
         </button>
       </div>
 

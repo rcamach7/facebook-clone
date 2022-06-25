@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
-import DeletePostForm from "../../forms/DeletePostForm";
+import { DeletePostForm } from "../../forms";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 

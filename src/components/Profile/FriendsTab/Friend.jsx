@@ -43,11 +43,11 @@ export default function Friend({ friend, receivedRequestsFriend }) {
         <p className="name">{name}</p>
       </Link>
       <div className="buttonContainer">
-        {receivedRequestsFriend ? (
+        {receivedRequestsFriend && (
           <button onClick={(e) => handleAcceptRequest(e)}>
             <FontAwesomeIcon icon={faPlus} /> Accept
           </button>
-        ) : null}
+        )}
       </div>
     </div>
   );

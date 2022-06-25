@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Post from "./Post/Post";
 import StatusBar from "./StatusBar";
-import CreateNewPostForm from "../forms/CreateNewPostForm";
+import { CreateNewPostForm } from "../forms/";
 import { useSelector } from "react-redux";
 
 function PostsContainer() {
@@ -12,14 +12,13 @@ function PostsContainer() {
   return (
     <div className="PostsContainer">
       <StatusBar setShowPopup={setShowPopup} />
-      {showPopup ? <CreateNewPostForm setShowPopup={setShowPopup} /> : null}
+      {showPopup && <CreateNewPostForm setShowPopup={setShowPopup} />}
 
       {/* Traverses the array in reverse order to display test data by time posted */}
-      {posts
-        ? posts.map((curPost) => {
-            return <Post key={curPost._id} user={user} post={curPost} />;
-          })
-        : null}
+      {posts &&
+        posts.map((curPost) => {
+          return <Post key={curPost._id} user={user} post={curPost} />;
+        })}
     </div>
   );
 }

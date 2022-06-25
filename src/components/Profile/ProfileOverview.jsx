@@ -5,15 +5,17 @@ import {
   faEllipsisH,
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import UpdateImageForm from "../forms/UpdateImageForm";
-import EditNameForm from "../forms/EditNameForm";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import LoadingUx from "../LoadingUx";
+import {
+  UpdateImageForm,
+  EditNameForm,
+  AcceptFriendRequestButton,
+  RequestFriendButton,
+} from "../forms/";
 import { isFriend, isRequested, isPendingAcceptance } from "../../data/helpers";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
-import { AcceptFriendRequestButton } from "../forms/AcceptFriendRequestButton";
-import { RequestFriendButton } from "../forms/RequestFriendButton";
 import { useSelector } from "react-redux";
+import LoadingUx from "../LoadingUx";
 
 export default function ProfileOverview({
   setCurrentTab,

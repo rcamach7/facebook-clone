@@ -3,7 +3,7 @@ import { updateName } from "../../data/api";
 import { setUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 
-export default function EditNameForm({ setShowEditNameForm, fullName }) {
+const EditNameForm = ({ setShowEditNameForm, fullName }) => {
   const dispatch = useDispatch();
   const [newFullName, setNewName] = useState({
     fullName: fullName,
@@ -43,4 +43,6 @@ export default function EditNameForm({ setShowEditNameForm, fullName }) {
       <input id="submitBtn" type="submit" />
     </form>
   );
-}
+};
+
+export default EditNameForm;

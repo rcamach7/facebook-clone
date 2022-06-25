@@ -5,7 +5,7 @@ import { acceptFriendRequest } from "../../data/api";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
 
-export const AcceptFriendRequestButton = ({ friendId }) => {
+const AcceptFriendRequestButton = ({ friendId }) => {
   const dispatch = useDispatch();
   const handleAcceptRequest = async () => {
     try {
@@ -27,3 +27,5 @@ export const AcceptFriendRequestButton = ({ friendId }) => {
     </button>
   );
 };
+
+export default AcceptFriendRequestButton;
