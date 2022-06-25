@@ -4,10 +4,10 @@ import {
   faLaughBeam,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
-import { useUserContext } from "../../hooks/useUserContext";
+import { useSelector } from "react-redux";
 
 function StatusBar({ setShowPopup }) {
-  const { user } = useUserContext();
+  const user = useSelector((state) => state.user.value);
 
   return (
     <div className="StatusBar">

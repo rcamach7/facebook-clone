@@ -6,10 +6,10 @@ import ProfileOverview from "../components/Profile/ProfileOverview";
 import AboutCreator from "../components/Profile/AboutCreator";
 import MessagesTab from "../components/Profile/MessagesTab";
 import FriendsTab from "../components/Profile/FriendsTab/FriendsTab";
-import { useUserContext } from "../hooks/useUserContext";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
-  const { user, setUser } = useUserContext();
+  const user = useSelector((state) => state.user.value);
   const [visitingProfile, setVisitingProfile] = useState(null);
   const [currentTab, setCurrentTab] = useState("Messages");
   const params = useParams();
@@ -38,7 +38,6 @@ const Profile = () => {
             friends={user ? user.friends : []}
             sentFriendRequests={user ? user.sentFriendRequests : []}
             receivedFriendRequests={user ? user.receivedFriendRequests : []}
-            setUser={setUser}
           />
         );
       case "Messages":
@@ -56,10 +55,8 @@ const Profile = () => {
       {/* First major section of page - showcasing user image, name, and a sub navbar */}
       <ProfileOverview
         visitingProfile={visitingProfile}
-        user={user}
         setCurrentTab={setCurrentTab}
         currentTab={currentTab}
-        setUser={setUser}
       />
       {handleTabSwitch(currentTab)}
     </div>

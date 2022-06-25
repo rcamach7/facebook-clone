@@ -13,11 +13,11 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useUserContext } from "../../hooks/useUserContext";
 import LoadingUx from "../LoadingUx";
+import { useSelector } from "react-redux";
 
 function LeftSideBar() {
-  const { user } = useUserContext();
+  const user = useSelector((state) => state.user.value);
 
   const handleLogOut = () => {
     localStorage.clear();

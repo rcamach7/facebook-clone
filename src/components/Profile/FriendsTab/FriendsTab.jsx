@@ -5,7 +5,6 @@ export default function FriendsTab({
   friends,
   receivedFriendRequests,
   sentFriendRequests,
-  setUser,
 }) {
   const myFriends = friends.map((user) => {
     return <Friend key={user._id} friend={user.friend} />;
@@ -21,7 +20,6 @@ export default function FriendsTab({
         <Friend
           key={receivedRequestsFriend._id._id}
           receivedRequestsFriend={receivedRequestsFriend._id}
-          setUser={setUser}
         />
       );
     }

@@ -4,20 +4,24 @@ import { processPostLike } from "../../../assets/api";
 import { findIndexOfPost } from "../../../assets/helpers";
 import { useState } from "react";
 import LoadingUx from "../../LoadingUx";
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts } from "../../../features/posts/postsSlice";
 
-function PostNavbar({ postId, setPosts }) {
+function PostNavbar({ postId }) {
   const [loading, setLoading] = useState(false);
+  const posts = useSelector((state) => state.posts.value);
+  const dispatch = useDispatch();
 
   const handleLike = async () => {
     try {
       setLoading(true);
       const post = await processPostLike(postId);
+
+      const updatedPosts = [...posts];
+      updatedPosts[findIndexOfPost(updatedPosts, postId)] = post;
+      dispatch(setPosts(updatedPosts));
+
       setLoading(false);
-      setPosts((prevState) => {
-        const newState = [...prevState];
-        newState[findIndexOfPost(prevState, postId)] = post;
-        return newState;
-      });
     } catch (error) {
       setLoading(false);
       alert("Error liking post!");

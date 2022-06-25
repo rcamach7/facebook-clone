@@ -2,8 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { acceptFriendRequest } from "../../../assets/api";
 import { Link } from "react-router-dom";
+import { setUser } from "../../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
-export default function Friend({ friend, receivedRequestsFriend, setUser }) {
+export default function Friend({ friend, receivedRequestsFriend }) {
+  const dispatch = useDispatch();
+
   const name = friend
     ? friend.fullName
     : receivedRequestsFriend
@@ -19,7 +23,7 @@ export default function Friend({ friend, receivedRequestsFriend, setUser }) {
     e.preventDefault();
     try {
       const user = await acceptFriendRequest(receivedRequestsFriend._id);
-      setUser(user);
+      dispatch(setUser(user));
     } catch (error) {
       alert("Error accepting request");
     }

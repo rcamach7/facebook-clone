@@ -1,22 +1,24 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setPosts } from "../features/posts/postsSlice";
 import { getPosts } from "../assets/api";
 
-export default function useFetchPosts(storedJwt) {
-  const [posts, setPosts] = useState(null);
+export default function useFetchPosts() {
+  const posts = useSelector((state) => state.posts.value);
+  const jwtToken = useSelector((state) => state.jwtToken.value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const posts = await getPosts();
-        setPosts(posts);
+        dispatch(setPosts(posts));
       } catch (error) {
         console.log(error);
       }
     };
-    if (storedJwt && posts === null) {
+    if (jwtToken && posts === null) {
       fetchPosts();
     }
-  }, [posts, storedJwt]);
-
-  return [posts, setPosts];
+  }, [posts, jwtToken, dispatch]);
 }

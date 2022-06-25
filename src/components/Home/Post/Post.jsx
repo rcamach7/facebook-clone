@@ -3,7 +3,7 @@ import PostNavbar from "./PostNavbar";
 import PostComments from "./PostComments";
 import PostAddComment from "./PostAddComment";
 
-export default function Post({ post, user, setPosts }) {
+export default function Post({ post, user }) {
   const { postedBy, timeStamp, description, picture, likes, comments, _id } =
     post;
 
@@ -20,19 +20,17 @@ export default function Post({ post, user, setPosts }) {
           likes={likes}
           numComments={comments.length}
           postId={_id}
-          setPosts={setPosts}
         />
       </div>
       <div className="postNavbarContainer">
-        <PostNavbar setPosts={setPosts} postId={_id} />
+        <PostNavbar postId={_id} />
       </div>
       <div className="postCommentsContainer">
-        <PostComments comments={comments} postId={_id} setPosts={setPosts} />
+        <PostComments comments={comments} postId={_id} />
       </div>
       <div className="postAddCommentContainer">
         <PostAddComment
           postId={_id}
-          setPosts={setPosts}
           profilePicture={user ? user.profilePicture : null}
         />
       </div>

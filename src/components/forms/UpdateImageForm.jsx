@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { updateProfilePicture } from "../../assets/api";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/user/userSlice";
 
-export default function UpdateImageForm({ setUser }) {
+export default function UpdateImageForm() {
   const [image, setImage] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const updatePicture = async () => {
       try {
         const user = await updateProfilePicture(image);
-        setUser(user);
+        dispatch(setUser(user));
       } catch (error) {
         alert("Error uploading new picture");
       }
@@ -20,7 +23,7 @@ export default function UpdateImageForm({ setUser }) {
     if (image !== null) {
       updatePicture();
     }
-  }, [image, setUser]);
+  }, [image, dispatch]);
 
   return (
     <form className="UpdateImageForm">

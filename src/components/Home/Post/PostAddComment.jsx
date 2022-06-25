@@ -1,19 +1,23 @@
 import { useState } from "react";
 import { processPostComment } from "../../../assets/api";
 import { findIndexOfPost } from "../../../assets/helpers";
+import { useSelector, useDispatch } from "react-redux";
+import { setPosts } from "../../../features/posts/postsSlice";
 
-function PostAddComment({ profilePicture, setPosts, postId }) {
+function PostAddComment({ profilePicture, postId }) {
   const [comment, setComment] = useState("");
+  const posts = useSelector((state) => state.posts.value);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const post = await processPostComment(postId, comment);
-      setPosts((prevState) => {
-        const newState = [...prevState];
-        newState[findIndexOfPost(prevState, postId)] = post;
-        return newState;
-      });
+
+      const updatedPosts = [...posts];
+      updatedPosts[findIndexOfPost(updatedPosts, postId)] = post;
+      dispatch(setPosts(updatedPosts));
+
       setComment("");
     } catch (error) {
       alert("Error adding comment");

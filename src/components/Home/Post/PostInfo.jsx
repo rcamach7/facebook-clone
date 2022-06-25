@@ -14,7 +14,6 @@ function PostInfo({
   likes,
   numComments,
   postId,
-  setPosts,
   username,
 }) {
   const [showDeletePostForm, setShowDeletePostForm] = useState(false);
@@ -48,7 +47,6 @@ function PostInfo({
           {showDeletePostForm ? (
             <DeletePostForm
               postId={postId}
-              setPosts={setPosts}
               setShowDeletePostForm={setShowDeletePostForm}
             />
           ) : null}
