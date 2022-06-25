@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { processPostComment } from "../../../assets/api";
-import { findIndexOfPost } from "../../../assets/helpers";
+import { processPostComment } from "../../../data/api";
+import { findIndexOfPost } from "../../../data/helpers";
 import { useSelector, useDispatch } from "react-redux";
 import { setPosts } from "../../../features/posts/postsSlice";
 

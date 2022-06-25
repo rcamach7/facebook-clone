@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setPosts } from "../features/posts/postsSlice";
-import { getPosts } from "../assets/api";
+import { getPosts } from "../data/api";
 
-export default function useFetchPosts() {
+const useFetchPosts = () => {
   const posts = useSelector((state) => state.posts.value);
   const jwtToken = useSelector((state) => state.jwtToken.value);
   const dispatch = useDispatch();
@@ -21,4 +21,6 @@ export default function useFetchPosts() {
       fetchPosts();
     }
   }, [posts, jwtToken, dispatch]);
-}
+};
+
+export default useFetchPosts;

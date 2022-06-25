@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { getToken } from "../assets/api";
+import { getToken } from "../data/api";
 import CreateAccountForm from "../components/forms/CreateAccountForm";
 
 const LandingPage = () => {

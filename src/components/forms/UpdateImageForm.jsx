@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
-import { updateProfilePicture } from "../../assets/api";
+import { updateProfilePicture } from "../../data/api";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
 

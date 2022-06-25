@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { sendFriendRequest } from "../../assets/api";
+import { sendFriendRequest } from "../../data/api";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/user/userSlice";
 

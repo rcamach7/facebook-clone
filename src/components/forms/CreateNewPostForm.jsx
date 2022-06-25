@@ -10,7 +10,7 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { createPost } from "../../assets/api";
+import { createPost } from "../../data/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../../features/posts/postsSlice";
 

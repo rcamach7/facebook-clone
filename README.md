@@ -2,13 +2,13 @@
 
 Facebook clone that allows user to make a post with text or pictures, and like posts or comments. Uses my custom [**social media api**](https://github.com/rcamach7/social-media-api) for the backend.
 
-![Website Demo](facebook_demo.gif)
-
 <div align="center">
 
 [**Visit Facebook Clone**](https://rcamach7.github.io/facebook-clone/)
 
 </div>
+
+![Website Demo](facebook_demo.gif)
 
 ## Key Features
 

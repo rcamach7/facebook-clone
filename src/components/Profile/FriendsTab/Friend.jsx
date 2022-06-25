@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { acceptFriendRequest } from "../../../assets/api";
+import { acceptFriendRequest } from "../../../data/api";
 import { Link } from "react-router-dom";
 import { setUser } from "../../../features/user/userSlice";
 import { useDispatch } from "react-redux";

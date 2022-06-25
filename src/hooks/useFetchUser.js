@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { getUser } from "../assets/api";
+import { getUser } from "../data/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, removeUser } from "../features/user/userSlice";
 import { removeToken } from "../features/jwt/jwtSlice";
 
-export default function useFetchUser() {
+const useFetchUser = () => {
   const user = useSelector((state) => state.user.value);
   const jwtToken = useSelector((state) => state.jwtToken.value);
   const dispatch = useDispatch();
@@ -29,4 +29,6 @@ export default function useFetchUser() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, jwtToken]);
-}
+};
+
+export default useFetchUser;

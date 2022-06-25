@@ -1,11 +1,9 @@
 import "./styles/index.scss";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
-import useFetchUser from "./hooks/useFetchUser";
-import useFetchPosts from "./hooks/useFetchPosts";
+import { useFetchPosts, useFetchUser, useJwtToken } from "./hooks";
 import Home from "./routes/Home";
 import LandingPage from "./routes/LandingPage";
 import Profile from "./routes/Profile";
-import { useJwtToken } from "./hooks/useJwtToken";
 import { NotAuthenticated, RequireAuth } from "./components/routeProtections";
 
 export default function RouteSwitch() {

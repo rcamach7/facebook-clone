@@ -1,5 +1,5 @@
 import React from "react";
-import { deletePost } from "../../assets/api";
+import { deletePost } from "../../data/api";
 import { useDispatch } from "react-redux";
 import { setPosts } from "../../features/posts/postsSlice";
 

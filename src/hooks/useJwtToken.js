@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 
-export const useJwtToken = () => {
+const useJwtToken = () => {
   const jwtToken = useSelector((state) => state.jwtToken.value);
 
   useEffect(() => {
@@ -19,3 +19,5 @@ export const useJwtToken = () => {
     );
   }, [jwtToken]);
 };
+
+export default useJwtToken;

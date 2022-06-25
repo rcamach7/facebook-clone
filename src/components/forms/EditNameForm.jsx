@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { updateName } from "../../assets/api";
+import { updateName } from "../../data/api";
 import { setUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
-import { getVisitingUser } from "../assets/api.js";
+import { getVisitingUser } from "../data/api.js";
 import ProfileOverview from "../components/Profile/ProfileOverview";
 import AboutCreator from "../components/Profile/AboutCreator";
 import MessagesTab from "../components/Profile/MessagesTab";

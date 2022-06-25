@@ -1,7 +1,7 @@
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { processCommentLike } from "../../../assets/api";
-import { findIndexOfPost } from "../../../assets/helpers";
+import { processCommentLike } from "../../../data/api";
+import { findIndexOfPost } from "../../../data/helpers";
 import { useState } from "react";
 import moment from "moment";
 import LoadingUx from "../../LoadingUx";

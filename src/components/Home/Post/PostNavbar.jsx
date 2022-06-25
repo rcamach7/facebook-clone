@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComment } from "@fortawesome/free-solid-svg-icons";
-import { processPostLike } from "../../../assets/api";
-import { findIndexOfPost } from "../../../assets/helpers";
+import { processPostLike } from "../../../data/api";
+import { findIndexOfPost } from "../../../data/helpers";
 import { useState } from "react";
 import LoadingUx from "../../LoadingUx";
 import { useDispatch, useSelector } from "react-redux";
