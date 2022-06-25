@@ -11,12 +11,12 @@ import { NotAuthenticated, RequireAuth } from "./components/routeProtections";
 
 export default function RouteSwitch() {
   useJwtToken();
+  useFetchPosts();
   const [user, setUser] = useFetchUser();
-  const [posts, setPosts] = useFetchPosts();
 
   return (
     <HashRouter>
-      <UserContext.Provider value={{ user, setUser, posts, setPosts }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Routes>
           <Route
             path="/facebook-clone/"

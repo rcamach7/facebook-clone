@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { updateName } from "../../assets/api";
+import { setUser } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
-export default function EditNameForm({
-  setShowEditNameForm,
-  fullName,
-  setUser,
-}) {
+export default function EditNameForm({ setShowEditNameForm, fullName }) {
+  const dispatch = useDispatch();
   const [newFullName, setNewName] = useState({
     fullName: fullName,
   });
@@ -17,7 +16,7 @@ export default function EditNameForm({
       try {
         const user = await updateName(newFullName.fullName);
         setShowEditNameForm(false);
-        setUser(user);
+        dispatch(setUser(user));
       } catch (error) {
         console.log(error);
         alert(`Error occurred while changing name`);

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { getUser } from "../assets/api";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../features/user/userSlice";
+import { setUser, removeUser } from "../features/user/userSlice";
 import { removeToken } from "../features/jwt/jwtSlice";
 
 export default function useFetchUser() {
@@ -15,7 +15,7 @@ export default function useFetchUser() {
     const fetchUser = async () => {
       try {
         const user = await getUser();
-        dispatch(addUser(user));
+        dispatch(setUser(user));
       } catch (error) {
         // Token might be expired, or API is down.
         dispatch(removeUser());

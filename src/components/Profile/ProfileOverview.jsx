@@ -17,15 +17,15 @@ import {
 import { useParams } from "react-router-dom";
 import { AcceptFriendRequestButton } from "../forms/AcceptFriendRequestButton";
 import { RequestFriendButton } from "../forms/RequestFriendButton";
+import { useSelector } from "react-redux";
 
 export default function ProfileOverview({
-  user,
   setCurrentTab,
   currentTab,
-  setUser,
   visitingProfile,
 }) {
   const [showEditNameForm, setShowEditNameForm] = useState(false);
+  const user = useSelector((state) => state.user.value);
   const params = useParams();
 
   const handleLogOut = () => {
@@ -80,7 +80,6 @@ export default function ProfileOverview({
           {showEditNameForm ? (
             <EditNameForm
               fullName={user ? user.fullName : null}
-              setUser={setUser}
               setShowEditNameForm={setShowEditNameForm}
             />
           ) : (
@@ -107,7 +106,7 @@ export default function ProfileOverview({
             determineActionButton()
           ) : (
             <button className="editProfileImageBtn">
-              <UpdateImageForm setUser={setUser} />
+              <UpdateImageForm />
             </button>
           )}
           {!visitingProfile && (
