@@ -18,6 +18,4 @@ export const useJwtToken = () => {
       }
     );
   }, [jwtToken]);
-
-  return jwtToken;
 };

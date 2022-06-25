@@ -1,15 +1,17 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { useUserContext } from "../../hooks/useUserContext";
 import { sendFriendRequest } from "../../assets/api";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/user/userSlice";
 
 export const RequestFriendButton = ({ username }) => {
-  const { setUser } = useUserContext();
+  const dispatch = useDispatch();
+
   const handleRequest = async () => {
     try {
       const user = await sendFriendRequest(username);
-      setUser(user);
+      dispatch(setUser(user));
     } catch (error) {
       console.log(error);
       alert("Error sending request");

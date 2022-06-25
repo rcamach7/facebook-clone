@@ -29,6 +29,4 @@ export default function useFetchUser() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, jwtToken]);
-
-  return [user, null];
 }
