@@ -12,8 +12,8 @@ Facebook clone that allows user to make a post with text or pictures, and like p
 
 ## Key Features
 
-- Utilizes Redux for state management, react lifecycle methods, and custom hooks to manage application features.
 - UI built entirely with React. Made fully responsive with media breakpoints and CSS sizing functions.
+- Utilizes Redux for state management, react lifecycle methods, and custom hooks to manage application features.
 - Implemented protected routes against un-authenticated users. Data validation and sanitation also performed client side before interacting with backend API.
 - Uses my [**social media api**](https://github.com/rcamach7/social-media-api) for the backend to allow users to use my [**instant messaging app**](https://github.com/rcamach7/social-media-api) with the exact same credentials, carrying over all user data, like friends, messages, and posts.
 
@@ -41,3 +41,5 @@ npm run start
 #### Pending Improvements
 
 - replace right tab in homepage with a component displaying friends and other users using the application.
+- Create a full page loading UI so that its more clear data is still being fetched for the user.
+- Add more icons on the navbar so it looks closer to the original facebook navbar.
