@@ -24,7 +24,7 @@ function Navbar() {
         </li>
       </ul>
 
-      <ul className="navbar-menu"></ul>
+      <ul className="navbar-menu" />
 
       <ul className="navbar-rightMenu">
         <Link

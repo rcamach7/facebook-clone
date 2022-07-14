@@ -10,10 +10,12 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const user = useSelector((state) => state.user.value);
-  const [visitingProfile, setVisitingProfile] = useState(null);
   const [currentTab, setCurrentTab] = useState("Messages");
+
+  const [visitingProfile, setVisitingProfile] = useState(null);
   const params = useParams();
 
+  // Will manage the user to be displayed, based on URL Parameters provided.
   useEffect(() => {
     const fetchVisitingUser = async () => {
       const visitingUser = await getVisitingUser(params.username);
@@ -28,6 +30,7 @@ const Profile = () => {
     }
   }, [user, params.username]);
 
+  // Manages section user is viewing on profile tabs.
   const handleTabSwitch = (tab) => {
     switch (tab) {
       case "About Creator":
@@ -52,7 +55,8 @@ const Profile = () => {
       <header>
         <Navbar icon={user ? user.profilePicture : null} />
       </header>
-      {/* First major section of page - showcasing user image, name, and a sub navbar */}
+
+      {/* Shows user image, name, and a sub navbar */}
       <ProfileOverview
         visitingProfile={visitingProfile}
         setCurrentTab={setCurrentTab}

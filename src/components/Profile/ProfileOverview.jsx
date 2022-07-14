@@ -22,9 +22,10 @@ export default function ProfileOverview({
   currentTab,
   visitingProfile,
 }) {
-  const [showEditNameForm, setShowEditNameForm] = useState(false);
   const user = useSelector((state) => state.user.value);
   const params = useParams();
+
+  const [showEditNameForm, setShowEditNameForm] = useState(false);
 
   const handleLogOut = () => {
     localStorage.clear();
@@ -42,6 +43,7 @@ export default function ProfileOverview({
     return null;
   };
 
+  // Will determine the appropriate action button when visiting another users profile.
   const determineActionButton = () => {
     if (isFriend(user.friends, params.username)) {
       return (
@@ -66,6 +68,28 @@ export default function ProfileOverview({
     }
   };
 
+  const renderUsername = () => {
+    return (
+      <div>
+        {visitingProfile ? (
+          visitingProfile.fullName
+        ) : user ? (
+          user.fullName
+        ) : (
+          <LoadingUx />
+        )}{" "}
+        {/* If user is on their own profile page, give them the edit name form. */}
+        {!visitingProfile && (
+          <FontAwesomeIcon
+            icon={faPenToSquare}
+            className="editNameIcon"
+            onClick={() => setShowEditNameForm(!showEditNameForm)}
+          />
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="ProfileOverview">
       <section className="image-backdrop">
@@ -73,6 +97,7 @@ export default function ProfileOverview({
           <img src={determineProfilePicture()} alt="user" />
         </div>
       </section>
+
       <section className="user-backdrop">
         <div className="user-fullName">
           {showEditNameForm ? (
@@ -81,24 +106,10 @@ export default function ProfileOverview({
               setShowEditNameForm={setShowEditNameForm}
             />
           ) : (
-            <div>
-              {visitingProfile ? (
-                visitingProfile.fullName
-              ) : user ? (
-                user.fullName
-              ) : (
-                <LoadingUx />
-              )}{" "}
-              {visitingProfile ? null : (
-                <FontAwesomeIcon
-                  icon={faPenToSquare}
-                  className="editNameIcon"
-                  onClick={() => setShowEditNameForm(!showEditNameForm)}
-                />
-              )}
-            </div>
+            renderUsername()
           )}
         </div>
+
         <div className="editProfileButtons">
           {visitingProfile ? (
             determineActionButton()
@@ -107,6 +118,8 @@ export default function ProfileOverview({
               <UpdateImageForm />
             </button>
           )}
+
+          {/* Give user log out option if on his own profile page. */}
           {!visitingProfile && (
             <button className="signOut" onClick={handleLogOut}>
               <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out
@@ -114,23 +127,24 @@ export default function ProfileOverview({
           )}
         </div>
 
+        {/* Buttons that will control which section to display for user profile. */}
         <ul className="profileSections">
           <li
-            className={`${currentTab === "Messages" ? "active" : null}`}
+            className={`${currentTab === "Messages" ? "active" : ""}`}
             onClick={() => setCurrentTab("Messages")}
           >
             Messenger
           </li>
           {!visitingProfile && (
             <li
-              className={`${currentTab === "Friends" ? "active" : null}`}
+              className={`${currentTab === "Friends" ? "active" : ""}`}
               onClick={() => setCurrentTab("Friends")}
             >
               Friends
             </li>
           )}
           <li
-            className={`${currentTab === "About Creator" ? "active" : null}`}
+            className={`${currentTab === "About Creator" ? "active" : ""}`}
             onClick={() => setCurrentTab("About Creator")}
           >
             About Creator

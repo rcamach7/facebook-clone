@@ -9,8 +9,9 @@ const LandingPage = () => {
     username: "",
     password: "",
   });
-  const [loadingUx, setLoadingUx] = useState(false);
   const [showCreateAccountForm, setShowCreateAccountForm] = useState(false);
+
+  const [loadingUx, setLoadingUx] = useState(false);
   const [errors, setErrors] = useState(false);
 
   const handleLogin = async (e, useTestAccount) => {
@@ -68,12 +69,13 @@ const LandingPage = () => {
           autoComplete="off"
           required
         />
+        {/* Populate errors, if any */}
+        {errors && <p style={{ color: "red" }}>Invalid username or password</p>}
+
         <button className="login-btn" type="submit">
           Log In
         </button>
-        {errors ? (
-          <p style={{ color: "red" }}>Invalid username or password</p>
-        ) : null}
+
         <button
           className="login-btn"
           type="button"
@@ -81,7 +83,11 @@ const LandingPage = () => {
         >
           Use test account
         </button>
-        <button type="button"> Forgot password?</button>
+
+        <button type="button" disabled>
+          Forgot password?
+        </button>
+
         <button
           className="newAccount-btn"
           type="button"
@@ -91,19 +97,19 @@ const LandingPage = () => {
         </button>
 
         {/* UX Loading spinner */}
-        {loadingUx ? (
+        {loadingUx && (
           <div className="loadingUx">
             <FontAwesomeIcon icon={faSpinner} className="loadingIcon" />
           </div>
-        ) : null}
+        )}
       </form>
 
-      {/* Popup Form */}
-      {showCreateAccountForm ? (
+      {/* Popup form to create account */}
+      {showCreateAccountForm && (
         <CreateAccountForm
           setShowCreateAccountForm={setShowCreateAccountForm}
         />
-      ) : null}
+      )}
     </div>
   );
 };

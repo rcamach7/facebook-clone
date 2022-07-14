@@ -32,6 +32,7 @@ export default function Friend({ friend, receivedRequestsFriend }) {
   return (
     <div className="Friend">
       <img src={image} alt="" />
+
       <Link
         to={`/facebook-clone/profile/${friend && friend.username}`}
         style={{
@@ -42,6 +43,7 @@ export default function Friend({ friend, receivedRequestsFriend }) {
       >
         <p className="name">{name}</p>
       </Link>
+
       <div className="buttonContainer">
         {receivedRequestsFriend && (
           <button onClick={(e) => handleAcceptRequest(e)}>

@@ -5,6 +5,7 @@ import axios from "axios";
 const useJwtToken = () => {
   const jwtToken = useSelector((state) => state.jwtToken.value);
 
+  // Updates the header will the most current JWT token, whenever its value changes.
   useEffect(() => {
     axios.interceptors.request.use(
       (config) => {

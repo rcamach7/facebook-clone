@@ -7,6 +7,7 @@ import Profile from "./routes/Profile";
 import { NotAuthenticated, RequireAuth } from "./components/routeProtections";
 
 export default function RouteSwitch() {
+  // Custom hooks that manage redux store values based on user status and actions.
   useJwtToken();
   useFetchPosts();
   useFetchUser();
@@ -30,6 +31,7 @@ export default function RouteSwitch() {
             </RequireAuth>
           }
         />
+        {/* Dynamic routing used to visit different user profiles */}
         <Route
           path="/facebook-clone/profile/:username"
           element={
