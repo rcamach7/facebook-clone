@@ -12,8 +12,8 @@ export function LoadingUx() {
 
 export function FullPageLoading() {
   return (
-    <div>
-      <FontAwesomeIcon icon={faSpinner} className="" />
+    <div className="FullPageLoading">
+      <FontAwesomeIcon icon={faSpinner} className="icon" />
     </div>
   );
 }

@@ -7,10 +7,13 @@ import AboutCreator from "../components/Profile/AboutCreator";
 import MessagesTab from "../components/Profile/MessagesTab";
 import FriendsTab from "../components/Profile/FriendsTab/FriendsTab";
 import { useSelector } from "react-redux";
+import { FullPageLoading } from "../components/Loading";
 
 const Profile = () => {
   const user = useSelector((state) => state.user.value);
   const [currentTab, setCurrentTab] = useState("Messages");
+
+  const [loading, setLoading] = useState(true);
 
   const [visitingProfile, setVisitingProfile] = useState(null);
   const params = useParams();
@@ -20,12 +23,14 @@ const Profile = () => {
     const fetchVisitingUser = async () => {
       const visitingUser = await getVisitingUser(params.username);
       setVisitingProfile(visitingUser);
+      setLoading(false);
     };
     if (user) {
       if (user.username !== params.username) {
         fetchVisitingUser();
       } else {
         setVisitingProfile(null);
+        setLoading(false);
       }
     }
   }, [user, params.username]);
@@ -63,6 +68,9 @@ const Profile = () => {
         currentTab={currentTab}
       />
       {handleTabSwitch(currentTab)}
+
+      {/* Loading UI that will overlap entire page while data is being retrieved */}
+      {loading && <FullPageLoading />}
     </div>
   );
 };
