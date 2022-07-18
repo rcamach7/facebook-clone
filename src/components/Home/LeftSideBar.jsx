@@ -13,7 +13,7 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import LoadingUx from "../LoadingUx";
+import { LoadingUx } from "../Loading";
 import { useSelector } from "react-redux";
 
 function LeftSideBar() {

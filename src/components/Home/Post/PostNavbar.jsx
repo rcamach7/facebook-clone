@@ -3,7 +3,7 @@ import { faThumbsUp, faComment } from "@fortawesome/free-solid-svg-icons";
 import { processPostLike } from "../../../data/api";
 import { findIndexOfPost } from "../../../data/helpers";
 import { useState } from "react";
-import LoadingUx from "../../LoadingUx";
+import { LoadingUx } from "../../Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../../../features/posts/postsSlice";
 

@@ -15,7 +15,7 @@ import { isFriend, isRequested, isPendingAcceptance } from "../../data/helpers";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LoadingUx from "../LoadingUx";
+import { LoadingUx } from "../Loading";
 
 export default function ProfileOverview({
   setCurrentTab,

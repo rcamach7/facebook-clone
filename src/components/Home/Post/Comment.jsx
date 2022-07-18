@@ -4,7 +4,7 @@ import { processCommentLike } from "../../../data/api";
 import { findIndexOfPost } from "../../../data/helpers";
 import { useState } from "react";
 import moment from "moment";
-import LoadingUx from "../../LoadingUx";
+import { LoadingUx } from "../../Loading";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../../../features/posts/postsSlice";
