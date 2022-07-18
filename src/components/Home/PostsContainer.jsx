@@ -3,11 +3,21 @@ import Post from "./Post/Post";
 import StatusBar from "./StatusBar";
 import { CreateNewPostForm } from "../forms/";
 import { useSelector } from "react-redux";
+import { FullPageLoading } from "../Loading";
+import { useEffect } from "react";
 
 function PostsContainer() {
-  const [showPopup, setShowPopup] = useState(false);
   const user = useSelector((state) => state.user.value);
   const posts = useSelector((state) => state.posts.value);
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user && posts) {
+      setLoading(false);
+    }
+  }, [user, posts]);
 
   return (
     <div className="PostsContainer">
@@ -19,6 +29,9 @@ function PostsContainer() {
         posts.map((curPost) => {
           return <Post key={curPost._id} user={user} post={curPost} />;
         })}
+
+      {/* Trigger full page reload UI while data is still being fetched. */}
+      {loading && <FullPageLoading />}
     </div>
   );
 }

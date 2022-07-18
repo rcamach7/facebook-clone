@@ -41,5 +41,4 @@ npm run start
 #### Pending Improvements
 
 - replace right tab in homepage with a component displaying friends and other users using the application.
-- Create a full page loading UI so that its more clear data is still being fetched for the user.
 - Add more icons on the navbar so it looks closer to the original facebook navbar.
