@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { createUser } from "../../data/api";
+import { useDispatch } from "react-redux";
+import { updateToken } from "../../features/jwt/jwtSlice";
 
 function CreateAccountForm({ setShowCreateAccountForm }) {
   const [account, setAccount] = useState({
@@ -10,25 +12,55 @@ function CreateAccountForm({ setShowCreateAccountForm }) {
     password: "",
     passwordConfirm: "",
   });
-  const [badPasswordError, setBadPasswordError] = useState(false);
+  const [formErrors, setFormErrors] = useState({
+    errorsExist: false,
+    errorMessage: "",
+  });
   // Will show any API errors after submission.
   const [badRequest, setBadRequest] = useState([]);
+  const dispatch = useDispatch();
 
   const handleCreateAccount = async (e) => {
     e.preventDefault();
+    if (!isFormInputValid()) return;
+
+    try {
+      const token = await createUser(account);
+      dispatch(updateToken(token));
+    } catch (error) {
+      setBadRequest(error.response.data.errors);
+    }
+  };
+
+  const isFormInputValid = () => {
     if (account.password !== account.passwordConfirm) {
       // Display form error
-      setBadPasswordError(true);
-    } else {
-      try {
-        const token = await createUser(account);
-        // Save token to local storage and refresh page.
-        localStorage.setItem("token", token);
-        window.location.reload();
-      } catch (error) {
-        setBadRequest(error.response.data.errors);
-      }
+      setFormErrors({
+        errorsExist: true,
+        errorMessage: "Passwords do not match",
+      });
+
+      return false;
+    } else if (containsSpecialCharacters(account)) {
+      setFormErrors({
+        errorsExist: true,
+        errorMessage:
+          "No special characters allowed in your name, or username!",
+      });
+
+      return false;
     }
+    return true;
+  };
+
+  const containsSpecialCharacters = (account) => {
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (
+      specialChars.test(account.fullName) ||
+      specialChars.test(account.username)
+    )
+      return true;
+    return false;
   };
 
   // Update state by pulling the ID and value of the input being changes and updating our state.
@@ -36,8 +68,19 @@ function CreateAccountForm({ setShowCreateAccountForm }) {
     const { id, value } = e.target;
     setAccount({
       ...account,
-      [id]: value,
+      // Sanitize inputs based on field.
+      [id]: sanitizeInput(id, value),
     });
+  };
+
+  const sanitizeInput = (id, value) => {
+    if (id === "password" || id === "passwordConfirm") {
+      return value;
+    } else if (id === "username") {
+      return value.trim().toLowerCase();
+    } else {
+      return value;
+    }
   };
 
   return (
@@ -55,6 +98,7 @@ function CreateAccountForm({ setShowCreateAccountForm }) {
         </p>
         <p>Create Account</p>
         <input
+          value={account.fullName}
           type="text"
           id="fullName"
           onChange={handleInputChange}
@@ -65,6 +109,7 @@ function CreateAccountForm({ setShowCreateAccountForm }) {
         />
 
         <input
+          value={account.username}
           type="text"
           id="username"
           onChange={handleInputChange}
@@ -75,6 +120,7 @@ function CreateAccountForm({ setShowCreateAccountForm }) {
         />
 
         <input
+          value={account.password}
           type="password"
           id="password"
           onChange={handleInputChange}
@@ -84,6 +130,7 @@ function CreateAccountForm({ setShowCreateAccountForm }) {
           required
         />
         <input
+          value={account.passwordConfirm}
           type="password"
           id="passwordConfirm"
           onChange={handleInputChange}
@@ -93,8 +140,8 @@ function CreateAccountForm({ setShowCreateAccountForm }) {
           required
         />
         {/* If passwords don't match on submission - ask user to fill again */}
-        {badPasswordError ? (
-          <p className="submissionError ">Passwords do not match</p>
+        {formErrors.errorsExist ? (
+          <p className="submissionError">{formErrors.errorMessage}</p>
         ) : null}
         {/* Prints any errors generated from API */}
         {badRequest.map((submissionError, i) => {

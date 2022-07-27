@@ -3,6 +3,8 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { getToken } from "../data/api";
 import { CreateAccountForm } from "../components/forms/";
+import { useDispatch } from "react-redux";
+import { updateToken } from "../features/jwt/jwtSlice";
 
 const LandingPage = () => {
   const [account, setAccount] = useState({
@@ -13,18 +15,17 @@ const LandingPage = () => {
 
   const [loadingUx, setLoadingUx] = useState(false);
   const [errors, setErrors] = useState(false);
+  const dispatch = useDispatch();
 
   const handleLogin = async (e, useTestAccount) => {
     e.preventDefault();
     setLoadingUx(true);
     try {
-      // Checks if we are using a test account or not.
       let token = await getToken(
+        // Checks if we are using a test account or not.
         useTestAccount ? { username: "foobar", password: "test" } : account
       );
-      // Saves new token from log-in, refreshes webpage, and allows app to detect and log in user provided the saved token.
-      localStorage.setItem("token", token);
-      window.location.reload();
+      dispatch(updateToken(token));
     } catch (error) {
       // Catch and display any login errors from API
       setLoadingUx(false);
