@@ -7,17 +7,7 @@ const useJwtToken = () => {
 
   // Updates the header will the most current JWT token, whenever its value changes.
   useEffect(() => {
-    axios.interceptors.request.use(
-      (config) => {
-        if (jwtToken) {
-          config.headers.authorization = `Bearer ${jwtToken}`;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
+    axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
   }, [jwtToken]);
 };
 

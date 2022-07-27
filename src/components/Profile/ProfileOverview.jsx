@@ -14,8 +14,10 @@ import {
 import { isFriend, isRequested, isPendingAcceptance } from "../../data/helpers";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoadingUx } from "../Loading";
+import { removeToken } from "../../features/jwt/jwtSlice";
+import { removeUser } from "../../features/user/userSlice";
 
 export default function ProfileOverview({
   setCurrentTab,
@@ -23,13 +25,14 @@ export default function ProfileOverview({
   visitingProfile,
 }) {
   const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
   const params = useParams();
 
   const [showEditNameForm, setShowEditNameForm] = useState(false);
 
   const handleLogOut = () => {
-    localStorage.clear();
-    window.location.reload();
+    dispatch(removeToken());
+    dispatch(removeUser());
   };
 
   const determineProfilePicture = () => {

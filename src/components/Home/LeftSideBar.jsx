@@ -14,14 +14,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { LoadingUx } from "../Loading";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeToken } from "../../features/jwt/jwtSlice";
+import { removeUser } from "../../features/user/userSlice";
 
 function LeftSideBar() {
   const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
 
   const handleLogOut = () => {
-    localStorage.clear();
-    window.location.reload();
+    dispatch(removeToken());
+    dispatch(removeUser());
   };
 
   return (
