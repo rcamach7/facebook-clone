@@ -21,6 +21,7 @@ const Profile = () => {
   // Will manage the user to be displayed, based on URL Parameters provided.
   useEffect(() => {
     const fetchVisitingUser = async () => {
+      setLoading(true);
       const visitingUser = await getVisitingUser(params.username);
       setVisitingProfile(visitingUser);
       setLoading(false);
