@@ -1,25 +1,24 @@
 import axios from "axios";
-import config from "./config.json";
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
 
 // Retrieve current user info
 export async function getUser() {
   try {
     const {
       data: { user },
-    } = await axios.get(`${config.apiUrl}/users/`);
+    } = await axios.get(`/users/`);
     return Promise.resolve(user);
   } catch (error) {
     return Promise.reject(error);
   }
 }
 
-//
 // Retrieve current user info
 export async function getVisitingUser(username) {
   try {
     const {
       data: { user },
-    } = await axios.get(`${config.apiUrl}/users/visit/${username}`);
+    } = await axios.get(`/users/visit/${username}`);
     return Promise.resolve(user[0]);
   } catch (error) {
     return Promise.reject(error);
@@ -31,7 +30,7 @@ export async function getPosts() {
   try {
     const {
       data: { posts },
-    } = await axios.get(`${config.apiUrl}/posts/`);
+    } = await axios.get(`/posts/`);
     return Promise.resolve(posts);
   } catch (error) {
     return Promise.reject(error);
@@ -43,7 +42,7 @@ export async function createUser(account) {
   try {
     const {
       data: { token },
-    } = await axios.post(`${config.apiUrl}/users/`, {
+    } = await axios.post(`/users/`, {
       fullName: account.fullName,
       username: account.username.toLowerCase(),
       password: account.password,
@@ -66,7 +65,7 @@ export async function createPost(description, picture) {
         data: { post },
       } = await axios({
         method: "post",
-        url: `${config.apiUrl}/posts/`,
+        url: `/posts/`,
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -74,7 +73,7 @@ export async function createPost(description, picture) {
     } else {
       const {
         data: { post },
-      } = await axios.post(`${config.apiUrl}/posts/`, {
+      } = await axios.post(`/posts/`, {
         description,
         picture,
       });
@@ -87,7 +86,7 @@ export async function createPost(description, picture) {
 
 export async function deletePost(postId) {
   try {
-    await axios.delete(`${config.apiUrl}/posts/${postId}`);
+    await axios.delete(`/posts/${postId}`);
     // Retrieve collection of new posts
     const posts = await getPosts();
     return Promise.resolve(posts);
@@ -100,7 +99,7 @@ export async function getToken(account) {
   try {
     const {
       data: { token },
-    } = await axios.post(`${config.apiUrl}/login`, account);
+    } = await axios.post(`/login`, account);
     return Promise.resolve(token);
   } catch (error) {
     return Promise.reject(error);
@@ -111,7 +110,7 @@ export async function processPostLike(postId) {
   try {
     const {
       data: { post },
-    } = await axios.put(`${config.apiUrl}/posts/${postId}`, {
+    } = await axios.put(`/posts/${postId}`, {
       postLike: true,
     });
     return Promise.resolve(post);
@@ -124,7 +123,7 @@ export async function processCommentLike(postId, commentId) {
   try {
     const {
       data: { post },
-    } = await axios.put(`${config.apiUrl}/posts/${postId}`, {
+    } = await axios.put(`/posts/${postId}`, {
       commentLike: true,
       commentId,
     });
@@ -138,7 +137,7 @@ export async function processPostComment(postId, comment) {
   try {
     const {
       data: { post },
-    } = await axios.put(`${config.apiUrl}/posts/${postId}`, {
+    } = await axios.put(`/posts/${postId}`, {
       comment,
     });
     return Promise.resolve(post);
@@ -151,7 +150,7 @@ export async function acceptFriendRequest(friendId) {
   try {
     const {
       data: { user },
-    } = await axios.post(`${config.apiUrl}/friends/${friendId}`);
+    } = await axios.post(`/friends/${friendId}`);
     return Promise.resolve(user);
   } catch (error) {
     console.log(error.response);
@@ -163,7 +162,7 @@ export async function sendFriendRequest(friendId) {
   try {
     const {
       data: { user },
-    } = await axios.put(`${config.apiUrl}/friends/${friendId}`);
+    } = await axios.put(`/friends/${friendId}`);
     return Promise.resolve(user);
   } catch (error) {
     console.log(error.response);
@@ -181,7 +180,7 @@ export async function updateProfilePicture(profilePicture) {
       data: { user },
     } = await axios({
       method: "put",
-      url: `${config.apiUrl}/users/`,
+      url: `/users/`,
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     });
@@ -196,7 +195,7 @@ export async function updateName(updatedFullName) {
   try {
     const {
       data: { user },
-    } = await axios.put(`${config.apiUrl}/users/`, {
+    } = await axios.put(`/users/`, {
       fullName: updatedFullName,
     });
     return Promise.resolve(user);
