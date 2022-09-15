@@ -27,7 +27,7 @@ Facebook clone that allows user to make a post with text or pictures, and like p
   <img src="https://res.cloudinary.com/de2ymful4/image/upload/v1646099328/main-portfolio/tech-skills/html_qpxonu.png" width="40" height="40" alt="Javascript" />
 </p>
 
-- dispatchers, reducers, redux store, functional components, custom hooks, useEffect, useState, useContext, axios, uuid, react-router-dom, sass, font awesome icon's, moment, HashRouter, localStorage, destructured props, ES6 features, AJAX.
+dispatchers, reducers, redux store, functional components, custom hooks, useEffect, useState, useContext, axios, uuid, react-router-dom, sass, font awesome icon's, moment, HashRouter, localStorage, destructured props, ES6 features, AJAX.
 
 #### Local Installation & Running
 
@@ -37,8 +37,3 @@ cd facebook-clone
 npm install
 npm run start
 ```
-
-#### Pending Improvements
-
-- replace right tab in homepage with a component displaying friends and other users using the application.
-- Add more icons on the navbar so it looks closer to the original facebook navbar.
